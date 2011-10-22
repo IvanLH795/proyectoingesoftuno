@@ -9,11 +9,8 @@ package Prueba1;
  *
  * @author Beltran
  */
-public class Hola {
-
-  public static void main(String[] args) {
-      Hola2 prueba2 = new Hola2();
-    prueba2.print();
-  }
+public class Hola2 {
+    public Hola2(){}
+    public void print(){
+ System.out.println("Segunda Prueba");}
 }
-
