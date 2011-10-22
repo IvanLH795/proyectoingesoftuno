@@ -12,5 +12,5 @@ package Prueba1;
 public class Hola2 {
     public Hola2(){}
     public void print(){
- System.out.println("Segunda Prueba");}
+ System.out.println("Prueba de Freddy");}
 }
