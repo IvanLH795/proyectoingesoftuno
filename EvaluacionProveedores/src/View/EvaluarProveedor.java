@@ -98,6 +98,12 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         AdaptabilidadLabel.setText("Adaptabilidad");
 
+        calidadProductosTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calidadProductosTextFieldActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("%");
 
         jLabel7.setText("%");
@@ -305,6 +311,10 @@ public class EvaluarProveedor extends javax.swing.JFrame {
  JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_BuscarMouseClicked
+
+    private void calidadProductosTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calidadProductosTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_calidadProductosTextFieldActionPerformed
 
     /**
     * @param args the command line arguments
