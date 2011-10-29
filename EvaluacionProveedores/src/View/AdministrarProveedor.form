@@ -26,11 +26,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jTabbedPane1" pref="370" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -43,7 +43,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -66,126 +66,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Eliminar">
-                <Property name="tabTitle" type="java.lang.String" value="Eliminar"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="345" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField4" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="jTextField3" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
-                                  <Component id="jButton7" alignment="1" min="-2" pref="67" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jButton3" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="201" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="NIT"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Eliminar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ver"/>
-                <Property name="actionCommand" type="java.lang.String" value="jButton7"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea2">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="rows" type="int" value="5"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Resumen"/>
-                      </Border>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="PanelTabBuscar">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Buscar">
@@ -203,17 +84,17 @@
                           <Component id="jScrollPane1" alignment="0" pref="345" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNombreBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNitBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" max="32767" attributes="1"/>
-                                  <Component id="jTextField2" alignment="0" pref="223" max="32767" attributes="1"/>
+                                  <Component id="TFNombreBuscar" max="32767" attributes="1"/>
+                                  <Component id="TFNitBuscar" alignment="0" pref="223" max="32767" attributes="1"/>
                               </Group>
                           </Group>
-                          <Component id="jButton5" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnBuscarBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnCancelarBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -224,52 +105,52 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombreBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNombreBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNitBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNitBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBuscarBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" pref="251" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnCancelarBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="BtnBuscarBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="BtnCancelarBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton4MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnCancelarBuscarMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblNombreBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="lblNitBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NIT"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="TFNombreBuscar">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="TFNitBuscar">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -294,11 +175,336 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel1">
+        <Container class="javax.swing.JPanel" name="PanelTabEliminar">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Crear o Modificar">
-                <Property name="tabTitle" type="java.lang.String" value="Crear o Modificar"/>
+              <JTabbedPaneConstraints tabName="Eliminar">
+                <Property name="tabTitle" type="java.lang.String" value="Eliminar"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" pref="345" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNombreEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNitEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="TFNombreEliminar" alignment="0" max="32767" attributes="1"/>
+                                  <Component id="TFNombreNit" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
+                                  <Component id="BtnVerEliminar" alignment="1" min="-2" pref="67" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="BtnEliminarEliminar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jButton3" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNombreEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNombreEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblNitEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNombreNit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="BtnVerEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnEliminarEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="201" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="jButton3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNombreEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNitEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="NIT"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TFNombreEliminar">
+            </Component>
+            <Component class="javax.swing.JTextField" name="TFNombreNit">
+            </Component>
+            <Component class="javax.swing.JButton" name="BtnVerEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ver"/>
+                <Property name="actionCommand" type="java.lang.String" value="jButton7"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="BtnEliminarEliminar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Resumen"/>
+                      </Border>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelTabCrear">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Crear">
+                <Property name="tabTitle" type="java.lang.String" value="Crear"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="BtnCancelarCrear" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="BtnGuardarCrear" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="PanelCrear" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="PanelCrear" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="BtnGuardarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnCancelarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="PanelCrear">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblRepresentanteCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNitCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblNombreCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProductoCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDireccionCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTelefonoCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCorreoCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPagWebCrear" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="TFNombreCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFNitCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFRepresentanteCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFProductoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFDireccionCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFTelefonoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFCorreoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFPagWebCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblNombreCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFNombreCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblNitCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFNitCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblRepresentanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFRepresentanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblProductoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFProductoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDireccionCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFDireccionCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblTelefonoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFTelefonoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCorreoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFCorreoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPagWebCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFPagWebCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblNombreCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nombre:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblNitCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="NIT:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblRepresentanteCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Representante:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblProductoCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producto:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblDireccionCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Direccion:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTelefonoCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Telefono:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblCorreoCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Correo:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPagWebCrear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Pagina web:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFNombreCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFNitCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFRepresentanteCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFProductoCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFDireccionCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFTelefonoCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFCorreoCrear">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFPagWebCrear">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="BtnGuardarCrear">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnGuardarCrearMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="BtnCancelarCrear">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancelar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnCancelarCrearMouseClicked"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="PanelTabModificar">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Modificar">
+                <Property name="tabTitle" type="java.lang.String" value="Modificar"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -309,27 +515,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="SubPanelModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BtnCancelarModificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BtnGuardarModificar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNombreModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNitModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField6" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="jTextField5" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
+                                          <Component id="TFNombreModificar" alignment="0" max="32767" attributes="1"/>
+                                          <Component id="TFNitModificar" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
                                       </Group>
                                       <EmptySpace pref="81" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jButton8" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BtnBuscarModificar" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -342,22 +548,22 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNombreModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNombreModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNitModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFNitModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" max="-2" attributes="0"/>
+                      <Component id="BtnBuscarModificar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <Component id="SubPanelModificar" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnGuardarModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnCancelarModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -365,42 +571,42 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="BtnCancelarModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnCancelarModificarMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="BtnGuardarModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnGuardarModificarMouseClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
+            <Component class="javax.swing.JLabel" name="lblNombreModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nombre"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
+            <Component class="javax.swing.JLabel" name="lblNitModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NIT"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField5">
+            <Component class="javax.swing.JTextField" name="TFNombreModificar">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
+            <Component class="javax.swing.JTextField" name="TFNitModificar">
+            </Component>
+            <Component class="javax.swing.JButton" name="BtnBuscarModificar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
-            </Component>
-            <Container class="javax.swing.JPanel" name="jPanel4">
+            <Container class="javax.swing.JPanel" name="SubPanelModificar">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -415,25 +621,25 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRepresentanteModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubNit" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProductoModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDireccionModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTelefonoModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCorreoModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPagWebModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextField7" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField9" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField8" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField10" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField11" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField12" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField13" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="jTextField14" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFSubNombreModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFSubNitModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFRepresentanteModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFProductoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFDireccionModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFTelefonoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFCorreoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="TFPagWebModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -444,43 +650,43 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFSubNombreModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSubNit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFSubNitModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRepresentanteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFRepresentanteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDireccionModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFDireccionModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTelefonoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFTelefonoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblCorreoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFCorreoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -488,61 +694,61 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel8">
+                <Component class="javax.swing.JLabel" name="lblSubModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nombre:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField7">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
+                <Component class="javax.swing.JLabel" name="lblSubNit">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="NIT:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel10">
+                <Component class="javax.swing.JLabel" name="lblRepresentanteModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Representante:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
+                <Component class="javax.swing.JLabel" name="lblProductoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Producto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
+                <Component class="javax.swing.JLabel" name="lblDireccionModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Direccion:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
+                <Component class="javax.swing.JLabel" name="lblTelefonoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Telefono:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel14">
+                <Component class="javax.swing.JLabel" name="lblCorreoModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Correo:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel15">
+                <Component class="javax.swing.JLabel" name="lblPagWebModificar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Pagina web:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField8">
+                <Component class="javax.swing.JTextField" name="TFSubNombreModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField9">
+                <Component class="javax.swing.JTextField" name="TFSubNitModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField10">
+                <Component class="javax.swing.JTextField" name="TFRepresentanteModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField11">
+                <Component class="javax.swing.JTextField" name="TFProductoModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField12">
+                <Component class="javax.swing.JTextField" name="TFDireccionModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField13">
+                <Component class="javax.swing.JTextField" name="TFTelefonoModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField14">
+                <Component class="javax.swing.JTextField" name="TFCorreoModificar">
+                </Component>
+                <Component class="javax.swing.JTextField" name="TFPagWebModificar">
                 </Component>
               </SubComponents>
             </Container>

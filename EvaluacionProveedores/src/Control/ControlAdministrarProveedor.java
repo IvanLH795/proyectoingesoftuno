@@ -34,7 +34,7 @@ public class ControlAdministrarProveedor {
     }
     public void modificarProveedor(){
 
-
+            
 
     }
     public void borrarProveedor(String nombre, int nit){
