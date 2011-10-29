@@ -5,9 +5,9 @@
 
 package Control;
 
+import Model.ProductoProveedor;
 import Model.Proveedores;
 import Model.Sistema;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +17,10 @@ import java.util.List;
 public class ControlAdministrarProveedor {
 
     public void crearProveedor(String nombre, int nit, String direccion, String correo,
-            String representante, String pagina, int telefono){
+            String representante, String pagina, int telefono, List<ProductoProveedor> productos){
 
             Proveedores proveedor = new Proveedores();
-            List<Proveedores> proveedores = new ArrayList<Proveedores>();
-            Sistema sistema = View.Main.sistem;
+            Sistema provee = View.Main.provee;
 
             proveedor.setNombre(nombre);
             proveedor.setNit(nit);
@@ -30,16 +29,33 @@ public class ControlAdministrarProveedor {
             proveedor.setRepresentante(representante);
             proveedor.setPaginaWeb(pagina);
             proveedor.setTelefono(telefono);
-            proveedores.add(proveedor);
-            sistema.setProveedores(proveedores);
+            proveedor.setProductos(productos);
+            provee.getProveedores().add(proveedor);
     }
     public void modificarProveedor(){
 
-    }
-    public void borrarProveedor(){
+
 
     }
-    public void buscarProveedor(String nombre, int nit){
-        
+    public void borrarProveedor(String nombre, int nit){
+
+            Sistema provee = View.Main.provee;
+
+            for (Proveedores u: provee.getProveedores()){
+                if (u.getNombre().equals(nombre) && (u.getNit()==nit)){
+                    provee.getProveedores().remove(u);
+                    break;
+                }
+            }
+    }
+    public Proveedores buscarProveedor(String nombre, int nit){
+            
+            Sistema provee = View.Main.provee;
+            for (Proveedores u: provee.getProveedores()){
+                if (u.getNombre().equals(nombre) && (u.getNit()==nit)){
+                    return u;
+                }
+            }
+            return null;
     }
 }
