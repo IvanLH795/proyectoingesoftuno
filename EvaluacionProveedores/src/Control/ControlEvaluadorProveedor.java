@@ -9,9 +9,9 @@ package Control;
  *
  * @author Beltrán
  */
-public class EvaluadorProveedor {
+public class ControlEvaluadorProveedor {
 
-    public EvaluadorProveedor() {
+    public ControlEvaluadorProveedor() {
     }
    //valida los datos ingresados y despues los actualiza para el proveedor ingresado
 }
