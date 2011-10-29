@@ -55,7 +55,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         BtnVerEliminar = new javax.swing.JButton();
         BtnEliminarEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        TAEliminar = new javax.swing.JTextArea();
         PanelTabCrear = new javax.swing.JPanel();
         PanelCrear = new javax.swing.JPanel();
         lblNombreCrear = new javax.swing.JLabel();
@@ -202,10 +202,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
         });
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resumen"));
-        jScrollPane2.setViewportView(jTextArea2);
+        TAEliminar.setColumns(20);
+        TAEliminar.setRows(5);
+        TAEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Resumen"));
+        jScrollPane2.setViewportView(TAEliminar);
 
         javax.swing.GroupLayout PanelTabEliminarLayout = new javax.swing.GroupLayout(PanelTabEliminar);
         PanelTabEliminar.setLayout(PanelTabEliminarLayout);
@@ -592,8 +592,30 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        control.buscarProveedor(lblNombreEliminar.getText(), Integer.parseInt(lblNitEliminar.getText()));
+        Proveedores proveedor2 = new Proveedores();
+        proveedor2 = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        String productos = "";
 
+        for(ProductoProveedor u: proveedor2.getProductos()){
+                productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
+        }
+
+        TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
+                         "Nit: " + proveedor2.getNit() + "\n" +
+                         "Calidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Fiabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Cercania: " + proveedor2.getRepresentante() + "\n" +
+                         "Adaptabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Representante: " + proveedor2.getRepresentante() + "\n" +
+                         "Correo: " + proveedor2.getCorreo() + "\n" +
+                         "Telefono: " + proveedor2.getTelefono() + "\n" +
+                         "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
+                         "Productos:\n" +
+                         "Nombre\r\r" + "Precio\n" +
+                         productos +
+                         "Comentarios: " + proveedor2.getRepresentante() + "\n"
+                        );
+    
     }//GEN-LAST:event_BtnVerEliminarActionPerformed
 
     private void BtnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarEliminarActionPerformed
@@ -693,6 +715,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel PanelTabModificar;
     private javax.swing.JPanel SubPanelModificar;
     private javax.swing.JTextArea TABuscar;
+    private javax.swing.JTextArea TAEliminar;
     private javax.swing.JTextField TFCorreoCrear;
     private javax.swing.JTextField TFCorreoModificar;
     private javax.swing.JTextField TFDireccionCrear;
@@ -718,7 +741,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblCorreoCrear;
     private javax.swing.JLabel lblCorreoModificar;
     private javax.swing.JLabel lblDireccionCrear;
