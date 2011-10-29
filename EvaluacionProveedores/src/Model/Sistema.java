@@ -11,7 +11,7 @@ package Model;
  */
 import java.util.List;
 
-public class SistemaUsuario {
+public class Sistema {
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.08D9144D-9239-8F3F-D57C-05EFE1C62978]
@@ -21,7 +21,7 @@ public class SistemaUsuario {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.1B36C9B1-1E42-26F9-165F-B956DDF5ADB1]
     // </editor-fold>
-    public SistemaUsuario () {
+    public Sistema () {
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
