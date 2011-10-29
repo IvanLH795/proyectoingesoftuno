@@ -5,11 +5,14 @@
 
 package View;
 
+import Model.Sistema;
+
 /**
  *
  * @author Fernando
  */
 public class Main {
+    public static Sistema sistem;
 
     /**
      * @param args the command line arguments

@@ -17,6 +17,24 @@ public class Sistema {
     // #[regen=yes,id=DCE.08D9144D-9239-8F3F-D57C-05EFE1C62978]
     // </editor-fold>
     private List<Usuario> usuarios;
+    private List<Proveedores> proveedores;
+    private List<Productos> producto;
+
+    public List<Productos> getProducto() {
+        return producto;
+    }
+
+    public void setProducto(List<Productos> producto) {
+        this.producto = producto;
+    }
+
+    public List<Proveedores> getProveedores() {
+        return proveedores;
+    }
+
+    public void setProveedores(List<Proveedores> proveedores) {
+        this.proveedores = proveedores;
+    }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.1B36C9B1-1E42-26F9-165F-B956DDF5ADB1]
