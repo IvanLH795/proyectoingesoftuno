@@ -5,10 +5,8 @@
 
 package Control;
 
-import Model.ProductoProveedor;
 import Model.Proveedores;
 import Model.Sistema;
-import java.util.List;
 
 /**
  *
@@ -16,27 +14,17 @@ import java.util.List;
  */
 public class ControlAdministrarProveedor {
 
-    public void crearProveedor(String nombre, int nit, String direccion, String correo,
-            String representante, String pagina, int telefono, List<ProductoProveedor> productos){
-
-            Proveedores proveedor = new Proveedores();
+    public void crearProveedor(Proveedores u){
             Sistema provee = View.Main.provee;
-
-            proveedor.setNombre(nombre);
-            proveedor.setNit(nit);
-            proveedor.setDireccion(direccion);
-            proveedor.setCorreo(correo);
-            proveedor.setRepresentante(representante);
-            proveedor.setPaginaWeb(pagina);
-            proveedor.setTelefono(telefono);
-            proveedor.setProductos(productos);
-            provee.getProveedores().add(proveedor);
+            provee.getProveedores().add(u);
     }
-    public void modificarProveedor(){
 
-            
-
+    public void modificarProveedor(Proveedores viejo, Proveedores nuevo){
+            if(!viejo.equals(nuevo)){
+                viejo = nuevo;
+            }
     }
+
     public void borrarProveedor(String nombre, int nit){
 
             Sistema provee = View.Main.provee;
@@ -48,6 +36,7 @@ public class ControlAdministrarProveedor {
                 }
             }
     }
+
     public Proveedores buscarProveedor(String nombre, int nit){
             
             Sistema provee = View.Main.provee;

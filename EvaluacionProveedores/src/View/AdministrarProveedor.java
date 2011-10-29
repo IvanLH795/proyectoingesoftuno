@@ -11,6 +11,9 @@
 
 package View;
 
+import Control.ControlAdministrarProveedor;
+import Model.Proveedores;
+
 /**
  *
  * @author Fernando
@@ -31,7 +34,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblPrincipal = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         PanelTabBuscar = new javax.swing.JPanel();
         BtnBuscarBuscar = new javax.swing.JButton();
@@ -43,7 +46,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         PanelTabEliminar = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        BtnCancelarEliminar = new javax.swing.JButton();
         lblNombreEliminar = new javax.swing.JLabel();
         lblNitEliminar = new javax.swing.JLabel();
         TFNombreEliminar = new javax.swing.JTextField();
@@ -101,17 +104,22 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Administración");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
-        jLabel1.setText("Administración de Proveedores");
+        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblPrincipal.setText("Administración de Proveedores");
 
         jTabbedPane1.setToolTipText("");
 
         BtnBuscarBuscar.setText("Buscar");
+        BtnBuscarBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarBuscarActionPerformed(evt);
+            }
+        });
 
         BtnCancelarBuscar.setText("Cancelar");
-        BtnCancelarBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnCancelarBuscarMouseClicked(evt);
+        BtnCancelarBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarBuscarActionPerformed(evt);
             }
         });
 
@@ -167,10 +175,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Buscar", PanelTabBuscar);
 
-        jButton3.setText("Cancelar");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+        BtnCancelarEliminar.setText("Cancelar");
+        BtnCancelarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarEliminarActionPerformed(evt);
             }
         });
 
@@ -180,8 +188,18 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         BtnVerEliminar.setText("Ver");
         BtnVerEliminar.setActionCommand("jButton7");
+        BtnVerEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVerEliminarActionPerformed(evt);
+            }
+        });
 
         BtnEliminarEliminar.setText("Eliminar");
+        BtnEliminarEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEliminarEliminarActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -207,7 +225,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                             .addComponent(BtnVerEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnEliminarEliminar))
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(BtnCancelarEliminar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         PanelTabEliminarLayout.setVerticalGroup(
@@ -228,7 +246,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(BtnCancelarEliminar)
                 .addContainerGap())
         );
 
@@ -318,16 +336,16 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         );
 
         BtnGuardarCrear.setText("Guardar");
-        BtnGuardarCrear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnGuardarCrearMouseClicked(evt);
+        BtnGuardarCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardarCrearActionPerformed(evt);
             }
         });
 
         BtnCancelarCrear.setText("Cancelar");
-        BtnCancelarCrear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnCancelarCrearMouseClicked(evt);
+        BtnCancelarCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarCrearActionPerformed(evt);
             }
         });
 
@@ -360,16 +378,16 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         jTabbedPane1.addTab("Crear", PanelTabCrear);
 
         BtnCancelarModificar.setText("Cancelar");
-        BtnCancelarModificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnCancelarModificarMouseClicked(evt);
+        BtnCancelarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarModificarActionPerformed(evt);
             }
         });
 
         BtnGuardarModificar.setText("Guardar");
-        BtnGuardarModificar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnGuardarModificarMouseClicked(evt);
+        BtnGuardarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardarModificarActionPerformed(evt);
             }
         });
 
@@ -378,6 +396,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         lblNitModificar.setText("NIT");
 
         BtnBuscarModificar.setText("Buscar");
+        BtnBuscarModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarModificarActionPerformed(evt);
+            }
+        });
 
         SubPanelModificar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -520,7 +543,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblPrincipal)
                         .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
@@ -530,7 +553,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblPrincipal)
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
@@ -539,54 +562,103 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-    Principal regresar = new Principal();
-    regresar.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+    private void BtnBuscarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarBuscarActionPerformed
+        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+        control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        
+    }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
-    private void BtnCancelarBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCancelarBuscarMouseClicked
-    Principal regresar = new Principal();
-    regresar.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_BtnCancelarBuscarMouseClicked
+    private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
+        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+        control.buscarProveedor(lblNombreEliminar.getText(), Integer.parseInt(lblNitEliminar.getText()));
 
-    private void BtnCancelarModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCancelarModificarMouseClicked
-    Principal regresar = new Principal();
-    regresar.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_BtnCancelarModificarMouseClicked
+    }//GEN-LAST:event_BtnVerEliminarActionPerformed
 
-    private void BtnGuardarModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGuardarModificarMouseClicked
-    Principal regresar = new Principal();
-    regresar.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_BtnGuardarModificarMouseClicked
+    private void BtnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarEliminarActionPerformed
+        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+        control.borrarProveedor(lblNombreEliminar.getText(), Integer.parseInt(lblNitEliminar.getText()));
 
-    private void BtnGuardarCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnGuardarCrearMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnGuardarCrearMouseClicked
+    }//GEN-LAST:event_BtnEliminarEliminarActionPerformed
 
-    private void BtnCancelarCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCancelarCrearMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCancelarCrearMouseClicked
+    private void BtnGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCrearActionPerformed
+            ControlAdministrarProveedor control = new ControlAdministrarProveedor();
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdministrarProveedor().setVisible(true);
-            }
-        });
-    }
+            Proveedores proveedor2 = new Proveedores();
+
+            proveedor2.setNombre(TFNombreCrear.getText());
+            proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
+            proveedor2.setDireccion(TFDireccionCrear.getText());
+            proveedor2.setCorreo(TFCorreoCrear.getText());
+            proveedor2.setRepresentante(TFRepresentanteCrear.getText());
+            proveedor2.setPaginaWeb(TFPagWebCrear.getText());
+            proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+            proveedor2.setProductos(null);
+
+            control.crearProveedor(proveedor2);
+    }//GEN-LAST:event_BtnGuardarCrearActionPerformed
+
+    private void BtnCancelarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarCrearActionPerformed
+        Principal regresar = new Principal();
+        regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnCancelarCrearActionPerformed
+
+    private void BtnCancelarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarEliminarActionPerformed
+        Principal regresar = new Principal();
+        regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnCancelarEliminarActionPerformed
+
+    private void BtnCancelarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarBuscarActionPerformed
+        Principal regresar = new Principal();
+        regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnCancelarBuscarActionPerformed
+
+    private void BtnCancelarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarModificarActionPerformed
+        Principal regresar = new Principal();
+        regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BtnCancelarModificarActionPerformed
+
+    private void BtnGuardarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarModificarActionPerformed
+        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+        Proveedores proveedor2 = new Proveedores();
+
+        proveedor2.setNombre(TFNombreCrear.getText());
+        proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
+        proveedor2.setDireccion(TFDireccionCrear.getText());
+        proveedor2.setCorreo(TFCorreoCrear.getText());
+        proveedor2.setRepresentante(TFRepresentanteCrear.getText());
+        proveedor2.setPaginaWeb(TFPagWebCrear.getText());
+        proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+        proveedor2.setProductos(null);
+
+        control.modificarProveedor(proveedor, proveedor2);
+
+    }//GEN-LAST:event_BtnGuardarModificarActionPerformed
+
+    private void BtnBuscarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarModificarActionPerformed
+        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+        proveedor = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+
+        TFNombreModificar.setText(proveedor.getNombre());
+        TFNitModificar.setText(String.valueOf(proveedor.getNit()));
+        TFRepresentanteModificar.setText(proveedor.getRepresentante());
+        TFProductoModificar.setText(proveedor.getProductos().toString());
+        TFDireccionModificar.setText(proveedor.getDireccion());
+        TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
+        TFCorreoModificar.setText(proveedor.getCorreo());
+        TFPagWebModificar.setText(proveedor.getPaginaWeb());
+
+    }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarBuscar;
     private javax.swing.JButton BtnBuscarModificar;
     private javax.swing.JButton BtnCancelarBuscar;
     private javax.swing.JButton BtnCancelarCrear;
+    private javax.swing.JButton BtnCancelarEliminar;
     private javax.swing.JButton BtnCancelarModificar;
     private javax.swing.JButton BtnEliminarEliminar;
     private javax.swing.JButton BtnGuardarCrear;
@@ -620,8 +692,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField TFSubNombreModificar;
     private javax.swing.JTextField TFTelefonoCrear;
     private javax.swing.JTextField TFTelefonoModificar;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -641,6 +711,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreModificar;
     private javax.swing.JLabel lblPagWebCrear;
     private javax.swing.JLabel lblPagWebModificar;
+    private javax.swing.JLabel lblPrincipal;
     private javax.swing.JLabel lblProductoCrear;
     private javax.swing.JLabel lblProductoModificar;
     private javax.swing.JLabel lblRepresentanteCrear;
@@ -650,5 +721,5 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefonoCrear;
     private javax.swing.JLabel lblTelefonoModificar;
     // End of variables declaration//GEN-END:variables
-
+    Proveedores proveedor = new Proveedores();
 }
