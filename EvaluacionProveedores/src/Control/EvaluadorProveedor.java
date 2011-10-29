@@ -4,11 +4,13 @@
  */
 
 package Control;
-
 /**
  *
- * @author Darthian
+ * @author Beltrán
  */
 public class EvaluadorProveedor {
 
+    public EvaluadorProveedor() {
+    }
+   //valida los datos ingresados y despues los actualiza para el proveedor ingresado
 }
