@@ -11,4 +11,16 @@ package Control;
  */
 public class AdministrarProveedor {
 
+    public void crearProveedor(){
+        
+    }
+    public void modificarProveedor(){
+
+    }
+    public void borrarProveedor(){
+
+    }
+    public void buscarProveedor(String nombre, int nit){
+        
+    }
 }
