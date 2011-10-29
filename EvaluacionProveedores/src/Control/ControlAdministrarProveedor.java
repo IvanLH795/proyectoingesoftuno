@@ -9,7 +9,7 @@ package Control;
  *
  * @author Darthian
  */
-public class AdministrarProveedor {
+public class ControlAdministrarProveedor {
 
     public void crearProveedor(){
         
