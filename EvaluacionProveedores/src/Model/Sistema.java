@@ -18,14 +18,14 @@ public class Sistema {
     // </editor-fold>
     private List<Usuario> usuarios;
     private List<Proveedores> proveedores;
-    private List<Productos> producto;
+    private List<Productos> productos;
 
     public List<Productos> getProducto() {
-        return producto;
+        return productos;
     }
 
     public void setProducto(List<Productos> producto) {
-        this.producto = producto;
+        this.productos = producto;
     }
 
     public List<Proveedores> getProveedores() {

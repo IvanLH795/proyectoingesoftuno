@@ -5,6 +5,8 @@
 
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Darthian
@@ -17,6 +19,15 @@ public class Proveedores {
     int telefono;
     String correo;
     String paginaWeb;
+    List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+
+    public List<ProductoProveedor> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ProductoProveedor> productos) {
+        this.productos = productos;
+    }
 
     public String getCorreo() {
         return correo;
