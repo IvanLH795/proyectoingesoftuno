@@ -12,6 +12,7 @@
 package View;
 
 import Control.ControlAdministrarProveedor;
+import Model.ProductoProveedor;
 import Model.Proveedores;
 
 /**
@@ -44,7 +45,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFNombreBuscar = new javax.swing.JTextField();
         TFNitBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TABuscar = new javax.swing.JTextArea();
         PanelTabEliminar = new javax.swing.JPanel();
         BtnCancelarEliminar = new javax.swing.JButton();
         lblNombreEliminar = new javax.swing.JLabel();
@@ -127,11 +128,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         lblNitBuscar.setText("NIT");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setAutoscrolls(false);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
-        jScrollPane1.setViewportView(jTextArea1);
+        TABuscar.setColumns(20);
+        TABuscar.setRows(5);
+        TABuscar.setAutoscrolls(false);
+        TABuscar.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+        jScrollPane1.setViewportView(TABuscar);
 
         javax.swing.GroupLayout PanelTabBuscarLayout = new javax.swing.GroupLayout(PanelTabBuscar);
         PanelTabBuscar.setLayout(PanelTabBuscarLayout);
@@ -564,8 +565,29 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnBuscarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarBuscarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        Proveedores proveedor2 = new Proveedores();
+        proveedor2 = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        String productos = "";
         
+        for(ProductoProveedor u: proveedor2.getProductos()){
+                productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
+        }
+
+        TABuscar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
+                         "Nit: " + proveedor2.getNit() + "\n" +
+                         "Calidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Fiabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Cercania: " + proveedor2.getRepresentante() + "\n" +
+                         "Adaptabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Representante: " + proveedor2.getRepresentante() + "\n" +
+                         "Correo: " + proveedor2.getCorreo() + "\n" +
+                         "Telefono: " + proveedor2.getTelefono() + "\n" +
+                         "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
+                         "Productos:\n" +
+                         "Nombre\r\r" + "Precio\n" +
+                         productos +
+                         "Comentarios: " + proveedor2.getRepresentante() + "\n"
+                        );
     }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
@@ -670,6 +692,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel PanelTabEliminar;
     private javax.swing.JPanel PanelTabModificar;
     private javax.swing.JPanel SubPanelModificar;
+    private javax.swing.JTextArea TABuscar;
     private javax.swing.JTextField TFCorreoCrear;
     private javax.swing.JTextField TFCorreoModificar;
     private javax.swing.JTextField TFDireccionCrear;
@@ -695,7 +718,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblCorreoCrear;
     private javax.swing.JLabel lblCorreoModificar;

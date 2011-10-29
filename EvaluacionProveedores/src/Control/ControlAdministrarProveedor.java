@@ -21,7 +21,14 @@ public class ControlAdministrarProveedor {
 
     public void modificarProveedor(Proveedores viejo, Proveedores nuevo){
             if(!viejo.equals(nuevo)){
-                viejo = nuevo;
+                viejo.setNombre(nuevo.getNombre());
+                viejo.setNit(nuevo.getNit());
+                viejo.setDireccion(nuevo.getDireccion());
+                viejo.setCorreo(nuevo.getCorreo());
+                viejo.setRepresentante(nuevo.getRepresentante());
+                viejo.setPaginaWeb(nuevo.getPaginaWeb());
+                viejo.setTelefono(nuevo.getTelefono());
+                viejo.setProductos(null);
             }
     }
 
