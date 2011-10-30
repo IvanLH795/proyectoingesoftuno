@@ -14,13 +14,15 @@ package Frontera;
 import Control.ControlAdministrarProveedor;
 import Model.ProductoProveedor;
 import Model.Proveedores;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Fernando
  */
 public class AdministrarProveedor extends javax.swing.JFrame {
-
+    JFrame frame;
     /** Creates new form AdministrarProveedor */
     public AdministrarProveedor() {
         initComponents();
@@ -51,7 +53,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         lblNombreEliminar = new javax.swing.JLabel();
         lblNitEliminar = new javax.swing.JLabel();
         TFNombreEliminar = new javax.swing.JTextField();
-        TFNombreNit = new javax.swing.JTextField();
+        TFNitEliminar = new javax.swing.JTextField();
         BtnVerEliminar = new javax.swing.JButton();
         BtnEliminarEliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -105,7 +107,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Administración");
 
-        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14));
         lblPrincipal.setText("Administración de Proveedores");
 
         jTabbedPane1.setToolTipText("");
@@ -222,7 +224,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TFNombreEliminar)
-                            .addComponent(TFNombreNit, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TFNitEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnVerEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnEliminarEliminar))
@@ -239,7 +241,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNitEliminar)
-                    .addComponent(TFNombreNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFNitEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnVerEliminar)
@@ -591,16 +593,23 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
-        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        Proveedores proveedor2 = new Proveedores();
-        proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
-        String productos = "";
+        if(validarTextFieldBuscar()){
+            ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+            Proveedores proveedor2 = new Proveedores();
+            Integer obj;
+            try{
+                obj = Integer.parseInt(TFNitBuscar.getText());
+            }catch(NumberFormatException ex){
+                obj = null;
+            }
+            proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
+            String productos = "";
 
-        for(ProductoProveedor u: proveedor2.getProductos()){
+            for(ProductoProveedor u: proveedor2.getProductos()){
                 productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
-        }
+            }
 
-        TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
+            TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
                          "Calidad: " + proveedor2.getRepresentante() + "\n" +
                          "Fiabilidad: " + proveedor2.getRepresentante() + "\n" +
@@ -615,7 +624,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                          productos +
                          "Comentarios: " + proveedor2.getRepresentante() + "\n"
                         );
-    
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "asdfasdfasdf");
+        }
     }//GEN-LAST:event_BtnVerEliminarActionPerformed
 
     private void BtnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarEliminarActionPerformed
@@ -696,6 +708,68 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFPagWebModificar.setText(proveedor.getPaginaWeb());
 
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
+private boolean validarTextFieldBuscar(){
+        boolean integer = true;
+        try{
+            Integer.parseInt(TFNitBuscar.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!TFNombreBuscar.getText().isEmpty() || integer);
+    }
+
+    private boolean validarTextFieldModificarVer(){
+        boolean integer = true;
+        try{
+            Integer.parseInt(TFNitModificar.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!TFNombreModificar.getText().isEmpty() && integer);
+    }
+
+    private boolean validarTextFieldEliminar(){
+        boolean integer = true;
+        try{
+            Integer.parseInt(TFNitEliminar.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!TFNombreEliminar.getText().isEmpty() && integer);
+    }
+
+    private boolean validarTextFieldCrear(){
+        boolean nit = true;
+        boolean tel = true;
+        try{
+            Integer.parseInt(TFNitCrear.getText());
+        }catch(NumberFormatException ex){
+            nit = false;
+        }
+        try{
+            Integer.parseInt(TFTelefonoCrear.getText());
+        }catch(NumberFormatException ex){
+            tel = false;
+        }
+
+        return (!TFNombreCrear.getText().isEmpty() && nit && !TFNitCrear.getText().isEmpty() && tel);
+    }
+
+    private boolean validarTextFieldModificar(){
+        boolean nit = true;
+        boolean tel = true;
+        try{
+            Integer.parseInt(TFSubNitModificar.getText());
+        }catch(NumberFormatException ex){
+            nit = false;
+        }
+        try{
+            Integer.parseInt(TFTelefonoModificar.getText());
+        }catch(NumberFormatException ex){
+            tel = false;
+        }
+        return (!TFNombreCrear.getText().isEmpty() && nit && !TFNitCrear.getText().isEmpty() && tel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarBuscar;
@@ -722,12 +796,12 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField TFDireccionModificar;
     private javax.swing.JTextField TFNitBuscar;
     private javax.swing.JTextField TFNitCrear;
+    private javax.swing.JTextField TFNitEliminar;
     private javax.swing.JTextField TFNitModificar;
     private javax.swing.JTextField TFNombreBuscar;
     private javax.swing.JTextField TFNombreCrear;
     private javax.swing.JTextField TFNombreEliminar;
     private javax.swing.JTextField TFNombreModificar;
-    private javax.swing.JTextField TFNombreNit;
     private javax.swing.JTextField TFPagWebCrear;
     private javax.swing.JTextField TFPagWebModificar;
     private javax.swing.JTextField TFProductoCrear;
