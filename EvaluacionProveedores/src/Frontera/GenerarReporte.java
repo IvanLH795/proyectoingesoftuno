@@ -9,7 +9,7 @@
  * Created on 22-sep-2011, 15:12:58
  */
 
-package View;
+package Frontera;
 
 /**
  *
