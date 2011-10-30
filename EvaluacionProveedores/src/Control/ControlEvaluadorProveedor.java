@@ -16,8 +16,8 @@ public class ControlEvaluadorProveedor {
     }
     public Proveedores buscarProveedor(int nit){
 
-            Sistema provee = View.Main.provee;
-            for (Proveedores u: provee.getProveedores()){
+            Sistema listaProveedores = View.Splash.listaProveedores;
+            for (Proveedores u: listaProveedores.getProveedores()){
                 if (u.getNit()==nit){
                     return u;
                 }

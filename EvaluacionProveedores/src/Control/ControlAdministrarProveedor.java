@@ -15,7 +15,7 @@ import Model.Sistema;
 public class ControlAdministrarProveedor {
 
     public void crearProveedor(Proveedores u){
-            Sistema provee = View.Main.provee;
+            Sistema provee = View.Splash.listaProveedores;
             provee.getProveedores().add(u);
     }
 
@@ -34,7 +34,7 @@ public class ControlAdministrarProveedor {
 
     public void borrarProveedor(String nombre, int nit){
 
-            Sistema provee = View.Main.provee;
+            Sistema provee = View.Splash.listaProveedores;
 
             for (Proveedores u: provee.getProveedores()){
                 if (u.getNombre().equals(nombre) && (u.getNit()==nit)){
@@ -46,7 +46,7 @@ public class ControlAdministrarProveedor {
 
     public Proveedores buscarProveedor(String nombre, int nit){
             
-            Sistema provee = View.Main.provee;
+            Sistema provee = View.Splash.listaProveedores;
             for (Proveedores u: provee.getProveedores()){
                 if (u.getNombre().equals(nombre) && (u.getNit()==nit)){
                     return u;
