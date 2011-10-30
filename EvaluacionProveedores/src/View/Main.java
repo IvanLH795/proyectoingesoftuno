@@ -12,7 +12,7 @@ import Model.Sistema;
  * @author Fernando
  */
 public class Main {
-    public static Sistema provee;
+    public static Sistema provee = new Sistema();
 
     /**
      * @param args the command line arguments
