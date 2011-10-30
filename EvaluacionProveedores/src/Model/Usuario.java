@@ -11,4 +11,26 @@ package Model;
  */
 public class Usuario {
 
+    private String nombre;
+    private String password;
+
+    public Usuario(){
+
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String val){
+        nombre = val;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String val){
+        password = val;
+    }
 }
