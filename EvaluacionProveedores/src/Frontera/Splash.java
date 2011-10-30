@@ -165,7 +165,7 @@ public class Splash extends javax.swing.JFrame {
         proveedor2.setAdaptabilidad("Buena");
         proveedor2.setCercania("buena");
         proveedor2.setComentarios(null);
-        proveedor2.setNit(1);
+        proveedor2.setNit(2);
         proveedor2.setFiabilidad((float)96);
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
