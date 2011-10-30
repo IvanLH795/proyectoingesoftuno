@@ -240,8 +240,8 @@ public class EvaluarProveedor extends javax.swing.JFrame {
        if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,adaptabilidadSeleccion.getToolTipText(), cercaniaGeograficaSeleccion.getToolTipText())){
       Proveedores proveedor1 = new Proveedores();
         proveedor1 = proveedor;
-        proveedor1.setCalidad(calidadProductosTextField.getText());
-        proveedor1.setFiabilidad(fiabilidadEntregaTextField.getText());
+        proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
+        proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
         proveedor1.setAdaptabilidad(adaptabilidadSeleccion.getToolTipText());
         proveedor1.setCercania(cercaniaGeograficaSeleccion.getToolTipText());
         proveedor1.setComentarios(comentariosTextField.getText());

@@ -25,7 +25,7 @@ public class ControlEvaluadorProveedor {
             return null;
     }
     public boolean validarDatos(String calidad, String fiabilidad, String adaptabilidad, String comentarios){
-        if(Integer.parseInt(calidad) >= 0 && Integer.parseInt(calidad) <= 100 && Integer.parseInt(fiabilidad)>=0 && Integer.parseInt(fiabilidad)<=100 &&  comentarios.length()>=0 && comentarios.length()<=100 ){
+        if(Float.parseFloat(calidad) >= 0 && Float.parseFloat(calidad) <= 100 && Float.parseFloat(fiabilidad)>=0 && Float.parseFloat(fiabilidad)<=100 &&  comentarios.length()>=0 && comentarios.length()<=100 ){
         return true;
         }
         else
