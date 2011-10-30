@@ -9,6 +9,6 @@ package Control;
  *
  * @author Darthian
  */
-public class EvaluadorProveedor {
+public class ControlContratarProveedor {
 
 }

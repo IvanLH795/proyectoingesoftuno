@@ -3,12 +3,12 @@
  * and open the template in the editor.
  */
 
-package Model;
+package Control;
 
 /**
  *
  * @author Darthian
  */
-public class SistemaProveedorProducto {
+public class ControlGeneradorReporte {
 
 }

@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author Darthian
+ * @author Beltrán
  */
 public class Productos {
 private String nombreProducto;

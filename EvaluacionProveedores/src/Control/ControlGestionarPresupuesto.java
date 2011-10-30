@@ -9,6 +9,6 @@ package Control;
  *
  * @author Darthian
  */
-public class GeneradorReporte {
+public class ControlGestionarPresupuesto {
 
 }
