@@ -684,7 +684,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnBuscarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarModificarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        proveedor = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        proveedor = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
 
         TFNombreModificar.setText(proveedor.getNombre());
         TFNitModificar.setText(String.valueOf(proveedor.getNit()));
