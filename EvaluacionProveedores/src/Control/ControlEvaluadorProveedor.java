@@ -8,8 +8,8 @@ package Control;
  *
  * @author Beltrán
  */
-import Model.Proveedores;
-import Model.Sistema;
+import Entidad.Proveedores;
+import Entidad.Sistema;
 public class ControlEvaluadorProveedor {
 
     public ControlEvaluadorProveedor() {
