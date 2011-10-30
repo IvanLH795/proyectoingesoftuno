@@ -226,12 +226,20 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
-        if(!(nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())).equals(null))){
-            for(int i=0;i<evaluacionPanel.getComponents().length;i++) {
+        proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
+        if(!(nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())).equals(null))){  //revisa si el proveedor indicado existe
+            for(int i=0;i<evaluacionPanel.getComponents().length;i++) {      //habilita los componentes del panel de evaluacion
           evaluacionPanel.getComponent(i).setEnabled(true);
                }//end for
-        }else {//si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
-          JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE); }
+            if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
+              calidadProductosTextField.setText(Float.toString(proveedor.getCalidad()));
+              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getFiabilidad()));
+              cercaniaGeograficaSeleccion.setToolTipText(proveedor.getCercania());
+              adaptabilidadSeleccion.setToolTipText(proveedor.getAdaptabilidad());
+              comentariosTextField.setText(proveedor.getComentarios());
+            }
+        }else //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
+          JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE); 
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void ingresarEvaluacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonActionPerformed
@@ -239,16 +247,17 @@ public class EvaluarProveedor extends javax.swing.JFrame {
           proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
        if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,adaptabilidadSeleccion.getToolTipText(), cercaniaGeograficaSeleccion.getToolTipText())){
       Proveedores proveedor1 = new Proveedores();
-        proveedor1 = proveedor;
+        proveedor1 = proveedor;  //capturar datos
         proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
         proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
         proveedor1.setAdaptabilidad(adaptabilidadSeleccion.getToolTipText());
         proveedor1.setCercania(cercaniaGeograficaSeleccion.getToolTipText());
         proveedor1.setComentarios(comentariosTextField.getText());
-        nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);
+        proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
+        nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
        }
-       else
+       else   //manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
             JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
 
