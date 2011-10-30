@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Model;
+package Entidad;
 
 import java.util.ArrayList;
 import java.util.List;

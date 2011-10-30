@@ -12,8 +12,8 @@
 package Frontera;
 
 import Control.ControlAdministrarProveedor;
-import Model.ProductoProveedor;
-import Model.Proveedores;
+import Entidad.ProductoProveedor;
+import Entidad.Proveedores;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 

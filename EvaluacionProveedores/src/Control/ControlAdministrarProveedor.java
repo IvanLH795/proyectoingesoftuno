@@ -5,8 +5,8 @@
 
 package Control;
 
-import Model.Proveedores;
-import Model.Sistema;
+import Entidad.Proveedores;
+import Entidad.Sistema;
 
 /**
  *

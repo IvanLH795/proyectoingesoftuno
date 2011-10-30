@@ -11,9 +11,9 @@
 
 package Frontera;
 
-import Model.ProductoProveedor;
-import Model.Proveedores;
-import Model.Sistema;
+import Entidad.ProductoProveedor;
+import Entidad.Proveedores;
+import Entidad.Sistema;
 import java.util.ArrayList;
 import java.util.List;
 

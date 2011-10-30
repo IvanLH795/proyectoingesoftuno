@@ -7,7 +7,7 @@ package Frontera;
 
 import Control.ControlEvaluadorProveedor;
 import javax.swing.JOptionPane;
-import Model.Proveedores;
+import Entidad.Proveedores;
 /**
  * @author Beltrán
  */
