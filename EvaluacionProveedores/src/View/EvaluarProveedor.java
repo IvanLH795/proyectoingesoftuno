@@ -3,10 +3,11 @@
  *
  * Created on 24/10/2011, 03:07:53 PM
  */
-
 package View;
 
+import Control.ControlEvaluadorProveedor;
 import javax.swing.JOptionPane;
+import Model.Proveedores;
 /**
  * @author Beltrán
  */
@@ -16,8 +17,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     public EvaluarProveedor() {
         initComponents();
         for(int i=0;i<evaluacionPanel.getComponents().length;i++) {   //inicialmente se desabilitan los campos del panel evaluacion mientras no se verifique de que3 proveedor son.
-        evaluacionPanel.getComponent(i).setEnabled(false);
-}
+        evaluacionPanel.getComponent(i).setEnabled(false);}
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -25,8 +25,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jLabel1 = new javax.swing.JLabel();
-        nombreProveedorTextField = new javax.swing.JTextField();
-        nombreProductoTextField = new javax.swing.JTextField();
+        nitProveedorTextField = new javax.swing.JTextField();
         Buscar = new javax.swing.JButton();
         evaluacionPanel = new javax.swing.JPanel();
         calidadProductosLabel = new javax.swing.JLabel();
@@ -52,36 +51,14 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         jLabel1.setText("Evaluar Proveedor");
 
-        nombreProveedorTextField.setText("Nombre del Proveedor");
-        nombreProveedorTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+        nitProveedorTextField.setText("NIT proveedor");
+        nitProveedorTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nombreProveedorTextFieldMouseClicked(evt);
-            }
-        });
-        nombreProveedorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreProveedorTextFieldActionPerformed(evt);
-            }
-        });
-
-        nombreProductoTextField.setText("Producto");
-        nombreProductoTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nombreProductoTextFieldMouseClicked(evt);
-            }
-        });
-        nombreProductoTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreProductoTextFieldActionPerformed(evt);
+                nitProveedorTextFieldMouseClicked(evt);
             }
         });
 
         Buscar.setText("Buscar");
-        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscarMouseClicked(evt);
-            }
-        });
         Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarActionPerformed(evt);
@@ -98,33 +75,17 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         AdaptabilidadLabel.setText("Adaptabilidad");
 
-        calidadProductosTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calidadProductosTextFieldActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("%");
 
         jLabel7.setText("%");
 
         cercaniaGeograficaSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bogotá", "...", "...", "...", " " }));
-        cercaniaGeograficaSeleccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cercaniaGeograficaSeleccionActionPerformed(evt);
-            }
-        });
 
         adaptabilidadSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alta", "Media", "Baja" }));
 
         comentariosLabel.setText("Comentarios");
 
         ingresarEvaluacionButton.setText("Ingresar Evaluación");
-        ingresarEvaluacionButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ingresarEvaluacionButtonMouseClicked(evt);
-            }
-        });
         ingresarEvaluacionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingresarEvaluacionButtonActionPerformed(evt);
@@ -229,10 +190,8 @@ public class EvaluarProveedor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(evaluacionPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(nombreProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nombreProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(nitProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(99, 99, 99)
                                 .addComponent(Buscar)))))
                 .addContainerGap())
         );
@@ -243,8 +202,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreProductoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nitProveedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Buscar))
                 .addGap(35, 35, 35)
                 .addComponent(evaluacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,21 +214,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreProveedorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProveedorTextFieldActionPerformed
-          // TODO add your handling code here:
-    }//GEN-LAST:event_nombreProveedorTextFieldActionPerformed
-
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-  // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
-
-    private void cercaniaGeograficaSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cercaniaGeograficaSeleccionActionPerformed
-        // TODO add your handling code here:
-}//GEN-LAST:event_cercaniaGeograficaSeleccionActionPerformed
-
-    private void nombreProveedorTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreProveedorTextFieldMouseClicked
-       nombreProveedorTextField.setText("");
-    }//GEN-LAST:event_nombreProveedorTextFieldMouseClicked
+    private void nitProveedorTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldMouseClicked
+       nitProveedorTextField.setText("");
+    }//GEN-LAST:event_nitProveedorTextFieldMouseClicked
 
     private void regresarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarButtonActionPerformed
     Principal regresarMenu = new Principal(); //nos devuelve al Menu Principal
@@ -278,43 +224,33 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_regresarButtonActionPerformed
 
-    private void nombreProductoTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProductoTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreProductoTextFieldActionPerformed
-
-    private void nombreProductoTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreProductoTextFieldMouseClicked
-        nombreProductoTextField.setText("");
-    }//GEN-LAST:event_nombreProductoTextFieldMouseClicked
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
+        if(!(nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())).equals(null))){
+            for(int i=0;i<evaluacionPanel.getComponents().length;i++) {
+          evaluacionPanel.getComponent(i).setEnabled(true);
+               }//end for
+        }else {//si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
+          JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE); }
+    }//GEN-LAST:event_BuscarActionPerformed
 
     private void ingresarEvaluacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonActionPerformed
-
-    }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
-
-    private void ingresarEvaluacionButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonMouseClicked
-       //EvaluadorProveedor nuevoEvP = new EvaluadorProveedor(this.);
-        //si evaluadorProveedor no valida datos..
-        JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-        //si evaluadorProveedor valida exitosamente los datos...
+          ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
+          proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
+       if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,adaptabilidadSeleccion.getToolTipText(), cercaniaGeograficaSeleccion.getToolTipText())){
+      Proveedores proveedor1 = new Proveedores();
+        proveedor1 = proveedor;
+        proveedor1.setCalidad(calidadProductosTextField.getText());
+        proveedor1.setFiabilidad(fiabilidadEntregaTextField.getText());
+        proveedor1.setAdaptabilidad(adaptabilidadSeleccion.getToolTipText());
+        proveedor1.setCercania(cercaniaGeograficaSeleccion.getToolTipText());
+        proveedor1.setComentarios(comentariosTextField.getText());
+        nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
-    }//GEN-LAST:event_ingresarEvaluacionButtonMouseClicked
-
-    private void BuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseClicked
-        //revisar en la base de datos si el proveedor ingresado existe...si no mandar
-        //el msn de "Usuario no encontrado"
-        // if(){     //si existe el usuario habilita los campos para ingresar datos de evaluación
-    //for(int i=0;i<evaluacionPanel.getComponents().length;i++) {
-   //  evaluacionPanel.getComponent(i).setEnabled(true);
-//}
-    //} end if
-    //else   //si el usuario no se encuentra en la base de datos manda el msn
-    //"usuario no encontrado"
- JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-
-    }//GEN-LAST:event_BuscarMouseClicked
-
-    private void calidadProductosTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calidadProductosTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_calidadProductosTextFieldActionPerformed
+       }
+       else
+            JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
 
     /**
     * @param args the command line arguments
@@ -345,10 +281,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField nombreProductoTextField;
-    private javax.swing.JTextField nombreProveedorTextField;
+    private javax.swing.JTextField nitProveedorTextField;
     private javax.swing.JButton regresarButton;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
-
+ Proveedores proveedor = new Proveedores();
 }
