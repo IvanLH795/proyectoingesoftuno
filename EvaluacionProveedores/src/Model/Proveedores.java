@@ -24,7 +24,12 @@ public class Proveedores {
     String cercania;
     String adaptabilidad;
     String comentarios;
+    boolean evaluacionRealizada;
    List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+
+    public Proveedores() {
+        evaluacionRealizada = false;
+    }
 
     public String getAdaptabilidad() {
         return adaptabilidad;
@@ -129,5 +134,14 @@ public class Proveedores {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
+    public boolean isEvaluacionRealizada() {
+        return evaluacionRealizada;
+    }
+
+    public void setEvaluacionRealizada(boolean evaluacionRealizada) {
+        this.evaluacionRealizada = evaluacionRealizada;
+    }
+    
   
 }
