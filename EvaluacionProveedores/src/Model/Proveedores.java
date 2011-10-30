@@ -19,6 +19,51 @@ public class Proveedores {
     int telefono;
     String correo;
     String paginaWeb;
+    String calidad;
+    String fiabilidad;
+    String cercania;
+    String adaptabilidad;
+    String comentarios;
+
+    public String getAdaptabilidad() {
+        return adaptabilidad;
+    }
+
+    public void setAdaptabilidad(String adaptabilidad) {
+        this.adaptabilidad = adaptabilidad;
+    }
+
+    public String getCalidad() {
+        return calidad;
+    }
+
+    public void setCalidad(String calidad) {
+        this.calidad = calidad;
+    }
+
+    public String getCercania() {
+        return cercania;
+    }
+
+    public void setCercania(String cercania) {
+        this.cercania = cercania;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public String getFiabilidad() {
+        return fiabilidad;
+    }
+
+    public void setFiabilidad(String fiabilidad) {
+        this.fiabilidad = fiabilidad;
+    }
     List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
 
     public List<ProductoProveedor> getProductos() {
