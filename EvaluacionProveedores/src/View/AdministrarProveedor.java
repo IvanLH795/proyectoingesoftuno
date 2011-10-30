@@ -566,7 +566,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private void BtnBuscarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarBuscarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
         Proveedores proveedor2 = new Proveedores();
-        proveedor2 = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
         String productos = "";
         
         for(ProductoProveedor u: proveedor2.getProductos()){
@@ -593,7 +593,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
         Proveedores proveedor2 = new Proveedores();
-        proveedor2 = control.buscarProveedor(lblNombreBuscar.getText(), Integer.parseInt(lblNitBuscar.getText()));
+        proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
         String productos = "";
 
         for(ProductoProveedor u: proveedor2.getProductos()){
