@@ -261,17 +261,6 @@ public class EvaluarProveedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EvaluarProveedor().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdaptabilidadLabel;
     private javax.swing.JButton Buscar;
