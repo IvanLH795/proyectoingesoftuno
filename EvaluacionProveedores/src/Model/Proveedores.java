@@ -19,57 +19,12 @@ public class Proveedores {
     int telefono;
     String correo;
     String paginaWeb;
-    String calidad;
-    String fiabilidad;
-    String cercania;
-    String adaptabilidad;
-    String comentarios;
-
-    public String getAdaptabilidad() {
-        return adaptabilidad;
-    }
-
-    public void setAdaptabilidad(String adaptabilidad) {
-        this.adaptabilidad = adaptabilidad;
-    }
-
-    public String getCalidad() {
-        return calidad;
-    }
-
-    public void setCalidad(String calidad) {
-        this.calidad = calidad;
-    }
-
-    public String getCercania() {
-        return cercania;
-    }
-
-    public void setCercania(String cercania) {
-        this.cercania = cercania;
-    }
-
-    public String getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(String comentarios) {
-        this.comentarios = comentarios;
-    }
-
-    public String getFiabilidad() {
-        return fiabilidad;
-    }
-
-    public void setFiabilidad(String fiabilidad) {
-        this.fiabilidad = fiabilidad;
-    }
-    List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
     float calidad;
     float fiabilidad;
     String cercania;
     String adaptabilidad;
     String comentarios;
+   List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
 
     public String getAdaptabilidad() {
         return adaptabilidad;
@@ -103,22 +58,6 @@ public class Proveedores {
         this.comentarios = comentarios;
     }
 
-    public float getFiabilidad() {
-        return fiabilidad;
-    }
-
-    public void setFiabilidad(float fiabilidad) {
-        this.fiabilidad = fiabilidad;
-    }
-
-    public List<ProductoProveedor> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<ProductoProveedor> productos) {
-        this.productos = productos;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -133,6 +72,14 @@ public class Proveedores {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public float getFiabilidad() {
+        return fiabilidad;
+    }
+
+    public void setFiabilidad(float fiabilidad) {
+        this.fiabilidad = fiabilidad;
     }
 
     public int getNit() {
@@ -159,6 +106,14 @@ public class Proveedores {
         this.paginaWeb = paginaWeb;
     }
 
+    public List<ProductoProveedor> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ProductoProveedor> productos) {
+        this.productos = productos;
+    }
+
     public String getRepresentante() {
         return representante;
     }
@@ -174,4 +129,5 @@ public class Proveedores {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+  
 }
