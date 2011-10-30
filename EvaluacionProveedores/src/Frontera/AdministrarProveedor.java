@@ -571,10 +571,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
         String productos = "";
         
+        try{
         for(ProductoProveedor u: proveedor2.getProductos()){
                 productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
         }
-
         TABuscar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
                          "Calidad: " + proveedor2.getRepresentante() + "\n" +
@@ -590,6 +590,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                          productos +
                          "Comentarios: " + proveedor2.getRepresentante() + "\n"
                         );
+        }catch(NullPointerException ex){
+            TABuscar.setText("No existe");
+        }
+
     }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
@@ -632,8 +636,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarEliminarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        control.borrarProveedor(lblNombreEliminar.getText(), Integer.parseInt(lblNitEliminar.getText()));
-
+        control.borrarProveedor(TFNombreEliminar.getText(), Integer.parseInt(TFNitEliminar.getText()));
     }//GEN-LAST:event_BtnEliminarEliminarActionPerformed
 
     private void BtnGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCrearActionPerformed
