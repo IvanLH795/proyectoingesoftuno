@@ -11,15 +11,23 @@
 
 package View;
 
+import Model.ProductoProveedor;
+import Model.Proveedores;
+import Model.Sistema;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Fernando
  */
 public class Splash extends javax.swing.JFrame {
+    public static Sistema listaProveedores = new Sistema();
 
     /** Creates new form Splash */
     public Splash() {
         initComponents();
+        inicializacion();
     }
 
     /** This method is called from within the constructor to
@@ -123,6 +131,56 @@ public class Splash extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void inicializacion() {
+        Proveedores proveedor = new Proveedores();
+        List<ProductoProveedor> listaProductos = new ArrayList<ProductoProveedor>();
+        ProductoProveedor productoa = new ProductoProveedor();
+        ProductoProveedor productob = new ProductoProveedor();
+
+        proveedor.setNombre("Mercados La Primera");
+        proveedor.setCalidad((float)78);
+        proveedor.setAdaptabilidad("Buena");
+        proveedor.setCercania("buena");
+        proveedor.setComentarios(null);
+        proveedor.setNit(1);
+        proveedor.setFiabilidad((float)98);
+        proveedor.setCorreo("laprimera@colombia.com");
+        proveedor.setDireccion("Cra 6 # 65 - 18");
+        proveedor.setRepresentante("Henry Murillo");
+
+        productoa.setNombreProducto("Marcadores");
+        productoa.setPrecio((float)2500);
+        productob.setNombreProducto("Borradores");
+        productob.setPrecio((float)3000);
+
+        listaProductos.add(productoa);
+        listaProductos.add(productob);
+
+        proveedor.setProductos(listaProductos);
+
+        Proveedores proveedor2 = new Proveedores();
+
+        proveedor2.setNombre("Mercados La Segunda");
+        proveedor2.setCalidad((float)87);
+        proveedor2.setAdaptabilidad("Buena");
+        proveedor2.setCercania("buena");
+        proveedor2.setComentarios(null);
+        proveedor2.setNit(1);
+        proveedor2.setFiabilidad((float)96);
+        proveedor2.setCorreo("lasegunda@colombia.com");
+        proveedor2.setDireccion("Cra 7 # 40 - 29");
+        proveedor2.setRepresentante("Andres Malzahar");
+        
+        proveedor2.setProductos(listaProductos);
+
+        List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
+        listaProveedor.add(proveedor);
+        listaProveedor.add(proveedor2);
+        
+        listaProveedores.setProveedores(listaProveedor);
+    }
+
+
     /**
     * @param args the command line arguments
     */
@@ -141,5 +199,4 @@ public class Splash extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
 }
