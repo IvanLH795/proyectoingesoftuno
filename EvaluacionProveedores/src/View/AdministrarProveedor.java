@@ -696,13 +696,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFPagWebModificar.setText(proveedor.getPaginaWeb());
 
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
-public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AdministrarProveedor().setVisible(true);
-            }
-        });
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarBuscar;
     private javax.swing.JButton BtnBuscarModificar;
