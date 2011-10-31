@@ -21,20 +21,20 @@ public class Principal extends javax.swing.JFrame {
     public Principal(String permiso) {
         initComponents();
         if(permiso.equals("Rector")){
-            btnGenerar.setActionCommand("disable");
-            btnGestor.setActionCommand("disable");
+            btnGenerar.setEnabled(false);
+            btnGestor.setEnabled(false);
         }
         if(permiso.equals("Auxiliar")){
-            btnEvaluar.setActionCommand("disable");
-            btnGestor.setActionCommand("disable");
-            btnAdministrar.setActionCommand("disable");
-            btnContratar.setActionCommand("disable");
+            btnEvaluar.setEnabled(false);
+            btnGestor.setEnabled(false);
+            btnAdministrar.setEnabled(false);
+            btnContratar.setEnabled(false);
         }
         if(permiso.equals("Concejo")){
-            btnEvaluar.setActionCommand("disable");
-            btnGenerar.setActionCommand("disable");
-            btnAdministrar.setActionCommand("disable");
-            btnContratar.setActionCommand("disable");
+            btnEvaluar.setEnabled(false);
+            btnGenerar.setEnabled(false);
+            btnAdministrar.setEnabled(false);
+            btnContratar.setEnabled(false);
         }
     }
 
