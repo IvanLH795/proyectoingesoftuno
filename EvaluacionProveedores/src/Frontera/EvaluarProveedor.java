@@ -224,19 +224,23 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     this.dispose();
     }
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
-        proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
-       if(!(nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())).equals(null))){  //revisa si el proveedor indicado existe
-            habilitarComponentes();      //habilita los componentes del panel de evaluacion
-           if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
-              calidadProductosTextField.setText(Float.toString(proveedor.getCalidad()));
-              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getFiabilidad()));
-              cercaniaGeograficaSeleccion.setToolTipText(proveedor.getCercania());
-              adaptabilidadSeleccion.setToolTipText(proveedor.getAdaptabilidad());
-              comentariosTextField.setText(proveedor.getComentarios());
+         if(validarTextFieldNit()) {
+
+          ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
+          Proveedores proveedor1 = new Proveedores();
+          proveedor1 = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())); //revisa si el proveedor indicado existe
+           try{      //habilita los componentes del panel de evaluacion
+              habilitarComponentes();
+           if(proveedor1.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
+              calidadProductosTextField.setText(Float.toString(proveedor1.getCalidad()));
+              fiabilidadEntregaTextField.setText(Float.toString(proveedor1.getFiabilidad()));
+              cercaniaGeograficaSeleccion.setSelectedItem(proveedor1.getCercania());
+              adaptabilidadSeleccion.setSelectedItem(proveedor1.getAdaptabilidad());
+              comentariosTextField.setText(proveedor1.getComentarios());
             }
-        }else{  //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
-          JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+        }catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);}
+      }else{  //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
+          JOptionPane.showMessageDialog(this,"Datos Incorrectos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BuscarActionPerformed
 
@@ -246,16 +250,20 @@ public class EvaluarProveedor extends javax.swing.JFrame {
      if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,adaptabilidadSeleccion.getToolTipText(), cercaniaGeograficaSeleccion.getToolTipText())){
       Proveedores proveedor1 = new Proveedores();
         proveedor1 = proveedor;  //capturar datos
+        if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
         proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
         proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
-        proveedor1.setAdaptabilidad(adaptabilidadSeleccion.getToolTipText());
-        proveedor1.setCercania(cercaniaGeograficaSeleccion.getToolTipText());
+        proveedor1.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
+        proveedor1.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
         proveedor1.setComentarios(comentariosTextField.getText());
         proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
         iniciarEvaluacion();
-       }else{  //manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
+       }else{
+            JOptionPane.showMessageDialog(this,"Datos Invalidos", "",JOptionPane.WARNING_MESSAGE);
+       }
+     }else{  //manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
             JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
        }
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
@@ -269,6 +277,34 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     private void nitProveedorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldActionPerformed
         nitProveedorTextField.setText("");
     }//GEN-LAST:event_nitProveedorTextFieldActionPerformed
+
+    private boolean validarTextFieldNit(){
+        boolean integer = true;
+        try{
+            Integer.parseInt(nitProveedorTextField.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!nitProveedorTextField.getText().isEmpty() || integer);
+    }
+private boolean validarTextFieldCalidad(){
+        boolean integer = true;
+        try{
+            Float.parseFloat(calidadProductosTextField.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!calidadProductosTextField.getText().isEmpty() || integer);
+    }
+private boolean validarTextFieldFiabilidad(){
+        boolean integer = true;
+        try{
+            Float.parseFloat(fiabilidadEntregaTextField.getText());
+        }catch(NumberFormatException ex){
+            integer = false;
+        }
+        return (!fiabilidadEntregaTextField.getText().isEmpty() || integer);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdaptabilidadLabel;
