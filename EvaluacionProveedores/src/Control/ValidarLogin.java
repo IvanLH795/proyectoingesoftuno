@@ -56,7 +56,7 @@ public class ValidarLogin {
     // #[regen=yes,id=DCE.C3D0DA41-6C85-B034-CD6F-281FB8395B50]
     // </editor-fold>
     public boolean verificarLongitudNombre (String nombre) {
-        return(nombre.length() > 1 && nombre.length()<=6);
+        return(nombre.length() > 1 && nombre.length()<=12);
 
     }
 
@@ -64,7 +64,7 @@ public class ValidarLogin {
     // #[regen=yes,id=DCE.2428B11A-C5F0-9E85-4B8B-3A2CB01CA09B]
     // </editor-fold>
     public boolean verificarLongitudPassword (String password) {
-        return(password.length() >= 3 && password.length()<6);
+        return(password.length() >= 3 && password.length()<8);
     }
 
 }

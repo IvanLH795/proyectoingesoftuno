@@ -4,11 +4,13 @@ import Entidad.Sistema;
 import Control.ValidarLogin;
 import Entidad.Usuario;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
     public static Sistema sistema = new Sistema();
-
+    JFrame frame;
     /** Creates new form Login */
     public Login() {
         initComponents();
@@ -132,14 +134,20 @@ public class Login extends javax.swing.JFrame {
     usuario.setPassword(contraseniaTF.getText());
 
     ValidarLogin validar = new ValidarLogin();
-    System.out.println("******************");
     String resultado = validar.verificarLogin(usuario);
-    System.out.println(resultado);
 
-    Principal ingresar = new Principal();
-    ingresar.setLocationRelativeTo(null);
-    ingresar.setVisible(true);
-    this.dispose();
+    if(resultado.equals("Bienvenido")){
+        Principal ingresar = new Principal();
+        ingresar.setLocationRelativeTo(null);
+        ingresar.setVisible(true);
+        this.dispose();
+    }
+    else{
+        JOptionPane.showMessageDialog(frame, resultado, "Error", JOptionPane.ERROR_MESSAGE);
+        nombreTF.setText(null);
+        contraseniaTF.setText(null);
+    }
+
     // TODO add your handling code here:
     }//GEN-LAST:event_EntrarActionPerformed
 
@@ -157,26 +165,31 @@ public class Login extends javax.swing.JFrame {
     Usuario a = new Usuario();
     Usuario b = new Usuario();
     Usuario c = new Usuario();
+    Usuario d = new Usuario();
+    Usuario e = new Usuario();
+    Usuario p = new Usuario();
 
-    a.setNombre("juan");
-    a.setPassword("1234");
-    b.setNombre("pedro");
-    b.setPassword("123");
-    c.setNombre("maria");
-    c.setPassword("12345");
+    a.setNombre("vivibeltranb");
+    a.setPassword("123456");
+    b.setNombre("darthian007");
+    b.setPassword("123456");
+    c.setNombre("freddyfofe");
+    c.setPassword("123456");
+    d.setNombre("daovallec");
+    d.setPassword("123456");
+    e.setNombre("manrrique");
+    e.setPassword("123456");
+    p.setNombre("profesor");
+    p.setPassword("123456");
 
     usuarios.add(a);
     usuarios.add(b);
     usuarios.add(c);
+    usuarios.add(d);
+    usuarios.add(e);
+    usuarios.add(p);
 
     sistema.setUsuarios(usuarios);
-
-    for (Usuario u : sistema.getUsuarios()){
-        System.out.println(u.getNombre());
-        System.out.println(u.getPassword());
-        System.out.println("--------------");
-    }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

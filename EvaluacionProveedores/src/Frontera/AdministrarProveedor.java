@@ -598,8 +598,12 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             String productos = "";
         
         try{
-        for(ProductoProveedor u: proveedor2.getProductos()){
-                productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+        try{
+            for(ProductoProveedor u: proveedor2.getProductos()){
+                    productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+            }
+        }catch(NullPointerException ex){
+            productos = "";
         }
         TABuscar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
@@ -638,9 +642,13 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             String productos = "";
             try{
-                for(ProductoProveedor u: proveedor2.getProductos()){
-                    productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
-             }
+                try{
+                    for(ProductoProveedor u: proveedor2.getProductos()){
+                        productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+                    }
+                }catch(NullPointerException ex){
+                    productos = "";
+                }
 
                 TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                              "Nit: " + proveedor2.getNit() + "\n" +
