@@ -16,6 +16,8 @@ import Entidad.Proveedores;
 import Entidad.Sistema;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.LookAndFeel;
+import javax.swing.UIManager;
 
 /**
  *
@@ -121,11 +123,12 @@ public class Splash extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    System.exit(0);        // TODO add your handling code here:
+        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         Login nuevologin = new Login();
+        nuevologin.setLocationRelativeTo(null);
         nuevologin.setVisible(true);
         this.dispose();
         // TODO add your handling code here:
@@ -187,7 +190,14 @@ public class Splash extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Splash().setVisible(true);
+                try{
+                    UIManager.setLookAndFeel("org.jvnet.substance.skin.SubstanceMistAquaLookAndFeel");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                Splash proyecto = new Splash();
+                proyecto.setLocationRelativeTo(null);
+                proyecto.setVisible(true);
             }
         });
     }
