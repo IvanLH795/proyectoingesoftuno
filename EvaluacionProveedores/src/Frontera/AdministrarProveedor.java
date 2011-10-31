@@ -14,6 +14,7 @@ package Frontera;
 import Control.ControlAdministrarProveedor;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -25,7 +26,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     JFrame frame;
     /** Creates new form AdministrarProveedor */
     public AdministrarProveedor() {
-        initComponents();
+        initComponents();        
     }
 
     /** This method is called from within the constructor to
@@ -75,7 +76,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFTelefonoCrear = new javax.swing.JTextField();
         TFCorreoCrear = new javax.swing.JTextField();
         TFPagWebCrear = new javax.swing.JTextField();
-        BtnProductosCerar = new javax.swing.JButton();
+        BtnProductosCrear = new javax.swing.JButton();
         BtnGuardarCrear = new javax.swing.JButton();
         BtnCancelarCrear = new javax.swing.JButton();
         PanelTabModificar = new javax.swing.JPanel();
@@ -107,7 +108,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Administración");
 
-        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14));
         lblPrincipal.setText("Administración de Proveedores");
 
         jTabbedPane1.setToolTipText("");
@@ -275,9 +276,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         lblPagWebCrear.setText("Pagina web:");
 
-        BtnProductosCerar.addActionListener(new java.awt.event.ActionListener() {
+        BtnProductosCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frontera/lupa.png"))); // NOI18N
+        BtnProductosCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnProductosCerarActionPerformed(evt);
+                BtnProductosCrearActionPerformed(evt);
             }
         });
 
@@ -305,7 +307,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     .addComponent(TFTelefonoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFCorreoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFPagWebCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(BtnProductosCerar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnProductosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         PanelCrearLayout.setVerticalGroup(
@@ -326,7 +328,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblProductoCrear)
-                    .addComponent(BtnProductosCerar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnProductosCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionCrear)
@@ -431,6 +433,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         lblPagWebModificar.setText("Pagina web:");
 
+        BtnProductosModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frontera/lupa.png"))); // NOI18N
         BtnProductosModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnProductosModificarActionPerformed(evt);
@@ -781,14 +784,15 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 
     private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
-        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz();
+        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(proveedor.getProductos());
         interfazProductos.setLocationRelativeTo(null);
+        interfazProductos.setVisible(true);
 
     }//GEN-LAST:event_BtnProductosModificarActionPerformed
 
-    private void BtnProductosCerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCerarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnProductosCerarActionPerformed
+    private void BtnProductosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCrearActionPerformed
+        
+    }//GEN-LAST:event_BtnProductosCrearActionPerformed
 private boolean validarTextFieldBuscar(){
         boolean integer = true;
         try{
@@ -851,7 +855,16 @@ private boolean validarTextFieldBuscar(){
         }
         return (!TFNombreCrear.getText().isEmpty() && nit && !TFNitCrear.getText().isEmpty() && tel);
     }
-
+    
+    protected static ImageIcon createImageIcon(String path) {
+        java.net.URL imgURL = AdministrarProveedor.class.getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarBuscar;
     private javax.swing.JButton BtnBuscarModificar;
@@ -862,7 +875,7 @@ private boolean validarTextFieldBuscar(){
     private javax.swing.JButton BtnEliminarEliminar;
     private javax.swing.JButton BtnGuardarCrear;
     private javax.swing.JButton BtnGuardarModificar;
-    private javax.swing.JButton BtnProductosCerar;
+    private javax.swing.JButton BtnProductosCrear;
     private javax.swing.JButton BtnProductosModificar;
     private javax.swing.JButton BtnVerEliminar;
     private javax.swing.JPanel PanelCrear;
