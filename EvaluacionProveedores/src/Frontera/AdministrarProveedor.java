@@ -566,6 +566,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnBuscarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarBuscarActionPerformed
+        if(validarTextFieldBuscar()){
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
         Proveedores proveedor2 = new Proveedores();
         proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
@@ -593,7 +594,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         }catch(NullPointerException ex){
             TABuscar.setText("No existe");
         }
-
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "Error...");
+        }
     }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
