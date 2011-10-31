@@ -769,8 +769,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
             proveedor = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             
-            TFNombreModificar.setText(proveedor.getNombre());
-            TFNitModificar.setText(String.valueOf(proveedor.getNit()));
+            TFSubNombreModificar.setText(proveedor.getNombre());
+            TFSubNitModificar.setText(String.valueOf(proveedor.getNit()));
             TFRepresentanteModificar.setText(proveedor.getRepresentante());
             //TFProductoModificar.setText(proveedor.getProductos().toString());
             TFDireccionModificar.setText(proveedor.getDireccion());
