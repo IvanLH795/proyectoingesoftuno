@@ -567,10 +567,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnBuscarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarBuscarActionPerformed
         if(validarTextFieldBuscar()){
-        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        Proveedores proveedor2 = new Proveedores();
-        proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
-        String productos = "";
+            ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+            Proveedores proveedor2 = new Proveedores();
+            proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
+            String productos = "";
         
         try{
         for(ProductoProveedor u: proveedor2.getProductos()){
@@ -634,7 +634,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                         );
         }
         else{
-            JOptionPane.showMessageDialog(frame, "asdfasdfasdf");
+            JOptionPane.showMessageDialog(frame, "Error...");
         }
     }//GEN-LAST:event_BtnVerEliminarActionPerformed
 
@@ -644,6 +644,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnEliminarEliminarActionPerformed
 
     private void BtnGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCrearActionPerformed
+        if(validarTextFieldCrear()){
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
 
             Proveedores proveedor2 = new Proveedores();
@@ -658,62 +659,84 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             proveedor2.setProductos(null);
 
             control.crearProveedor(proveedor2);
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "Error...");
+        }
     }//GEN-LAST:event_BtnGuardarCrearActionPerformed
 
     private void BtnCancelarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarCrearActionPerformed
         Principal regresar = new Principal();
+        regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarCrearActionPerformed
 
     private void BtnCancelarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarEliminarActionPerformed
         Principal regresar = new Principal();
+        regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarEliminarActionPerformed
 
     private void BtnCancelarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarBuscarActionPerformed
         Principal regresar = new Principal();
+        regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarBuscarActionPerformed
 
     private void BtnCancelarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarModificarActionPerformed
         Principal regresar = new Principal();
+        regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarModificarActionPerformed
 
     private void BtnGuardarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarModificarActionPerformed
-        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        Proveedores proveedor2 = new Proveedores();
+        if(validarTextFieldModificar()){
+            ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+            Proveedores proveedor2 = new Proveedores();
 
-        proveedor2.setNombre(TFNombreCrear.getText());
-        proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
-        proveedor2.setDireccion(TFDireccionCrear.getText());
-        proveedor2.setCorreo(TFCorreoCrear.getText());
-        proveedor2.setRepresentante(TFRepresentanteCrear.getText());
-        proveedor2.setPaginaWeb(TFPagWebCrear.getText());
-        proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
-        proveedor2.setProductos(null);
+            proveedor2.setNombre(TFNombreCrear.getText());
+            proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
+            proveedor2.setDireccion(TFDireccionCrear.getText());
+            proveedor2.setCorreo(TFCorreoCrear.getText());
+            proveedor2.setRepresentante(TFRepresentanteCrear.getText());
+            proveedor2.setPaginaWeb(TFPagWebCrear.getText());
+            proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+            proveedor2.setProductos(null);
 
         control.modificarProveedor(proveedor, proveedor2);
-
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "Error...");
+        }
     }//GEN-LAST:event_BtnGuardarModificarActionPerformed
 
     private void BtnBuscarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarModificarActionPerformed
-        ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        proveedor = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
-
-        TFNombreModificar.setText(proveedor.getNombre());
-        TFNitModificar.setText(String.valueOf(proveedor.getNit()));
-        TFRepresentanteModificar.setText(proveedor.getRepresentante());
-        TFProductoModificar.setText(proveedor.getProductos().toString());
-        TFDireccionModificar.setText(proveedor.getDireccion());
-        TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
-        TFCorreoModificar.setText(proveedor.getCorreo());
-        TFPagWebModificar.setText(proveedor.getPaginaWeb());
-
+        if(validarTextFieldModificarVer()){
+            ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+            Integer obj;
+            try{
+                obj = Integer.parseInt(TFNitModificar.getText());
+            }catch(NumberFormatException ex){
+                obj = null;
+            }
+            proveedor = control.buscarProveedor(TFNombreBuscar.getText(), obj);
+            
+            TFNombreModificar.setText(proveedor.getNombre());
+            TFNitModificar.setText(String.valueOf(proveedor.getNit()));
+            TFRepresentanteModificar.setText(proveedor.getRepresentante());
+            TFProductoModificar.setText(proveedor.getProductos().toString());
+            TFDireccionModificar.setText(proveedor.getDireccion());
+            TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
+            TFCorreoModificar.setText(proveedor.getCorreo());
+            TFPagWebModificar.setText(proveedor.getPaginaWeb());
+        }
+        else{
+            JOptionPane.showMessageDialog(frame, "Error...");
+        }
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 private boolean validarTextFieldBuscar(){
         boolean integer = true;
@@ -732,7 +755,7 @@ private boolean validarTextFieldBuscar(){
         }catch(NumberFormatException ex){
             integer = false;
         }
-        return (!TFNombreModificar.getText().isEmpty() && integer);
+        return (!TFNombreModificar.getText().isEmpty() || integer);
     }
 
     private boolean validarTextFieldEliminar(){
@@ -742,7 +765,7 @@ private boolean validarTextFieldBuscar(){
         }catch(NumberFormatException ex){
             integer = false;
         }
-        return (!TFNombreEliminar.getText().isEmpty() && integer);
+        return (!TFNombreEliminar.getText().isEmpty() || integer);
     }
 
     private boolean validarTextFieldCrear(){
