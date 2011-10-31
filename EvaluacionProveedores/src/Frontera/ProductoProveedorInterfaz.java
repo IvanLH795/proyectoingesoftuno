@@ -141,7 +141,6 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         }
         else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
             modelo.removeRow(tabla.getSelectionModel().getLeadSelectionIndex());
-            listaLocal.remove(tabla.getSelectionModel().getLeadSelectionIndex());
         }
     }//GEN-LAST:event_BtnBorrarActionPerformed
 
@@ -150,7 +149,9 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
-
+        Vector lista = new Vector();
+        lista = modelo.getDataVector();
+        Splash.listaProductos = lista;
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
