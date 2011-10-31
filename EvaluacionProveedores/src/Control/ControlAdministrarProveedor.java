@@ -50,9 +50,7 @@ public class ControlAdministrarProveedor {
     }
 
     public Proveedores buscarProveedor(String nombre, Integer nit){
-
             Sistema provee = Frontera.Splash.listaProveedores;
-
             for (Proveedores u: provee.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals(nit)){
                     return u;
@@ -62,7 +60,6 @@ public class ControlAdministrarProveedor {
     }
 
     public Proveedores buscarProveedor(String nombre){
-
             Sistema provee = Frontera.Splash.listaProveedores;
             for (Proveedores u: provee.getProveedores()){
                 if (u.getNombre().equals(nombre)){
@@ -111,17 +108,18 @@ public class ControlAdministrarProveedor {
 
     public void crearProveedor(Proveedores proveedor2, Vector listaproductos) {
         List<ProductoProveedor> lista = new ArrayList();
-        for(int i=0; i<listaproductos.size();i++){
-               ProductoProveedor producto = new ProductoProveedor();
-               producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-               producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
-               if(!producto.getNombreProducto().equals(null))
+        if(listaproductos != null){
+            for(int i=0; i<listaproductos.size();i++){
+                ProductoProveedor producto = new ProductoProveedor();
+                producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
+                producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                if(!producto.getNombreProducto().equals(null))
                     lista.add(producto);
+            }
+            proveedor2.setProductos(lista);
+            Splash.listaproductos = null;
         }
-        proveedor2.setProductos(lista);
-        proveedor2.setProductos(lista);
-        Sistema provee = Frontera.Splash.listaProveedores;
-        provee.getProveedores().add(proveedor2);
-        Splash.listaproductos.removeAllElements();
+            Sistema provee = Frontera.Splash.listaProveedores;
+            provee.getProveedores().add(proveedor2);
     }
 }
