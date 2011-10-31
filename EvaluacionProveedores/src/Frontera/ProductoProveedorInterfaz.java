@@ -14,7 +14,8 @@ package Frontera;
 import Entidad.ProductoProveedor;
 import java.util.List;
 import java.util.Vector;
-import javax.swing.JScrollPane;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,15 @@ import javax.swing.table.DefaultTableModel;
 public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     /** Creates new form ProductoProveedor */
+    public ProductoProveedorInterfaz(){
+        initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        modelo = new DefaultTableModel();
+        tabla = new JTable(modelo);
+        modelo.addColumn("Producto");
+        modelo.addColumn("Precio");
+        jScrollPane1.setViewportView(tabla);
+    }
     public ProductoProveedorInterfaz(List<ProductoProveedor> productos) {
         initComponents();
         listaLocal = productos;
@@ -33,6 +43,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
+
         for(ProductoProveedor u: productos){
             Vector obj = new Vector();
             obj.add(u.getNombreProducto());
@@ -52,30 +63,38 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BtnAñadir = new javax.swing.JButton();
+        BtnBorrar = new javax.swing.JButton();
+        BtnCancelar = new javax.swing.JButton();
+        BtnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnAñadir.setText("Añadir");
+        BtnAñadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnAñadirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BtnBorrar.setText("Borrar Fila");
+        BtnBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BtnBorrarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BtnCancelar.setText("Cancelar");
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BtnCancelarActionPerformed(evt);
+            }
+        });
+
+        BtnGuardar.setText("Guardar Cambios");
+        BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardarActionPerformed(evt);
             }
         });
 
@@ -85,55 +104,64 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(BtnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(BtnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(BtnAñadir, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(BtnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addGap(22, 22, 22)
+                .addComponent(BtnAñadir)
+                .addGap(18, 18, 18)
+                .addComponent(BtnBorrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(BtnGuardar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addComponent(BtnCancelar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAñadirActionPerformed
         Vector obj= new Vector();
         modelo.addRow(obj);
-        jScrollPane1.setViewportView(tabla);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnAñadirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarActionPerformed
         if(tabla.getSelectionModel().getLeadSelectionIndex() >= listaLocal.size()){
             modelo.removeRow(tabla.getSelectionModel().getLeadSelectionIndex());
         }
-        else{
-            
+        else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
+            modelo.removeRow(tabla.getSelectionModel().getLeadSelectionIndex());
+            listaLocal.remove(tabla.getSelectionModel().getLeadSelectionIndex());
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BtnBorrarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BtnCancelarActionPerformed
+
+    private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
+
+    }//GEN-LAST:event_BtnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton BtnAñadir;
+    private javax.swing.JButton BtnBorrar;
+    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton BtnGuardar;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private JTable tabla;
     private DefaultTableModel modelo;
     private List<ProductoProveedor> listaLocal;
+    private JFrame frame;
 }
