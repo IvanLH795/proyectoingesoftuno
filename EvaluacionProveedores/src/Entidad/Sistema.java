@@ -19,13 +19,22 @@ public class Sistema {
     private List<Usuario> usuarios;
     private List<Proveedores> proveedores;
     private List<Productos> productos;
+    private List<ProductoProveedor> productosProveedor;
 
-    public List<Productos> getProducto() {
+    public List<Productos> getProductos() {
         return productos;
     }
 
-    public void setProducto(List<Productos> producto) {
-        this.productos = producto;
+    public void setProductos(List<Productos> productos) {
+        this.productos = productos;
+    }
+
+    public List<ProductoProveedor> getProductosProveedor() {
+        return productosProveedor;
+    }
+
+    public void setProductosProveedor(List<ProductoProveedor> productosProveedor) {
+        this.productosProveedor = productosProveedor;
     }
 
     public List<Proveedores> getProveedores() {
