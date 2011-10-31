@@ -370,24 +370,25 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             PanelTabCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTabCrearLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelTabCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelTabCrearLayout.createSequentialGroup()
-                        .addComponent(BtnCancelarCrear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnGuardarCrear))
-                    .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTabCrearLayout.createSequentialGroup()
+                .addContainerGap(193, Short.MAX_VALUE)
+                .addComponent(BtnCancelarCrear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnGuardarCrear)
+                .addGap(20, 20, 20))
         );
         PanelTabCrearLayout.setVerticalGroup(
             PanelTabCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTabCrearLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PanelCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTabCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnGuardarCrear)
-                    .addComponent(BtnCancelarCrear))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(BtnCancelarCrear)
+                    .addComponent(BtnGuardarCrear))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear", PanelTabCrear);
@@ -504,7 +505,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPagWebModificar)
                     .addComponent(TFPagWebModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelTabModificarLayout = new javax.swing.GroupLayout(PanelTabModificar);
@@ -520,17 +521,16 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                             .addComponent(BtnCancelarModificar)
                             .addGap(18, 18, 18)
                             .addComponent(BtnGuardarModificar))
-                        .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelTabModificarLayout.createSequentialGroup()
-                                .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNombreModificar)
-                                    .addComponent(lblNitModificar))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TFNombreModificar)
-                                    .addComponent(TFNitModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BtnBuscarModificar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(PanelTabModificarLayout.createSequentialGroup()
+                            .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNombreModificar)
+                                .addComponent(lblNitModificar))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(TFNitModificar)
+                                .addComponent(TFNombreModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                .addComponent(BtnBuscarModificar, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGap(11, 11, 11))))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         PanelTabModificarLayout.setVerticalGroup(
@@ -544,9 +544,9 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNitModificar)
                     .addComponent(TFNitModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addComponent(BtnBuscarModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BtnBuscarModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SubPanelModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTabModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -750,8 +750,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setRepresentante(TFRepresentanteModificar.getText());
                 proveedor2.setPaginaWeb(TFPagWebModificar.getText());
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoModificar.getText()));
-                proveedor2.setProductos(null);
-
                 control.modificarProveedor(proveedor, proveedor2, Splash.listaproductos);
                 if (!(Splash.listaproductos == null))
                     Splash.listaproductos = null;
@@ -761,7 +759,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Error...");
+            JOptionPane.showMessageDialog(frame, "Error...", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BtnGuardarModificarActionPerformed
 
@@ -872,7 +870,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         }catch(NumberFormatException ex){
             tel = false;
         }
-        return (!TFNombreCrear.getText().isEmpty() || nit || !TFNitCrear.getText().isEmpty() || tel);
+        return (!TFSubNombreModificar.getText().isEmpty() && nit && !TFSubNitModificar.getText().isEmpty() && tel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
