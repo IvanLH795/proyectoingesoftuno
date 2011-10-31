@@ -14,6 +14,7 @@ package Frontera;
 import Control.ControlAdministrarProveedor;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
+import Entidad.Sistema;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -27,7 +28,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     /** Creates new form AdministrarProveedor */
     public AdministrarProveedor() {
         initComponents();
-        listaproductos = Splash.listaProductos;
+        listaproductos = Splash.listaproductos;
     }
 
     /** This method is called from within the constructor to
@@ -625,7 +626,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarBuscarActionPerformed
 
     private void BtnVerEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerEliminarActionPerformed
-        if(validarTextFieldBuscar()){
+        if(validarTextFieldEliminar()){
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
             Proveedores proveedor2 = new Proveedores();
             Integer obj;
@@ -636,26 +637,29 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
             proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             String productos = "";
+            try{
+                for(ProductoProveedor u: proveedor2.getProductos()){
+                    productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+             }
 
-            for(ProductoProveedor u: proveedor2.getProductos()){
-                productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
-            }
-
-            TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
-                         "Nit: " + proveedor2.getNit() + "\n" +
-                         "Calidad: " + proveedor2.getCalidad() + "\n" +
-                         "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
-                         "Cercania: " + proveedor2.getCercania() + "\n" +
-                         "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
-                         "Representante: " + proveedor2.getRepresentante() + "\n" +
-                         "Correo: " + proveedor2.getCorreo() + "\n" +
-                         "Telefono: " + proveedor2.getTelefono() + "\n" +
-                         "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
-                         "Productos:\n" +
-                         "Nombre\t\t" + "Precio\n" +
-                         productos +
+                TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
+                             "Nit: " + proveedor2.getNit() + "\n" +
+                             "Calidad: " + proveedor2.getCalidad() + "\n" +
+                             "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
+                             "Cercania: " + proveedor2.getCercania() + "\n" +
+                             "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
+                             "Representante: " + proveedor2.getRepresentante() + "\n" +
+                             "Correo: " + proveedor2.getCorreo() + "\n" +
+                             "Telefono: " + proveedor2.getTelefono() + "\n" +
+                             "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
+                             "Productos:\n" +
+                             "Nombre\t\t" + "Precio\n" +
+                              productos +
                          "Comentarios: " + proveedor2.getComentarios() + "\n"
                         );
+                }catch(NullPointerException ex){
+                    TAEliminar.setText("No existe");
+                }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Error...");
@@ -676,7 +680,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(control.buscarProveedor(obj).equals(null)){
+            if(control.buscarProveedor(obj) == null){
                 Proveedores proveedor2 = new Proveedores();
 
                 proveedor2.setNombre(TFNombreCrear.getText());
@@ -688,7 +692,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
                 proveedor2.setProductos(null);
 
-                control.crearProveedor(proveedor2, listaproductos);
+                control.crearProveedor(proveedor2, Splash.listaproductos);
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
@@ -736,19 +740,20 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(!control.buscarProveedor(obj).equals(null)){
+            if(!(control.buscarProveedor(obj) == (null))){
                 Proveedores proveedor2 = new Proveedores();
 
-                proveedor2.setNombre(TFNombreCrear.getText());
-                proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
-                proveedor2.setDireccion(TFDireccionCrear.getText());
-                proveedor2.setCorreo(TFCorreoCrear.getText());
-                proveedor2.setRepresentante(TFRepresentanteCrear.getText());
-                proveedor2.setPaginaWeb(TFPagWebCrear.getText());
-                proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+                proveedor2.setNombre(TFSubNombreModificar.getText());
+                proveedor2.setNit(Integer.parseInt(TFSubNitModificar.getText()));
+                proveedor2.setDireccion(TFDireccionModificar.getText());
+                proveedor2.setCorreo(TFCorreoModificar.getText());
+                proveedor2.setRepresentante(TFRepresentanteModificar.getText());
+                proveedor2.setPaginaWeb(TFPagWebModificar.getText());
+                proveedor2.setTelefono(Integer.parseInt(TFTelefonoModificar.getText()));
                 proveedor2.setProductos(null);
 
-                control.modificarProveedor(proveedor, proveedor2, listaproductos);
+                control.modificarProveedor(proveedor, proveedor2, Splash.listaproductos);
+                Splash.listaproductos.removeAllElements();
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
@@ -768,6 +773,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
+            
             proveedor = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             
             TFSubNombreModificar.setText(proveedor.getNombre());
@@ -777,6 +783,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
             TFCorreoModificar.setText(proveedor.getCorreo());
             TFPagWebModificar.setText(proveedor.getPaginaWeb());
+            if(!(Splash.listaproductos == null))
+                Splash.listaproductos.removeAllElements();
         }
         else{
             JOptionPane.showMessageDialog(frame, "Error...");
@@ -784,17 +792,26 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 
     private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
-        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(proveedor.getProductos());
+        ProductoProveedorInterfaz interfazProductos;
+
+        if(Splash.listaproductos == (null)){
+            Sistema sistem = new Sistema();
+            sistem.setProductosProveedor(proveedor.getProductos());
+            interfazProductos = new ProductoProveedorInterfaz(sistem);
+        }else{
+            interfazProductos = new ProductoProveedorInterfaz(Splash.listaproductos);
+        }
         interfazProductos.setLocationRelativeTo(null);
         interfazProductos.setVisible(true);
     }//GEN-LAST:event_BtnProductosModificarActionPerformed
 
     private void BtnProductosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCrearActionPerformed
-        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz();
+        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(Splash.listaproductos);
         interfazProductos.setLocationRelativeTo(null);
         interfazProductos.setVisible(true);
     }//GEN-LAST:event_BtnProductosCrearActionPerformed
-private boolean validarTextFieldBuscar(){
+
+    private boolean validarTextFieldBuscar(){
         boolean integer = true;
         try{
             Integer.parseInt(TFNitBuscar.getText());
@@ -854,7 +871,7 @@ private boolean validarTextFieldBuscar(){
         }catch(NumberFormatException ex){
             tel = false;
         }
-        return (!TFNombreCrear.getText().isEmpty() && nit && !TFNitCrear.getText().isEmpty() && tel);
+        return (!TFNombreCrear.getText().isEmpty() || nit || !TFNitCrear.getText().isEmpty() || tel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

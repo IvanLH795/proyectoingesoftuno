@@ -12,12 +12,12 @@
 package Frontera;
 
 import Entidad.ProductoProveedor;
+import Entidad.Sistema;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,25 +26,28 @@ import javax.swing.table.DefaultTableModel;
 public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     /** Creates new form ProductoProveedor */
-    public ProductoProveedorInterfaz(){
+    public ProductoProveedorInterfaz(Vector lista){
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        modelo = new DefaultTableModel();
+        modelo = new MiModelo();
         tabla = new JTable(modelo);
-        modelo.addColumn("Producto");
-        modelo.addColumn("Precio");
+        Vector titulos = new Vector();
+        titulos.add("Producto");
+        titulos.add("Precio");
+        modelo.setDataVector(lista, titulos);
         jScrollPane1.setViewportView(tabla);
     }
-    public ProductoProveedorInterfaz(List<ProductoProveedor> productos) {
+
+    public ProductoProveedorInterfaz(Sistema listProductos) {
         initComponents();
-        listaLocal = productos;
+        listaLocal = listProductos.getProductosProveedor();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        modelo = new DefaultTableModel();
+        modelo = new MiModelo();
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
 
-        for(ProductoProveedor u: productos){
+        for(ProductoProveedor u: listProductos.getProductosProveedor()){
             Vector obj = new Vector();
             obj.add(u.getNombreProducto());
             obj.add(u.getPrecio());
@@ -132,6 +135,9 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     private void BtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAñadirActionPerformed
         Vector obj= new Vector();
+        Float a = new Float("0");
+        obj.add("");
+        obj.add(a);
         modelo.addRow(obj);
     }//GEN-LAST:event_BtnAñadirActionPerformed
 
@@ -145,13 +151,15 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBorrarActionPerformed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+        Splash.listaproductos.removeAllElements();
         this.dispose();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
         Vector lista = new Vector();
         lista = modelo.getDataVector();
-        Splash.listaProductos = lista;
+        Splash.listaproductos = lista;
+        this.dispose();
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -162,7 +170,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private JTable tabla;
-    private DefaultTableModel modelo;
+    private MiModelo modelo;
     private List<ProductoProveedor> listaLocal;
     private JFrame frame;
 }
