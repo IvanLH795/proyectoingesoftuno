@@ -320,15 +320,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="BtnCancelarCrear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="BtnGuardarCrear" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="PanelCrear" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="PanelCrear" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="21" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="193" max="32767" attributes="0"/>
+                      <Component id="BtnCancelarCrear" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtnGuardarCrear" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -337,12 +337,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PanelCrear" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtnGuardarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtnCancelarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnGuardarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="77" max="32767" attributes="0"/>
+                      <EmptySpace pref="116" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -542,20 +542,18 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="BtnGuardarModificar" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblNombreModificar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblNitModificar" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="TFNombreModificar" alignment="0" max="32767" attributes="1"/>
-                                          <Component id="TFNitModificar" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
-                                      </Group>
-                                      <EmptySpace pref="81" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblNombreModificar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNitModificar" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="BtnBuscarModificar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="TFNitModificar" max="32767" attributes="1"/>
+                                      <Component id="TFNombreModificar" alignment="0" pref="293" max="32767" attributes="1"/>
+                                      <Component id="BtnBuscarModificar" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -576,9 +574,9 @@
                           <Component id="lblNitModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFNitModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="BtnBuscarModificar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtnBuscarModificar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="SubPanelModificar" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -711,7 +709,7 @@
                               <Component id="lblPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TFPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

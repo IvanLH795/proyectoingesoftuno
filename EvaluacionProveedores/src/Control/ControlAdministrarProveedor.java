@@ -95,17 +95,18 @@ public class ControlAdministrarProveedor {
         viejo.setPaginaWeb(nuevo.getPaginaWeb());
         viejo.setTelefono(nuevo.getTelefono());
 
-        List<ProductoProveedor> lista = new ArrayList();
-        for(int i=0; i<listaproductos.size();i++){
-               ProductoProveedor producto = new ProductoProveedor();
-               producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-               producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
-               if(!producto.getNombreProducto().equals(null))
-                    lista.add(producto);
-        }
-        viejo.setProductos(lista);
-        if(!(Splash.listaproductos == null))
+        if(!(Splash.listaproductos == null)){
+            List<ProductoProveedor> lista = new ArrayList();
+            for(int i=0; i<listaproductos.size();i++){
+                ProductoProveedor producto = new ProductoProveedor();
+                producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
+                producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                if(!producto.getNombreProducto().equals(null))
+                        lista.add(producto);
+            }
+            viejo.setProductos(lista);
             Splash.listaproductos = null;
+        }
     }
 
     public void crearProveedor(Proveedores proveedor2, Vector listaproductos) {
