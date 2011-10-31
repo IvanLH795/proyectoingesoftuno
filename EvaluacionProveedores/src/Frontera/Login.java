@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public static Sistema sistema = new Sistema();
+    public static String roll;
     JFrame frame;
     /** Creates new form Login */
     public Login() {
@@ -135,9 +136,8 @@ public class Login extends javax.swing.JFrame {
 
     ValidarLogin validar = new ValidarLogin();
     String resultado = validar.verificarLogin(usuario);
-
     if(resultado.equals("Bienvenido")){
-        Principal ingresar = new Principal();
+        Principal ingresar = new Principal(roll);
         ingresar.setLocationRelativeTo(null);
         ingresar.setVisible(true);
         this.dispose();
@@ -171,16 +171,22 @@ public class Login extends javax.swing.JFrame {
 
     a.setNombre("vivibeltranb");
     a.setPassword("123456");
+    a.setRoll("Rector");
     b.setNombre("darthian007");
     b.setPassword("123456");
+    b.setRoll("Auxiliar");
     c.setNombre("freddyfofe");
     c.setPassword("123456");
+    c.setRoll("Concejo");
     d.setNombre("daovallec");
     d.setPassword("123456");
+    d.setRoll("Rector");
     e.setNombre("manrrique");
     e.setPassword("123456");
+    e.setRoll("Auxiliar");
     p.setNombre("profesor");
     p.setPassword("123456");
+    p.setRoll("Master");
 
     usuarios.add(a);
     usuarios.add(b);

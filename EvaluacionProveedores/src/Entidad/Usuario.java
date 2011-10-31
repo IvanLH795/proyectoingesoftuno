@@ -13,6 +13,15 @@ public class Usuario {
 
     private String nombre;
     private String password;
+    private String roll;
+
+    public String getRoll() {
+        return roll;
+    }
+
+    public void setRoll(String roll) {
+        this.roll = roll;
+    }
 
     public String getNombre(){
         return nombre;
