@@ -44,7 +44,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblPrincipal" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="441" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -78,23 +78,23 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jScrollPane1" alignment="0" pref="345" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNombreBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNombreBuscar" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNitBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TFNombreBuscar" max="32767" attributes="1"/>
-                                  <Component id="TFNitBuscar" alignment="0" pref="223" max="32767" attributes="1"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="TFNombreBuscar" pref="304" max="32767" attributes="1"/>
+                                  <Component id="TFNitBuscar" alignment="1" pref="304" max="32767" attributes="1"/>
                               </Group>
                           </Group>
-                          <Component id="BtnBuscarBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="BtnCancelarBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnBuscarBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -108,15 +108,15 @@
                           <Component id="lblNombreBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFNombreBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNitBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFNitBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNitBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="BtnBuscarBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="251" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="269" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="BtnCancelarBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -190,25 +190,28 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jScrollPane2" alignment="0" pref="345" max="32767" attributes="0"/>
+                          <Component id="BtnCancelarEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblNombreEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNombreEliminar" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNitEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TFNombreEliminar" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="TFNitEliminar" alignment="0" min="-2" pref="223" max="-2" attributes="1"/>
-                                  <Component id="BtnVerEliminar" alignment="1" min="-2" pref="67" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="TFNombreEliminar" alignment="0" pref="304" max="32767" attributes="1"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Component id="BtnVerEliminar" min="-2" pref="67" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="BtnEliminarEliminar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="TFNitEliminar" alignment="0" pref="304" max="32767" attributes="1"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="BtnEliminarEliminar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="BtnCancelarEliminar" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -217,23 +220,23 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNombreEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFNombreEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNitEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFNitEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNitEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BtnVerEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtnEliminarEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="201" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="269" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="BtnCancelarEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -339,7 +342,7 @@
                           <Component id="BtnGuardarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtnCancelarCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
+                      <EmptySpace pref="77" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -374,11 +377,11 @@
                               <Component id="TFNombreCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFNitCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFRepresentanteCrear" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="TFProductoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFDireccionCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFTelefonoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFCorreoCrear" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFPagWebCrear" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="BtnProductosCerar" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -402,10 +405,10 @@
                               <Component id="lblRepresentanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TFRepresentanteCrear" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblProductoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TFProductoCrear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblProductoCrear" min="-2" max="-2" attributes="0"/>
+                              <Component id="BtnProductosCerar" min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -450,7 +453,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblProductoCrear">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Producto:"/>
+                    <Property name="text" type="java.lang.String" value="Productos:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDireccionCrear">
@@ -479,8 +482,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFRepresentanteCrear">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TFProductoCrear">
-                </Component>
                 <Component class="javax.swing.JTextField" name="TFDireccionCrear">
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFTelefonoCrear">
@@ -488,6 +489,11 @@
                 <Component class="javax.swing.JTextField" name="TFCorreoCrear">
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFPagWebCrear">
+                </Component>
+                <Component class="javax.swing.JButton" name="BtnProductosCerar">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnProductosCerarActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -647,11 +653,11 @@
                               <Component id="TFSubNombreModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFSubNitModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFRepresentanteModificar" alignment="0" pref="230" max="32767" attributes="0"/>
-                              <Component id="TFProductoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFDireccionModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFTelefonoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFCorreoModificar" alignment="0" pref="230" max="32767" attributes="0"/>
                               <Component id="TFPagWebModificar" alignment="0" pref="230" max="32767" attributes="0"/>
+                              <Component id="BtnProductosModificar" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -675,10 +681,10 @@
                               <Component id="lblRepresentanteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TFRepresentanteModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TFProductoModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblProductoModificar" min="-2" max="-2" attributes="0"/>
+                              <Component id="BtnProductosModificar" min="-2" pref="19" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -700,7 +706,7 @@
                               <Component id="lblPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TFPagWebModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -723,7 +729,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblProductoModificar">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Producto:"/>
+                    <Property name="text" type="java.lang.String" value="Productos:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblDireccionModificar">
@@ -752,8 +758,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFRepresentanteModificar">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TFProductoModificar">
-                </Component>
                 <Component class="javax.swing.JTextField" name="TFDireccionModificar">
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFTelefonoModificar">
@@ -761,6 +765,11 @@
                 <Component class="javax.swing.JTextField" name="TFCorreoModificar">
                 </Component>
                 <Component class="javax.swing.JTextField" name="TFPagWebModificar">
+                </Component>
+                <Component class="javax.swing.JButton" name="BtnProductosModificar">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnProductosModificarActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

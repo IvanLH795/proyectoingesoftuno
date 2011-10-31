@@ -44,11 +44,12 @@ public class ControlAdministrarProveedor {
             }
     }
 
-    public Proveedores buscarProveedor(String nombre, Object nit){
+    public Proveedores buscarProveedor(String nombre, Integer nit){
 
             Sistema provee = Frontera.Splash.listaProveedores;
+
             for (Proveedores u: provee.getProveedores()){
-                if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals((Integer)nit)){
+                if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals(nit)){
                     return u;
                 }
             }
@@ -64,5 +65,19 @@ public class ControlAdministrarProveedor {
                 }
             }
             return null;
+    }
+
+    public Proveedores buscarProveedor(Integer obj) {
+            Sistema provee = Frontera.Splash.listaProveedores;
+            for (Proveedores u: provee.getProveedores()){
+                if (((Integer)u.getNit()).equals(obj)){
+                    return u;
+                }
+            }
+            return null;
+    }
+
+    public Proveedores buscarProveedor(){
+        return null;
     }
 }

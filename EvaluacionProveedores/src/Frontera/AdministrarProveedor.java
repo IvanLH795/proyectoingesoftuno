@@ -71,11 +71,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFNombreCrear = new javax.swing.JTextField();
         TFNitCrear = new javax.swing.JTextField();
         TFRepresentanteCrear = new javax.swing.JTextField();
-        TFProductoCrear = new javax.swing.JTextField();
         TFDireccionCrear = new javax.swing.JTextField();
         TFTelefonoCrear = new javax.swing.JTextField();
         TFCorreoCrear = new javax.swing.JTextField();
         TFPagWebCrear = new javax.swing.JTextField();
+        BtnProductosCerar = new javax.swing.JButton();
         BtnGuardarCrear = new javax.swing.JButton();
         BtnCancelarCrear = new javax.swing.JButton();
         PanelTabModificar = new javax.swing.JPanel();
@@ -98,16 +98,16 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         TFSubNombreModificar = new javax.swing.JTextField();
         TFSubNitModificar = new javax.swing.JTextField();
         TFRepresentanteModificar = new javax.swing.JTextField();
-        TFProductoModificar = new javax.swing.JTextField();
         TFDireccionModificar = new javax.swing.JTextField();
         TFTelefonoModificar = new javax.swing.JTextField();
         TFCorreoModificar = new javax.swing.JTextField();
         TFPagWebModificar = new javax.swing.JTextField();
+        BtnProductosModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Administración");
 
-        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14));
+        lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblPrincipal.setText("Administración de Proveedores");
 
         jTabbedPane1.setToolTipText("");
@@ -140,20 +140,20 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         PanelTabBuscar.setLayout(PanelTabBuscarLayout);
         PanelTabBuscarLayout.setHorizontalGroup(
             PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTabBuscarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTabBuscarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                    .addGroup(PanelTabBuscarLayout.createSequentialGroup()
+                .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelTabBuscarLayout.createSequentialGroup()
                         .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombreBuscar)
                             .addComponent(lblNitBuscar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TFNombreBuscar)
-                            .addComponent(TFNitBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)))
-                    .addComponent(BtnBuscarBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtnCancelarBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TFNombreBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                            .addComponent(TFNitBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)))
+                    .addComponent(BtnCancelarBuscar)
+                    .addComponent(BtnBuscarBuscar))
                 .addContainerGap())
         );
         PanelTabBuscarLayout.setVerticalGroup(
@@ -163,14 +163,14 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreBuscar)
                     .addComponent(TFNombreBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTabBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNitBuscar)
-                    .addComponent(TFNitBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(TFNitBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNitBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnBuscarBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(BtnCancelarBuscar)
                 .addContainerGap())
@@ -213,41 +213,43 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         PanelTabEliminar.setLayout(PanelTabEliminarLayout);
         PanelTabEliminarLayout.setHorizontalGroup(
             PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTabEliminarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTabEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                    .addGroup(PanelTabEliminarLayout.createSequentialGroup()
+                .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addComponent(BtnCancelarEliminar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelTabEliminarLayout.createSequentialGroup()
                         .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombreEliminar)
                             .addComponent(lblNitEliminar))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TFNombreEliminar)
-                            .addComponent(TFNitEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnVerEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnEliminarEliminar))
-                    .addComponent(BtnCancelarEliminar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TFNombreEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                            .addGroup(PanelTabEliminarLayout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(BtnVerEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BtnEliminarEliminar))
+                            .addComponent(TFNitEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         PanelTabEliminarLayout.setVerticalGroup(
             PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelTabEliminarLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addContainerGap()
                 .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNombreEliminar)
                     .addComponent(TFNombreEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNitEliminar)
-                    .addComponent(TFNitEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(TFNitEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNitEliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelTabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnVerEliminar)
                     .addComponent(BtnEliminarEliminar))
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(BtnCancelarEliminar)
                 .addContainerGap())
@@ -263,7 +265,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         lblRepresentanteCrear.setText("Representante:");
 
-        lblProductoCrear.setText("Producto:");
+        lblProductoCrear.setText("Productos:");
 
         lblDireccionCrear.setText("Direccion:");
 
@@ -272,6 +274,12 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         lblCorreoCrear.setText("Correo:");
 
         lblPagWebCrear.setText("Pagina web:");
+
+        BtnProductosCerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProductosCerarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelCrearLayout = new javax.swing.GroupLayout(PanelCrear);
         PanelCrear.setLayout(PanelCrearLayout);
@@ -293,11 +301,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     .addComponent(TFNombreCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFNitCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFRepresentanteCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(TFProductoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFDireccionCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFTelefonoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFCorreoCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(TFPagWebCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                    .addComponent(TFPagWebCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(BtnProductosCerar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         PanelCrearLayout.setVerticalGroup(
@@ -315,10 +323,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRepresentanteCrear)
                     .addComponent(TFRepresentanteCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblProductoCrear)
-                    .addComponent(TFProductoCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnProductosCerar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionCrear)
@@ -375,7 +383,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(PanelTabCrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnGuardarCrear)
                     .addComponent(BtnCancelarCrear))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear", PanelTabCrear);
@@ -413,7 +421,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         lblRepresentanteModificar.setText("Representante:");
 
-        lblProductoModificar.setText("Producto:");
+        lblProductoModificar.setText("Productos:");
 
         lblDireccionModificar.setText("Direccion:");
 
@@ -422,6 +430,12 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         lblCorreoModificar.setText("Correo:");
 
         lblPagWebModificar.setText("Pagina web:");
+
+        BtnProductosModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnProductosModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SubPanelModificarLayout = new javax.swing.GroupLayout(SubPanelModificar);
         SubPanelModificar.setLayout(SubPanelModificarLayout);
@@ -443,11 +457,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     .addComponent(TFSubNombreModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFSubNitModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFRepresentanteModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(TFProductoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFDireccionModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFTelefonoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(TFCorreoModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(TFPagWebModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                    .addComponent(TFPagWebModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(BtnProductosModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         SubPanelModificarLayout.setVerticalGroup(
@@ -465,10 +479,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRepresentanteModificar)
                     .addComponent(TFRepresentanteModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblProductoModificar)
-                    .addComponent(TFProductoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnProductosModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDireccionModificar)
@@ -485,7 +499,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addGroup(SubPanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPagWebModificar)
                     .addComponent(TFPagWebModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelTabModificarLayout = new javax.swing.GroupLayout(PanelTabModificar);
@@ -558,7 +572,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblPrincipal)
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -569,7 +583,13 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         if(validarTextFieldBuscar()){
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
             Proveedores proveedor2 = new Proveedores();
-            proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), Integer.parseInt(TFNitBuscar.getText()));
+            Integer obj;
+            try{
+                obj = Integer.parseInt(TFNitBuscar.getText());
+            }catch(NumberFormatException ex){
+                obj = null;
+            }
+            proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             String productos = "";
         
         try{
@@ -646,19 +666,29 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private void BtnGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCrearActionPerformed
         if(validarTextFieldCrear()){
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
+            Integer obj;
+            try{
+                obj = Integer.parseInt(TFNitCrear.getText());
+            }catch(NumberFormatException ex){
+                obj = null;
+            }
+            if(control.buscarProveedor(obj).equals(null)){
+                Proveedores proveedor2 = new Proveedores();
 
-            Proveedores proveedor2 = new Proveedores();
+                proveedor2.setNombre(TFNombreCrear.getText());
+                proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
+                proveedor2.setDireccion(TFDireccionCrear.getText());
+                proveedor2.setCorreo(TFCorreoCrear.getText());
+                proveedor2.setRepresentante(TFRepresentanteCrear.getText());
+                proveedor2.setPaginaWeb(TFPagWebCrear.getText());
+                proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+                proveedor2.setProductos(null);
 
-            proveedor2.setNombre(TFNombreCrear.getText());
-            proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
-            proveedor2.setDireccion(TFDireccionCrear.getText());
-            proveedor2.setCorreo(TFCorreoCrear.getText());
-            proveedor2.setRepresentante(TFRepresentanteCrear.getText());
-            proveedor2.setPaginaWeb(TFPagWebCrear.getText());
-            proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
-            proveedor2.setProductos(null);
-
-            control.crearProveedor(proveedor2);
+                control.crearProveedor(proveedor2);
+            }
+            else{
+                JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
+            }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Error...");
@@ -696,18 +726,29 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     private void BtnGuardarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarModificarActionPerformed
         if(validarTextFieldModificar()){
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-            Proveedores proveedor2 = new Proveedores();
+            Integer obj;
+            try{
+                obj = Integer.parseInt(TFNitModificar.getText());
+            }catch(NumberFormatException ex){
+                obj = null;
+            }
+            if(control.buscarProveedor(obj).equals(null)){
+                Proveedores proveedor2 = new Proveedores();
 
-            proveedor2.setNombre(TFNombreCrear.getText());
-            proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
-            proveedor2.setDireccion(TFDireccionCrear.getText());
-            proveedor2.setCorreo(TFCorreoCrear.getText());
-            proveedor2.setRepresentante(TFRepresentanteCrear.getText());
-            proveedor2.setPaginaWeb(TFPagWebCrear.getText());
-            proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
-            proveedor2.setProductos(null);
+                proveedor2.setNombre(TFNombreCrear.getText());
+                proveedor2.setNit(Integer.parseInt(TFNitCrear.getText()));
+                proveedor2.setDireccion(TFDireccionCrear.getText());
+                proveedor2.setCorreo(TFCorreoCrear.getText());
+                proveedor2.setRepresentante(TFRepresentanteCrear.getText());
+                proveedor2.setPaginaWeb(TFPagWebCrear.getText());
+                proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
+                proveedor2.setProductos(null);
 
-        control.modificarProveedor(proveedor, proveedor2);
+                control.modificarProveedor(proveedor, proveedor2);
+            }
+            else{
+                JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
+            }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Error...");
@@ -728,7 +769,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             TFNombreModificar.setText(proveedor.getNombre());
             TFNitModificar.setText(String.valueOf(proveedor.getNit()));
             TFRepresentanteModificar.setText(proveedor.getRepresentante());
-            TFProductoModificar.setText(proveedor.getProductos().toString());
+            //TFProductoModificar.setText(proveedor.getProductos().toString());
             TFDireccionModificar.setText(proveedor.getDireccion());
             TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
             TFCorreoModificar.setText(proveedor.getCorreo());
@@ -738,6 +779,16 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(frame, "Error...");
         }
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
+
+    private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
+        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz();
+        interfazProductos.setLocationRelativeTo(null);
+
+    }//GEN-LAST:event_BtnProductosModificarActionPerformed
+
+    private void BtnProductosCerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCerarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnProductosCerarActionPerformed
 private boolean validarTextFieldBuscar(){
         boolean integer = true;
         try{
@@ -811,6 +862,8 @@ private boolean validarTextFieldBuscar(){
     private javax.swing.JButton BtnEliminarEliminar;
     private javax.swing.JButton BtnGuardarCrear;
     private javax.swing.JButton BtnGuardarModificar;
+    private javax.swing.JButton BtnProductosCerar;
+    private javax.swing.JButton BtnProductosModificar;
     private javax.swing.JButton BtnVerEliminar;
     private javax.swing.JPanel PanelCrear;
     private javax.swing.JPanel PanelTabBuscar;
@@ -834,8 +887,6 @@ private boolean validarTextFieldBuscar(){
     private javax.swing.JTextField TFNombreModificar;
     private javax.swing.JTextField TFPagWebCrear;
     private javax.swing.JTextField TFPagWebModificar;
-    private javax.swing.JTextField TFProductoCrear;
-    private javax.swing.JTextField TFProductoModificar;
     private javax.swing.JTextField TFRepresentanteCrear;
     private javax.swing.JTextField TFRepresentanteModificar;
     private javax.swing.JTextField TFSubNitModificar;
