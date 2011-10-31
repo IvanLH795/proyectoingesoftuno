@@ -753,7 +753,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setProductos(null);
 
                 control.modificarProveedor(proveedor, proveedor2, Splash.listaproductos);
-                Splash.listaproductos.removeAllElements();
+                if (!(Splash.listaproductos == null))
+                    Splash.listaproductos = null;
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
@@ -784,7 +785,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             TFCorreoModificar.setText(proveedor.getCorreo());
             TFPagWebModificar.setText(proveedor.getPaginaWeb());
             if(!(Splash.listaproductos == null))
-                Splash.listaproductos.removeAllElements();
+                Splash.listaproductos = null;
         }
         else{
             JOptionPane.showMessageDialog(frame, "Error...");
@@ -793,7 +794,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
         ProductoProveedorInterfaz interfazProductos;
-
+        
         if(Splash.listaproductos == (null)){
             Sistema sistem = new Sistema();
             sistem.setProductosProveedor(proveedor.getProductos());
