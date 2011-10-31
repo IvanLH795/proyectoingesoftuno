@@ -78,7 +78,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         jLabel7.setText("%");
 
-        cercaniaGeograficaSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bogotá", "...", "...", "...", " " }));
+        cercaniaGeograficaSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Bogotá", "...", "...", "...", "" }));
 
         adaptabilidadSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alta", "Media", "Baja" }));
 
@@ -211,14 +211,21 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void inhabilitarComponentes(){
+    private void inhabilitarComponentes(){
        for(int i=0;i<evaluacionPanel.getComponents().length;i++) {   //inicialmente se desabilitan los campos del panel evaluacion mientras no se verifique de que3 proveedor son.
        evaluacionPanel.getComponent(i).setEnabled(false);}
     }
-     public void habilitarComponentes(){
+     private void habilitarComponentes(){
        for(int i=0;i<evaluacionPanel.getComponents().length;i++) {   //inicialmente se desabilitan los campos del panel evaluacion mientras no se verifique de que3 proveedor son.
        evaluacionPanel.getComponent(i).setEnabled(true);}
+        calidadProductosTextField.setText("0.0");
+        fiabilidadEntregaTextField.setText("0.0");
     }
+     private void limpiarCampos(){
+        calidadProductosTextField.setText("0.0");
+        fiabilidadEntregaTextField.setText("0.0");
+        comentariosTextField.setText("");
+     }
     public void iniciarEvaluacion(){
     EvaluarProveedor nuevaEvaluacion = new EvaluarProveedor();
     nuevaEvaluacion.setLocationRelativeTo(null);
@@ -226,10 +233,12 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     this.dispose();
     }
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-          if(validarTextFieldNit()) {
+        limpiarCampos();
+        if(validarTextFieldNit()) {
           ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
           proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())); //revisa si el proveedor indicado existe
-           try{      //habilita los componentes del panel de evaluacion
+          try{
+              if(!proveedor.equals(null)) {  //habilita los componentes del panel de evaluacion
               habilitarComponentes();
            if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
               calidadProductosTextField.setText(Float.toString(proveedor.getCalidad()));
@@ -238,8 +247,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
               adaptabilidadSeleccion.setSelectedItem(proveedor.getAdaptabilidad());
               comentariosTextField.setText(proveedor.getComentarios());
             }
-        }catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-        iniciarEvaluacion();}
+        }}catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+        iniciarEvaluacion();
+        }
       }else{  //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
           JOptionPane.showMessageDialog(this,"Datos Incorrectos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
         iniciarEvaluacion();
@@ -249,14 +259,19 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     private void ingresarEvaluacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonActionPerformed
 
         ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
-
-      proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
-     if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem())){
+        
+       proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
+     if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
+        if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem())){
       Proveedores proveedor1 = new Proveedores();
         proveedor1 = proveedor;  //capturar datos
-        if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
-        proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
-        proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
+        if(!calidadProductosTextField.getText().isEmpty()){
+          proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
+        }
+        else proveedor1.setCalidad(0);
+        if(!fiabilidadEntregaTextField.getText().isEmpty()){
+         proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
+        }else proveedor1.setFiabilidad(0);
         proveedor1.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
         proveedor1.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
         proveedor1.setComentarios(comentariosTextField.getText());
@@ -264,12 +279,12 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
         iniciarEvaluacion();
-       }else{
-            JOptionPane.showMessageDialog(this,"Datos Invalidos", "",JOptionPane.WARNING_MESSAGE);
+       }else{//manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
+            JOptionPane.showMessageDialog(this,"Datos Invalidos", "Advertencia",JOptionPane.WARNING_MESSAGE);
             iniciarEvaluacion();
        }
-     }else{  //manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
-            JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+     }else{  
+            JOptionPane.showMessageDialog(this,"Error", "Advertencia!",JOptionPane.WARNING_MESSAGE);
             iniciarEvaluacion();
      }
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
@@ -292,25 +307,25 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         }catch(NumberFormatException ex){
             integer = false;
         }
-        return (!nitProveedorTextField.getText().isEmpty() || integer);
+        return integer;
     }
 private boolean validarTextFieldCalidad(){
-        boolean integer = true;
+        boolean flotante = true;
         try{
             Float.parseFloat(calidadProductosTextField.getText());
         }catch(NumberFormatException ex){
-            integer = false;
+            flotante = false;
         }
-        return (!calidadProductosTextField.getText().isEmpty() || integer);
+        return (calidadProductosTextField.getText().isEmpty() || flotante);
     }
 private boolean validarTextFieldFiabilidad(){
-        boolean integer = true;
+        boolean flotante = true;
         try{
             Float.parseFloat(fiabilidadEntregaTextField.getText());
         }catch(NumberFormatException ex){
-            integer = false;
+            flotante = false;
         }
-        return (!fiabilidadEntregaTextField.getText().isEmpty() || integer);
+        return (fiabilidadEntregaTextField.getText().isEmpty() || flotante);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
