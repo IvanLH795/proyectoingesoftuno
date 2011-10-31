@@ -14,6 +14,7 @@ package Frontera;
 import Control.ControlAdministrarProveedor;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -597,22 +598,22 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         
         try{
         for(ProductoProveedor u: proveedor2.getProductos()){
-                productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
+                productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
         }
         TABuscar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
-                         "Calidad: " + proveedor2.getRepresentante() + "\n" +
-                         "Fiabilidad: " + proveedor2.getRepresentante() + "\n" +
-                         "Cercania: " + proveedor2.getRepresentante() + "\n" +
-                         "Adaptabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Calidad: " + proveedor2.getCalidad() + "\n" +
+                         "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
+                         "Cercania: " + proveedor2.getCercania() + "\n" +
+                         "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
                          "Representante: " + proveedor2.getRepresentante() + "\n" +
                          "Correo: " + proveedor2.getCorreo() + "\n" +
                          "Telefono: " + proveedor2.getTelefono() + "\n" +
                          "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
                          "Productos:\n" +
-                         "Nombre\r\r" + "Precio\n" +
+                         "Nombre\t\t" + "Precio\n" +
                          productos +
-                         "Comentarios: " + proveedor2.getRepresentante() + "\n"
+                         "Comentarios: " + proveedor2.getComentarios() + "\n"
                         );
         }catch(NullPointerException ex){
             TABuscar.setText("No existe");
@@ -637,23 +638,23 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             String productos = "";
 
             for(ProductoProveedor u: proveedor2.getProductos()){
-                productos = u.getNombreProducto() + "\r\r" + u.getPrecio() + "\n";
+                productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
             }
 
             TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
-                         "Calidad: " + proveedor2.getRepresentante() + "\n" +
-                         "Fiabilidad: " + proveedor2.getRepresentante() + "\n" +
-                         "Cercania: " + proveedor2.getRepresentante() + "\n" +
-                         "Adaptabilidad: " + proveedor2.getRepresentante() + "\n" +
+                         "Calidad: " + proveedor2.getCalidad() + "\n" +
+                         "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
+                         "Cercania: " + proveedor2.getCercania() + "\n" +
+                         "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
                          "Representante: " + proveedor2.getRepresentante() + "\n" +
                          "Correo: " + proveedor2.getCorreo() + "\n" +
                          "Telefono: " + proveedor2.getTelefono() + "\n" +
                          "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
                          "Productos:\n" +
-                         "Nombre\r\r" + "Precio\n" +
+                         "Nombre\t\t" + "Precio\n" +
                          productos +
-                         "Comentarios: " + proveedor2.getRepresentante() + "\n"
+                         "Comentarios: " + proveedor2.getComentarios() + "\n"
                         );
         }
         else{
@@ -772,7 +773,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             TFSubNombreModificar.setText(proveedor.getNombre());
             TFSubNitModificar.setText(String.valueOf(proveedor.getNit()));
             TFRepresentanteModificar.setText(proveedor.getRepresentante());
-            //TFProductoModificar.setText(proveedor.getProductos().toString());
             TFDireccionModificar.setText(proveedor.getDireccion());
             TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
             TFCorreoModificar.setText(proveedor.getCorreo());
@@ -784,10 +784,10 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 
     private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
+        listaproductos = Splash.listaProductos;
         ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(proveedor.getProductos());
         interfazProductos.setLocationRelativeTo(null);
         interfazProductos.setVisible(true);
-
     }//GEN-LAST:event_BtnProductosModificarActionPerformed
 
     private void BtnProductosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCrearActionPerformed
@@ -934,4 +934,5 @@ private boolean validarTextFieldBuscar(){
     private javax.swing.JLabel lblTelefonoModificar;
     // End of variables declaration//GEN-END:variables
     Proveedores proveedor = new Proveedores();
+    Vector listaproductos;
 }

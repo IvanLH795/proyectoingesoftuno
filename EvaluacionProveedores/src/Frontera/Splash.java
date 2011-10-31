@@ -16,6 +16,7 @@ import Entidad.Proveedores;
 import Entidad.Sistema;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 
@@ -136,6 +137,7 @@ public class Splash extends javax.swing.JFrame {
 
     private void inicializacion() {
         Proveedores proveedor = new Proveedores();
+        listaProductos = new Vector();
         List<ProductoProveedor> listaProductos = new ArrayList<ProductoProveedor>();
         ProductoProveedor productoa = new ProductoProveedor();
         ProductoProveedor productob = new ProductoProveedor();
@@ -209,4 +211,5 @@ public class Splash extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    public static Vector listaProductos;
 }
