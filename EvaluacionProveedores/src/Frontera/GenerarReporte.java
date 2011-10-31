@@ -112,12 +112,14 @@ public class GenerarReporte extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
     Principal regresar = new Principal();
+    regresar.setLocationRelativeTo(null);
     regresar.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
     Principal regresar = new Principal();
+    regresar.setLocationRelativeTo(null);
     regresar.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
