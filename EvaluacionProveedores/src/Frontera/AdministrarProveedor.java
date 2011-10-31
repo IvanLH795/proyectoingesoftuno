@@ -15,7 +15,6 @@ import Control.ControlAdministrarProveedor;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import java.util.Vector;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,7 +26,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     JFrame frame;
     /** Creates new form AdministrarProveedor */
     public AdministrarProveedor() {
-        initComponents();        
+        initComponents();
+        listaproductos = Splash.listaProductos;
     }
 
     /** This method is called from within the constructor to
@@ -688,7 +688,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
                 proveedor2.setProductos(null);
 
-                control.crearProveedor(proveedor2);
+                control.crearProveedor(proveedor2, listaproductos);
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
@@ -736,7 +736,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(control.buscarProveedor(obj).equals(null)){
+            if(!control.buscarProveedor(obj).equals(null)){
                 Proveedores proveedor2 = new Proveedores();
 
                 proveedor2.setNombre(TFNombreCrear.getText());
@@ -748,7 +748,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
                 proveedor2.setProductos(null);
 
-                control.modificarProveedor(proveedor, proveedor2);
+                control.modificarProveedor(proveedor, proveedor2, listaproductos);
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
@@ -784,14 +784,15 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 
     private void BtnProductosModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosModificarActionPerformed
-        listaproductos = Splash.listaProductos;
         ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(proveedor.getProductos());
         interfazProductos.setLocationRelativeTo(null);
         interfazProductos.setVisible(true);
     }//GEN-LAST:event_BtnProductosModificarActionPerformed
 
     private void BtnProductosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCrearActionPerformed
-        
+        ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz();
+        interfazProductos.setLocationRelativeTo(null);
+        interfazProductos.setVisible(true);
     }//GEN-LAST:event_BtnProductosCrearActionPerformed
 private boolean validarTextFieldBuscar(){
         boolean integer = true;
@@ -855,16 +856,7 @@ private boolean validarTextFieldBuscar(){
         }
         return (!TFNombreCrear.getText().isEmpty() && nit && !TFNitCrear.getText().isEmpty() && tel);
     }
-    
-    protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = AdministrarProveedor.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
-    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBuscarBuscar;
     private javax.swing.JButton BtnBuscarModificar;
