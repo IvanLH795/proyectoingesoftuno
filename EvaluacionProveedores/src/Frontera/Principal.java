@@ -158,30 +158,35 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
     EvaluarProveedor nuevaevaluacion = new EvaluarProveedor();
+    nuevaevaluacion.setLocationRelativeTo(null);
     nuevaevaluacion.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
     AdministrarProveedor administrar = new AdministrarProveedor();
+    administrar.setLocationRelativeTo(null);
     administrar.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
     ContratarProveedor nuevocontrato = new ContratarProveedor();
+    nuevocontrato.setLocationRelativeTo(null);
     nuevocontrato.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
     GenerarReporte reporte = new GenerarReporte();
+    reporte.setLocationRelativeTo(null);
     reporte.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
     GestorPresupuesto gestor = new GestorPresupuesto();
+    gestor.setLocationRelativeTo(null);
     gestor.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton5MouseClicked

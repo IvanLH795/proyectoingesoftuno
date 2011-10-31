@@ -137,6 +137,7 @@ public class Login extends javax.swing.JFrame {
     System.out.println(resultado);
 
     Principal ingresar = new Principal();
+    ingresar.setLocationRelativeTo(null);
     ingresar.setVisible(true);
     this.dispose();
     // TODO add your handling code here:
@@ -144,6 +145,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     Splash regresar = new Splash();
+    regresar.setLocationRelativeTo(null);
     regresar.setVisible(true);
     this.dispose();
     // TODO add your handling code here:

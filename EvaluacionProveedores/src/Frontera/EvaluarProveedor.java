@@ -220,6 +220,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     }
     public void iniciarEvaluacion(){
     EvaluarProveedor nuevaEvaluacion = new EvaluarProveedor();
+    nuevaEvaluacion.setLocationRelativeTo(null);
     nuevaEvaluacion.setVisible(true);
     this.dispose();
     }
@@ -270,8 +271,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
      Principal regresarMenu = new Principal(); //nos devuelve al Menu Principal
-    regresarMenu.setVisible(true);
-    this.dispose();
+     regresarMenu.setLocationRelativeTo(null);
+     regresarMenu.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void nitProveedorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldActionPerformed
