@@ -16,7 +16,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     /** Creates new form EvaluarProveedor */
     public EvaluarProveedor() {
         initComponents();
-        habilitarComponentes();
+        inhabilitarComponentes();
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,9 +51,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         jLabel1.setText("Evaluar Proveedor");
 
         nitProveedorTextField.setText("NIT proveedor");
-        nitProveedorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nitProveedorTextFieldActionPerformed(evt);
+        nitProveedorTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nitProveedorTextFieldMouseClicked(evt);
             }
         });
 
@@ -100,40 +100,37 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         evaluacionPanelLayout.setHorizontalGroup(
             evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(evaluacionPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calidadProductosLabel)
-                            .addComponent(fiabilidadEntregaLabel)
-                            .addComponent(cercaniaGeograficaLabel)
-                            .addComponent(AdaptabilidadLabel))
-                        .addGap(35, 35, 35)
-                        .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(adaptabilidadSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cercaniaGeograficaSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                             .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                                .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(fiabilidadEntregaTextField)
-                                    .addComponent(calidadProductosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                                 .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calidadProductosLabel)
+                                    .addComponent(fiabilidadEntregaLabel)
+                                    .addComponent(cercaniaGeograficaLabel)
+                                    .addComponent(AdaptabilidadLabel))
+                                .addGap(35, 35, 35)
+                                .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(adaptabilidadSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cercaniaGeograficaSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel6))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, evaluacionPanelLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel7)))))
-                        .addContainerGap(90, Short.MAX_VALUE))
+                                        .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(fiabilidadEntregaTextField)
+                                            .addComponent(calidadProductosTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                                        .addGroup(evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(evaluacionPanelLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel6))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, evaluacionPanelLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel7))))))
+                            .addComponent(comentariosLabel)))
                     .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                        .addComponent(comentariosLabel)
-                        .addContainerGap(241, Short.MAX_VALUE))))
-            .addGroup(evaluacionPanelLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(ingresarEvaluacionButton)
-                .addContainerGap(101, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(ingresarEvaluacionButton)))
+                .addContainerGap())
         );
         evaluacionPanelLayout.setVerticalGroup(
             evaluacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,9 +211,13 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void habilitarComponentes(){
+    public void inhabilitarComponentes(){
        for(int i=0;i<evaluacionPanel.getComponents().length;i++) {   //inicialmente se desabilitan los campos del panel evaluacion mientras no se verifique de que3 proveedor son.
        evaluacionPanel.getComponent(i).setEnabled(false);}
+    }
+     public void habilitarComponentes(){
+       for(int i=0;i<evaluacionPanel.getComponents().length;i++) {   //inicialmente se desabilitan los campos del panel evaluacion mientras no se verifique de que3 proveedor son.
+       evaluacionPanel.getComponent(i).setEnabled(true);}
     }
     public void iniciarEvaluacion(){
     EvaluarProveedor nuevaEvaluacion = new EvaluarProveedor();
@@ -225,30 +226,32 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     this.dispose();
     }
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-         if(validarTextFieldNit()) {
-
+          if(validarTextFieldNit()) {
           ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
-          Proveedores proveedor1 = new Proveedores();
-          proveedor1 = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())); //revisa si el proveedor indicado existe
+          proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())); //revisa si el proveedor indicado existe
            try{      //habilita los componentes del panel de evaluacion
               habilitarComponentes();
-           if(proveedor1.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
-              calidadProductosTextField.setText(Float.toString(proveedor1.getCalidad()));
-              fiabilidadEntregaTextField.setText(Float.toString(proveedor1.getFiabilidad()));
-              cercaniaGeograficaSeleccion.setSelectedItem(proveedor1.getCercania());
-              adaptabilidadSeleccion.setSelectedItem(proveedor1.getAdaptabilidad());
-              comentariosTextField.setText(proveedor1.getComentarios());
+           if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
+              calidadProductosTextField.setText(Float.toString(proveedor.getCalidad()));
+              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getFiabilidad()));
+              cercaniaGeograficaSeleccion.setSelectedItem(proveedor.getCercania());
+              adaptabilidadSeleccion.setSelectedItem(proveedor.getAdaptabilidad());
+              comentariosTextField.setText(proveedor.getComentarios());
             }
-        }catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);}
+        }catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+        iniciarEvaluacion();}
       }else{  //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
           JOptionPane.showMessageDialog(this,"Datos Incorrectos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-        }
+        iniciarEvaluacion();
+      }
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void ingresarEvaluacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonActionPerformed
-          ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
+
+        ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
+
       proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
-     if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,adaptabilidadSeleccion.getToolTipText(), cercaniaGeograficaSeleccion.getToolTipText())){
+     if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem())){
       Proveedores proveedor1 = new Proveedores();
         proveedor1 = proveedor;  //capturar datos
         if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
@@ -263,10 +266,12 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         iniciarEvaluacion();
        }else{
             JOptionPane.showMessageDialog(this,"Datos Invalidos", "",JOptionPane.WARNING_MESSAGE);
+            iniciarEvaluacion();
        }
      }else{  //manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
             JOptionPane.showMessageDialog(this,"Datos Inválidos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-       }
+            iniciarEvaluacion();
+     }
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
@@ -276,9 +281,9 @@ public class EvaluarProveedor extends javax.swing.JFrame {
      this.dispose();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
-    private void nitProveedorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldActionPerformed
-        nitProveedorTextField.setText("");
-    }//GEN-LAST:event_nitProveedorTextFieldActionPerformed
+    private void nitProveedorTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldMouseClicked
+       nitProveedorTextField.setText("");
+    }//GEN-LAST:event_nitProveedorTextFieldMouseClicked
 
     private boolean validarTextFieldNit(){
         boolean integer = true;
