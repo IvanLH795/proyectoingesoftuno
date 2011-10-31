@@ -712,28 +712,28 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnGuardarCrearActionPerformed
 
     private void BtnCancelarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarCrearActionPerformed
-        Principal regresar = new Principal();
+        Principal regresar = new Principal(Login.roll);
         regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarCrearActionPerformed
 
     private void BtnCancelarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarEliminarActionPerformed
-        Principal regresar = new Principal();
+        Principal regresar = new Principal(Login.roll);
         regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarEliminarActionPerformed
 
     private void BtnCancelarBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarBuscarActionPerformed
-        Principal regresar = new Principal();
+        Principal regresar = new Principal(Login.roll);
         regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BtnCancelarBuscarActionPerformed
 
     private void BtnCancelarModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarModificarActionPerformed
-        Principal regresar = new Principal();
+        Principal regresar = new Principal(Login.roll);
         regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();

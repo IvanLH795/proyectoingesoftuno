@@ -186,7 +186,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-    Principal regresar = new Principal();
+    Principal regresar = new Principal(Login.roll);
     regresar.setLocationRelativeTo(null);
     regresar.setVisible(true);
     this.dispose();

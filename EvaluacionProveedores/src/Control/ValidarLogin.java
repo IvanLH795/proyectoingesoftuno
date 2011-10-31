@@ -46,10 +46,11 @@ public class ValidarLogin {
 
         for(Usuario u: sistema.getUsuarios()){
             if(u.getNombre().equals(usuario.getNombre()) && u.getPassword().equals(usuario.getPassword())){
-                 return("Bienvenido");
+                Login.roll = u.getRoll();
+                return("Bienvenido");
             }
         }
-    return("dasos incorectos");
+    return("datos incorectos");
 }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">

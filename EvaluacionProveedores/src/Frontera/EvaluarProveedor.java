@@ -290,7 +290,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_ingresarEvaluacionButtonActionPerformed
 
     private void cancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarButtonActionPerformed
-     Principal regresarMenu = new Principal(); //nos devuelve al Menu Principal
+     Principal regresarMenu = new Principal(Login.roll); //nos devuelve al Menu Principal
      regresarMenu.setLocationRelativeTo(null);
      regresarMenu.setVisible(true);
      this.dispose();

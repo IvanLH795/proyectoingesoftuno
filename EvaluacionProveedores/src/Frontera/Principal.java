@@ -18,9 +18,26 @@ package Frontera;
 public class Principal extends javax.swing.JFrame {
 
     /** Creates new form Principal */
-    public Principal() {
+    public Principal(String permiso) {
         initComponents();
+        if(permiso.equals("Rector")){
+            btnGenerar.setActionCommand("disable");
+            btnGestor.setActionCommand("disable");
+        }
+        if(permiso.equals("Auxiliar")){
+            btnEvaluar.setActionCommand("disable");
+            btnGestor.setActionCommand("disable");
+            btnAdministrar.setActionCommand("disable");
+            btnContratar.setActionCommand("disable");
+        }
+        if(permiso.equals("Concejo")){
+            btnEvaluar.setActionCommand("disable");
+            btnGenerar.setActionCommand("disable");
+            btnAdministrar.setActionCommand("disable");
+            btnContratar.setActionCommand("disable");
+        }
     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -33,11 +50,11 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnContratar = new javax.swing.JButton();
+        btnAdministrar = new javax.swing.JButton();
+        btnEvaluar = new javax.swing.JButton();
+        btnGenerar = new javax.swing.JButton();
+        btnGestor = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,38 +64,38 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sistema de evaluacion a proveedores");
 
-        jButton1.setText("Contratar Proveedor");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnContratar.setText("Contratar Proveedor");
+        btnContratar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnContratarMouseClicked(evt);
             }
         });
 
-        jButton2.setText("Administrar Proveedor");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAdministrar.setText("Administrar Proveedor");
+        btnAdministrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                btnAdministrarMouseClicked(evt);
             }
         });
 
-        jButton3.setText("Evaluar Proveedor");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEvaluar.setText("Evaluar Proveedor");
+        btnEvaluar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                btnEvaluarMouseClicked(evt);
             }
         });
 
-        jButton4.setText("Generar Reporte");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGenerar.setText("Generar Reporte");
+        btnGenerar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                btnGenerarMouseClicked(evt);
             }
         });
 
-        jButton5.setText("Gestor de Presupuesto");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnGestor.setText("Gestor de Presupuesto");
+        btnGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                btnGestorMouseClicked(evt);
             }
         });
 
@@ -101,11 +118,11 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(btnAdministrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(btnContratar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(btnEvaluar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(btnGenerar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                            .addComponent(btnGestor, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(58, 58, 58))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
@@ -118,16 +135,16 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnContratar)
                 .addGap(38, 38, 38)
-                .addComponent(jButton2)
+                .addComponent(btnAdministrar)
                 .addGap(34, 34, 34)
-                .addComponent(jButton3)
+                .addComponent(btnEvaluar)
                 .addGap(36, 36, 36)
-                .addComponent(jButton4)
-                .addGap(31, 31, 31)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btnGenerar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btnGestor)
+                .addGap(26, 26, 26)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -156,47 +173,47 @@ public class Principal extends javax.swing.JFrame {
     System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void btnEvaluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEvaluarMouseClicked
     EvaluarProveedor nuevaevaluacion = new EvaluarProveedor();
     nuevaevaluacion.setLocationRelativeTo(null);
     nuevaevaluacion.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_btnEvaluarMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void btnAdministrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministrarMouseClicked
     AdministrarProveedor administrar = new AdministrarProveedor();
     administrar.setLocationRelativeTo(null);
     administrar.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_btnAdministrarMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnContratarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContratarMouseClicked
     ContratarProveedor nuevocontrato = new ContratarProveedor();
     nuevocontrato.setLocationRelativeTo(null);
     nuevocontrato.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnContratarMouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void btnGenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarMouseClicked
     GenerarReporte reporte = new GenerarReporte();
     reporte.setLocationRelativeTo(null);
     reporte.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_btnGenerarMouseClicked
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void btnGestorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestorMouseClicked
     GestorPresupuesto gestor = new GestorPresupuesto();
     gestor.setLocationRelativeTo(null);
     gestor.setVisible(true);
     this.dispose();
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_btnGestorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnAdministrar;
+    private javax.swing.JButton btnContratar;
+    private javax.swing.JButton btnEvaluar;
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JButton btnGestor;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
