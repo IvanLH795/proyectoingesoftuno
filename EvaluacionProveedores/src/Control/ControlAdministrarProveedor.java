@@ -104,7 +104,8 @@ public class ControlAdministrarProveedor {
                     lista.add(producto);
         }
         viejo.setProductos(lista);
-        Splash.listaproductos.removeAllElements();
+        if(!(Splash.listaproductos == null))
+            Splash.listaproductos = null;
     }
 
     public void crearProveedor(Proveedores proveedor2, Vector listaproductos) {
