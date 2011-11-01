@@ -35,7 +35,7 @@ public class ControlGeneradorReporte {
                        ioe.printStackTrace();
                  }
         }
-        Sistema provee = Frontera.Splash.listaProveedores;
+        Sistema provee = Frontera.Splash.sistema;
         String productos = "";
         String proveedor1 = "";
 
