@@ -8,16 +8,11 @@ package Control;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -27,22 +22,12 @@ public class ControlGeneradorReporte {
 
     public ControlGeneradorReporte() {
     }
+ public void imprimirPantalla(JTextArea vistaReporte) {
 
-  public File imprimirADocumento(){
-       File fichero = new File ("C:/Users/Beltran/Documents/NetBeansProjects/proyectoingesoftuno/EvaluacionProveedores/src/Frontera/reporteProveedores.txt");
-        if(fichero.exists()){
-        fichero.delete();
-             try {
-                   fichero.createNewFile();
-                 } catch (IOException ioe) {
-                       ioe.printStackTrace();
-                 }
-        }
-        Sistema sistema = Frontera.Splash.sistema;
+       Sistema provee = Frontera.Splash.sistema;
         String productos = "";
         String proveedor1 = "";
-
-             for (Proveedores u: sistema.getProveedores()){
+             for (Proveedores u: provee.getProveedores()){
                  try{
                     for(ProductoProveedor u1: u.getProductos()){
                         productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecio() + "\n";
@@ -51,38 +36,34 @@ public class ControlGeneradorReporte {
                     productos = "";
                 }
 
-  proveedor1 =  "Nombre: " + u.getNombre() + "\n" + "Nit: " + u.getNit() + "\n" +"Calidad: " + u.getCalidad() + "\n" +"Fiabilidad: " + u.getFiabilidad() + "\n" +"Cercania: " + u.getCercania() + "\n" +"Adaptabilidad: " + u.getAdaptabilidad() + "\n" + "Representante: " + u.getRepresentante() + "\n" + "Correo: " + u.getCorreo() + "\n" +"Telefono: " + u.getTelefono() + "\n" +"Pagina Web: " + u.getPaginaWeb() + "\n" + "Productos:\n" +"Nombre\t\t" + "Precio\n" + productos + "Comentarios: " + u.getComentarios() + "\n\n\n\n\n\n";
-  try{
-  saveString(fichero,proveedor1);
+           proveedor1 =  "Nombre: " + u.getNombre() + "\n" +
+                         "Nit: " + u.getNit() + "\n" +
+                         "Calidad: " + u.getCalidad() + "\n" +
+                         "Fiabilidad: " + u.getFiabilidad() + "\n" +
+                         "Cercania: " + u.getCercania() + "\n" +
+                         "Adaptabilidad: " + u.getAdaptabilidad() + "\n" +
+                         "Representante: " + u.getRepresentante() + "\n" +
+                         "Correo: " + u.getCorreo() + "\n" +
+                         "Telefono: " + u.getTelefono() + "\n" +
+                         "Pagina Web: " + u.getPaginaWeb() + "\n" +
+                         "Productos:\n" +
+                         "Nombre\t\t" + "Precio\n" +
+                         productos +
+                         "Comentarios: " + u.getComentarios() + "\n";
+             vistaReporte.append(proveedor1);
+             vistaReporte.append(System.getProperty("line.separator")); // Esto para el salto de línea
+             }
+    }
 
-  }catch(IOException ex){
- }catch(NullPointerException ex){fichero.deleteOnExit();}
-}
-return fichero;
-   }
-     public static void saveString(File f,String s) throws IOException{
+    public void imprimirReporte(File fichero, String text) throws IOException {
         boolean k = true;
          try{
-             PrintWriter fileout = new PrintWriter(new FileWriter(f , k));
-             fileout.print(s);
+             PrintWriter fileout = new PrintWriter(new FileWriter(fichero , k));
+             fileout.print(text);
              fileout.flush();
              fileout.close();
          }catch(IOException ex){
              throw ex;
          }
     }
-     public  void readLines(File f,String texto) throws FileNotFoundException, IOException{
-         try{
-             BufferedReader fileIn = new BufferedReader(new FileReader(f));
-             String line = "";
-             while ((line = fileIn.readLine()) != null){
-                 texto+=line;
-             }
-             fileIn.close();
-         }catch(FileNotFoundException ex){
-         throw ex;}
-         catch(IOException ex){
-         throw ex;}
-     }
-
 }
