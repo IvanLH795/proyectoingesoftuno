@@ -31,7 +31,7 @@ public class GenerarReporte extends javax.swing.JFrame {
     /** Creates new form GenerarReporte */
     public GenerarReporte() {
         initComponents();
-    }
+            }
 
     /** This method is called from within the constructor to
      * initialize the form.
