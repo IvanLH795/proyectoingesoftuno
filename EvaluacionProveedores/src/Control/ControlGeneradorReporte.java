@@ -35,11 +35,11 @@ public class ControlGeneradorReporte {
                        ioe.printStackTrace();
                  }
         }
-        Sistema provee = Frontera.Splash.sistema;
+        Sistema sistema = Frontera.Splash.sistema;
         String productos = "";
         String proveedor1 = "";
 
-             for (Proveedores u: provee.getProveedores()){
+             for (Proveedores u: sistema.getProveedores()){
                  try{
                     for(ProductoProveedor u1: u.getProductos()){
                         productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecio() + "\n";
