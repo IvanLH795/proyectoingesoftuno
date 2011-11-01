@@ -27,7 +27,6 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     /** Creates new form ProductoProveedor */
     public ProductoProveedorInterfaz(Vector lista){
-        System.out.println("Constructor 1");
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         modelo = new MiModelo();
@@ -40,7 +39,6 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     }
 
     public ProductoProveedorInterfaz(Sistema listProductos) {
-        System.out.println("Constructor 2");
         initComponents();
         listaLocal = listProductos.getProductosProveedor();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -137,7 +135,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     private void BtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAñadirActionPerformed
         Vector obj= new Vector();
-        Float a = new Float(null);
+        Float a = null;
         obj.add("");
         obj.add(a);
         modelo.addRow(obj);
@@ -145,16 +143,21 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     private void BtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarActionPerformed
         int size=0;
+        int filaBorrar = 0;
         try{
             size = modelo.getDataVector().size();
         }catch(NullPointerException ex){
             size = 0;
         }
-        if(tabla.getSelectionModel().getLeadSelectionIndex() >= size){
-            modelo.removeRow(tabla.getSelectionModel().getLeadSelectionIndex());
+        filaBorrar = tabla.getSelectionModel().getLeadSelectionIndex();
+        if(filaBorrar == -1 && size > 0){
+            filaBorrar = size - 1;
+        }
+        if(filaBorrar >= size){
+            modelo.removeRow(filaBorrar);
         }
         else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
-            modelo.removeRow(tabla.getSelectionModel().getLeadSelectionIndex());
+            modelo.removeRow(filaBorrar);
         }
     }//GEN-LAST:event_BtnBorrarActionPerformed
 

@@ -16,8 +16,8 @@ public class ControlEvaluadorProveedor {
     }
     public Proveedores buscarProveedor(int nit){
 
-            Sistema listaProveedores = Frontera.Splash.listaProveedores;
-            for (Proveedores u: listaProveedores.getProveedores()){
+            Sistema sistema = Frontera.Splash.sistema;
+            for (Proveedores u: sistema.getProveedores()){
                 if (u.getNit()==nit){
                     return u;
                 }

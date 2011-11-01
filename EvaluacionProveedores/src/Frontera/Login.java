@@ -1,7 +1,7 @@
 package Frontera;
 
-import Entidad.Sistema;
 import Control.ValidarLogin;
+import Entidad.Sistema;
 import Entidad.Usuario;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -9,12 +9,12 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
-    public static Sistema sistema = new Sistema();
     public static String roll;
     JFrame frame;
     /** Creates new form Login */
     public Login() {
         initComponents();
+        sistema = Splash.sistema;
         inicializacion();
     }
 
@@ -197,7 +197,7 @@ public class Login extends javax.swing.JFrame {
 
     sistema.setUsuarios(usuarios);
     }
-
+    private Sistema sistema;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Entrar;
     private javax.swing.JPasswordField contraseniaTF;
