@@ -11,6 +11,17 @@
 
 package Frontera;
 
+
+import Control.ControlGeneradorReporte;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Fernando
@@ -53,11 +64,6 @@ public class GenerarReporte extends javax.swing.JFrame {
         });
 
         imprimirButton.setText("Imprimir");
-        imprimirButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imprimirButtonMouseClicked(evt);
-            }
-        });
 
         reporteProveedores.setText("Reporte Lista Proveedores");
         reporteProveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -128,13 +134,38 @@ public class GenerarReporte extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_cancelarButtonMouseClicked
 
-    private void imprimirButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imprimirButtonMouseClicked
-    
-    }//GEN-LAST:event_imprimirButtonMouseClicked
-
     private void reporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteProveedoresActionPerformed
-       
+       File nuevoReporte = new File ("C:/Users/Beltran/Documents/NetBeansProjects/proyectoingesoftuno/EvaluacionProveedores/src/Frontera/reporteProveedores.txt");
+       String texto = "";
+
+       ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
+       nuevoReporte= nuevo.imprimirADocumento();
+        try {
+            nuevo.readLines(nuevoReporte, texto);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_reporteProveedoresActionPerformed
+
+  private boolean imprimirReporte(String reporte,String nombre) throws Exception {
+       if(nombre==null){
+           return false;
+       }
+       try{
+           FileWriter fw =new FileWriter(nombre);
+           BufferedWriter bw=new BufferedWriter(fw);
+           PrintWriter salida= new PrintWriter(bw);
+           salida.print(reporte);
+           salida.close();
+           fw.close();
+           return true;
+           }catch(IOException ex){
+               System.out.println(ex);
+               return false;
+           }
+   }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -148,3 +179,5 @@ public class GenerarReporte extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+
