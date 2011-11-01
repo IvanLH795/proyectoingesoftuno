@@ -38,16 +38,16 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla);
     }
 
-    public ProductoProveedorInterfaz(Sistema listProductos) {
+    public ProductoProveedorInterfaz(Sistema listaProductos) {
         initComponents();
-        listaLocal = listProductos.getProductosProveedor();
+        listaLocal = listaProductos.getProductosProveedor();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         modelo = new MiModelo();
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
 
-        for(ProductoProveedor u: listProductos.getProductosProveedor()){
+        for(ProductoProveedor u: listaProductos.getProductosProveedor()){
             Vector obj = new Vector();
             obj.add(u.getNombreProducto());
             obj.add(u.getPrecio());
