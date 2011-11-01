@@ -24,7 +24,7 @@ import javax.swing.UIManager;
  * @author Fernando
  */
 public class Splash extends javax.swing.JFrame {
-    public static Sistema listaProveedores = new Sistema();
+    public static Sistema sistema = new Sistema();
 
     /** Creates new form Splash */
     public Splash() {
@@ -165,7 +165,7 @@ public class Splash extends javax.swing.JFrame {
         listaProveedor.add(proveedor);
         listaProveedor.add(proveedor2);
         
-        listaProveedores.setProveedores(listaProveedor);
+        sistema.setProveedores(listaProveedor);
     }
 
 

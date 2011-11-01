@@ -20,8 +20,8 @@ import java.util.Vector;
 public class ControlAdministrarProveedor {
 
     public void crearProveedor(Proveedores u){
-            Sistema provee = Frontera.Splash.listaProveedores;
-            provee.getProveedores().add(u);
+            Sistema sistema = Frontera.Splash.sistema;
+            sistema.getProveedores().add(u);
     }
 
     public void modificarProveedor(Proveedores viejo, Proveedores nuevo){
@@ -39,19 +39,19 @@ public class ControlAdministrarProveedor {
 
     public void borrarProveedor(String nombre, int nit){
 
-            Sistema provee = Frontera.Splash.listaProveedores;
+            Sistema sistema = Frontera.Splash.sistema;
 
-            for (Proveedores u: provee.getProveedores()){
+            for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals((Integer)nit)){
-                    provee.getProveedores().remove(u);
+                    sistema.getProveedores().remove(u);
                     break;
                 }
             }
     }
 
     public Proveedores buscarProveedor(String nombre, Integer nit){
-            Sistema provee = Frontera.Splash.listaProveedores;
-            for (Proveedores u: provee.getProveedores()){
+            Sistema sistema = Frontera.Splash.sistema;
+            for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals(nit)){
                     return u;
                 }
@@ -60,8 +60,8 @@ public class ControlAdministrarProveedor {
     }
 
     public Proveedores buscarProveedor(String nombre){
-            Sistema provee = Frontera.Splash.listaProveedores;
-            for (Proveedores u: provee.getProveedores()){
+            Sistema sistema = Frontera.Splash.sistema;
+            for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre)){
                     return u;
                 }
@@ -70,8 +70,8 @@ public class ControlAdministrarProveedor {
     }
 
     public Proveedores buscarProveedor(Integer obj) {
-            Sistema provee = Frontera.Splash.listaProveedores;
-            for (Proveedores u: provee.getProveedores()){
+            Sistema sistema = Frontera.Splash.sistema;
+            for (Proveedores u: sistema.getProveedores()){
                 if (((Integer)u.getNit()).equals(obj)){
                     return u;
                 }
@@ -119,7 +119,7 @@ public class ControlAdministrarProveedor {
             proveedor2.setProductos(lista);
             Splash.listaproductos = null;
         }
-            Sistema provee = Frontera.Splash.listaProveedores;
-            provee.getProveedores().add(proveedor2);
+            Sistema sistema = Frontera.Splash.sistema;
+            sistema.getProveedores().add(proveedor2);
     }
 }

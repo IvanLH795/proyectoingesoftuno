@@ -9,7 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class MiModelo extends DefaultTableModel
 {
-   /** Primera columna Boolean, segunda Integer y el resto Object */
+   /** Primera columna Boolean, segunda Float y el resto Float */
    public Class getColumnClass(int columna)
    {
       if (columna == 0) return String.class;
