@@ -13,14 +13,11 @@ package Frontera;
 
 
 import Control.ControlGeneradorReporte;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -53,7 +50,7 @@ public class GenerarReporte extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Reporte");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel1.setText("Generacion de reportes");
 
         cancelarButton.setText("Cancelar");
@@ -64,6 +61,11 @@ public class GenerarReporte extends javax.swing.JFrame {
         });
 
         imprimirButton.setText("Imprimir");
+        imprimirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirButtonActionPerformed(evt);
+            }
+        });
 
         reporteProveedores.setText("Reporte Lista Proveedores");
         reporteProveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +121,6 @@ public class GenerarReporte extends javax.swing.JFrame {
                             .addComponent(imprimirButton))
                         .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                         .addContainerGap())))
         );
@@ -135,37 +136,30 @@ public class GenerarReporte extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarButtonMouseClicked
 
     private void reporteProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reporteProveedoresActionPerformed
-       File nuevoReporte = new File ("C:/Users/Beltran/Documents/NetBeansProjects/proyectoingesoftuno/EvaluacionProveedores/src/Frontera/reporteProveedores.txt");
-       String texto = "";
+      vistaReporte.setText("");
+        ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
+        nuevo.imprimirPantalla(vistaReporte);
+    }//GEN-LAST:event_reporteProveedoresActionPerformed
 
-       ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
-       nuevoReporte= nuevo.imprimirADocumento();
+    private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
+        ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
+        File fichero = new File ("C:/Users/Beltran/Documents/NetBeansProjects/proyectoingesoftuno/EvaluacionProveedores/src/Frontera/reporteProveedores.txt");
+        if(fichero.exists()){
+        fichero.delete();
+             try {
+                   fichero.createNewFile();
+                 } catch (IOException ioe) {
+                       ioe.printStackTrace();
+                 }
+        }
         try {
-            nuevo.readLines(nuevoReporte, texto);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
+            nuevo.imprimirReporte(fichero, vistaReporte.getText());
         } catch (IOException ex) {
             Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_reporteProveedoresActionPerformed
+          JOptionPane.showMessageDialog(this,"Archivo Creado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_imprimirButtonActionPerformed
 
-  private boolean imprimirReporte(String reporte,String nombre) throws Exception {
-       if(nombre==null){
-           return false;
-       }
-       try{
-           FileWriter fw =new FileWriter(nombre);
-           BufferedWriter bw=new BufferedWriter(fw);
-           PrintWriter salida= new PrintWriter(bw);
-           salida.print(reporte);
-           salida.close();
-           fw.close();
-           return true;
-           }catch(IOException ex){
-               System.out.println(ex);
-               return false;
-           }
-   }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
