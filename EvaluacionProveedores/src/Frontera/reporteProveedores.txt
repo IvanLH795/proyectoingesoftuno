@@ -1,0 +1,34 @@
+Nombre: Mercados La Primera
+Nit: 1
+Calidad: 78.0
+Fiabilidad: 98.0
+Cercania: buena
+Adaptabilidad: Buena
+Representante: Henry Murillo
+Correo: laprimera@colombia.com
+Telefono: 0
+Pagina Web: null
+Productos:
+Nombre		Precio
+Marcadores		2500.0
+Borradores		3000.0
+Comentarios: null
+
+Nombre: Mercados La Segunda
+Nit: 2
+Calidad: 87.0
+Fiabilidad: 96.0
+Cercania: buena
+Adaptabilidad: Buena
+Representante: Andres Malzahar
+Correo: lasegunda@colombia.com
+Telefono: 0
+Pagina Web: null
+Productos:
+Nombre		Precio
+Marcadores		2500.0
+Borradores		3000.0
+Marcadores		2500.0
+Borradores		3000.0
+Comentarios: null
+

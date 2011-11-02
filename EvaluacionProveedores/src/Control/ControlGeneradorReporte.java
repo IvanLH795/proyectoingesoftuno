@@ -8,6 +8,7 @@ package Control;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -65,5 +66,14 @@ public class ControlGeneradorReporte {
          }catch(IOException ex){
              throw ex;
          }
+        try {
+Desktop desktop = null;
+if (Desktop.isDesktopSupported()) {
+desktop = Desktop.getDesktop();
+}
+desktop.print(fichero);
+} catch (IOException ioe) {
+ioe.printStackTrace();
+}
     }
 }
