@@ -13,6 +13,7 @@ package Frontera;
 
 import java.util.List;
 import Entidad.Proveedores;
+import Control.ControlContratarProveedor;
 
 
 /**
@@ -317,10 +318,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Proveedores proveedor = new Proveedores();//Proveedor seleccionado con el que se hara contrato
-        proveedor.setNombre(null);
-        proveedor.setNit(null);
-
-
+        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
