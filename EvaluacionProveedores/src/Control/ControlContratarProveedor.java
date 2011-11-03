@@ -28,7 +28,7 @@ public class ControlContratarProveedor {
         proveedorContratado = proveedor;
     }
 
-    private void generarContrato(){
+    public void generarContrato(){
     /*
         Document contrato = new Document();
         try {
