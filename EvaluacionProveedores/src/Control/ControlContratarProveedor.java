@@ -10,5 +10,5 @@ package Control;
  * @author Darthian
  */
 public class ControlContratarProveedor {
-
+    
 }
