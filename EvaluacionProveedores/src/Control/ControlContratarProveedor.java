@@ -5,11 +5,12 @@
 
 package Control;
 import Entidad.Proveedores;
+import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-/*
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
+import java.io.OutputStream;
+import java.util.Date;
+
+/*import com.lowagie.text.Document;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
 /**
@@ -29,19 +30,25 @@ public class ControlContratarProveedor {
     }
 
     public void generarContrato(){
-    /*
-        Document contrato = new Document();
-        try {
-            PdfWriter.getInstance(contrato, new FileOutputStream("LuAuF.pdf"));
-            contrato.open();
-            contrato.add(new Paragraph("http://luauf.com/"));
-        } catch (DocumentException de) {
-            System.err.println(de.getMessage());
-        } catch (IOException ioe) {
-            System.err.println(ioe.getMessage());
+    
+       try {
+            OutputStream file = new FileOutputStream(new File("C:\\Test.pdf"));
+            /*
+            Document document = new Document();
+            PdfWriter.getInstance(document, file);
+            document.open();
+            document.add(new Paragraph(proveedor.getNombre));
+            document.add(new Paragraph(proveedor.getNit));
+            document.add(new Paragraph(new Date().toString()));
+
+            document.close();
+            */
+            file.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
         }
-        contrato.close();
-     */
     }
 
 }
