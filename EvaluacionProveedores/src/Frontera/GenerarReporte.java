@@ -143,7 +143,7 @@ public class GenerarReporte extends javax.swing.JFrame {
 
     private void imprimirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirButtonActionPerformed
         ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
-        File fichero = new File ("C:/Users/Beltran/Documents/NetBeansProjects/proyectoingesoftuno/EvaluacionProveedores/src/Frontera/reporteProveedores.txt");
+        File fichero = new File ( System.getProperty("user.dir"),"reporteProveedores.txt");
         if(fichero.exists()){
         fichero.delete();
              try {
@@ -154,10 +154,10 @@ public class GenerarReporte extends javax.swing.JFrame {
         }
         try {
             nuevo.imprimirReporte(fichero, vistaReporte.getText());
+            JOptionPane.showMessageDialog(this,"Archivo Impreso", "",JOptionPane.WARNING_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          JOptionPane.showMessageDialog(this,"Archivo Creado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+        }     
     }//GEN-LAST:event_imprimirButtonActionPerformed
 
 
