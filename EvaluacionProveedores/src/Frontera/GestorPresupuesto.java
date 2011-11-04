@@ -244,11 +244,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
 
     private void btnProductoAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoAgregarActionPerformed
         AñadirProducto aproducto=new AñadirProducto();
-       // aproducto.setLocationRelativeTo(null);
         aproducto.setVisible(true);
         
-        
-
         /*Vector obj = new Vector();
         obj.add("");
         obj.add(new Float(0));
