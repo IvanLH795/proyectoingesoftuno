@@ -181,7 +181,7 @@ public class Login extends javax.swing.JFrame {
     d.setNombre("daovallec");
     d.setPassword("123456");
     d.setRoll("Rector");
-    e.setNombre("manrrique");
+    e.setNombre("fmanrrique");
     e.setPassword("123456");
     e.setRoll("Auxiliar");
     p.setNombre("profesor");
