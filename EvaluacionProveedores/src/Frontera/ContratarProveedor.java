@@ -15,7 +15,6 @@ import java.util.List;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 
-
 /**
  *
  * @author Fernando
@@ -299,17 +298,17 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-    Principal regresar = new Principal(Login.roll);
-    regresar.setLocationRelativeTo(null);
-    regresar.setVisible(true);
-    this.dispose();
+        Principal regresar = new Principal(Login.roll);
+        regresar.setLocationRelativeTo(null);
+        regresar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-    Principal regresar = new Principal(Login.roll);
-    regresar.setLocationRelativeTo(null);
-    regresar.setVisible(true);
-    this.dispose();
+        Principal regresar = new Principal(Login.roll);
+        regresar.setLocationRelativeTo(null);
+        regresar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -318,6 +317,21 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Proveedores proveedor = new Proveedores();//Proveedor seleccionado con el que se hara contrato
+
+        proveedor.setNombre(null);
+        proveedor.setNit(WIDTH);
+        proveedor.setProductos(null);
+        proveedor.setAdaptabilidad(null);
+        proveedor.setCalidad(WIDTH);
+        proveedor.setCercania(null);
+        proveedor.setCorreo(null);
+        proveedor.setDireccion(null);
+        proveedor.setEvaluacionRealizada(rootPaneCheckingEnabled);
+        proveedor.setFiabilidad(TOP_ALIGNMENT);
+        proveedor.setPaginaWeb(null);
+        proveedor.setTelefono(WIDTH);
+        proveedor.setRepresentante(null);
+
         ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor);
         contrato.generarContrato();
     }//GEN-LAST:event_jButton1ActionPerformed
