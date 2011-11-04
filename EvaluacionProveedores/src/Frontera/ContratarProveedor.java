@@ -12,8 +12,10 @@
 package Frontera;
 
 import java.util.List;
+import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
+import Entidad.ProductoProveedor;
 
 /**
  *
@@ -73,6 +75,12 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel8.setText("Nombre:");
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("NIT:");
 
@@ -317,20 +325,21 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Proveedores proveedor = new Proveedores();//Proveedor seleccionado con el que se hara contrato
+        List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+        ProductoProveedor producto = new ProductoProveedor();
 
-        proveedor.setNombre(null);
-        proveedor.setNit(WIDTH);
-        proveedor.setProductos(null);
-        proveedor.setAdaptabilidad(null);
-        proveedor.setCalidad(WIDTH);
-        proveedor.setCercania(null);
-        proveedor.setCorreo(null);
-        proveedor.setDireccion(null);
-        proveedor.setEvaluacionRealizada(rootPaneCheckingEnabled);
-        proveedor.setFiabilidad(TOP_ALIGNMENT);
-        proveedor.setPaginaWeb(null);
-        proveedor.setTelefono(WIDTH);
-        proveedor.setRepresentante(null);
+        proveedor.setNombre(jTextField7.getText());
+        proveedor.setNit(Integer.parseInt (jTextField9.getText()));//casting
+        proveedor.setRepresentante(jTextField8.getText());
+        proveedor.setProductos(productos);
+        proveedor.setDireccion(jTextField11.getText());
+        proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
+        proveedor.setCorreo(jTextField13.getText());
+        proveedor.setPaginaWeb(jTextField14.getText());
+        producto.setPrecio(Float.parseFloat(jTextField12.getText()));
+        productos.add(producto);
+        float valorTotal = producto.getPrecio() * Float.parseFloat(jTextField1.getText());
+        jTextField3.setText(Float.toString(valorTotal));
 
         ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor);
         contrato.generarContrato();
@@ -342,6 +351,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
         regresarMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
