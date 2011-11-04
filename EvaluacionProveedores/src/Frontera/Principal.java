@@ -174,38 +174,48 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnEvaluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEvaluarMouseClicked
-    EvaluarProveedor nuevaevaluacion = new EvaluarProveedor();
-    nuevaevaluacion.setLocationRelativeTo(null);
-    nuevaevaluacion.setVisible(true);
-    this.dispose();
+    if (btnEvaluar.isEnabled()==true){
+        EvaluarProveedor nuevaevaluacion = new EvaluarProveedor();
+        nuevaevaluacion.setLocationRelativeTo(null);
+        nuevaevaluacion.setVisible(true);
+        this.dispose();
+        }
     }//GEN-LAST:event_btnEvaluarMouseClicked
 
     private void btnAdministrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdministrarMouseClicked
-    AdministrarProveedor administrar = new AdministrarProveedor();
-    administrar.setLocationRelativeTo(null);
-    administrar.setVisible(true);
-    this.dispose();
+    if (btnAdministrar.isEnabled()==true){
+        AdministrarProveedor administrar = new AdministrarProveedor();
+        administrar.setLocationRelativeTo(null);
+        administrar.setVisible(true);
+        this.dispose();
+    }
     }//GEN-LAST:event_btnAdministrarMouseClicked
 
     private void btnContratarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnContratarMouseClicked
-    ContratarProveedor nuevocontrato = new ContratarProveedor();
-    nuevocontrato.setLocationRelativeTo(null);
-    nuevocontrato.setVisible(true);
-    this.dispose();
+    if (btnContratar.isEnabled()==true){
+        ContratarProveedor nuevocontrato = new ContratarProveedor();
+        nuevocontrato.setLocationRelativeTo(null);
+        nuevocontrato.setVisible(true);
+        this.dispose();
+        }
     }//GEN-LAST:event_btnContratarMouseClicked
 
     private void btnGenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGenerarMouseClicked
-    GenerarReporte reporte = new GenerarReporte();
-    reporte.setLocationRelativeTo(null);
-    reporte.setVisible(true);
-    this.dispose();
+    if (btnGenerar.isEnabled()==true){
+        GenerarReporte reporte = new GenerarReporte();
+        reporte.setLocationRelativeTo(null);
+        reporte.setVisible(true);
+        this.dispose();
+    }
     }//GEN-LAST:event_btnGenerarMouseClicked
 
     private void btnGestorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGestorMouseClicked
-    GestorPresupuesto gestor = new GestorPresupuesto();
-    gestor.setLocationRelativeTo(null);
-    gestor.setVisible(true);
-    this.dispose();
+    if (btnGestor.isEnabled()==true){
+        GestorPresupuesto gestor = new GestorPresupuesto();
+        gestor.setLocationRelativeTo(null);
+        gestor.setVisible(true);
+        this.dispose();
+        }
     }//GEN-LAST:event_btnGestorMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
