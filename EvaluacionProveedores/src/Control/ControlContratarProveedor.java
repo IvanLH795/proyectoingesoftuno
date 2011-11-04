@@ -10,9 +10,10 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Date;
 
-/*import com.lowagie.text.Document;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.*;
 /**
  *
  * @author Darthian
@@ -20,34 +21,37 @@ import com.lowagie.text.pdf.PdfWriter;
 public class ControlContratarProveedor {
 
     Proveedores proveedorContratado = new Proveedores();
+    float valorUnidad, cantidad;
 
     public ControlContratarProveedor(){
 
     }
 
-    public ControlContratarProveedor(Proveedores proveedor){
+    public ControlContratarProveedor(Proveedores proveedor, float cantidad, float valorUnidad){
         proveedorContratado = proveedor;
+        cantidad = this.cantidad;
+        valorUnidad = this.valorUnidad;
     }
 
     public void generarContrato(){
     
        try {
-            OutputStream file = new FileOutputStream(new File("C:\\Test.pdf"));
-            /*
-            Document document = new Document();
-            PdfWriter.getInstance(document, file);
-            document.open();
-            document.add(new Paragraph(proveedor.getNombre));
-            document.add(new Paragraph(proveedor.getNit));
-            document.add(new Paragraph(new Date().toString()));
+            OutputStream file = new FileOutputStream(new File("C:\\Contrato.pdf"));
+            
+            Document contrato = new Document();
+            PdfWriter.getInstance(contrato, file);
+            contrato.open();
+            contrato.add(new Paragraph("Nombre"));
+            contrato.add(new Paragraph("Nit"));
+            contrato.add(new Paragraph(new Date().toString()));
 
-            document.close();
-            */
+            contrato.close();
             file.close();
 
         } catch (Exception e) {
 
             e.printStackTrace();
+            
         }
     }
 

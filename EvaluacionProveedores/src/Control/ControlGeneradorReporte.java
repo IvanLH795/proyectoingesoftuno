@@ -27,17 +27,17 @@ public class ControlGeneradorReporte {
     }
  public void imprimirPantalla(JTextArea vistaReporte) {
 
-       Sistema provee = Frontera.Splash.sistema;
+        Sistema provee = Frontera.Splash.sistema;
         String productos = "";
         String proveedor1 = "";
-             for (Proveedores u: provee.getProveedores()){
-                 try{
-                    for(ProductoProveedor u1: u.getProductos()){
-                        productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecio() + "\n";
-                    }
-                }catch(NullPointerException ex){
-                    productos = "";
+        for (Proveedores u: provee.getProveedores()){
+            try{
+                for(ProductoProveedor u1: u.getProductos()){
+                    productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecio() + "\n";
                 }
+            }catch(NullPointerException ex){
+                productos = "";
+            }
 
            proveedor1 =  "Nombre: " + u.getNombre() + "\n" +
                          "Nit: " + u.getNit() + "\n" +
@@ -55,8 +55,8 @@ public class ControlGeneradorReporte {
                          "Comentarios: " + u.getComentarios() + "\n";
              vistaReporte.append(proveedor1);
              vistaReporte.append(System.getProperty("line.separator")); // Esto para el salto de línea
-             }
-    }
+        }
+ }
 
     public void imprimirReporte(File fichero, String text) throws IOException {
         boolean k = true;
@@ -69,15 +69,15 @@ public class ControlGeneradorReporte {
              throw ex;
          }
         try {
-Desktop desktop = null;
-if (Desktop.isDesktopSupported()) {
-desktop = Desktop.getDesktop();
-}
-desktop.print(fichero);
-} catch (IOException ioe) {
-    JOptionPane.showMessageDialog(frame,"Servicio de Impresión no disponible", "",JOptionPane.WARNING_MESSAGE);
+            Desktop desktop = null;
+            if (Desktop.isDesktopSupported()) {
+                desktop = Desktop.getDesktop();
+            }
+            desktop.print(fichero);
+        } catch (IOException ioe) {
+        JOptionPane.showMessageDialog(frame,"Servicio de Impresión no disponible", "",JOptionPane.WARNING_MESSAGE);
 ioe.printStackTrace();
-}
+        }
     }
 
 JFrame frame;
