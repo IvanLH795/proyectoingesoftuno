@@ -18,7 +18,7 @@ package Frontera;
  */
 
 
-public class AñadirProducto extends javax.swing.JPanel {
+public class AñadirProducto extends javax.swing.JFrame {
 
     /** Creates new form AñadirProducto */
     public AñadirProducto() {
