@@ -341,7 +341,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         float valorTotal = producto.getPrecio() * Float.parseFloat(jTextField1.getText());
         jTextField3.setText(Float.toString(valorTotal));
 
-        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(jTextField1.getText()), producto.getPrecio());
+        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(jTextField1.getText()), producto.getPrecio(), productos);
 
         contrato.generarContrato();
     }//GEN-LAST:event_jButton1ActionPerformed
