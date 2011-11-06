@@ -59,6 +59,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        contraseniaTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contraseniaTFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -158,6 +164,26 @@ public class Login extends javax.swing.JFrame {
     this.dispose();
     // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void contraseniaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaTFActionPerformed
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombreTF.getText());
+        usuario.setPassword(contraseniaTF.getText());
+
+        ValidarLogin validar = new ValidarLogin();
+        String resultado = validar.verificarLogin(usuario);
+        if(resultado.equals("Bienvenido")){
+            Principal ingresar = new Principal(roll);
+            ingresar.setLocationRelativeTo(null);
+            ingresar.setVisible(true);
+            this.dispose();
+            }
+        else{
+            JOptionPane.showMessageDialog(frame, resultado, "Error", JOptionPane.ERROR_MESSAGE);
+            nombreTF.setText(null);
+            contraseniaTF.setText(null);
+            }
+    }//GEN-LAST:event_contraseniaTFActionPerformed
 
     public void inicializacion(){
 
