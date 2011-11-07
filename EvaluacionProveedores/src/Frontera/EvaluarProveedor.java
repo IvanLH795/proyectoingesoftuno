@@ -8,6 +8,7 @@ package Frontera;
 import Control.ControlEvaluadorProveedor;
 import javax.swing.JOptionPane;
 import Entidad.Proveedores;
+import java.util.Calendar;
 /**
  * @author Beltrán
  */
@@ -241,11 +242,11 @@ public class EvaluarProveedor extends javax.swing.JFrame {
               if(!proveedor.equals(null)) {  //habilita los componentes del panel de evaluacion
               habilitarComponentes();
            if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
-              calidadProductosTextField.setText(Float.toString(proveedor.getCalidad()));
-              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getFiabilidad()));
-              cercaniaGeograficaSeleccion.setSelectedItem(proveedor.getCercania());
-              adaptabilidadSeleccion.setSelectedItem(proveedor.getAdaptabilidad());
-              comentariosTextField.setText(proveedor.getComentarios());
+              calidadProductosTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCalidad()));
+              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getFiabilidad()));
+              cercaniaGeograficaSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCercania());
+              adaptabilidadSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getAdaptabilidad());
+              comentariosTextField.setText(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getComentarios());
             }
         }}catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
         iniciarEvaluacion();
@@ -257,24 +258,31 @@ public class EvaluarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void ingresarEvaluacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEvaluacionButtonActionPerformed
+ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
 
-        ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
-        
        proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
      if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
         if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem())){
-      Proveedores proveedor1 = new Proveedores();
+        Proveedores proveedor1 = new Proveedores();
+        Evaluaciones evaluacion = new Evaluaciones();
         proveedor1 = proveedor;  //capturar datos
         if(!calidadProductosTextField.getText().isEmpty()){
-          proveedor1.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
+          evaluacion.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
         }
-        else proveedor1.setCalidad(0);
+        else evaluacion.setCalidad(0);
         if(!fiabilidadEntregaTextField.getText().isEmpty()){
-         proveedor1.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
-        }else proveedor1.setFiabilidad(0);
-        proveedor1.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
-        proveedor1.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
-        proveedor1.setComentarios(comentariosTextField.getText());
+         evaluacion.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
+        }else evaluacion.setFiabilidad(0);
+        evaluacion.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
+        evaluacion.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
+        evaluacion.setComentarios(comentariosTextField.getText());
+        Calendar fecha = Calendar.getInstance();
+        evaluacion.setAnio(fecha.get(Calendar.YEAR));
+        evaluacion.setMes(fecha.get(Calendar.MONTH)+1);
+        evaluacion.setDia(fecha.get(Calendar.DAY_OF_MONTH));
+        evaluacion.setHora(fecha.get(Calendar.HOUR_OF_DAY));
+        evaluacion.setMin(fecha.get(Calendar.MINUTE));
+        proveedor1.getEvaluaciones().add(evaluacion);
         proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
@@ -283,7 +291,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Datos Invalidos", "Advertencia",JOptionPane.WARNING_MESSAGE);
             iniciarEvaluacion();
        }
-     }else{  
+     }else{
             JOptionPane.showMessageDialog(this,"Error", "Advertencia!",JOptionPane.WARNING_MESSAGE);
             iniciarEvaluacion();
      }

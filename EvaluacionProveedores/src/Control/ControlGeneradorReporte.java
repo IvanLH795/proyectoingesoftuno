@@ -5,6 +5,7 @@
 
 package Control;
 
+import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
@@ -29,6 +30,7 @@ public class ControlGeneradorReporte {
 
         Sistema provee = Frontera.Splash.sistema;
         String productos = "";
+        String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
         String proveedor1 = "";
         for (Proveedores u: provee.getProveedores()){
             try{
@@ -38,21 +40,27 @@ public class ControlGeneradorReporte {
             }catch(NullPointerException ex){
                 productos = "";
             }
+            try{
+                for(Evaluaciones u2: u.getEvaluaciones()){
+                    evaluaciones = evaluaciones + u2.getCalidad() + "\t\t" + u2.getFiabilidad() + "\t\t"
+                            + u2.getAnio() + "/" + u2.getMes() + "/" + u2.getDia() + " " + u2.getHora() + ":" + u2.getMin() + "\n";
+                    if(u2.getComentarios() != null)
+                        evaluaciones = evaluaciones + "Comentario: " + u2.getComentarios() + "\n";
+            }
+            }catch(NullPointerException ex){
+                evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
+            }
 
            proveedor1 =  "Nombre: " + u.getNombre() + "\n" +
                          "Nit: " + u.getNit() + "\n" +
-                         "Calidad: " + u.getCalidad() + "\n" +
-                         "Fiabilidad: " + u.getFiabilidad() + "\n" +
-                         "Cercania: " + u.getCercania() + "\n" +
-                         "Adaptabilidad: " + u.getAdaptabilidad() + "\n" +
+                         evaluaciones + "\n" +
                          "Representante: " + u.getRepresentante() + "\n" +
                          "Correo: " + u.getCorreo() + "\n" +
                          "Telefono: " + u.getTelefono() + "\n" +
                          "Pagina Web: " + u.getPaginaWeb() + "\n" +
                          "Productos:\n" +
                          "Nombre\t\t" + "Precio\n" +
-                         productos +
-                         "Comentarios: " + u.getComentarios() + "\n";
+                         productos + "\n";
              vistaReporte.append(proveedor1);
              vistaReporte.append(System.getProperty("line.separator")); // Esto para el salto de línea
         }

@@ -12,6 +12,7 @@
 package Frontera;
 
 import Control.ControlAdministrarProveedor;
+import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
@@ -596,7 +597,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
             proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             String productos = "";
-        
+            String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
+
         try{
         try{
             for(ProductoProveedor u: proveedor2.getProductos()){
@@ -605,20 +607,27 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         }catch(NullPointerException ex){
             productos = "";
         }
+
+        try{
+            for(Evaluaciones u: proveedor2.getEvaluaciones()){
+                    evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
+                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMin() + "\n";
+                    if(u.getComentarios() != null)
+                        evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
+            }
+        }catch(NullPointerException ex){
+            evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
+        }
         TABuscar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                          "Nit: " + proveedor2.getNit() + "\n" +
-                         "Calidad: " + proveedor2.getCalidad() + "\n" +
-                         "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
-                         "Cercania: " + proveedor2.getCercania() + "\n" +
-                         "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
+                         evaluaciones + "\n" +
                          "Representante: " + proveedor2.getRepresentante() + "\n" +
                          "Correo: " + proveedor2.getCorreo() + "\n" +
                          "Telefono: " + proveedor2.getTelefono() + "\n" +
                          "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
                          "Productos:\n" +
                          "Nombre\t\t" + "Precio\n" +
-                         productos +
-                         "Comentarios: " + proveedor2.getComentarios() + "\n"
+                         productos + "\n"
                         );
         }catch(NullPointerException ex){
             TABuscar.setText("No existe");
@@ -641,6 +650,8 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
             proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
             String productos = "";
+            String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
+
             try{
                 try{
                     for(ProductoProveedor u: proveedor2.getProductos()){
@@ -649,21 +660,27 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 }catch(NullPointerException ex){
                     productos = "";
                 }
+                try{
+                    for(Evaluaciones u: proveedor2.getEvaluaciones()){
+                        evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
+                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMin() + "\n";
+                    if(u.getComentarios() != null)
+                        evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
+                    }
+                }catch(NullPointerException ex){
+                    evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
+                }
 
                 TAEliminar.setText("Nombre: " + proveedor2.getNombre() + "\n" +
                              "Nit: " + proveedor2.getNit() + "\n" +
-                             "Calidad: " + proveedor2.getCalidad() + "\n" +
-                             "Fiabilidad: " + proveedor2.getFiabilidad() + "\n" +
-                             "Cercania: " + proveedor2.getCercania() + "\n" +
-                             "Adaptabilidad: " + proveedor2.getAdaptabilidad() + "\n" +
+                            evaluaciones + "\n" +
                              "Representante: " + proveedor2.getRepresentante() + "\n" +
                              "Correo: " + proveedor2.getCorreo() + "\n" +
                              "Telefono: " + proveedor2.getTelefono() + "\n" +
                              "Pagina Web: " + proveedor2.getPaginaWeb() + "\n" +
                              "Productos:\n" +
                              "Nombre\t\t" + "Precio\n" +
-                              productos +
-                         "Comentarios: " + proveedor2.getComentarios() + "\n"
+                              productos + "\n"
                         );
                 }catch(NullPointerException ex){
                     TAEliminar.setText("No existe");
