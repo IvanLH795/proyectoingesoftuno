@@ -279,7 +279,11 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTerminarMouseClicked
 
     private void btnProductoAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoAgregarActionPerformed
-       Vector obj = new Vector();
+        AñadirProducto agregar = new AñadirProducto();
+        agregar.setLocationRelativeTo(null);
+        agregar.setVisible(true);
+
+        Vector obj = new Vector();
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
         int a,b=0;
