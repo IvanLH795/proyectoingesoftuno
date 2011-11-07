@@ -26,32 +26,31 @@ import javax.swing.JTable;
  * @author Fernando
  */
 public class GestorPresupuesto extends javax.swing.JFrame {
-
-    private MiModelo modelo;
+    MiModelo modelo;
     private JTable tabla;
     private Sistema sistema;
     private JFrame frame;
-    private int presupuesto;
     String texto;
 
     
-    /** Creates new form GestorPresupuesto */
-    public GestorPresupuesto() {
+   public GestorPresupuesto() {
+
         initComponents();
         sistema = Splash.sistema;
         modelo = new MiModelo();
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
-        jButton2.setVisible(false);
         jButton3.setVisible(false);
+        jButton2.setVisible(false);
         jTextField3.setVisible(false);
         try{
         for(Productos u: sistema.getProductos()){
-            Vector obj = new Vector();
-            obj.add(u.getNombreProducto());
-            obj.add(u.getDineroDisponible());
-            modelo.addRow(obj);
+            Vector obje = new Vector();
+            obje.add(u.getNombreProducto());
+            obje.add(u.getDineroDisponible());
+            modelo.addRow(obje);
+            //
         }
         }catch(NullPointerException ex){
         }
@@ -280,14 +279,25 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTerminarMouseClicked
 
     private void btnProductoAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoAgregarActionPerformed
-        AñadirProducto aproducto=new AñadirProducto();
-        aproducto.setLocationRelativeTo(null);
-        aproducto.setVisible(true);
-        
-        /*Vector obj = new Vector();
-        obj.add("");
-        obj.add(new Float(0));
-        modelo.addRow(obj);*/
+       Vector obj = new Vector();
+        String producto = JOptionPane.showInputDialog("Producto");
+        String precio = JOptionPane.showInputDialog("Precio");
+        int a;
+        a=Integer.parseInt(precio);
+        if(a<(Integer.parseInt(jTextField2.getText())))
+        {
+            try {
+                jTextField2.setText(Integer.parseInt(jTextField2.getText())-a +"");
+                obj.addElement(producto);
+                obj.addElement(a);
+                modelo.addRow(obj);
+
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "datos Incorrectos");
+            }
+        }
+        else JOptionPane.showMessageDialog(null, "no hay presupuesto");
     }//GEN-LAST:event_btnProductoAgregarActionPerformed
 
     private void btnProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoEliminarActionPerformed
@@ -335,19 +345,19 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(!jTextField3.getText().equals("")){
+       if(!jTextField3.getText().equals("")){
             int a;
             try {
                 texto = jTextField3.getText();
                 a=Integer.parseInt(texto);
                 jTextField1.setText(Integer.toString(a));
+                jTextField2.setText(a+"");
                 jButton3.setVisible(false);
                 jButton2.setVisible(false);
                 jTextField3.setVisible(false);
             }
             catch (NumberFormatException e) {
-                System.err.println("Ingrese valor valido");
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "datos Incorrectos");
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
