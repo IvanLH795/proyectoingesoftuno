@@ -11,6 +11,7 @@
 
 package Frontera;
 
+import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
@@ -124,14 +125,21 @@ public class Splash extends javax.swing.JFrame {
         List<ProductoProveedor> listaProductos = new ArrayList<ProductoProveedor>();
         ProductoProveedor productoa = new ProductoProveedor();
         ProductoProveedor productob = new ProductoProveedor();
+        Evaluaciones evaluacion = new Evaluaciones();
 
         proveedor.setNombre("Mercados La Primera");
-        proveedor.setCalidad((float)78);
-        proveedor.setAdaptabilidad("Buena");
-        proveedor.setCercania("buena");
-        proveedor.setComentarios(null);
+        evaluacion.setCalidad((float)78);
+        evaluacion.setAdaptabilidad("Buena");
+        evaluacion.setCercania("buena");
+        evaluacion.setComentarios(null);
         proveedor.setNit(1);
-        proveedor.setFiabilidad((float)98);
+        evaluacion.setFiabilidad((float)98);
+        evaluacion.setAnio(2011);
+        evaluacion.setMes(11);
+        evaluacion.setDia(3);
+        evaluacion.setHora(12);
+        evaluacion.setMin(22);
+        proveedor.getEvaluaciones().add(evaluacion);
         proveedor.setCorreo("laprimera@colombia.com");
         proveedor.setDireccion("Cra 6 # 65 - 18");
         proveedor.setRepresentante("Henry Murillo");
@@ -147,24 +155,31 @@ public class Splash extends javax.swing.JFrame {
         proveedor.setProductos(listaProductos);
 
         Proveedores proveedor2 = new Proveedores();
+        Evaluaciones evaluacion2 = new Evaluaciones();
 
         proveedor2.setNombre("Mercados La Segunda");
-        proveedor2.setCalidad((float)87);
-        proveedor2.setAdaptabilidad("Buena");
-        proveedor2.setCercania("buena");
-        proveedor2.setComentarios(null);
+        evaluacion2.setCalidad((float)87);
+        evaluacion2.setAdaptabilidad("Buena");
+        evaluacion2.setCercania("buena");
+        evaluacion2.setComentarios(null);
         proveedor2.setNit(2);
-        proveedor2.setFiabilidad((float)96);
+        evaluacion2.setFiabilidad((float)96);
+        evaluacion2.setAnio(2011);
+        evaluacion2.setMes(10);
+        evaluacion2.setDia(28);
+        evaluacion2.setHora(10);
+        evaluacion2.setMin(35);
+        proveedor2.getEvaluaciones().add(evaluacion2);
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
         proveedor2.setRepresentante("Andres Malzahar");
-        
+
         proveedor2.setProductos(listaProductos);
 
         List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
         listaProveedor.add(proveedor);
         listaProveedor.add(proveedor2);
-        
+
         sistema.setProveedores(listaProveedor);
     }
 

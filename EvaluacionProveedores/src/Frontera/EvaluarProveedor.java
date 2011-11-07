@@ -6,6 +6,7 @@
 package Frontera;
 
 import Control.ControlEvaluadorProveedor;
+import Entidad.Evaluaciones;
 import javax.swing.JOptionPane;
 import Entidad.Proveedores;
 import java.util.Calendar;
