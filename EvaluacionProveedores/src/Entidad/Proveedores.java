@@ -19,48 +19,20 @@ public class Proveedores {
     int telefono;
     String correo;
     String paginaWeb;
-    float calidad;
-    float fiabilidad;
-    String cercania;
-    String adaptabilidad;
-    String comentarios;
     boolean evaluacionRealizada;
-   List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+    List<Evaluaciones> evaluaciones = new ArrayList<Evaluaciones>();
+    List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+
+    public List<Evaluaciones> getEvaluaciones() {
+        return evaluaciones;
+    }
+
+    public void setEvaluaciones(List<Evaluaciones> evaluaciones) {
+        this.evaluaciones = evaluaciones;
+    }
 
     public Proveedores() {
         evaluacionRealizada = false;
-    }
-
-    public String getAdaptabilidad() {
-        return adaptabilidad;
-    }
-
-    public void setAdaptabilidad(String adaptabilidad) {
-        this.adaptabilidad = adaptabilidad;
-    }
-
-    public float getCalidad() {
-        return calidad;
-    }
-
-    public void setCalidad(float calidad) {
-        this.calidad = calidad;
-    }
-
-    public String getCercania() {
-        return cercania;
-    }
-
-    public void setCercania(String cercania) {
-        this.cercania = cercania;
-    }
-
-    public String getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(String comentarios) {
-        this.comentarios = comentarios;
     }
 
     public String getCorreo() {
@@ -77,14 +49,6 @@ public class Proveedores {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public float getFiabilidad() {
-        return fiabilidad;
-    }
-
-    public void setFiabilidad(float fiabilidad) {
-        this.fiabilidad = fiabilidad;
     }
 
     public int getNit() {
@@ -142,6 +106,4 @@ public class Proveedores {
     public void setEvaluacionRealizada(boolean evaluacionRealizada) {
         this.evaluacionRealizada = evaluacionRealizada;
     }
-    
-  
 }
