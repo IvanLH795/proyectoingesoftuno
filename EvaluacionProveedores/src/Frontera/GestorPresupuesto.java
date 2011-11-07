@@ -282,11 +282,12 @@ public class GestorPresupuesto extends javax.swing.JFrame {
        Vector obj = new Vector();
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
-        int a;
-        a=Integer.parseInt(precio);
-        if(a<(Integer.parseInt(jTextField2.getText())))
+        int a,b=0;
+        b=Integer.parseInt(precio);
+        if(b<(Integer.parseInt(jTextField2.getText())))
         {
             try {
+                a=Integer.parseInt(precio);
                 jTextField2.setText(Integer.parseInt(jTextField2.getText())-a +"");
                 obj.addElement(producto);
                 obj.addElement(a);
@@ -301,21 +302,32 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoAgregarActionPerformed
 
     private void btnProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoEliminarActionPerformed
-        int size=0;
+        int size=0,b;
+        String a;
+        Vector obj = new Vector();
         int filaBorrar = 0;
         try{
             size = modelo.getDataVector().size();
+
+
+            jTextField2.setText(Integer.parseInt(jTextField2.getText()) +"");
         }catch(NullPointerException ex){
             size = 0;
         }
         filaBorrar = tabla.getSelectionModel().getLeadSelectionIndex();
         if(filaBorrar == -1 && size > 0){
             filaBorrar = size - 1;
+
         }
         if(filaBorrar >= size){
             modelo.removeRow(filaBorrar);
         }
         else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
+            obj= modelo.getDataVector();
+            obj=(Vector) obj.elementAt(filaBorrar);
+            a=(obj.elementAt(1)+"");
+            b=Integer.parseInt(a);
+            jTextField2.setText(Integer.parseInt(jTextField2.getText())+b+"");
             modelo.removeRow(filaBorrar);
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
