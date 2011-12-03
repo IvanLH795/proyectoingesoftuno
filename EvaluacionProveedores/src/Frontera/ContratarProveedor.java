@@ -16,16 +16,29 @@ import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ *s
  * @author Fernando
  */
 public class ContratarProveedor extends javax.swing.JFrame {
 
     /** Creates new form ContratarProveedor */
     public ContratarProveedor() {
-        initComponents();
+         initComponents();
+         modelo = new DefaultTableModel();
+         tabla = new JTable(modelo);
+
+         Vector titulos = new Vector();
+         titulos.add("Nit");
+         titulos.add("Nombre");
+         titulos.add("Calificacion");
+         titulos.add("Precio");
+         modelo.setColumnIdentifiers(titulos);
+         jScrollPane1.setViewportView(tabla);
     }
 
     /** This method is called from within the constructor to
@@ -320,7 +333,18 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        List<Proveedores> proveedores;//lista de provvedores que ofrecen el producto buscado
+       for (Proveedores u : Splash.sistema.getProveedores()){
+            for (ProductoProveedor p : u.getProductos()){
+                if (p.getNombreProducto().equals(jTextField6.getText())){
+                    Vector obj = new Vector();
+                    obj.add(u.getNit());
+                    obj.add(u.getNombre());
+                    obj.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());
+                    obj.add(p.getPrecio());
+                    modelo.addRow(obj);
+                }
+            }
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -391,5 +415,6 @@ public class ContratarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
-
+    private DefaultTableModel modelo;
+    private JTable tabla;
 }
