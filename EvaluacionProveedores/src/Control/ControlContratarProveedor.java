@@ -6,6 +6,7 @@
 package Control;
 import Entidad.Proveedores;
 import Entidad.ProductoProveedor;
+import Frontera.Splash;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -38,6 +39,24 @@ public class ControlContratarProveedor {
         valorUnidad = this.valorUnidad;
         productos = this.productos;
     }
+
+     public List buscarListaProveedores(String producto){
+       List listaProveedores = new ArrayList();
+       if (producto.equals(null)){
+           listaProveedores = null;
+       }
+       else{
+            for (Proveedores u : Splash.sistema.getProveedores()){
+                for (ProductoProveedor p : u.getProductos()){
+                    if (p.getNombreProducto().equals(producto)){
+                        listaProveedores.add(u);
+                    }
+                }
+            }
+       }
+       return listaProveedores;
+   }
+
 
     public void generarContrato(){
     

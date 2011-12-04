@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
+import java.util.Collections;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -304,24 +305,29 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        Vector obj = new Vector();
-        for (Proveedores u : Splash.sistema.getProveedores()){
-            for (ProductoProveedor p : u.getProductos()){
-                if (p.getNombreProducto().equals(jTextField6.getText())){
-                    obj.add(u.getNit());
-                    obj.add(u.getNombre());
-                    obj.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());
-                    obj.add(p.getPrecio());
-                    modelo.addRow(obj);
-                }
-            }
-        }
-        if(obj.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No hay proveedores que ofrezcan este producto", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
-            //Prueba
+        List listaProveedores = new ArrayList();
+        Vector datosBasicos = new Vector();
+        ControlContratarProveedor proveedores = new ControlContratarProveedor();
+        listaProveedores = proveedores.buscarListaProveedores(jTextField6.getText());
+        if(listaProveedores.equals(null)){
+            JOptionPane.showMessageDialog(null, "No ha indicado algun producto que buscar", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
         }
         else{
-
+            if(listaProveedores.isEmpty()){
+                JOptionPane.showMessageDialog(null, "No hay proveedores que ofrezcan este producto", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                Collections.sort(listaProveedores);
+                /*for (Proveedores u: listaProveedores){
+                    for (ProductoProveedor p : u.getProductos()){
+                        datosBasicos.add(u.getNit());//Nit
+                        datosBasicos.add(u.getNombre());//Nombre
+                        datosBasicos.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());//Fiabilidad
+                        datosBasicos.add(p.getPrecio());//Precio
+                        modelo.addRow(datosBasicos);
+                    }
+                }*/
+             }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
