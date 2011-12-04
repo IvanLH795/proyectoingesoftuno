@@ -155,9 +155,9 @@ public class Splash extends javax.swing.JFrame {
         proveedor.setRepresentante("Henry Murillo");
 
         productoa.setNombreProducto("Marcadores");
-        productoa.setPrecio((float)2500);
+        productoa.setPrecio(2500);
         productob.setNombreProducto("Borradores");
-        productob.setPrecio((float)3000);
+        productob.setPrecio(3000);
 
         listaProductos.add(productoa);
         listaProductos.add(productob);

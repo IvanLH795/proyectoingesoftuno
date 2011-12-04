@@ -11,7 +11,7 @@ package Entidad;
  */
 public class ProductoProveedor {
     private String nombreProducto;
-    private Float precioPorUnidad;
+    private float precioPorUnidad;
 
     public String getNombreProducto() {
         return nombreProducto;
@@ -21,11 +21,11 @@ public class ProductoProveedor {
         this.nombreProducto = nombreProducto;
     }
 
-    public Float getPrecio() {
+    public float getPrecio() {
         return precioPorUnidad;
     }
 
-    public void setPrecio(Float precio) {
+    public void setPrecio(float precio) {
         this.precioPorUnidad = precio;
     }
 
