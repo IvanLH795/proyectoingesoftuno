@@ -7,9 +7,6 @@ package Control;
 import Entidad.Proveedores;
 import Entidad.ProductoProveedor;
 import Frontera.Splash;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -19,6 +16,8 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.*;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Darthian
@@ -40,8 +39,9 @@ public class ControlContratarProveedor {
         productos = this.productos;
     }
 
-     public List buscarListaProveedores(String producto){
+     public List buscarListaProveedores(String producto, DefaultTableModel modelo){
        List listaProveedores = new ArrayList();
+       Vector datosBasicos = new Vector();
        if (producto.equals(null)){
            listaProveedores = null;
        }
@@ -50,6 +50,11 @@ public class ControlContratarProveedor {
                 for (ProductoProveedor p : u.getProductos()){
                     if (p.getNombreProducto().equals(producto)){
                         listaProveedores.add(u);
+                        datosBasicos.add(u.getNit());//Nit
+                        datosBasicos.add(u.getNombre());//Nombre
+                        datosBasicos.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());//Fiabilidad
+                        datosBasicos.add(p.getPrecio());//Precio
+                        modelo.addRow(datosBasicos);
                     }
                 }
             }
