@@ -4,7 +4,7 @@ package Control;
 import Entidad.Sistema;
 import Entidad.Usuario;
 import Frontera.Login;
-//import Frontera.Splash;
+import Frontera.Splash;
 
 // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
 // #[regen=yes,id=DCE.75B6C54F-9E71-718D-4919-1B99E3957F82]
@@ -14,8 +14,8 @@ public class ValidarLogin {
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.5118F757-8C9A-1A8A-F4F4-FB3ACEA7482A]
     // </editor-fold>
-    private Sistema sistema = new Sistema();
-    //private Sistema sistema = Splash.sistema;
+    //private Sistema sistema = new Sistema();
+    private Sistema sistema = Splash.sistema;
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.5816F43B-264E-A14E-7956-769C10BE049F]
