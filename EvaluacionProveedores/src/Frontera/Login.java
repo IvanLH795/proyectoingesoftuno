@@ -150,7 +150,7 @@ public class Login extends javax.swing.JFrame {
     }
     else{
         JOptionPane.showMessageDialog(frame, resultado, "Error", JOptionPane.ERROR_MESSAGE);
-        nombreTF.setText(null);
+        nombreTF.setText(usuario.getNombre());
         contraseniaTF.setText(null);
     }
 

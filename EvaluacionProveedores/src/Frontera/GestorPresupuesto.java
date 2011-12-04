@@ -20,6 +20,7 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,18 +32,18 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     private Sistema sistema;
     private JFrame frame;
     String texto;
-
     
    public GestorPresupuesto() {
 
         initComponents();
         sistema = Splash.sistema;
+        inicializacion();
         modelo = new MiModelo();
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
-        jButton3.setVisible(false);
-        jButton2.setVisible(false);
+        ModificarAceptar.setVisible(false);
+        ModificarCancelar.setVisible(false);
         jTextField3.setVisible(false);
         try{
         for(Productos u: sistema.getProductos()){
@@ -76,12 +77,12 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ModificarPresupuesto = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ModificarCancelar = new javax.swing.JButton();
+        ModificarAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Presupuesto");
@@ -154,10 +155,10 @@ public class GestorPresupuesto extends javax.swing.JFrame {
 
         jLabel3.setText("Total: ");
 
-        jButton1.setText("Modificar presupuesto");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ModificarPresupuesto.setText("Modificar presupuesto");
+        ModificarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ModificarPresupuestoActionPerformed(evt);
             }
         });
 
@@ -167,17 +168,17 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         jTextField2.setEditable(false);
         jTextField2.setText("0");
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ModificarCancelar.setText("Cancelar");
+        ModificarCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ModificarCancelarActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Aceptar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ModificarAceptar.setText("Aceptar");
+        ModificarAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ModificarAceptarActionPerformed(evt);
             }
         });
 
@@ -198,14 +199,14 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton3)
+                        .addComponent(ModificarAceptar)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton2))
+                        .addComponent(ModificarCancelar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ModificarPresupuesto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -220,13 +221,13 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(ModificarPresupuesto)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, 0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton3))
+                    .addComponent(ModificarCancelar, 0, 0, Short.MAX_VALUE)
+                    .addComponent(ModificarAceptar))
                 .addGap(11, 11, 11))
         );
 
@@ -280,6 +281,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
 
     private void btnProductoAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoAgregarActionPerformed
         Vector obj = new Vector();
+        ProductoProveedor producto1 = new ProductoProveedor();
+        ControlGestionarPresupuesto verificar = new ControlGestionarPresupuesto();
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
         int a,b=0;
@@ -291,8 +294,16 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 jTextField2.setText(Integer.parseInt(jTextField2.getText())-a +"");
                 obj.addElement(producto);
                 obj.addElement(a);
-                modelo.addRow(obj);
-
+                producto1.setNombreProducto((String) obj.get(0));
+                producto1.setPrecio((Float.parseFloat((String) obj.get(1))));
+             
+                String resultado = verificar.verificarProducto(producto1);
+                if(resultado.equals("Correcto")){
+                    obj.addElement(producto1.getNombreProducto());
+                    obj.addElement(producto1.getPrecio());
+                    modelo.addRow(obj);
+                }
+                
             }
             catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "datos Incorrectos");
@@ -339,24 +350,24 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPresupuestoAsignarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jButton2.setVisible(true);
-          jButton3.setVisible(true);
+    private void ModificarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPresupuestoActionPerformed
+        ModificarCancelar.setVisible(true);
+          ModificarAceptar.setVisible(true);
           jTextField3.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ModificarPresupuestoActionPerformed
 
     private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTerminarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-          jButton2.setVisible(false);
-          jButton3.setVisible(false);
+    private void ModificarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarCancelarActionPerformed
+          ModificarCancelar.setVisible(false);
+          ModificarAceptar.setVisible(false);
           jTextField3.setVisible(false);// TODO add your handling code here:
           
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ModificarCancelarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void ModificarAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarAceptarActionPerformed
        if(!jTextField3.getText().equals("")){
             int a;
             try {
@@ -364,24 +375,49 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 a=Integer.parseInt(texto);
                 jTextField1.setText(Integer.toString(a));
                 jTextField2.setText(a+"");
-                jButton3.setVisible(false);
-                jButton2.setVisible(false);
+                ModificarAceptar.setVisible(false);
+                ModificarCancelar.setVisible(false);
                 jTextField3.setVisible(false);
             }
             catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "datos Incorrectos");
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_ModificarAceptarActionPerformed
+
+    public void inicializacion(){
+
+    ArrayList<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+    ProductoProveedor a = new ProductoProveedor();
+    ProductoProveedor b = new ProductoProveedor();
+    ProductoProveedor c = new ProductoProveedor();
+    ProductoProveedor d = new ProductoProveedor();
+
+    a.setNombreProducto("Marcadores");
+    a.setPrecio(2500);
+    b.setNombreProducto("Borradores");
+    b.setPrecio(2500);
+    c.setNombreProducto("Tableros");
+    c.setPrecio(2500);
+    d.setNombreProducto("marcadores");
+    d.setPrecio(2500);
+
+    productos.add(a);
+    productos.add(b);
+    productos.add(c);
+    productos.add(d);
+
+    sistema.setProductosProveedor(productos);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ModificarAceptar;
+    private javax.swing.JButton ModificarCancelar;
+    private javax.swing.JButton ModificarPresupuesto;
     private javax.swing.JButton btnPresupuestoAsignar;
     private javax.swing.JButton btnProductoAgregar;
     private javax.swing.JButton btnProductoEliminar;
     private javax.swing.JButton btnTerminar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

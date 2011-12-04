@@ -338,7 +338,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
         proveedor.setCorreo(jTextField13.getText());
         proveedor.setPaginaWeb(jTextField14.getText());
-        producto.setPrecio(Float.parseFloat(jTextField12.getText()));
+        producto.setPrecio(Integer.parseInt(jTextField12.getText()));
         productos.add(producto);
         float valorTotal = producto.getPrecio() * Float.parseFloat(jTextField1.getText());
         jTextField3.setText(Float.toString(valorTotal));
