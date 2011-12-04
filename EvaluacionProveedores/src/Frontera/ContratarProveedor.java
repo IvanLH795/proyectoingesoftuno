@@ -17,6 +17,7 @@ import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -303,10 +304,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       for (Proveedores u : Splash.sistema.getProveedores()){
+        Vector obj = new Vector();
+        for (Proveedores u : Splash.sistema.getProveedores()){
             for (ProductoProveedor p : u.getProductos()){
                 if (p.getNombreProducto().equals(jTextField6.getText())){
-                    Vector obj = new Vector();
                     obj.add(u.getNit());
                     obj.add(u.getNombre());
                     obj.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());
@@ -314,6 +315,13 @@ public class ContratarProveedor extends javax.swing.JFrame {
                     modelo.addRow(obj);
                 }
             }
+        }
+        if(obj.isEmpty()){
+            JOptionPane.showMessageDialog(null, "No hay proveedores que ofrezcan este producto", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
+            //Prueba
+        }
+        else{
+
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
