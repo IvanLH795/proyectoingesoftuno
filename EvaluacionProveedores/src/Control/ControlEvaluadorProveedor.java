@@ -11,7 +11,7 @@ package Control;
 import Entidad.Proveedores;
 import Entidad.Sistema;
 public class ControlEvaluadorProveedor {
-
+    Sistema sistem = new Sistema();
     public ControlEvaluadorProveedor() {
     }
     public Proveedores buscarProveedor(int nit){
@@ -35,6 +35,27 @@ public class ControlEvaluadorProveedor {
                 anterior = actualizado;
     }
 
+    public void setSistem(Sistema sistem) {
+        this.sistem = sistem;
+    }
+
+public String buscar(int nit){
+
+           
+            for (Proveedores u: sistem.getProveedores()){
+                if (u.getNit()== nit){
+                    return "Proveedor Encontrado";
+                }
+            }
+            return "Proveedor No Encontrado";
+    }
+  public String validar(double calidad, double fiabilidad, String comentarios){
+        if(calidad >= 0 && calidad <= 100 && fiabilidad>=0 && fiabilidad<=100 &&  comentarios.length()>=0 && comentarios.length()<=100 ){
+        return "Datos Correctos";
+        }
+        else
+        return "Datos Incorrectos";
+    }
 
    
 }
