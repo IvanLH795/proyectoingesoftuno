@@ -110,7 +110,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel15.setText("Pagina web:");
 
-        jLabel2.setText("Envios por mes:");
+        jLabel2.setText("Pedido Total:");
 
         jLabel3.setText("Valor individual:");
 
@@ -318,16 +318,19 @@ public class ContratarProveedor extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "No hay proveedores que ofrezcan este producto", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
             }
             else{
-               /*for (Proveedores u: listaProveedores){
-                    for (ProductoProveedor p : u.getProductos()){
-                        datosBasicos.add(u.getNit());//Nit
-                        datosBasicos.add(u.getNombre());//Nombre
-                        datosBasicos.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());//Fiabilidad
-                        datosBasicos.add(p.getPrecio());//Precio
-                        modelo.addRow(datosBasicos);
-                    }
-                }*/
-                Collections.sort(listaProveedores);
+               //Collections.sort(listaProveedores);
+                Proveedores proveedor1 = new Proveedores();
+                proveedor1 = (Proveedores) listaProveedores.get(0);
+                jTextField7.setText(proveedor1.getNombre());//Nombre
+                jTextField9.setText(Integer.toString(proveedor1.getNit()));//Nit
+                jTextField8.setText(proveedor1.getRepresentante());//Representante
+                jTextField10.setText(jTextField6.getText());//Producto a contratar
+                jTextField11.setText(proveedor1.getDireccion());
+                jTextField12.setText(Integer.toString(proveedor1.getTelefono()));
+                jTextField13.setText(proveedor1.getCorreo());
+                jTextField14.setText(proveedor1.getPaginaWeb());
+                jTextField2.setText(Float.toString(proveedor1.getProductos().get(0).getPrecio()));
+                //prueba de cambio
              }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -337,17 +340,15 @@ public class ContratarProveedor extends javax.swing.JFrame {
         List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
         ProductoProveedor producto = new ProductoProveedor();
 
-        proveedor.setNombre(jTextField7.getText());
+         proveedor.setNombre(jTextField7.getText());
         proveedor.setNit(Integer.parseInt (jTextField9.getText()));//casting
         proveedor.setRepresentante(jTextField8.getText());
-        proveedor.setProductos(productos);
         proveedor.setDireccion(jTextField11.getText());
         proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
         proveedor.setCorreo(jTextField13.getText());
         proveedor.setPaginaWeb(jTextField14.getText());
-        producto.setPrecio(Integer.parseInt(jTextField12.getText()));
-        productos.add(producto);
-        float valorTotal = producto.getPrecio() * Float.parseFloat(jTextField1.getText());
+        producto.setPrecio(Integer.parseInt(jTextField2.getText()));
+        float valorTotal = Float.parseFloat(jTextField2.getText()) * Float.parseFloat(jTextField1.getText());
         jTextField3.setText(Float.toString(valorTotal));
 
         ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(jTextField1.getText()), producto.getPrecio(), productos);
