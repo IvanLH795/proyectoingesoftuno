@@ -306,7 +306,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        List listaProveedores = new ArrayList();
+        List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
         Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
         listaProveedores = proveedores.buscarListaProveedores(jTextField6.getText(),modelo);
@@ -320,13 +320,13 @@ public class ContratarProveedor extends javax.swing.JFrame {
             else{
                //Collections.sort(listaProveedores);
                 Proveedores proveedor1 = new Proveedores();
-                proveedor1 = (Proveedores) listaProveedores.get(0);
+                proveedor1 = listaProveedores.get(0);
                 jTextField7.setText(proveedor1.getNombre());//Nombre
-                jTextField9.setText(Integer.toString(proveedor1.getNit()));//Nit
+                jTextField9.setText(String.valueOf(proveedor1.getNit()));//Nit
                 jTextField8.setText(proveedor1.getRepresentante());//Representante
                 jTextField10.setText(jTextField6.getText());//Producto a contratar
                 jTextField11.setText(proveedor1.getDireccion());
-                jTextField12.setText(Integer.toString(proveedor1.getTelefono()));
+                jTextField12.setText(String.valueOf(proveedor1.getTelefono()));
                 jTextField13.setText(proveedor1.getCorreo());
                 jTextField14.setText(proveedor1.getPaginaWeb());
                 jTextField2.setText(Float.toString(proveedor1.getProductos().get(0).getPrecio()));
@@ -347,7 +347,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
         proveedor.setCorreo(jTextField13.getText());
         proveedor.setPaginaWeb(jTextField14.getText());
-        producto.setPrecio(Integer.parseInt(jTextField2.getText()));
+        producto.setPrecio(Float.parseFloat(jTextField2.getText()));
         float valorTotal = Float.parseFloat(jTextField2.getText()) * Float.parseFloat(jTextField1.getText());
         jTextField3.setText(Float.toString(valorTotal));
 

@@ -39,8 +39,8 @@ public class ControlContratarProveedor {
         productos = this.productos;
     }
 
-     public List buscarListaProveedores(String producto, DefaultTableModel modelo){
-       List listaProveedores = new ArrayList();
+     public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
+       List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
        Vector datosBasicos = new Vector();
        if (producto.equals(null)){
            listaProveedores = null;

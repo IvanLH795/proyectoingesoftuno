@@ -177,6 +177,4 @@ public class AdministrarProveedorTest {
 
         assertEquals(control.modificarProveedor(proveedor2, proveedor), Exito);
     }
-
-
 }
