@@ -5,6 +5,7 @@
 
 package Control;
 
+import Entidad.Proveedores;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,7 +45,11 @@ public class ContratarProveedorTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void verificarContratarProveedor(){
+        Proveedores proveedor = new Proveedores();
+        proveedor.setNit(-5);
+        assertEquals(Succes, this);
+    }
 
 }
