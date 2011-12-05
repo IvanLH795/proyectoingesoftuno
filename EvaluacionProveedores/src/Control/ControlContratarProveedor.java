@@ -63,7 +63,7 @@ public class ControlContratarProveedor {
    }
 
 
-    public void generarContrato(){
+    public String generarContrato(){
     
        try {
             OutputStream file = new FileOutputStream(new File("C:\\Contrato.pdf"));
@@ -105,10 +105,10 @@ public class ControlContratarProveedor {
             file.close();
 
         } catch (Exception e) {
-
             e.printStackTrace();
-            
+            return "Error al generar el contrato";
         }
+       return "El contrato se genero correctamente en la direccion 'C:\\Contrato.pdf'";
     }
 
 }
