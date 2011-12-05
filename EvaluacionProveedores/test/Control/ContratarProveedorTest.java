@@ -18,6 +18,10 @@ import static org.junit.Assert.*;
  */
 public class ContratarProveedorTest {
 
+    private static ControlContratarProveedor validarContrato = new ControlContratarProveedor();
+    private String ContratoNogenerado = "Error al generar el contrato";
+    private String PedidoInvalido = "Pedido Invalido";
+    private String Succes = "Succes";
     public ContratarProveedorTest() {
     }
 
