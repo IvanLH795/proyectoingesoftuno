@@ -19,22 +19,43 @@ import java.util.Vector;
  */
 public class ControlAdministrarProveedor {
 
-    public void crearProveedor(Proveedores u){
-            Sistema sistema = Frontera.Splash.sistema;
-            sistema.getProveedores().add(u);
+    public String crearProveedor(Proveedores u){
+        if(validarProveedorNit(u.getNit())){
+            if(validarProveedorTel(u.getTelefono()) || u.getTelefono()== 0){
+                Sistema sistema = Frontera.Splash.sistema;
+                sistema.getProveedores().add(u);
+                return "Succes";
+            }else{
+                return "Telefono invalido";
+            }
+        }
+        else{
+            return "Nit invalido";
+        }
     }
 
-    public void modificarProveedor(Proveedores viejo, Proveedores nuevo){
-            if(!viejo.equals(nuevo)){
-                viejo.setNombre(nuevo.getNombre());
-                viejo.setNit(nuevo.getNit());
-                viejo.setDireccion(nuevo.getDireccion());
-                viejo.setCorreo(nuevo.getCorreo());
-                viejo.setRepresentante(nuevo.getRepresentante());
-                viejo.setPaginaWeb(nuevo.getPaginaWeb());
-                viejo.setTelefono(nuevo.getTelefono());
-                viejo.setProductos(null);
+    public String modificarProveedor(Proveedores viejo, Proveedores nuevo){
+        if(validarProveedorNit(nuevo.getNit())){
+            if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
+                if(!viejo.equals(nuevo)){
+                    viejo.setNombre(nuevo.getNombre());
+                    viejo.setNit(nuevo.getNit());
+                    viejo.setDireccion(nuevo.getDireccion());
+                    viejo.setCorreo(nuevo.getCorreo());
+                    viejo.setRepresentante(nuevo.getRepresentante());
+                    viejo.setPaginaWeb(nuevo.getPaginaWeb());
+                    viejo.setTelefono(nuevo.getTelefono());
+                    viejo.setProductos(null);
+                }
+                return "Succes";
             }
+            else{
+                return "Telefono invalido";
+            }
+        }
+        else{
+            return "Nit invalido";
+        }
     }
 
     public void borrarProveedor(String nombre, int nit){
@@ -83,43 +104,78 @@ public class ControlAdministrarProveedor {
         return null;
     }
 
-    public void modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaproductos) {
-        viejo.setNombre(nuevo.getNombre());
-        viejo.setNit(nuevo.getNit());
-        viejo.setDireccion(nuevo.getDireccion());
-        viejo.setCorreo(nuevo.getCorreo());
-        viejo.setRepresentante(nuevo.getRepresentante());
-        viejo.setPaginaWeb(nuevo.getPaginaWeb());
-        viejo.setTelefono(nuevo.getTelefono());
+    public String modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaproductos) {
+        if(validarProveedorNit(nuevo.getNit())){
+            if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
+                viejo.setNombre(nuevo.getNombre());
+                viejo.setNit(nuevo.getNit());
+                viejo.setDireccion(nuevo.getDireccion());
+                viejo.setCorreo(nuevo.getCorreo());
+                viejo.setRepresentante(nuevo.getRepresentante());
+                viejo.setPaginaWeb(nuevo.getPaginaWeb());
+                viejo.setTelefono(nuevo.getTelefono());
 
-        if(!(Splash.listaproductos == null)){
-            List<ProductoProveedor> lista = new ArrayList();
-            for(int i=0; i<listaproductos.size();i++){
-                ProductoProveedor producto = new ProductoProveedor();
-                producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-                producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
-                if(!producto.getNombreProducto().equals(null))
-                        lista.add(producto);
+                if(!(Splash.listaproductos == null)){
+                    List<ProductoProveedor> lista = new ArrayList();
+                    for(int i=0; i<listaproductos.size();i++){
+                        ProductoProveedor producto = new ProductoProveedor();
+                        producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
+                        producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                        if(!producto.getNombreProducto().equals(null))
+                            lista.add(producto);
+                    }
+                    viejo.setProductos(lista);
+                    Splash.listaproductos = null;
+                }
+                return "Succes";
             }
-            viejo.setProductos(lista);
-            Splash.listaproductos = null;
+            else{
+                return "Telefono invalido";
+            }
+        }
+        else{
+            return "Nit invalido";
         }
     }
 
-    public void crearProveedor(Proveedores proveedor2, Vector listaproductos) {
-        List<ProductoProveedor> lista = new ArrayList();
-        if(listaproductos != null){
-            for(int i=0; i<listaproductos.size();i++){
-                ProductoProveedor producto = new ProductoProveedor();
-                producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-                producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
-                if(!producto.getNombreProducto().equals(null))
-                    lista.add(producto);
+    public String crearProveedor(Proveedores proveedor2, Vector listaproductos) {
+        if(validarProveedorNit(proveedor2.getNit())){
+            if(validarProveedorTel(proveedor2.getTelefono()) || proveedor2.getTelefono()== 0){
+                List<ProductoProveedor> lista = new ArrayList();
+                if(listaproductos != null){
+                    for(int i=0; i<listaproductos.size();i++){
+                        ProductoProveedor producto = new ProductoProveedor();
+                        producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
+                        producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                        if(!producto.getNombreProducto().equals(null))
+                            lista.add(producto);
+                    }
+                    proveedor2.setProductos(lista);
+                    Splash.listaproductos = null;
+                }
+                Sistema sistema = Frontera.Splash.sistema;
+                sistema.getProveedores().add(proveedor2);
+                return "Succes";
+            }else{
+                return "Telefono invalido";
             }
-            proveedor2.setProductos(lista);
-            Splash.listaproductos = null;
+        }else{
+            return "Nit invalido";
         }
-            Sistema sistema = Frontera.Splash.sistema;
-            sistema.getProveedores().add(proveedor2);
+    }
+
+    private boolean validarProveedorNit(int nit) {
+        if(nit<1)
+            return false;
+        return true;
+    }
+
+    private boolean validarProveedorTel(int tel) {
+        if(tel<0)
+            return false;
+        if(Integer.toString(tel).length()<7 || Integer.toString(tel).length()>10)
+            return false;
+
+        return true;
     }
 }

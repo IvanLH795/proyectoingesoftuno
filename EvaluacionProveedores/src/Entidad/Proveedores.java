@@ -33,6 +33,7 @@ public class Proveedores {
 
     public Proveedores() {
         evaluacionRealizada = false;
+        telefono = 0;
     }
 
     public String getCorreo() {
