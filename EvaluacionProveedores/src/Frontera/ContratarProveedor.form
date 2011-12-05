@@ -40,21 +40,20 @@
                           <Group type="102" alignment="0" attributes="1">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextField6" pref="576" max="32767" attributes="1"/>
+                              <Component id="jTextField6" pref="579" max="32767" attributes="1"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="559" max="32767" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="522" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,17 +72,15 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel4" min="-2" pref="348" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Component id="jScrollPane1" min="-2" pref="181" max="-2" attributes="1"/>
+                  <Component id="jPanel4" min="-2" pref="399" max="-2" attributes="1"/>
               </Group>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,17 +115,17 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jTextField9" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField8" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField10" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField11" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField12" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField13" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField14" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField2" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" pref="272" max="32767" attributes="0"/>
-                      <Component id="jTextField7" alignment="1" pref="272" max="32767" attributes="0"/>
+                      <Component id="jTextField9" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField8" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField10" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField11" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField12" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField13" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField14" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField2" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField3" alignment="0" pref="275" max="32767" attributes="0"/>
+                      <Component id="jTextField7" alignment="1" pref="275" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>

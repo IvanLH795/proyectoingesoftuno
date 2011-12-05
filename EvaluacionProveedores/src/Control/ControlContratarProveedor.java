@@ -42,7 +42,7 @@ public class ControlContratarProveedor {
      public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
        List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
        Vector datosBasicos = new Vector();
-       if (producto.equals(null)){
+       if (validarProducto(producto)){
            listaProveedores = null;
        }
        else{
@@ -93,7 +93,10 @@ public class ControlContratarProveedor {
             contrato.add(new Paragraph("\n \t Pagina Web: "));
             contrato.add(new Paragraph(proveedorContratado.getPaginaWeb()));
             contrato.add(new Paragraph("\n \t Envios por mes: "));
-            contrato.add(new Paragraph());
+            if(validarPedido(cantidad)){
+                return "pedido invalido";
+            }
+            //contrato.add(new Paragraph());
             contrato.add(new Paragraph("\n \t Valor por unidad: "));
             contrato.add(new Paragraph(valorUnidad));
             contrato.add(new Paragraph("\n \t Valor total: "));
@@ -104,11 +107,24 @@ public class ControlContratarProveedor {
             contrato.close();
             file.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch(Exception ee){
+            System.out.println(ee);
             return "Error al generar el contrato";
         }
-       return "El contrato se genero correctamente en la direccion 'C:\\Contrato.pdf'";
+       return "succes";
     }
 
+    private boolean validarPedido (float pedido) {
+        if(pedido <= 0){
+            return false;
+        }
+        return true;
+    }
+
+     private boolean validarProducto(String prod) {
+        if(prod.equals(null)){
+            return true;
+        }
+        return false;
+    }
 }
