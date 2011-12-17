@@ -40,20 +40,23 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         inicializacion();
         modelo = new MiModelo();
         tabla = new JTable(modelo);
-        modelo.addColumn("Producto");
-        modelo.addColumn("Precio");
-        ModificarAceptar.setVisible(false);
-        ModificarCancelar.setVisible(false);
-        jTextField3.setVisible(false);
-        try{
-        for(Productos u: sistema.getProductos()){
-            Vector obje = new Vector();
-            obje.add(u.getNombreProducto());
-            obje.add(u.getDineroDisponible());
-            modelo.addRow(obje);
-            //
-        }
+        Vector titulos = new Vector();
+        titulos.add("Producto");
+        titulos.add("Precio");
+        PanelMP.setVisible(false);
+        float a =sistema.getPresupuestoT();
+        TTotal.setText(String.valueOf(a));
+        try{            
+            for(Productos u: sistema.getProductos()){
+                Vector obje = new Vector();
+                obje.add(u.getNombreProducto());
+                obje.add(u.getDineroDisponible());
+                modelo.setColumnIdentifiers(titulos);
+                modelo.addRow(obje);
+                TDisponible.setText(String.valueOf(a-u.getDineroDisponible()));
+            }
         }catch(NullPointerException ex){
+            modelo.setColumnIdentifiers(titulos);
         }
         jScrollPane1.setViewportView(tabla);
     }
@@ -72,17 +75,18 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         panelProductos = new javax.swing.JPanel();
         btnProductoAgregar = new javax.swing.JButton();
         btnProductoEliminar = new javax.swing.JButton();
-        btnPresupuestoAsignar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        Jdisponible = new javax.swing.JLabel();
+        JTotal = new javax.swing.JLabel();
         ModificarPresupuesto = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        TTotal = new javax.swing.JTextField();
+        TDisponible = new javax.swing.JTextField();
+        PanelMP = new javax.swing.JPanel();
+        TNuevoPresupuesto = new javax.swing.JTextField();
+        PresupuestoAñadir = new javax.swing.JButton();
+        PresupuestoQuitar = new javax.swing.JButton();
         ModificarCancelar = new javax.swing.JButton();
-        ModificarAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Presupuesto");
@@ -118,13 +122,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        btnPresupuestoAsignar.setText("Guardar Cambios");
-        btnPresupuestoAsignar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPresupuestoAsignarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelProductosLayout = new javax.swing.GroupLayout(panelProductos);
         panelProductos.setLayout(panelProductosLayout);
         panelProductosLayout.setHorizontalGroup(
@@ -132,7 +129,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             .addGroup(panelProductosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnPresupuestoAsignar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProductoEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProductoAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
@@ -144,16 +140,14 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 .addComponent(btnProductoAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnProductoEliminar)
-                .addGap(31, 31, 31)
-                .addComponent(btnPresupuestoAsignar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Presupuesto"));
 
-        jLabel2.setText("Disponible: ");
+        Jdisponible.setText("Disponible: ");
 
-        jLabel3.setText("Total: ");
+        JTotal.setText("Total: ");
 
         ModificarPresupuesto.setText("Modificar presupuesto");
         ModificarPresupuesto.addActionListener(new java.awt.event.ActionListener() {
@@ -162,11 +156,25 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("0");
+        TTotal.setEditable(false);
+        TTotal.setText("0");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("0");
+        TDisponible.setEditable(false);
+        TDisponible.setText("0");
+
+        PresupuestoAñadir.setText("Añadir");
+        PresupuestoAñadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PresupuestoAñadirActionPerformed(evt);
+            }
+        });
+
+        PresupuestoQuitar.setText("Quitar");
+        PresupuestoQuitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PresupuestoQuitarActionPerformed(evt);
+            }
+        });
 
         ModificarCancelar.setText("Cancelar");
         ModificarCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,38 +183,60 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             }
         });
 
-        ModificarAceptar.setText("Aceptar");
-        ModificarAceptar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarAceptarActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout PanelMPLayout = new javax.swing.GroupLayout(PanelMP);
+        PanelMP.setLayout(PanelMPLayout);
+        PanelMPLayout.setHorizontalGroup(
+            PanelMPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMPLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(TNuevoPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
+            .addGroup(PanelMPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PresupuestoAñadir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(PresupuestoQuitar)
+                .addContainerGap())
+            .addGroup(PanelMPLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(ModificarCancelar)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+        PanelMPLayout.setVerticalGroup(
+            PanelMPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelMPLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TNuevoPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(PanelMPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PresupuestoAñadir)
+                    .addComponent(PresupuestoQuitar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ModificarCancelar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelMP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(Jdisponible)
+                            .addComponent(JTotal))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(ModificarAceptar)
-                        .addGap(35, 35, 35)
-                        .addComponent(ModificarCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(TDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                            .addComponent(TTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ModificarPresupuesto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(ModificarPresupuesto)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,21 +244,17 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTotal)
+                    .addComponent(TTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Jdisponible)
+                    .addComponent(TDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ModificarPresupuesto)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ModificarCancelar, 0, 0, Short.MAX_VALUE)
-                    .addComponent(ModificarAceptar))
-                .addGap(11, 11, 11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PanelMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -236,72 +262,82 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel1))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTerminar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(438, 438, 438)
-                        .addComponent(btnTerminar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(178, 178, 178)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(212, 212, 212)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(panelProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
                 .addComponent(btnTerminar)
-                .addGap(26, 26, 26))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTerminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerminarMouseClicked
-    Principal regresar = new Principal(Login.roll);
-    regresar.setLocationRelativeTo(null);
-    regresar.setVisible(true);
-    this.dispose();
+        Principal regresar = new Principal(Login.roll);
+        regresar.setLocationRelativeTo(null);
+        regresar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnTerminarMouseClicked
 
     private void btnProductoAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoAgregarActionPerformed
         Vector obj = new Vector();
-        ProductoProveedor producto1 = new ProductoProveedor();
+        Productos producto1 = new Productos();
         ControlGestionarPresupuesto verificar = new ControlGestionarPresupuesto();
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
-        int a,b=0;
-        b=Integer.parseInt(precio);
-        if(b<=(Integer.parseInt(jTextField2.getText())))
+        float a, b = 0;
+        b=Float.parseFloat(precio);
+        if(b<=(Float.parseFloat(TDisponible.getText())))
         {
-            try {
-                a=Integer.parseInt(precio);
-                jTextField2.setText(Integer.parseInt(jTextField2.getText())-a +"");
+           try {
+                a=Float.parseFloat(precio);
+                TDisponible.setText(Float.parseFloat(TDisponible.getText())-a +"");
                 obj.addElement(producto);
                 obj.addElement(a);
                 producto1.setNombreProducto((String) obj.get(0));
-                producto1.setPrecio((Float.parseFloat((String) obj.get(1))));
+                producto1.setDineroDisponible( (Float)obj.get(1));
              
                 String resultado = verificar.verificarProducto(producto1);
                 if(resultado.equals("Correcto")){
                     obj.addElement(producto1.getNombreProducto());
-                    obj.addElement(producto1.getPrecio());
+                    obj.addElement(producto1.getDineroDisponible());
                     modelo.addRow(obj);
+                    if(sistema.getProductos() == null){
+                        List<Productos> productos = new ArrayList<Productos>();
+                        productos.add(producto1);
+                        sistema.setProductos(productos);
+                    }else{
+                        sistema.agregarProducto(producto1);
+                    }
                 }
                 
             }
@@ -313,7 +349,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductoAgregarActionPerformed
 
     private void btnProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoEliminarActionPerformed
-        int size=0,b;
+        int size=0;
+        float b;
         String a;
         Vector obj = new Vector();
         int filaBorrar = 0;
@@ -321,7 +358,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             size = modelo.getDataVector().size();
 
 
-            jTextField2.setText(Integer.parseInt(jTextField2.getText()) +"");
+            TDisponible.setText(Float.parseFloat(TDisponible.getText()) +"");
         }catch(NullPointerException ex){
             size = 0;
         }
@@ -337,53 +374,68 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             obj= modelo.getDataVector();
             obj=(Vector) obj.elementAt(filaBorrar);
             a=(obj.elementAt(1)+"");
-            b=Integer.parseInt(a);
-            jTextField2.setText(Integer.parseInt(jTextField2.getText())+b+"");
+            b=Float.parseFloat(a);
+            TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
             modelo.removeRow(filaBorrar);
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
 
-    private void btnPresupuestoAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPresupuestoAsignarActionPerformed
-        if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Desea guardar los cambios?", "Guardar", JOptionPane.YES_NO_OPTION)){
-            ControlGestionarPresupuesto control = new ControlGestionarPresupuesto();
-            control.modificarProductos(modelo.getDataVector());
-        }
-    }//GEN-LAST:event_btnPresupuestoAsignarActionPerformed
-
     private void ModificarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPresupuestoActionPerformed
-        ModificarCancelar.setVisible(true);
-          ModificarAceptar.setVisible(true);
-          jTextField3.setVisible(true);        // TODO add your handling code here:
+        PanelMP.setVisible(true);                   // TODO add your handling code here:
     }//GEN-LAST:event_ModificarPresupuestoActionPerformed
 
     private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        // TODO add your handling code here:
+        PanelMP.setVisible(false);
     }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void ModificarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarCancelarActionPerformed
-          ModificarCancelar.setVisible(false);
-          ModificarAceptar.setVisible(false);
-          jTextField3.setVisible(false);// TODO add your handling code here:
+        PanelMP.setVisible(false);
           
     }//GEN-LAST:event_ModificarCancelarActionPerformed
 
-    private void ModificarAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarAceptarActionPerformed
-       if(!jTextField3.getText().equals("")){
-            int a;
+    private void PresupuestoAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PresupuestoAñadirActionPerformed
+       if(!TNuevoPresupuesto.getText().equals("")){
             try {
-                texto = jTextField3.getText();
-                a=Integer.parseInt(texto);
-                jTextField1.setText(Integer.toString(a));
-                jTextField2.setText(a+"");
-                ModificarAceptar.setVisible(false);
-                ModificarCancelar.setVisible(false);
-                jTextField3.setVisible(false);
+                texto = TNuevoPresupuesto.getText();
+                if(Float.parseFloat(texto)>0){
+                    sistema.setPresupuestoT(Float.parseFloat(texto)+sistema.getPresupuestoT());
+                    TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
+                    TDisponible.setText(String.valueOf(sistema.getPresupuestoT()));
+                    PanelMP.setVisible(false);
+                    TNuevoPresupuesto.setText("");
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Presupuesto invalido");
             }
             catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "datos Incorrectos");
             }
         }
-    }//GEN-LAST:event_ModificarAceptarActionPerformed
+    }//GEN-LAST:event_PresupuestoAñadirActionPerformed
+
+    private void PresupuestoQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PresupuestoQuitarActionPerformed
+        if(!TNuevoPresupuesto.getText().equals("")){
+            try {
+                texto = TNuevoPresupuesto.getText();
+                if(Float.parseFloat(texto)>0){
+                if(Float.parseFloat(texto)<=sistema.getPresupuestoT()){
+                    sistema.setPresupuestoT(sistema.getPresupuestoT()-Float.parseFloat(texto));
+                    TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
+                    TDisponible.setText(String.valueOf(sistema.getPresupuestoT()));
+                    PanelMP.setVisible(false);
+                    TNuevoPresupuesto.setText("");
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Presupuesto Incorrecto");
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Presupuesto Incorrecto");
+            }
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "datos Incorrectos");
+            }
+        }
+    }//GEN-LAST:event_PresupuestoQuitarActionPerformed
 
     public void inicializacion(){
 
@@ -411,21 +463,22 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ModificarAceptar;
+    private javax.swing.JLabel JTotal;
+    private javax.swing.JLabel Jdisponible;
     private javax.swing.JButton ModificarCancelar;
     private javax.swing.JButton ModificarPresupuesto;
-    private javax.swing.JButton btnPresupuestoAsignar;
+    private javax.swing.JPanel PanelMP;
+    private javax.swing.JButton PresupuestoAñadir;
+    private javax.swing.JButton PresupuestoQuitar;
+    private javax.swing.JTextField TDisponible;
+    private javax.swing.JTextField TNuevoPresupuesto;
+    private javax.swing.JTextField TTotal;
     private javax.swing.JButton btnProductoAgregar;
     private javax.swing.JButton btnProductoEliminar;
     private javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel panelProductos;
     // End of variables declaration//GEN-END:variables
     private List<ProductoProveedor> listaLocal;
