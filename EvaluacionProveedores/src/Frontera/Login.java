@@ -180,7 +180,6 @@ public class Login extends javax.swing.JFrame {
             }
         else{
             JOptionPane.showMessageDialog(frame, resultado, "Error", JOptionPane.ERROR_MESSAGE);
-            nombreTF.setText(null);
             contraseniaTF.setText(null);
             }
     }//GEN-LAST:event_contraseniaTFActionPerformed

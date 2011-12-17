@@ -20,6 +20,17 @@ public class Sistema {
     private List<Proveedores> proveedores;
     private List<Productos> productos;
     private List<ProductoProveedor> productosProveedor;
+    private Float presupuesto;
+    private Float presupuestoD;
+
+    public Float getPresupuestoT() {
+        return presupuesto;
+    }
+
+    public void setPresupuestoT(Float presupuesto) {
+        this.presupuesto = presupuesto;
+    }
+
 
     public List<Productos> getProductos() {
         return productos;
@@ -49,6 +60,7 @@ public class Sistema {
     // #[regen=yes,id=DCE.1B36C9B1-1E42-26F9-165F-B956DDF5ADB1]
     // </editor-fold>
     public Sistema () {
+        presupuesto = new Float(0);
     }
 
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
@@ -63,6 +75,24 @@ public class Sistema {
     // </editor-fold>
     public void setUsuarios (List<Usuario> val) {
         this.usuarios = val;
+    }
+
+    public void agregarProducto(Productos producto){
+        this.productos.add(producto);
+    }
+
+    /**
+     * @return the presupuestoD
+     */
+    public Float getPresupuestoD() {
+        return presupuestoD;
+    }
+
+    /**
+     * @param presupuestoD the presupuestoD to set
+     */
+    public void setPresupuestoD(Float presupuestoD) {
+        this.presupuestoD = presupuestoD;
     }
 }
 

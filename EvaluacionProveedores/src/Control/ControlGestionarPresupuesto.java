@@ -48,11 +48,11 @@ public class ControlGestionarPresupuesto {
         }
     }
 
-    public String verificarProducto (ProductoProveedor producto) {
+    public String verificarProducto (Productos producto) {
         if (!verificarLongitudPrecio(producto.getNombreProducto())){
             return ("Longitud de nombre incorrecta");}
 
-        if (!verificarLongitudPrecio(producto.getPrecio()))
+        if (!verificarLongitudPrecio(producto.getDineroDisponible()))
             return ("Precio incorrecto");
 
         return("Correcto");
