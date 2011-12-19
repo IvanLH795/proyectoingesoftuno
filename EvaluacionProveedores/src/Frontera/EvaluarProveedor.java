@@ -229,10 +229,8 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         comentariosTextField.setText("");
      }
     public void iniciarEvaluacion(){
-    EvaluarProveedor nuevaEvaluacion = new EvaluarProveedor();
-    nuevaEvaluacion.setLocationRelativeTo(null);
-    nuevaEvaluacion.setVisible(true);
-    this.dispose();
+    limpiarCampos();
+    inhabilitarComponentes();
     }
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         limpiarCampos();
@@ -287,7 +285,11 @@ ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
         proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
         JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
-        iniciarEvaluacion();
+         Principal regresarMenu = new Principal(Login.roll); //nos devuelve al Menu Principal
+     regresarMenu.setLocationRelativeTo(null);
+     regresarMenu.setVisible(true);
+     this.dispose();
+        
        }else{//manda el msn "Datos invalidos" cuando algun dato no cumple los requisitos
             JOptionPane.showMessageDialog(this,"Datos Invalidos", "Advertencia",JOptionPane.WARNING_MESSAGE);
             iniciarEvaluacion();
@@ -306,7 +308,8 @@ ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
     }//GEN-LAST:event_cancelarButtonActionPerformed
 
     private void nitProveedorTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nitProveedorTextFieldMouseClicked
-       nitProveedorTextField.setText("");
+       iniciarEvaluacion();
+        nitProveedorTextField.setText("");
     }//GEN-LAST:event_nitProveedorTextFieldMouseClicked
 
     private boolean validarTextFieldNit(){

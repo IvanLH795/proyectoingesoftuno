@@ -34,29 +34,5 @@ public class ControlEvaluadorProveedor {
       public void ingresarEvaluacionProveedor(Proveedores anterior, Proveedores actualizado){
                 anterior = actualizado;
     }
-
-    public void setSistem(Sistema sistem) {
-        this.sistem = sistem;
-    }
-
-public String buscar(int nit){
-
-           
-            for (Proveedores u: sistem.getProveedores()){
-                if (u.getNit()== nit){
-                    return "Proveedor Encontrado";
-                }
-            }
-            return "Proveedor No Encontrado";
-    }
-  public String validar(double calidad, double fiabilidad, String comentarios){
-        if(calidad >= 0 && calidad <= 100 && fiabilidad>=0 && fiabilidad<=100 &&  comentarios.length()>=0 && comentarios.length()<=100 ){
-        return "Datos Correctos";
-        }
-        else
-        return "Datos Incorrectos";
-    }
-
-   
 }
 //valida los datos ingresados y despues los actualiza para el proveedor ingresado
