@@ -58,16 +58,17 @@ public class ControlAdministrarProveedor {
         }
     }
 
-    public void borrarProveedor(String nombre, int nit){
+    public String borrarProveedor(String nombre, int nit){
 
             Sistema sistema = Frontera.Splash.sistema;
 
             for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals((Integer)nit)){
                     sistema.getProveedores().remove(u);
-                    break;
+                    return "Succes";
                 }
             }
+            return "Falla";
     }
 
     public Proveedores buscarProveedor(String nombre, Integer nit){
