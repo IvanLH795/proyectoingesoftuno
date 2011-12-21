@@ -5,7 +5,6 @@
 
 package Control;
 
-import Entidad.ProductoProveedor;
 import Entidad.Productos;
 import Entidad.Sistema;
 import org.junit.After;

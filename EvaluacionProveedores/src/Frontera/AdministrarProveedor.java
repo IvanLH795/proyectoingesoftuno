@@ -19,6 +19,8 @@ import Entidad.Sistema;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -30,6 +32,44 @@ public class AdministrarProveedor extends javax.swing.JFrame {
     public AdministrarProveedor() {
         initComponents();
         listaproductos = Splash.listaproductos;
+        jTabbedPane1.addChangeListener(new ChangeListener() {
+
+            public void stateChanged(ChangeEvent e) {
+                if(jTabbedPane1.getSelectedIndex() == 0){
+                    TFNombreBuscar.setText(null);
+                    TFNitBuscar.setText(null);
+                    TABuscar.setText(null);
+                }
+                if(jTabbedPane1.getSelectedIndex() == 1){
+                    TFNombreEliminar.setText(null);
+                    TFNitEliminar.setText(null);
+                    TAEliminar.setText(null);
+                }
+                if(jTabbedPane1.getSelectedIndex() == 2){
+                    TFNombreCrear.setText(null);
+                    TFNitCrear.setText(null);
+                    TFTelefonoCrear.setText(null);
+                    TFRepresentanteCrear.setText(null);
+                    TFPagWebCrear.setText(null);
+                    TFCorreoCrear.setText(null);
+                    TFDireccionCrear.setText(null);
+                    listaproductos = null;
+                }
+                if(jTabbedPane1.getSelectedIndex() == 3){
+                    TFSubNitModificar.setText(null);
+                    TFSubNombreModificar.setText(null);
+                    TFNombreModificar.setText(null);
+                    TFNitModificar.setText(null);
+                    TFTelefonoModificar.setText(null);
+                    TFRepresentanteModificar.setText(null);
+                    TFPagWebModificar.setText(null);
+                    TFCorreoModificar.setText(null);
+                    TFDireccionModificar.setText(null);
+                    listaproductos = null;
+
+                }
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -644,11 +684,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             Proveedores proveedor2 = new Proveedores();
             Integer obj;
             try{
-                obj = Integer.parseInt(TFNitBuscar.getText());
+                obj = Integer.parseInt(TFNitEliminar.getText());
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            proveedor2 = control.buscarProveedor(TFNombreBuscar.getText(), obj);
+            proveedor2 = control.buscarProveedor(TFNombreEliminar.getText(), obj);
             String productos = "";
             String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
 
@@ -693,7 +733,17 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
     private void BtnEliminarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarEliminarActionPerformed
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
-        control.borrarProveedor(TFNombreEliminar.getText(), Integer.parseInt(TFNitEliminar.getText()));
+        String result = control.borrarProveedor(TFNombreEliminar.getText(), Integer.parseInt(TFNitEliminar.getText()));
+        if(result.equals("Succes")){
+            JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nBorrado con exito");
+            Principal regresar = new Principal(Login.roll);
+            regresar.setLocationRelativeTo(null);
+            regresar.setVisible(true);
+            this.dispose();
+        }
+        if(result.equals("Fallo")){
+            JOptionPane.showMessageDialog(frame, "El Proveedor no se ha\nEncontrado");
+        }
     }//GEN-LAST:event_BtnEliminarEliminarActionPerformed
 
     private void BtnGuardarCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarCrearActionPerformed
@@ -717,14 +767,28 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoCrear.getText()));
                 proveedor2.setProductos(null);
 
-                control.crearProveedor(proveedor2, Splash.listaproductos);
+                String result = control.crearProveedor(proveedor2, Splash.listaproductos);
+                
+                if(result.equals("Succes")){
+                    JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nCreado con exito");
+                    Principal regresar = new Principal(Login.roll);
+                    regresar.setLocationRelativeTo(null);
+                    regresar.setVisible(true);
+                    this.dispose();
+                }
+                if(result.equals("Telefono invalido")){
+                    JOptionPane.showMessageDialog(frame, "El Telefono es invalido");
+                }
+                if(result.equals("Nit invalido")){
+                    JOptionPane.showMessageDialog(frame, "El Nit es invalido");
+                }
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Error...");
+            JOptionPane.showMessageDialog(frame, "Datos Incorrectos");
         }
     }//GEN-LAST:event_BtnGuardarCrearActionPerformed
 
@@ -775,9 +839,23 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 proveedor2.setRepresentante(TFRepresentanteModificar.getText());
                 proveedor2.setPaginaWeb(TFPagWebModificar.getText());
                 proveedor2.setTelefono(Integer.parseInt(TFTelefonoModificar.getText()));
-                control.modificarProveedor(proveedor, proveedor2, Splash.listaproductos);
+                String result = control.modificarProveedor(proveedor, proveedor2, Splash.listaproductos);
                 if (!(Splash.listaproductos == null))
                     Splash.listaproductos = null;
+
+                if(result.equals("Succes")){
+                    JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nCreado con exito");
+                    Principal regresar = new Principal(Login.roll);
+                    regresar.setLocationRelativeTo(null);
+                    regresar.setVisible(true);
+                    this.dispose();
+                }
+                if(result.equals("Telefono invalido")){
+                    JOptionPane.showMessageDialog(frame, "El Telefono es invalido");
+                }
+                if(result.equals("Nit invalido")){
+                    JOptionPane.showMessageDialog(frame, "El Nit es invalido");
+                }
             }
             else{
                 JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
