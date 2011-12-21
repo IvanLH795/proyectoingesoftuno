@@ -6,6 +6,7 @@
 package Control;
 
 import Entidad.ProductoProveedor;
+import Entidad.Productos;
 import Entidad.Sistema;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,14 +53,14 @@ public class GestionarPresupuestoTest {
 
     @Test
     public void testVerificarLongitudNombre() {
-        ProductoProveedor u = new ProductoProveedor();
+        Productos u = new Productos();
 
         u.setNombreProducto("mar");
-        u.setPrecio(200);
+        u.setDineroDisponible(new Float(200));
         assertEquals(validar.verificarProducto(u),Long_Nombre_Incorrecto);
 
         u.setNombreProducto("supermarcadores");
-        u.setPrecio(200);
+        u.setDineroDisponible(new Float(200));
         assertEquals(validar.verificarProducto(u),Long_Nombre_Incorrecto);
     }
 
@@ -68,27 +69,27 @@ public class GestionarPresupuestoTest {
      */
     @Test
     public void testVerificarLongitudPrecio() {
-        ProductoProveedor u = new ProductoProveedor();
+        Productos u = new Productos();
 
         u.setNombreProducto("marcadores");
-        u.setPrecio(-2);
+        u.setDineroDisponible(new Float(-2));
         assertEquals(validar.verificarProducto(u),Long_Precio_Incorrecto);
 
         u.setNombreProducto("marcadores");
-        u.setPrecio(11000000);
+        u.setDineroDisponible(new Float(11000000));
         assertEquals(validar.verificarProducto(u),Long_Precio_Incorrecto);
     }
 
      @Test
      public void testTodoCorrecto(){
-        ProductoProveedor u = new ProductoProveedor();
+        Productos u = new Productos();
 
         u.setNombreProducto("marcadores");
-        u.setPrecio(2500);
+        u.setDineroDisponible(new Float(2500));
         assertEquals(validar.verificarProducto(u),Producto_Correcto);
 
         u.setNombreProducto("borradores");
-        u.setPrecio(3000);
+        u.setDineroDisponible(new Float(3000));
         assertEquals(validar.verificarProducto(u),Producto_Correcto);
      }
 
