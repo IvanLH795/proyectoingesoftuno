@@ -158,11 +158,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    Splash regresar = new Splash();
-    regresar.setLocationRelativeTo(null);
-    regresar.setVisible(true);
-    this.dispose();
-    // TODO add your handling code here:
+        Splash regresar = new Splash();
+        regresar.setLocationRelativeTo(null);
+        regresar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void contraseniaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaTFActionPerformed
