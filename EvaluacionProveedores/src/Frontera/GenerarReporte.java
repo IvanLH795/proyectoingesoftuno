@@ -76,6 +76,7 @@ public class GenerarReporte extends javax.swing.JFrame {
         });
 
         vistaReporte.setColumns(20);
+        vistaReporte.setEditable(false);
         vistaReporte.setRows(5);
         jScrollPane1.setViewportView(vistaReporte);
 

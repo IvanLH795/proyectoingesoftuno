@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.*;
@@ -62,14 +63,15 @@ public class ControlContratarProveedor {
        return listaProveedores;
    }
 
-
     public String generarContrato(){
-    
+       String salida = "Se ha generado el contrato correctamente";
        try {
-            OutputStream file = new FileOutputStream(new File("C:\\Contrato.pdf"));
+            Document contrato = new Document(PageSize.LETTER);
+
+            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream("c:\\book\\Contrato.pdf"));
+
+            contrato.setMargins(72f, 72f, 72f, 72f);
             
-            Document contrato = new Document();
-            PdfWriter.getInstance(contrato, file);
             contrato.open();
             contrato.add(new Paragraph("\n \t Nombre: "));
             contrato.add(new Paragraph(proveedorContratado.getNombre()));
@@ -93,25 +95,22 @@ public class ControlContratarProveedor {
             contrato.add(new Paragraph("\n \t Pagina Web: "));
             contrato.add(new Paragraph(proveedorContratado.getPaginaWeb()));
             contrato.add(new Paragraph("\n \t Envios por mes: "));
-            if(validarPedido(cantidad)){
-                return "pedido invalido";
-            }
-            //contrato.add(new Paragraph());
+            if(validarPedido(cantidad))  salida = "pedido invalido";
             contrato.add(new Paragraph("\n \t Valor por unidad: "));
-            contrato.add(new Paragraph(valorUnidad));
+            contrato.add(new Paragraph(Float.toString(valorUnidad)));
             contrato.add(new Paragraph("\n \t Valor total: "));
-            contrato.add(new Paragraph(cantidad * valorUnidad));
-
+            contrato.add(new Paragraph(Float.toString(cantidad * valorUnidad)));
             contrato.add(new Paragraph(new Date().toString()));
 
+            
             contrato.close();
             file.close();
 
         } catch(Exception ee){
-            System.out.println(ee);
-            return "Error al generar el contrato";
+            System.out.println(ee.getMessage());
+            salida = ee.getMessage();
         }
-       return "succes";
+       return salida;
     }
 
     private boolean validarPedido (float pedido) {
