@@ -825,11 +825,11 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             ControlAdministrarProveedor control = new ControlAdministrarProveedor();
             Integer obj;
             try{
-                obj = Integer.parseInt(TFNitModificar.getText());
+                obj = Integer.parseInt(TFSubNitModificar.getText());
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(!(control.buscarProveedor(obj) == (null))){
+            if(control.buscarProveedor(obj) == (null)){
                 Proveedores proveedor2 = new Proveedores();
 
                 proveedor2.setNombre(TFSubNombreModificar.getText());
@@ -862,7 +862,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Error...", "Alerta", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Hay Datos invalidos", "Alerta", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BtnGuardarModificarActionPerformed
 
