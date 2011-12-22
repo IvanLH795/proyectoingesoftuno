@@ -53,7 +53,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     TFPagWebCrear.setText(null);
                     TFCorreoCrear.setText(null);
                     TFDireccionCrear.setText(null);
-                    listaproductos = null;
+                    Splash.listaproductos = null;
                 }
                 if(jTabbedPane1.getSelectedIndex() == 3){
                     TFSubNitModificar.setText(null);
@@ -65,8 +65,17 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     TFPagWebModificar.setText(null);
                     TFCorreoModificar.setText(null);
                     TFDireccionModificar.setText(null);
-                    listaproductos = null;
+                    Splash.listaproductos = null;
 
+                    TFSubNitModificar.setEnabled(false);
+                    TFSubNombreModificar.setEnabled(false);
+                    TFTelefonoModificar.setEnabled(false);
+                    TFRepresentanteModificar.setEnabled(false);
+                    TFPagWebModificar.setEnabled(false);
+                    TFCorreoModificar.setEnabled(false);
+                    TFDireccionModificar.setEnabled(false);
+
+                    proveedor = new Proveedores();
                 }
             }
         });
@@ -877,19 +886,32 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }
             
             proveedor = control.buscarProveedor(TFNombreBuscar.getText(), obj);
-            
-            TFSubNombreModificar.setText(proveedor.getNombre());
-            TFSubNitModificar.setText(String.valueOf(proveedor.getNit()));
-            TFRepresentanteModificar.setText(proveedor.getRepresentante());
-            TFDireccionModificar.setText(proveedor.getDireccion());
-            TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
-            TFCorreoModificar.setText(proveedor.getCorreo());
-            TFPagWebModificar.setText(proveedor.getPaginaWeb());
-            if(!(Splash.listaproductos == null))
-                Splash.listaproductos = null;
+            if(proveedor != null){
+
+                TFSubNitModificar.setEnabled(true);
+                TFSubNombreModificar.setEnabled(true);
+                TFTelefonoModificar.setEnabled(true);
+                TFRepresentanteModificar.setEnabled(true);
+                TFPagWebModificar.setEnabled(true);
+                TFCorreoModificar.setEnabled(true);
+                TFDireccionModificar.setEnabled(true);
+
+                TFSubNombreModificar.setText(proveedor.getNombre());
+                TFSubNitModificar.setText(String.valueOf(proveedor.getNit()));
+                TFRepresentanteModificar.setText(proveedor.getRepresentante());
+                TFDireccionModificar.setText(proveedor.getDireccion());
+                TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
+                TFCorreoModificar.setText(proveedor.getCorreo());
+                TFPagWebModificar.setText(proveedor.getPaginaWeb());
+
+                if(!(Splash.listaproductos == null))
+                    Splash.listaproductos = null;
+            }else{
+                JOptionPane.showMessageDialog(frame, "El proveedor no existe");
+            }
         }
         else{
-            JOptionPane.showMessageDialog(frame, "Error...");
+            JOptionPane.showMessageDialog(frame, "Datos Invalidos");
         }
     }//GEN-LAST:event_BtnBuscarModificarActionPerformed
 

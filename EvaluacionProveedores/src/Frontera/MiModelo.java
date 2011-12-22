@@ -16,4 +16,7 @@ public class MiModelo extends DefaultTableModel
       if (columna == 1) return Float.class;
       return Float.class;
    }
+   public boolean isCellEditable(int row, int column){
+        return false;
+   }
 }
