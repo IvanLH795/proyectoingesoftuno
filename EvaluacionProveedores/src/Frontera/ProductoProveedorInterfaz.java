@@ -135,10 +135,34 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     private void BtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAñadirActionPerformed
         Vector obj= new Vector();
-        Float a = null;
-        obj.add("");
-        obj.add(a);
-        modelo.addRow(obj);
+        String producto = JOptionPane.showInputDialog("Producto");
+        String precio = JOptionPane.showInputDialog("Precio");
+        if(producto != null){
+            if(precio != null){
+                Float valor;
+                try{
+                    valor = Float.parseFloat(precio);
+                }catch(NumberFormatException ex){
+                    valor = new Float(-1);
+                }
+                if(valor >= 0){
+                    producto = estandarizarNombre(producto);
+                    if(validarNombre(producto)){
+                        obj.add(producto);
+                        obj.add(valor);
+                        modelo.addRow(obj);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El nombre ya existe");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Precio no valido");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Precio no valido");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Nombre no valido");
+        }
     }//GEN-LAST:event_BtnAñadirActionPerformed
 
     private void BtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarActionPerformed
@@ -172,6 +196,29 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         Splash.listaproductos = lista;
         this.dispose();
     }//GEN-LAST:event_BtnGuardarActionPerformed
+
+    private boolean validarNombre(String nombre){
+        Vector nombres = modelo.getDataVector();
+        for (int i=0; i< nombres.size(); i=i+2){
+            if(nombres.get(i).equals(nombre)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private String estandarizarNombre(String nombre){
+        String nuevo="";
+        nuevo = nuevo + Character.toUpperCase(nombre.charAt(0));
+        for (int i=1; i < nombre.length(); i++){
+            if(nombre.charAt(i)>= 'A' && nombre.charAt(i) <= 'Z' ){
+                nuevo = nuevo + Character.toLowerCase(nombre.charAt(i));
+            }else{
+                nuevo = nuevo + nombre.charAt(i);
+            }
+        }
+        return nuevo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAñadir;
