@@ -74,6 +74,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     TFPagWebModificar.setEnabled(false);
                     TFCorreoModificar.setEnabled(false);
                     TFDireccionModificar.setEnabled(false);
+                    BtnProductosModificar.setEnabled(false);
 
                     proveedor = new Proveedores();
                 }
@@ -895,6 +896,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 TFPagWebModificar.setEnabled(true);
                 TFCorreoModificar.setEnabled(true);
                 TFDireccionModificar.setEnabled(true);
+                BtnProductosModificar.setEnabled(true);
 
                 TFSubNombreModificar.setText(proveedor.getNombre());
                 TFSubNitModificar.setText(String.valueOf(proveedor.getNit()));

@@ -166,22 +166,28 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAñadirActionPerformed
 
     private void BtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarActionPerformed
-        int size=0;
-        int filaBorrar = 0;
-        try{
-            size = modelo.getDataVector().size();
-        }catch(NullPointerException ex){
-            size = 0;
-        }
-        filaBorrar = tabla.getSelectionModel().getLeadSelectionIndex();
-        if(filaBorrar == -1 && size > 0){
-            filaBorrar = size - 1;
-        }
-        if(filaBorrar >= size){
-            modelo.removeRow(filaBorrar);
-        }
-        else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
-            modelo.removeRow(filaBorrar);
+        System.out.println(modelo.getDataVector().isEmpty());
+        if(!modelo.getDataVector().isEmpty()){
+            int size=0;
+
+            int filaBorrar = 0;
+            try{
+                size = modelo.getDataVector().size();
+            }catch(NullPointerException ex){
+                size = 0;
+            }
+            filaBorrar = tabla.getSelectionModel().getLeadSelectionIndex();
+            if(filaBorrar == -1 && size > 0){
+                filaBorrar = size - 1;
+            }
+            if(filaBorrar >= size){
+                modelo.removeRow(filaBorrar);
+            }
+            else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
+                modelo.removeRow(filaBorrar);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No se puede borrar");
         }
     }//GEN-LAST:event_BtnBorrarActionPerformed
 
