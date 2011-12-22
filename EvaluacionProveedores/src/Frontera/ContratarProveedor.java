@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -90,6 +90,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel8.setText("Nombre:");
 
+        jTextField7.setEditable(false);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -110,11 +111,29 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel15.setText("Pagina web:");
 
+        jTextField8.setEditable(false);
+
+        jTextField9.setEditable(false);
+
+        jTextField10.setEditable(false);
+
+        jTextField11.setEditable(false);
+
+        jTextField12.setEditable(false);
+
+        jTextField13.setEditable(false);
+
+        jTextField14.setEditable(false);
+
         jLabel2.setText("Pedido Total:");
 
         jLabel3.setText("Valor individual:");
 
         jLabel4.setText("Valor total:");
+
+        jTextField2.setEditable(false);
+
+        jTextField3.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -305,9 +324,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
-        Vector datosBasicos = new Vector();
+        //Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
         listaProveedores = proveedores.buscarListaProveedores(jTextField6.getText(),modelo);
+
         if(listaProveedores.equals(null)){
             JOptionPane.showMessageDialog(null, "No ha indicado algun producto que buscar", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
         }
@@ -328,30 +348,37 @@ public class ContratarProveedor extends javax.swing.JFrame {
                 jTextField13.setText(proveedor1.getCorreo());
                 jTextField14.setText(proveedor1.getPaginaWeb());
                 jTextField2.setText(Float.toString(proveedor1.getProductos().get(0).getPrecio()));
-                //prueba de cambio
              }
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Proveedores proveedor = new Proveedores();//Proveedor seleccionado con el que se hara contrato
-        List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
-        ProductoProveedor producto = new ProductoProveedor();
+        if(jTextField7.getText() == null /*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
+           jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
+           jTextField14.equals(null)*/){
+           JOptionPane.showMessageDialog(null, "No hay algun dato para generar el contrato", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            //Proveedor seleccionado con el que se hara contrato
+            Proveedores proveedor = new Proveedores();
+            List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
+            ProductoProveedor producto = new ProductoProveedor();
 
-        proveedor.setNombre(jTextField7.getText());
-        proveedor.setNit(Integer.parseInt (jTextField9.getText()));//casting
-        proveedor.setRepresentante(jTextField8.getText());
-        proveedor.setDireccion(jTextField11.getText());
-        proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
-        proveedor.setCorreo(jTextField13.getText());
-        proveedor.setPaginaWeb(jTextField14.getText());
-        producto.setPrecio(Float.parseFloat(jTextField2.getText()));
-        float valorTotal = Float.parseFloat(jTextField2.getText()) * Float.parseFloat(jTextField1.getText());
-        jTextField3.setText(Float.toString(valorTotal));
+            proveedor.setNombre(jTextField7.getText());
+            proveedor.setNit(Integer.parseInt (jTextField9.getText()));//casting
+            proveedor.setRepresentante(jTextField8.getText());
+            proveedor.setDireccion(jTextField11.getText());
+            proveedor.setTelefono(Integer.parseInt(jTextField12.getText()));//casting
+            proveedor.setCorreo(jTextField13.getText());
+            proveedor.setPaginaWeb(jTextField14.getText());
+            producto.setPrecio(Float.parseFloat(jTextField2.getText()));
+            float valorTotal = Float.parseFloat(jTextField2.getText()) * Float.parseFloat(jTextField1.getText());
+            jTextField3.setText(Float.toString(valorTotal));
 
-        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(jTextField1.getText()), producto.getPrecio(), productos);
+            ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(jTextField1.getText()), producto.getPrecio(), productos);
 
-        contrato.generarContrato();
+            JOptionPane.showMessageDialog(null, contrato.generarContrato(), "Sistema de Evaluacion de Proveedores", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

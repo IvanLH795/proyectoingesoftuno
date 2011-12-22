@@ -24,7 +24,7 @@ import javax.swing.JTextArea;
  */
 public class ControlGeneradorReporte {
 
-    public ControlGeneradorReporte() {
+ public ControlGeneradorReporte() {
     }
  public void imprimirPantalla(JTextArea vistaReporte) {
 
