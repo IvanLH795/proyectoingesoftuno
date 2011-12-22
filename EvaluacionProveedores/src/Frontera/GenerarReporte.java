@@ -27,7 +27,8 @@ public class GenerarReporte extends javax.swing.JFrame {
 
     /** Creates new form GenerarReporte */
     public GenerarReporte() {
-        initComponents();
+            initComponents();
+             vistaReporte.setEditable(false);
             }
 
     /** This method is called from within the constructor to
@@ -153,8 +154,16 @@ public class GenerarReporte extends javax.swing.JFrame {
                  }
         }
         try {
+            if(!(vistaReporte.getText().isEmpty())){
             nuevo.imprimirReporte(fichero, vistaReporte.getText());
             JOptionPane.showMessageDialog(this,"Archivo Impreso", "",JOptionPane.WARNING_MESSAGE);
+            Principal regresar = new Principal(Login.roll);
+            regresar.setLocationRelativeTo(null);
+            regresar.setVisible(true);
+            this.dispose();
+            }
+            else
+            JOptionPane.showMessageDialog(this,"Error...", "",JOptionPane.WARNING_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(GenerarReporte.class.getName()).log(Level.SEVERE, null, ex);
         }     
