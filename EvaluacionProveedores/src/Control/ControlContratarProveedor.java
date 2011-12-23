@@ -95,13 +95,12 @@ public class ControlContratarProveedor {
             contrato.add(new Paragraph("\n \t Pagina Web: "));
             contrato.add(new Paragraph(proveedorContratado.getPaginaWeb()));
             contrato.add(new Paragraph("\n \t Envios por mes: "));
-            if(validarPedido(cantidad))  salida = "pedido invalido";
+            if(validarPedido(cantidad))  salida = "Pedido invalido";
             contrato.add(new Paragraph("\n \t Valor por unidad: "));
             contrato.add(new Paragraph(Float.toString(valorUnidad)));
             contrato.add(new Paragraph("\n \t Valor total: "));
             contrato.add(new Paragraph(Float.toString(cantidad * valorUnidad)));
             contrato.add(new Paragraph(new Date().toString()));
-
             
             contrato.close();
             file.close();
