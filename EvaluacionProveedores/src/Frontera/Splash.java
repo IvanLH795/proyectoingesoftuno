@@ -191,6 +191,7 @@ public class Splash extends javax.swing.JFrame {
         listaProveedor.add(proveedor2);
 
         sistema.setProveedores(listaProveedor);
+        sistema.setProductosProveedor(listaProductos);
     }
 
 
