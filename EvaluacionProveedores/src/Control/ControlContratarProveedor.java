@@ -10,7 +10,6 @@ import Frontera.Splash;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
@@ -61,7 +60,7 @@ public class ControlContratarProveedor {
             }
        }
        return listaProveedores;
-}
+    }
 
     public Proveedores buscaProveedor(int Nit){
         Proveedores proveedorSeleccionado = new Proveedores();
@@ -72,43 +71,34 @@ public class ControlContratarProveedor {
         }
         return proveedorSeleccionado;
     }
+
     public String generarContrato(){
-       String salida = "Se ha generado el contrato correctamente";
+       String salida = "Se ha generado el contrato correctamente en C:\\book\\";
        try {
             Document contrato = new Document(PageSize.LETTER);
 
-            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream("c:\\book\\Contrato.pdf"));
+            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream("c:\\book\\Contrato "+proveedorContratado.getNombre()+".pdf"));
 
             contrato.setMargins(72f, 72f, 72f, 72f);
             
             contrato.open();
-            contrato.add(new Paragraph("\n \t Nombre: "));
-            contrato.add(new Paragraph(proveedorContratado.getNombre()));
-            contrato.add(new Paragraph("\n \t Nit: "));
-            contrato.add(new Paragraph(Integer.toString(proveedorContratado.getNit())));
-            contrato.add(new Paragraph("\n \t Representante: "));
-            contrato.add(new Paragraph(proveedorContratado.getRepresentante()));
+            contrato.add(new Paragraph("\n \t Nombre del Proveedor: " + proveedorContratado.getNombre()));
+            contrato.add(new Paragraph("\n \t Nit: " + Integer.toString(proveedorContratado.getNit())));
+            contrato.add(new Paragraph("\n \t Representante: " + proveedorContratado.getRepresentante()));
             contrato.add(new Paragraph("\n \t Productos: "));
-            Iterator i = productos.iterator() ;
-            int iterator = 0;
-            while(i.hasNext()){
-                contrato.add(new Paragraph(productos.get(iterator).getNombreProducto()));
-                iterator++;
+            for (ProductoProveedor p : productos){
+                contrato.add(new Paragraph(p.getNombreProducto()));
             }
-            contrato.add(new Paragraph("\n \t Direccion: "));
-            contrato.add(new Paragraph(proveedorContratado.getDireccion()));
-            contrato.add(new Paragraph("\n \t Telefono: "));
-            contrato.add(new Paragraph(proveedorContratado.getTelefono()));
-            contrato.add(new Paragraph("\n \t Correo: "));
-            contrato.add(new Paragraph(proveedorContratado.getCorreo()));
-            contrato.add(new Paragraph("\n \t Pagina Web: "));
-            contrato.add(new Paragraph(proveedorContratado.getPaginaWeb()));
-            contrato.add(new Paragraph("\n \t Envios por mes: "));
-            if(validarPedido(cantidad))  salida = "Pedido invalido";
-            contrato.add(new Paragraph("\n \t Valor por unidad: "));
-            contrato.add(new Paragraph(Float.toString(valorUnidad)));
-            contrato.add(new Paragraph("\n \t Valor total: "));
-            contrato.add(new Paragraph(Float.toString(cantidad * valorUnidad)));
+            contrato.add(new Paragraph("\n \t Direccion: " + proveedorContratado.getDireccion()));
+            contrato.add(new Paragraph("\n \t Telefono: " + Integer.toString(proveedorContratado.getTelefono())));
+            contrato.add(new Paragraph("\n \t Correo: " + proveedorContratado.getCorreo()));
+            contrato.add(new Paragraph("\n \t Pagina Web: " + proveedorContratado.getPaginaWeb()));
+            if(validarPedido(cantidad)){
+                salida = "Pedido invalido";
+            }
+            else contrato.add(new Paragraph("\n \t Pedido Total: " + Float.toString(cantidad)));
+            contrato.add(new Paragraph("\n \t Valor por unidad: " + Float.toString(valorUnidad)));
+            contrato.add(new Paragraph("\n \t Valor total: " + Float.toString(cantidad * valorUnidad)));
             contrato.add(new Paragraph(new Date().toString()));
             
             contrato.close();
