@@ -40,7 +40,7 @@ public class ControlContratarProveedor {
         productos = this.productos;
     }
 
-     public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
+    public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
        List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
        Vector datosBasicos = new Vector();
        if (validarProducto(producto)){
@@ -61,8 +61,17 @@ public class ControlContratarProveedor {
             }
        }
        return listaProveedores;
-   }
+}
 
+    public Proveedores buscaProveedor(int Nit){
+        Proveedores proveedorSeleccionado = new Proveedores();
+        for (Proveedores u : Splash.sistema.getProveedores()){
+            if (u.getNit() == Nit){
+                proveedorSeleccionado = u;
+            }
+        }
+        return proveedorSeleccionado;
+    }
     public String generarContrato(){
        String salida = "Se ha generado el contrato correctamente";
        try {

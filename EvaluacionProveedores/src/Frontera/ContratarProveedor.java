@@ -1,14 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ContratarProveedor.java
- *
- * Created on 22-sep-2011, 15:12:31
- */
-
 package Frontera;
 
 import java.util.List;
@@ -16,18 +5,11 @@ import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
-//import java.util.Collections;
-import Entidad.Sistema;
 import java.util.Vector;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *s
- * @author Fernando
- */
 public class ContratarProveedor extends javax.swing.JFrame {
 
     /** Creates new form ContratarProveedor */
@@ -92,6 +74,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Contratación");
@@ -101,11 +84,6 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jLabel8.setText("Nombre:");
 
         jTextField7.setEditable(false);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
 
         jLabel9.setText("NIT:");
 
@@ -272,14 +250,15 @@ public class ContratarProveedor extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Datos que se consiganrán en el contrato:");
+
+        jButton3.setText("Seleccionar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -288,7 +267,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -304,14 +283,20 @@ public class ContratarProveedor extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton8))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(26, 26, 26)))))
                 .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
@@ -334,7 +319,8 @@ public class ContratarProveedor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
-                            .addComponent(jButton1)))
+                            .addComponent(jButton1)
+                            .addComponent(jButton3)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -357,28 +343,11 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
+        List<Proveedores> listaProveedores = Splash.sistema.getProveedores();
         //Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
-        this.tabla.removeAll();
-        listaProveedores = proveedores.buscarListaProveedores(this.jComboBox1.getSelectedItem().toString(),modelo);
-
-        if(listaProveedores.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No hay proveedores que ofrezcan este producto", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-            Proveedores proveedor1 = new Proveedores();
-            proveedor1 = listaProveedores.get(0);
-            this.jTextField7.setText(proveedor1.getNombre());//Nombre
-            this.jTextField9.setText(String.valueOf(proveedor1.getNit()));//Nit
-            this.jTextField8.setText(proveedor1.getRepresentante());//Representante
-            this.jTextField10.setText(this.jComboBox1.getSelectedItem().toString());//Producto a contratar
-            this.jTextField11.setText(proveedor1.getDireccion());
-            this.jTextField12.setText(String.valueOf(proveedor1.getTelefono()));
-            this.jTextField13.setText(proveedor1.getCorreo());
-            this.jTextField14.setText(proveedor1.getPaginaWeb());
-            this.jTextField2.setText(Float.toString(proveedor1.getProductos().get(0).getPrecio()));
-        }
+        //this.tabla.removeAll();
+        listaProveedores = proveedores.buscarListaProveedores(this.jComboBox1.getSelectedItem().toString(),modelo);        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -417,21 +386,34 @@ public class ContratarProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jTextField1MouseClickeed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClickeed
         this.jTextField1.setText(null);
     }//GEN-LAST:event_jTextField1MouseClickeed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int filaSeleccionada = this.tabla.getSelectedRow();
+        Proveedores proveedorSeleccionado = new Proveedores();
+        int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
+
+        ControlContratarProveedor proveedores = new ControlContratarProveedor();
+
+        proveedorSeleccionado = proveedores.buscaProveedor(nit);
+
+        this.jTextField7.setText(proveedorSeleccionado.getNombre());//Nombre
+        this.jTextField9.setText(String.valueOf(proveedorSeleccionado.getNit()));//Nit
+        this.jTextField8.setText(proveedorSeleccionado.getRepresentante());//Representante
+        this.jTextField10.setText(this.jComboBox1.getSelectedItem().toString());//Producto a contratar
+        this.jTextField11.setText(proveedorSeleccionado.getDireccion());
+        this.jTextField12.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
+        this.jTextField13.setText(proveedorSeleccionado.getCorreo());
+        this.jTextField14.setText(proveedorSeleccionado.getPaginaWeb());
+        this.jTextField2.setText(Float.toString(proveedorSeleccionado.getProductos().get(0).getPrecio()));
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
