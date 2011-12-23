@@ -1,20 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Principal.java
- *
- * Created on 17-sep-2011, 9:36:05
- */
-
 package Frontera;
 
-/**
- *
- * @author Fernando
- */
 public class Principal extends javax.swing.JFrame {
 
     /** Creates new form Principal */
