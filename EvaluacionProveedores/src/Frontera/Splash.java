@@ -184,7 +184,19 @@ public class Splash extends javax.swing.JFrame {
         proveedor2.setDireccion("Cra 7 # 40 - 29");
         proveedor2.setRepresentante("Andres Malzahar");
 
-        proveedor2.setProductos(listaProductos);
+        ProductoProveedor productoc = new ProductoProveedor();
+        ProductoProveedor productod = new ProductoProveedor();
+        List<ProductoProveedor> listaProductos2 = new ArrayList<ProductoProveedor>();
+
+        productoc.setNombreProducto("Tableros");
+        productoc.setPrecio(120000);
+        productod.setNombreProducto("Pupitres");
+        productod.setPrecio(110000);
+
+        listaProductos2.add(productoc);
+        listaProductos2.add(productod);
+
+        proveedor2.setProductos(listaProductos2);
 
         List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
         listaProveedor.add(proveedor);
