@@ -76,8 +76,7 @@ public class ControlContratarProveedor {
        String salida = "Se ha generado el contrato correctamente en C:\\book\\";
        try {
             Document contrato = new Document(PageSize.LETTER);
-
-            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream("c:\\book\\Contrato "+proveedorContratado.getNombre()+".pdf"));
+            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream(System.getProperty("user.dir")+"\\Contrato_"+proveedorContratado.getNombre()+".pdf"));
 
             contrato.setMargins(72f, 72f, 72f, 72f);
             
