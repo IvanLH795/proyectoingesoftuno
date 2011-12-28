@@ -72,6 +72,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         BtnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         BtnAñadir.setText("Añadir");
         BtnAñadir.addActionListener(new java.awt.event.ActionListener() {

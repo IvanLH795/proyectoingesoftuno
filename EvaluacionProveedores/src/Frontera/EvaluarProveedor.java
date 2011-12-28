@@ -46,6 +46,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         cancelarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jLabel1, org.jdesktop.beansbinding.ELProperty.create("Evaluación"), this, org.jdesktop.beansbinding.BeanProperty.create("title"));
         bindingGroup.addBinding(binding);
@@ -82,7 +83,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
 
         cercaniaGeograficaSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Bogotá", "...", "...", "...", "" }));
 
-        adaptabilidadSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alta", "Media", "Baja" }));
+        adaptabilidadSeleccion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "- - -", "Alta", "Media", "Baja" }));
 
         comentariosLabel.setText("Comentarios");
 

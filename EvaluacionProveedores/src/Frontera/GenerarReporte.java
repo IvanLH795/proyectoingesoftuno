@@ -52,6 +52,7 @@ public class GenerarReporte extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Reporte");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel1.setText("Generacion de reportes");
@@ -87,7 +88,7 @@ public class GenerarReporte extends javax.swing.JFrame {
         vistaReporte.setRows(5);
         jScrollPane1.setViewportView(vistaReporte);
 
-        tituloVistaReporte.setFont(new java.awt.Font("Arial Narrow", 3, 14)); // NOI18N
+        tituloVistaReporte.setFont(new java.awt.Font("Arial Narrow", 3, 14));
         tituloVistaReporte.setText("Vista Reporte");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

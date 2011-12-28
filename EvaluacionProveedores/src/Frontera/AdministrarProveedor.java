@@ -160,6 +160,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Administración");
+        setResizable(false);
 
         lblPrincipal.setFont(new java.awt.Font("Arial", 1, 14));
         lblPrincipal.setText("Administración de Proveedores");

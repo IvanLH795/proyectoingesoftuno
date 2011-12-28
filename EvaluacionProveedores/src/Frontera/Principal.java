@@ -46,6 +46,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SEP");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

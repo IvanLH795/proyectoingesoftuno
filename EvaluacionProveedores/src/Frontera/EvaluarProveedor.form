@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <BindingProperties>
     <BindingProperty name="title" source="jLabel1" sourcePath="Evaluaci&#xf3;n" target="Form" targetPath="title" updateStrategy="0" immediately="false"/>
@@ -239,10 +240,11 @@
         <Component class="javax.swing.JComboBox" name="adaptabilidadSeleccion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Alta"/>
-                <StringItem index="1" value="Media"/>
-                <StringItem index="2" value="Baja"/>
+              <StringArray count="4">
+                <StringItem index="0" value="- - -"/>
+                <StringItem index="1" value="Alta"/>
+                <StringItem index="2" value="Media"/>
+                <StringItem index="3" value="Baja"/>
               </StringArray>
             </Property>
           </Properties>
