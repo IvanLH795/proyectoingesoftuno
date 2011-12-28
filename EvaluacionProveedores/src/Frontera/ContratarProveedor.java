@@ -1,7 +1,6 @@
 package Frontera;
 
 import java.util.List;
-import java.util.ArrayList;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
@@ -15,6 +14,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
     /** Creates new form ContratarProveedor */
     public ContratarProveedor() {
          initComponents();
+         this.jTextFieldNombre.setText(null);
          for (Proveedores u : Splash.sistema.getProveedores()){
                for (ProductoProveedor p : u.getProductos()){
                    this.jComboBox1.addItem(p.getNombreProducto().toString());
@@ -44,7 +44,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -52,19 +52,19 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
+        jTextFieldRepresentante = new javax.swing.JTextField();
+        jTextFieldNit = new javax.swing.JTextField();
+        jTextFieldProducto = new javax.swing.JTextField();
+        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldTelefono = new javax.swing.JTextField();
+        jTextFieldCorreo = new javax.swing.JTextField();
+        jTextFieldPagWeb = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldCantidad = new javax.swing.JTextField();
+        jTextFieldValorInd = new javax.swing.JTextField();
+        jTextFieldValorTotal = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -83,7 +83,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel8.setText("Nombre:");
 
-        jTextField7.setEditable(false);
+        jTextFieldNombre.setEditable(false);
 
         jLabel9.setText("NIT:");
 
@@ -99,19 +99,19 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel15.setText("Pagina web:");
 
-        jTextField8.setEditable(false);
+        jTextFieldRepresentante.setEditable(false);
 
-        jTextField9.setEditable(false);
+        jTextFieldNit.setEditable(false);
 
-        jTextField10.setEditable(false);
+        jTextFieldProducto.setEditable(false);
 
-        jTextField11.setEditable(false);
+        jTextFieldDireccion.setEditable(false);
 
-        jTextField12.setEditable(false);
+        jTextFieldTelefono.setEditable(false);
 
-        jTextField13.setEditable(false);
+        jTextFieldCorreo.setEditable(false);
 
-        jTextField14.setEditable(false);
+        jTextFieldPagWeb.setEditable(false);
 
         jLabel2.setText("Pedido Total:");
 
@@ -119,16 +119,16 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
         jLabel4.setText("Valor total:");
 
-        jTextField1.setText("0");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTextFieldCantidad.setText("0");
+        jTextFieldCantidad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClickeed(evt);
+                jTextFieldCantidadMouseClickeed(evt);
             }
         });
 
-        jTextField2.setEditable(false);
+        jTextFieldValorInd.setEditable(false);
 
-        jTextField3.setEditable(false);
+        jTextFieldValorTotal.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -150,17 +150,17 @@ public class ContratarProveedor extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
+                    .addComponent(jTextFieldNit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldRepresentante, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldPagWeb, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCantidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldValorInd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldValorTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -168,48 +168,48 @@ public class ContratarProveedor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldPagWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldValorInd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -220,10 +220,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11));
         jLabel6.setText("Producto:");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18));
         jLabel1.setText("Contratación");
 
         jButton1.setText("Generar Contrato");
@@ -250,7 +250,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel5.setText("Datos que se consiganrán en el contrato:");
 
         jButton3.setText("Seleccionar");
@@ -351,29 +351,18 @@ public class ContratarProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(this.jTextField1.getText() == null /*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
+           if(this.jTextFieldNombre.getText() == null ||  Float.valueOf(this.jTextFieldCantidad.getText()) == 0/*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
            jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
            jTextField14.equals(null)*/){
            JOptionPane.showMessageDialog(null, "No ha indicado algun dato para generar el contrato", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
         }
         else{
             //Proveedor seleccionado con el que se hara contrato
-            Proveedores proveedor = new Proveedores();
-            List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
-            ProductoProveedor producto = new ProductoProveedor();
+                        
+            float valorTotal = Float.parseFloat(this.jTextFieldValorInd.getText()) * Float.parseFloat(this.jTextFieldCantidad.getText());
+            this.jTextFieldValorTotal.setText(Float.toString(valorTotal));
 
-            proveedor.setNombre(this.jTextField7.getText());
-            proveedor.setNit(Integer.parseInt (this.jTextField9.getText()));//casting
-            proveedor.setRepresentante(this.jTextField8.getText());
-            proveedor.setDireccion(this.jTextField11.getText());
-            proveedor.setTelefono(Integer.parseInt(this.jTextField12.getText()));//casting
-            proveedor.setCorreo(this.jTextField13.getText());
-            proveedor.setPaginaWeb(this.jTextField14.getText());
-            producto.setPrecio(Float.parseFloat(this.jTextField2.getText()));
-            float valorTotal = Float.parseFloat(this.jTextField2.getText()) * Float.parseFloat(this.jTextField1.getText());
-            this.jTextField3.setText(Float.toString(valorTotal));
-
-            ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor, Float.parseFloat(this.jTextField1.getText()), producto.getPrecio(), productos);
+            ControlContratarProveedor contrato = new ControlContratarProveedor(proveedorSeleccionado, Float.parseFloat(this.jTextFieldCantidad.getText()), this.jTextFieldProducto.getText());
 
             JOptionPane.showMessageDialog(null, contrato.generarContrato(), "Sistema de Evaluacion de Proveedores", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -386,28 +375,45 @@ public class ContratarProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField1MouseClickeed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClickeed
-        this.jTextField1.setText(null);
-    }//GEN-LAST:event_jTextField1MouseClickeed
+    private void jTextFieldCantidadMouseClickeed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCantidadMouseClickeed
+        this.jTextFieldCantidad.setText(null);
+    }//GEN-LAST:event_jTextFieldCantidadMouseClickeed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int filaSeleccionada = this.tabla.getSelectedRow();
-        Proveedores proveedorSeleccionado = new Proveedores();
         int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
 
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
 
         proveedorSeleccionado = proveedores.buscaProveedor(nit);
 
-        this.jTextField7.setText(proveedorSeleccionado.getNombre());//Nombre
-        this.jTextField9.setText(String.valueOf(proveedorSeleccionado.getNit()));//Nit
-        this.jTextField8.setText(proveedorSeleccionado.getRepresentante());//Representante
-        this.jTextField10.setText(this.jComboBox1.getSelectedItem().toString());//Producto a contratar
-        this.jTextField11.setText(proveedorSeleccionado.getDireccion());
-        this.jTextField12.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
-        this.jTextField13.setText(proveedorSeleccionado.getCorreo());
-        this.jTextField14.setText(proveedorSeleccionado.getPaginaWeb());
-        this.jTextField2.setText(Float.toString(proveedorSeleccionado.getProductos().get(0).getPrecio()));
+        //Nombre:
+        this.jTextFieldNombre.setText(proveedorSeleccionado.getNombre());
+        //Nit:
+        this.jTextFieldNit.setText(String.valueOf(proveedorSeleccionado.getNit()));
+        //Representante:
+        this.jTextFieldRepresentante.setText(proveedorSeleccionado.getRepresentante());
+        //Producto a contratar:
+        String producto = this.jComboBox1.getSelectedItem().toString();
+        for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
+            if(u.getNombreProducto().equals(producto)){
+                this.jTextFieldProducto.setText(u.getNombreProducto());
+            }
+        }
+        //Direccion:
+        this.jTextFieldDireccion.setText(proveedorSeleccionado.getDireccion());
+        //Telefono:
+        this.jTextFieldTelefono.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
+        //Correo:
+        this.jTextFieldCorreo.setText(proveedorSeleccionado.getCorreo());
+        //PaginaWeb:
+        this.jTextFieldPagWeb.setText(proveedorSeleccionado.getPaginaWeb());
+        //Precion del producto:
+        for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
+            if(u.getNombreProducto().equals(producto)){
+                this.jTextFieldValorInd.setText(Float.toString(u.getPrecio()));
+            }
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -433,18 +439,19 @@ public class ContratarProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldCantidad;
+    private javax.swing.JTextField jTextFieldCorreo;
+    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldNit;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldPagWeb;
+    private javax.swing.JTextField jTextFieldProducto;
+    private javax.swing.JTextField jTextFieldRepresentante;
+    private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField jTextFieldValorInd;
+    private javax.swing.JTextField jTextFieldValorTotal;
     // End of variables declaration//GEN-END:variables
     private DefaultTableModel modelo;
     private JTable tabla;
+    Proveedores proveedorSeleccionado = new Proveedores();
 }
