@@ -26,17 +26,17 @@ public class ControlContratarProveedor {
 
     Proveedores proveedorContratado = new Proveedores();
     List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
-    float valorUnidad, cantidad;
+    float cantidad;
+    String producto;
 
     public ControlContratarProveedor(){
 
     }
 
-    public ControlContratarProveedor(Proveedores proveedor, float cantidad, float valorUnidad, List<ProductoProveedor> productos){
+    public ControlContratarProveedor(Proveedores proveedor, float cantidad, String producto){
         proveedorContratado = proveedor;
         cantidad = this.cantidad;
-        valorUnidad = this.valorUnidad;
-        productos = this.productos;
+        producto = this.producto;
     }
 
     public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
@@ -73,10 +73,10 @@ public class ControlContratarProveedor {
     }
 
     public String generarContrato(){
-       String salida = "Se ha generado el contrato correctamente en C:\\book\\";
+       String salida = "Se ha generado el contrato correctamente en "+System.getProperty("user.dir");
        try {
             Document contrato = new Document(PageSize.LETTER);
-            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream(System.getProperty("user.dir")+"\\Contrato_"+proveedorContratado.getNombre()+".pdf"));
+            PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream(System.getProperty("user.dir")+"\\Contrato "+proveedorContratado.getNombre()+".pdf"));
 
             contrato.setMargins(72f, 72f, 72f, 72f);
             
@@ -84,21 +84,24 @@ public class ControlContratarProveedor {
             contrato.add(new Paragraph("\n \t Nombre del Proveedor: " + proveedorContratado.getNombre()));
             contrato.add(new Paragraph("\n \t Nit: " + Integer.toString(proveedorContratado.getNit())));
             contrato.add(new Paragraph("\n \t Representante: " + proveedorContratado.getRepresentante()));
-            contrato.add(new Paragraph("\n \t Productos: "));
-            for (ProductoProveedor p : productos){
-                contrato.add(new Paragraph(p.getNombreProducto()));
-            }
             contrato.add(new Paragraph("\n \t Direccion: " + proveedorContratado.getDireccion()));
             contrato.add(new Paragraph("\n \t Telefono: " + Integer.toString(proveedorContratado.getTelefono())));
             contrato.add(new Paragraph("\n \t Correo: " + proveedorContratado.getCorreo()));
             contrato.add(new Paragraph("\n \t Pagina Web: " + proveedorContratado.getPaginaWeb()));
-            if(validarPedido(cantidad)){
-                salida = "Pedido invalido";
+            for (ProductoProveedor p : proveedorContratado.getProductos()){
+                if (producto.equals(p.getNombreProducto())){
+                    contrato.add(new Paragraph("\n \t Producto: " + p.getNombreProducto()));
+                    contrato.add(new Paragraph("\n \t Valor por unidad: " + p.getPrecio()));
+                    if(validarPedido(cantidad)){
+                        salida = "Pedido invalido";
+                    }
+                    else{
+                        contrato.add(new Paragraph("\n \t Pedido Total: " + Float.toString(cantidad)));
+                        contrato.add(new Paragraph("\n \t Valor total: " + Float.toString(cantidad * p.getPrecio())));
+                    }
+                } 
             }
-            else contrato.add(new Paragraph("\n \t Pedido Total: " + Float.toString(cantidad)));
-            contrato.add(new Paragraph("\n \t Valor por unidad: " + Float.toString(valorUnidad)));
-            contrato.add(new Paragraph("\n \t Valor total: " + Float.toString(cantidad * valorUnidad)));
-            contrato.add(new Paragraph(new Date().toString()));
+            contrato.add(new Paragraph("\n\n\n\n\n \t" + new Date().toString()));
             
             contrato.close();
             file.close();
