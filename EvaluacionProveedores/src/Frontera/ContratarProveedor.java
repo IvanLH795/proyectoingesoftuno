@@ -65,16 +65,16 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jTextFieldCantidad = new javax.swing.JTextField();
         jTextFieldValorInd = new javax.swing.JTextField();
         jTextFieldValorTotal = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        Consultar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        GenerarContrato = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jComboBox1 = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        Seleccionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SEP - Contratación");
@@ -214,10 +214,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jButton8.setText("Consultar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        Consultar.setText("Consultar");
+        Consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ConsultarActionPerformed(evt);
             }
         });
 
@@ -227,15 +227,15 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18));
         jLabel1.setText("Contratación");
 
-        jButton1.setText("Generar Contrato");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        GenerarContrato.setText("Generar Contrato");
+        GenerarContrato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                GenerarContratoMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        GenerarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                GenerarContratoActionPerformed(evt);
             }
         });
 
@@ -254,10 +254,10 @@ public class ContratarProveedor extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14));
         jLabel5.setText("Datos que se consiganrán en el contrato:");
 
-        jButton3.setText("Seleccionar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Seleccionar.setText("Seleccionar");
+        Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                SeleccionarActionPerformed(evt);
             }
         });
 
@@ -285,16 +285,16 @@ public class ContratarProveedor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton8))
+                                .addComponent(Consultar))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
+                                        .addComponent(Seleccionar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1)
+                                        .addComponent(GenerarContrato)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(26, 26, 26)))))
@@ -312,7 +312,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jButton8))
+                    .addComponent(Consultar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -320,8 +320,8 @@ public class ContratarProveedor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3)))
+                            .addComponent(GenerarContrato)
+                            .addComponent(Seleccionar)))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -336,38 +336,49 @@ public class ContratarProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void GenerarContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenerarContratoMouseClicked
         Principal regresar = new Principal(Login.roll);
         regresar.setLocationRelativeTo(null);
         regresar.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_GenerarContratoMouseClicked
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        List<Proveedores> listaProveedores = Splash.sistema.getProveedores();
+    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+        while(modelo.getRowCount()>0)modelo.removeRow(0);
+        List<Proveedores> listaProveedores  = Splash.sistema.getProveedores();
         //Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
         //this.tabla.removeAll();
         listaProveedores = proveedores.buscarListaProveedores(this.jComboBox1.getSelectedItem().toString(),modelo);        
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_ConsultarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           if(this.jTextFieldNombre.getText() == null ||  Float.valueOf(this.jTextFieldCantidad.getText()) == 0/*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
-           jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
-           jTextField14.equals(null)*/){
-           JOptionPane.showMessageDialog(null, "No ha indicado algun dato para generar el contrato", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
+    private void GenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarContratoActionPerformed
             //Proveedor seleccionado con el que se hara contrato
-                        
-            float valorTotal = Float.parseFloat(this.jTextFieldValorInd.getText()) * Float.parseFloat(this.jTextFieldCantidad.getText());
-            this.jTextFieldValorTotal.setText(Float.toString(valorTotal));
-
-            ControlContratarProveedor contrato = new ControlContratarProveedor(proveedorSeleccionado, Float.parseFloat(this.jTextFieldCantidad.getText()), this.jTextFieldProducto.getText());
-
-            JOptionPane.showMessageDialog(null, contrato.generarContrato(), "Sistema de Evaluacion de Proveedores", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            if(this.jTextFieldNombre.getText() == null ||  Float.valueOf(this.jTextFieldCantidad.getText()) == 0/*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
+            jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
+            jTextField14.equals(null)*/){
+                JOptionPane.showMessageDialog(null, "No ha indicado algun dato para generar el contrato", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
+                }
+            else{
+                String texto = jTextFieldCantidad.getText();
+                if(Float.parseFloat(texto)>0){
+                    float valorTotal = Float.parseFloat(this.jTextFieldValorInd.getText()) * Float.parseFloat(this.jTextFieldCantidad.getText());
+                    this.jTextFieldValorTotal.setText(Float.toString(valorTotal));
+                    ControlContratarProveedor contrato = new ControlContratarProveedor(proveedorSeleccionado, Float.parseFloat(this.jTextFieldCantidad.getText()), this.jTextFieldProducto.getText());
+                    JOptionPane.showMessageDialog(null, contrato.generarContrato(), "Sistema de Evaluacion de Proveedores", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Cantidad invalida");
+                    this.jTextFieldCantidad.setText("");
+                }
+            }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Cantidad invalida");
+                this.jTextFieldCantidad.setText("");
+        }
+    }//GEN-LAST:event_GenerarContratoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Principal regresarMenu = new Principal(Login.roll); //nos devuelve al Menu Principal
@@ -380,7 +391,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         this.jTextFieldCantidad.setText(null);
     }//GEN-LAST:event_jTextFieldCantidadMouseClickeed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         int filaSeleccionada = this.tabla.getSelectedRow();
         int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
 
@@ -415,13 +426,13 @@ public class ContratarProveedor extends javax.swing.JFrame {
                 this.jTextFieldValorInd.setText(Float.toString(u.getPrecio()));
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_SeleccionarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Consultar;
+    private javax.swing.JButton GenerarContrato;
+    private javax.swing.JButton Seleccionar;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
