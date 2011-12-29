@@ -1,5 +1,9 @@
 package Frontera;
 
+import java.awt.Dialog.ModalExclusionType;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+
 public class Principal extends javax.swing.JFrame {
 
     /** Creates new form Principal */
@@ -178,6 +182,7 @@ public class Principal extends javax.swing.JFrame {
     private void btnEvaluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEvaluarMouseClicked
     if (btnEvaluar.isEnabled()==true){
         EvaluarProveedor nuevaevaluacion = new EvaluarProveedor();
+        nuevaevaluacion.setModalExclusionType(ModalExclusionType.NO_EXCLUDE);
         nuevaevaluacion.setLocationRelativeTo(null);
         nuevaevaluacion.setVisible(true);
         this.dispose();
