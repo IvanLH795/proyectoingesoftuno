@@ -359,13 +359,13 @@ public class ContratarProveedor extends javax.swing.JFrame {
             jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
             jTextField14.equals(null)*/){
                 JOptionPane.showMessageDialog(null, "No ha indicado algun dato para generar el contrato", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
-                }
+            }
             else{
                 String texto = jTextFieldCantidad.getText();
                 if(Float.parseFloat(texto)>0){
                     float valorTotal = Float.parseFloat(this.jTextFieldValorInd.getText()) * Float.parseFloat(this.jTextFieldCantidad.getText());
                     this.jTextFieldValorTotal.setText(Float.toString(valorTotal));
-                    ControlContratarProveedor contrato = new ControlContratarProveedor(proveedorSeleccionado, Float.parseFloat(this.jTextFieldCantidad.getText()), this.jTextFieldProducto.getText());
+                    ControlContratarProveedor contrato = new ControlContratarProveedor(proveedorSeleccionado, Float.parseFloat(this.jTextFieldCantidad.getText()), productoSeleccionado);
                     JOptionPane.showMessageDialog(null, contrato.generarContrato(), "Sistema de Evaluacion de Proveedores", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
@@ -393,38 +393,39 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarActionPerformed
         int filaSeleccionada = this.tabla.getSelectedRow();
-        int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
-
+        
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
-
-        proveedorSeleccionado = proveedores.buscaProveedor(nit);
-
-        //Nombre:
-        this.jTextFieldNombre.setText(proveedorSeleccionado.getNombre());
-        //Nit:
-        this.jTextFieldNit.setText(String.valueOf(proveedorSeleccionado.getNit()));
-        //Representante:
-        this.jTextFieldRepresentante.setText(proveedorSeleccionado.getRepresentante());
-        //Producto a contratar:
-        String producto = this.jComboBox1.getSelectedItem().toString();
-        for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
-            if(u.getNombreProducto().equals(producto)){
-                this.jTextFieldProducto.setText(u.getNombreProducto());
-            }
+        if (filaSeleccionada == -1){
+            JOptionPane.showMessageDialog(null, "No ha indicado el producto a ser seleccionado", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
         }
-        //Direccion:
-        this.jTextFieldDireccion.setText(proveedorSeleccionado.getDireccion());
-        //Telefono:
-        this.jTextFieldTelefono.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
-        //Correo:
-        this.jTextFieldCorreo.setText(proveedorSeleccionado.getCorreo());
-        //PaginaWeb:
-        this.jTextFieldPagWeb.setText(proveedorSeleccionado.getPaginaWeb());
-        //Precion del producto:
-        for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
-            if(u.getNombreProducto().equals(producto)){
-                this.jTextFieldValorInd.setText(Float.toString(u.getPrecio()));
+        else{
+            int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
+            proveedorSeleccionado = proveedores.buscaProveedor(nit);
+
+            //Nombre:
+            this.jTextFieldNombre.setText(proveedorSeleccionado.getNombre());
+            //Nit:
+            this.jTextFieldNit.setText(String.valueOf(proveedorSeleccionado.getNit()));
+            //Representante:
+            this.jTextFieldRepresentante.setText(proveedorSeleccionado.getRepresentante());
+            //Producto a contratar:
+            String producto = this.jComboBox1.getSelectedItem().toString();
+            for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
+                if(u.getNombreProducto().equals(producto)){
+                    productoSeleccionado = u;
+                    this.jTextFieldProducto.setText(u.getNombreProducto());
+                }
             }
+            //Direccion:
+            this.jTextFieldDireccion.setText(proveedorSeleccionado.getDireccion());
+            //Telefono:
+            this.jTextFieldTelefono.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
+            //Correo:
+            this.jTextFieldCorreo.setText(proveedorSeleccionado.getCorreo());
+            //PaginaWeb:
+            this.jTextFieldPagWeb.setText(proveedorSeleccionado.getPaginaWeb());
+            //Precion del producto:
+            this.jTextFieldValorInd.setText(Float.toString(productoSeleccionado.getPrecio()));
         }
     }//GEN-LAST:event_SeleccionarActionPerformed
 
@@ -466,4 +467,5 @@ public class ContratarProveedor extends javax.swing.JFrame {
     private DefaultTableModel modelo;
     private JTable tabla;
     Proveedores proveedorSeleccionado = new Proveedores();
+    ProductoProveedor productoSeleccionado = new ProductoProveedor();
 }
