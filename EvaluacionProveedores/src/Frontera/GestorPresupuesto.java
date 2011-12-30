@@ -53,7 +53,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 obje.add(u.getDineroDisponible());
                 modelo.setColumnIdentifiers(titulos);
                 modelo.addRow(obje);
-                TDisponible.setText(String.valueOf(a-u.getDineroDisponible()));
+                a = a-u.getDineroDisponible();
+                TDisponible.setText(String.valueOf(a));
             }
         }catch(NullPointerException ex){
             modelo.setColumnIdentifiers(titulos);
@@ -362,20 +363,21 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         filaBorrar = tabla.getSelectionModel().getLeadSelectionIndex();
         if(filaBorrar == -1 && size > 0){
             filaBorrar = size - 1;
-
         }
-        if(filaBorrar >= size){
-            modelo.removeRow(filaBorrar);
-            Splash.sistema.getProductos().remove(filaBorrar);
-        }
-        else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
-            obj= modelo.getDataVector();
-            obj=(Vector) obj.elementAt(filaBorrar);
-            a=(obj.elementAt(1)+"");
-            b=Float.parseFloat(a);
-            TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
-            modelo.removeRow(filaBorrar);
-            Splash.sistema.getProductos().remove(filaBorrar);
+        if(filaBorrar > -1){
+            if(filaBorrar >= size){
+                modelo.removeRow(filaBorrar);
+                Splash.sistema.getProductos().remove(filaBorrar);
+            }
+            else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
+                obj= modelo.getDataVector();
+                obj=(Vector) obj.elementAt(filaBorrar);
+                a=(obj.elementAt(1)+"");
+                b=Float.parseFloat(a);
+                TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
+                modelo.removeRow(filaBorrar);
+                Splash.sistema.getProductos().remove(filaBorrar);
+            }
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
 

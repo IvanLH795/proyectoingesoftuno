@@ -5,7 +5,6 @@
 
 package Control;
 
-import Entidad.ProductoProveedor;
 import Entidad.Productos;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +71,16 @@ public class ControlGestionarPresupuesto {
         return(precio >= 0 && precio<10000000);
     }
 
-
-
+    public String estandarizarNombre(String nombre){
+        String nuevo="";
+        nuevo = nuevo + Character.toUpperCase(nombre.charAt(0));
+        for (int i=1; i < nombre.length(); i++){
+            if(nombre.charAt(i)>= 'A' && nombre.charAt(i) <= 'Z' ){
+                nuevo = nuevo + Character.toLowerCase(nombre.charAt(i));
+            }else{
+                nuevo = nuevo + nombre.charAt(i);
+            }
+        }
+        return nuevo;
+    }
 }
