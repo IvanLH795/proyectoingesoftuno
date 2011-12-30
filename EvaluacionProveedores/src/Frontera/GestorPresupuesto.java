@@ -102,11 +102,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 btnTerminarMouseClicked(evt);
             }
         });
-        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminarActionPerformed(evt);
-            }
-        });
 
         panelProductos.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos"));
 
@@ -129,11 +124,11 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         panelProductosLayout.setHorizontalGroup(
             panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelProductosLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnProductoEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProductoAgregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         panelProductosLayout.setVerticalGroup(
             panelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,18 +186,18 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             PanelMPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelMPLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(TNuevoPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(TNuevoPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
             .addGroup(PanelMPLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(PresupuestoAñadir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(PresupuestoQuitar)
                 .addContainerGap())
             .addGroup(PanelMPLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(ModificarCancelar)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         PanelMPLayout.setVerticalGroup(
             PanelMPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,8 +229,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                             .addComponent(JTotal))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
-                            .addComponent(TTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)))
+                            .addComponent(TDisponible, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(TTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(ModificarPresupuesto)))
@@ -324,27 +319,28 @@ public class GestorPresupuesto extends javax.swing.JFrame {
            try {
                 a=Float.parseFloat(precio);
                 TDisponible.setText(Float.parseFloat(TDisponible.getText())-a +"");
-                obj.addElement(producto);
-                obj.addElement(a);
-                producto1.setNombreProducto((String) obj.get(0));
-                producto1.setDineroDisponible( (Float)obj.get(1));
+                producto = verificar.estandarizarNombre(producto);
+                if(validarNombre(producto)){
+                    obj.addElement(producto);
+                    obj.addElement(a);
+                    producto1.setNombreProducto((String) obj.get(0));
+                    producto1.setDineroDisponible( (Float)obj.get(1));
              
-                String resultado = verificar.verificarProducto(producto1);
-                if(resultado.equals("Correcto")){
-                    obj.addElement(producto1.getNombreProducto());
-                    obj.addElement(producto1.getDineroDisponible());
-                    modelo.addRow(obj);
-                    if(sistema.getProductos() == null){
-                        List<Productos> productos = new ArrayList<Productos>();
-                        productos.add(producto1);
-                        sistema.setProductos(productos);
-                    }else{
-                        sistema.agregarProducto(producto1);
+                    String resultado = verificar.verificarProducto(producto1);
+                    if(resultado.equals("Correcto")){
+                        obj.addElement(producto1.getNombreProducto());
+                        obj.addElement(producto1.getDineroDisponible());
+                        modelo.addRow(obj);
+                        if(sistema.getProductos() == null){
+                            List<Productos> productos = new ArrayList<Productos>();
+                            productos.add(producto1);
+                            sistema.setProductos(productos);
+                        }else{
+                            sistema.agregarProducto(producto1);
+                        }
                     }
                 }
-                
-            }
-            catch (NumberFormatException e) {
+           }catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "datos Incorrectos");
             }
         }
@@ -359,8 +355,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         int filaBorrar = 0;
         try{
             size = modelo.getDataVector().size();
-
-
             TDisponible.setText(Float.parseFloat(TDisponible.getText()) +"");
         }catch(NullPointerException ex){
             size = 0;
@@ -372,6 +366,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         }
         if(filaBorrar >= size){
             modelo.removeRow(filaBorrar);
+            Splash.sistema.getProductos().remove(filaBorrar);
         }
         else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
             obj= modelo.getDataVector();
@@ -380,16 +375,13 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             b=Float.parseFloat(a);
             TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
             modelo.removeRow(filaBorrar);
+            Splash.sistema.getProductos().remove(filaBorrar);
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
 
     private void ModificarPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPresupuestoActionPerformed
         PanelMP.setVisible(true);                   // TODO add your handling code here:
     }//GEN-LAST:event_ModificarPresupuestoActionPerformed
-
-    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        PanelMP.setVisible(false);
-    }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void ModificarCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarCancelarActionPerformed
         PanelMP.setVisible(false);
@@ -465,6 +457,15 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     sistema.setProductosProveedor(productos);
     }
 
+    private boolean validarNombre(String nombre){
+        Vector nombres = modelo.getDataVector();
+        for (int i=0; i< nombres.size(); i=i+2){
+            if(((Vector)nombres.elementAt(i)).get(0).equals(nombre)){
+                return false;
+            }
+        }
+        return true;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JTotal;
     private javax.swing.JLabel Jdisponible;
@@ -485,5 +486,4 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelProductos;
     // End of variables declaration//GEN-END:variables
-    private List<ProductoProveedor> listaLocal;
 }
