@@ -4,6 +4,7 @@ import java.util.List;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
 import Entidad.ProductoProveedor;
+import Entidad.Productos;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -15,10 +16,11 @@ public class ContratarProveedor extends javax.swing.JFrame {
     public ContratarProveedor() {
          initComponents();
          this.jTextFieldNombre.setText(null);
-         for (Proveedores u : Splash.sistema.getProveedores()){
-               for (ProductoProveedor p : u.getProductos()){
-                   this.jComboBox1.addItem(p.getNombreProducto().toString());
-               }
+         List<Productos> productos = Splash.sistema.getProductos();
+         if(productos != null){
+            for (Productos u: productos){
+                this.jComboBox1.addItem(u.getNombreProducto());
+            }
          }
                   
          modelo = new DefaultTableModel();
@@ -349,7 +351,11 @@ public class ContratarProveedor extends javax.swing.JFrame {
         //Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
         //this.tabla.removeAll();
-        listaProveedores = proveedores.buscarListaProveedores(this.jComboBox1.getSelectedItem().toString(),modelo);        
+        if(this.jComboBox1.getSelectedItem() != null)
+            listaProveedores = proveedores.buscarListaProveedores(this.jComboBox1.getSelectedItem().toString(),modelo);
+        else{
+            JOptionPane.showMessageDialog(null, "No hay productos.", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ConsultarActionPerformed
 
     private void GenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarContratoActionPerformed

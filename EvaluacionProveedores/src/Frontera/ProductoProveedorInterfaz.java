@@ -207,7 +207,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
     private boolean validarNombre(String nombre){
         Vector nombres = modelo.getDataVector();
         for (int i=0; i< nombres.size(); i=i+2){
-            if(nombres.get(i).equals(nombre)){
+            if(((Vector)nombres.elementAt(i)).get(0).equals(nombre)){
                 return false;
             }
         }
