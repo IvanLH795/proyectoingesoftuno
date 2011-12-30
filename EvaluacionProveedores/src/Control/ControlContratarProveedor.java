@@ -6,6 +6,7 @@
 package Control;
 import Entidad.Proveedores;
 import Entidad.ProductoProveedor;
+import Entidad.Productos;
 import Frontera.Splash;
 import java.util.Date;
 import java.util.List;
@@ -98,6 +99,10 @@ public class ControlContratarProveedor {
             contrato.close();
             file.close();
 
+            Productos p = buscarProducto(productoSeleccionado.getNombreProducto());
+            p.setDineroDisponible(p.getDineroDisponible() - productoSeleccionado.getPrecio()*cantidad);
+            Splash.sistema.setPresupuestoT(Splash.sistema.getPresupuestoT() - productoSeleccionado.getPrecio()*cantidad);
+
         } catch(Exception ee){
             System.out.println(ee.getMessage());
             salida = ee.getMessage();
@@ -110,6 +115,15 @@ public class ControlContratarProveedor {
             return false;
         }
         return true;
+    }
+
+    private Productos buscarProducto (String nombre) {
+        for (Productos u: Splash.sistema.getProductos()){
+            if(u.getNombreProducto().equals(nombre)){
+                return u;
+            }
+        }
+        return null;
     }
 
      private boolean validarProducto(String prod) {
