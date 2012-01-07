@@ -9,6 +9,7 @@ import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Entidad.Sistema;
 import Frontera.Splash;
+import dao.proveedoresDAO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -18,12 +19,15 @@ import java.util.Vector;
  * @author Darthian
  */
 public class ControlAdministrarProveedor {
+    
+    proveedoresDAO proveedorPersistente = new proveedoresDAO();
 
     public String crearProveedor(Proveedores u){
         if(validarProveedorNit(u.getNit())){
             if(validarProveedorTel(u.getTelefono()) || u.getTelefono()== 0){
                 Sistema sistema = Frontera.Splash.sistema;
                 sistema.getProveedores().add(u);
+                proveedorPersistente.crear(u);
                 return "Succes";
             }else{
                 return "Telefono invalido";
@@ -47,6 +51,7 @@ public class ControlAdministrarProveedor {
                     viejo.setTelefono(nuevo.getTelefono());
                     viejo.setProductos(null);
                 }
+                proveedorPersistente.actualizar(viejo, nuevo);
                 return "Succes";
             }
             else{
@@ -65,6 +70,7 @@ public class ControlAdministrarProveedor {
             for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals((Integer)nit)){
                     sistema.getProveedores().remove(u);
+                    proveedorPersistente.eliminar(u);
                     return "Succes";
                 }
             }
@@ -75,6 +81,7 @@ public class ControlAdministrarProveedor {
             Sistema sistema = Frontera.Splash.sistema;
             for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals(nit)){
+                    proveedorPersistente.leer(u);
                     return u;
                 }
             }
@@ -85,6 +92,7 @@ public class ControlAdministrarProveedor {
             Sistema sistema = Frontera.Splash.sistema;
             for (Proveedores u: sistema.getProveedores()){
                 if (u.getNombre().equals(nombre)){
+                    proveedorPersistente.leer(u);
                     return u;
                 }
             }
@@ -95,6 +103,7 @@ public class ControlAdministrarProveedor {
             Sistema sistema = Frontera.Splash.sistema;
             for (Proveedores u: sistema.getProveedores()){
                 if (((Integer)u.getNit()).equals(obj)){
+                    proveedorPersistente.leer(u);
                     return u;
                 }
             }
@@ -128,6 +137,7 @@ public class ControlAdministrarProveedor {
                     viejo.setProductos(lista);
                     Splash.listaproductos = null;
                 }
+                proveedorPersistente.actualizar(viejo, nuevo);
                 return "Succes";
             }
             else{
@@ -156,6 +166,7 @@ public class ControlAdministrarProveedor {
                 }
                 Sistema sistema = Frontera.Splash.sistema;
                 sistema.getProveedores().add(proveedor2);
+                proveedorPersistente.crear(proveedor2);
                 return "Succes";
             }else{
                 return "Telefono invalido";

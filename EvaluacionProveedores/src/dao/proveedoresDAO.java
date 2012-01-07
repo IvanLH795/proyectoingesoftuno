@@ -10,6 +10,7 @@ import javax.persistence.Query;
 public class proveedoresDAO {
     private static EntityManagerFactory
     emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
+  
     public void crear(Proveedores object){
          EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
