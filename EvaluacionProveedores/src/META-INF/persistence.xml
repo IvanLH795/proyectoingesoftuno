@@ -3,7 +3,10 @@
   <persistence-unit name="EvaluacionProveedoresPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>dao.proveedoresDAO</class>
-      <properties>
+    <class>Entidad.Usuario</class>
+    <class>dao.UsuariosDAO</class>
+    <class>dao.UsuarioDAO</class>
+    <properties>
       <property name="hibernate.connection.username" value="root"/>
       <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
       <property name="hibernate.connection.password" value="1234"/>
