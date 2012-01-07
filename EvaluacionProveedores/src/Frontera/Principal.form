@@ -54,9 +54,9 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btnEvaluar" alignment="0" pref="143" max="32767" attributes="1"/>
                               <Component id="btnGenerar" alignment="0" pref="143" max="32767" attributes="1"/>
+                              <Component id="btnAdministrar" alignment="1" pref="143" max="32767" attributes="1"/>
                               <Component id="btnGestor" alignment="0" max="32767" attributes="1"/>
                               <Component id="btnContratar" alignment="0" pref="143" max="32767" attributes="1"/>
-                              <Component id="btnAdministrar" alignment="1" pref="143" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
@@ -91,13 +91,13 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="btnAdministrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnContratar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnGestor" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="btnEvaluar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnGenerar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnGestor" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnContratar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
