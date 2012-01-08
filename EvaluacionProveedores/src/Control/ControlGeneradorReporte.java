@@ -26,7 +26,7 @@ public class ControlGeneradorReporte {
 
  public ControlGeneradorReporte() {
     }
- public void imprimirPantalla(JTextArea vistaReporte) {
+ public void imprimirPantallaReporte1(JTextArea vistaReporte) {
 
         Sistema provee = Frontera.Splash.sistema;
         String productos = "";
@@ -66,6 +66,37 @@ public class ControlGeneradorReporte {
         }
  }
 
+    public void imprimirPantallaReporte2(JTextArea vistaReporte, String Nit) {
+         int nit  = Integer.parseInt(Nit);
+         Proveedores nuevo = null;
+         Sistema provee = Frontera.Splash.sistema;
+          for (Proveedores u: provee.getProveedores()){
+          if(u.getNit()== nit){
+            nuevo = u;
+          }
+          }
+         if (nuevo != null){
+             String Evaluaciones ="";
+             try{
+             for(int i = 0; i < nuevo.getEvaluaciones().size();i++){
+             Evaluaciones  = Evaluaciones +"\n\n"+ "Evaluacion numero:  " + i +"\n\n";
+             Evaluaciones  = Evaluaciones +"Adaptabilidad:  "+ nuevo.getEvaluaciones().get(i).getAdaptabilidad()+"\n";
+             Evaluaciones  = Evaluaciones +"Cercania:  " + nuevo.getEvaluaciones().get(i).getCercania()+"\n";
+             Evaluaciones  = Evaluaciones +"Comentarios:  " + nuevo.getEvaluaciones().get(i).getComentarios()+"\n";
+             Evaluaciones  = Evaluaciones +"Calidad:  " +  nuevo.getEvaluaciones().get(i).getCalidad()+"\n";
+             Evaluaciones  = Evaluaciones +"Fiabilidad:  " + nuevo.getEvaluaciones().get(i).getFiabilidad()+"\n";
+             Evaluaciones  = Evaluaciones +"Anio:  " + nuevo.getEvaluaciones().get(i).getAnio()+" ";
+             Evaluaciones  = Evaluaciones +"Mes:  " +  nuevo.getEvaluaciones().get(i).getMes()+" ";
+             Evaluaciones  = Evaluaciones +"Dia:  " +  nuevo.getEvaluaciones().get(i).getDia()+" ";
+             Evaluaciones  = Evaluaciones +"Hora:  " +  nuevo.getEvaluaciones().get(i).getHora()+" ";
+             Evaluaciones  = Evaluaciones +"Min:  " +  nuevo.getEvaluaciones().get(i).getMin()+"\n";
+             }}catch(IndexOutOfBoundsException ex){}
+            vistaReporte.setText(Evaluaciones);
+         }
+         else {JOptionPane.showMessageDialog(frame,"nit no encontrado", "",JOptionPane.WARNING_MESSAGE);}
+
+    }
+
     public void imprimirReporte(File fichero, String text) throws IOException {
         boolean k = true;
          try{
@@ -89,4 +120,5 @@ ioe.printStackTrace();
     }
 
 JFrame frame;
+
 }
