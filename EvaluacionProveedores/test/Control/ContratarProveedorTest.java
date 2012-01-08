@@ -51,14 +51,14 @@ public class ContratarProveedorTest {
         Proveedores proveedor = new Proveedores();
         ProductoProveedor producto = new ProductoProveedor();
         int cantidad = 20;
-        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor,cantidad,producto);       
-        assertEquals(contrato.generarContrato(), ContratoNogenerado);
-        cantidad = -20;
         ControlContratarProveedor contrato1 = new ControlContratarProveedor(proveedor,cantidad,producto);
         assertEquals(contrato1.generarContrato(), ContratoNogenerado);
-        cantidad = 0;
+        cantidad = -20;
         ControlContratarProveedor contrato2 = new ControlContratarProveedor(proveedor,cantidad,producto);
         assertEquals(contrato2.generarContrato(), ContratoNogenerado);
+        cantidad = 0;
+        ControlContratarProveedor contrato3 = new ControlContratarProveedor(proveedor,cantidad,producto);
+        assertEquals(contrato3.generarContrato(), ContratoNogenerado);
     }
 
 }
