@@ -50,7 +50,7 @@ public class GenerarReporte extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
         VerButtonEvaluaciones = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        contratos = new javax.swing.JButton();
         nit = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
@@ -102,7 +102,12 @@ public class GenerarReporte extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Reporte de Contrataciones");
+        contratos.setText("Reporte de Contrataciones");
+        contratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contratosActionPerformed(evt);
+            }
+        });
 
         nit.setText("Nit");
         nit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,7 +152,7 @@ public class GenerarReporte extends javax.swing.JFrame {
                                     .addComponent(VerButtonEvaluaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                 .addComponent(reporteProveedores))
-                            .addComponent(jButton2))))
+                            .addComponent(contratos))))
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -165,7 +170,7 @@ public class GenerarReporte extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jButton2)
+                        .addComponent(contratos)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addGap(2, 2, 2)
@@ -244,13 +249,19 @@ public class GenerarReporte extends javax.swing.JFrame {
         nit.setText("");
     }//GEN-LAST:event_nitMouseClicked
 
+    private void contratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratosActionPerformed
+       vistaReporte.setText("");
+        ControlGeneradorReporte nuevo = new ControlGeneradorReporte();
+        nuevo.imprimirPantallaReporte3(vistaReporte);
+    }//GEN-LAST:event_contratosActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton VerButtonEvaluaciones;
     private javax.swing.JButton cancelarButton;
+    private javax.swing.JButton contratos;
     private javax.swing.JButton imprimirButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

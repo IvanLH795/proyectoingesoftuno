@@ -13,6 +13,14 @@ import java.util.List;
 
 public class Sistema {
 
+    public List<String> getListaContratos() {
+        return ListaContratos;
+    }
+
+    public void setListaContratos(List<String> ListaContratos) {
+        this.ListaContratos = ListaContratos;
+    }
+
     // <editor-fold defaultstate="collapsed" desc=" UML Marker ">
     // #[regen=yes,id=DCE.08D9144D-9239-8F3F-D57C-05EFE1C62978]
     // </editor-fold>
@@ -22,6 +30,7 @@ public class Sistema {
     private List<ProductoProveedor> productosProveedor;
     private Float presupuesto;
     private Float presupuestoD;
+    private List<String> ListaContratos;
 
     public Float getPresupuestoT() {
         return presupuesto;
