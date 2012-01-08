@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -120,5 +121,20 @@ ioe.printStackTrace();
     }
 
 JFrame frame;
+
+    public void imprimirPantallaReporte3(JTextArea vistaReporte) {
+       Sistema provee = Frontera.Splash.sistema;
+       String VerContratos = "";
+       List<String> Contratos = null;
+        try {
+       Contratos = provee.getListaContratos();
+       for(int i = 0; i< Contratos.size();i++){
+           VerContratos = VerContratos + Contratos.get(i);
+       }
+       vistaReporte.setText(VerContratos);
+    }catch(NullPointerException ex){}
+       if(Contratos == null)
+        JOptionPane.showMessageDialog(frame,"No hay contratos existentes", "",JOptionPane.WARNING_MESSAGE);
+    }
 
 }

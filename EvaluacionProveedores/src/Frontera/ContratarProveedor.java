@@ -361,6 +361,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
     private void GenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarContratoActionPerformed
             //Proveedor seleccionado con el que se hara contrato
         try {
+
             if(this.jTextFieldNombre.getText() == null ||  Float.valueOf(this.jTextFieldCantidad.getText()) == 0/*&& jTextField2.equals(null) && jTextField7.equals(null) && jTextField8.equals(null) &&
             jTextField9.equals(null) && jTextField11.equals(null) && jTextField12.equals(null) && jTextField13.equals(null) &&
             jTextField14.equals(null)*/){
@@ -405,15 +406,19 @@ public class ContratarProveedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No ha indicado el producto a ser seleccionado", "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
         }
         else{
+            String ContratoGuardar = "";
             int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
             proveedorSeleccionado = proveedores.buscaProveedor(nit);
 
             //Nombre:
             this.jTextFieldNombre.setText(proveedorSeleccionado.getNombre());
+            ContratoGuardar = ContratoGuardar +" Nombre: "+ jTextFieldNombre.getText() + "\n";
             //Nit:
             this.jTextFieldNit.setText(String.valueOf(proveedorSeleccionado.getNit()));
+            ContratoGuardar = ContratoGuardar +" Nit: "+ jTextFieldNit.getText() + "\n";
             //Representante:
             this.jTextFieldRepresentante.setText(proveedorSeleccionado.getRepresentante());
+            ContratoGuardar = ContratoGuardar +" Representante: "+ jTextFieldRepresentante.getText() + "\n";
             //Producto a contratar:
             String producto = this.jComboBox1.getSelectedItem().toString();
             for (ProductoProveedor u: proveedorSeleccionado.getProductos()){
@@ -422,16 +427,23 @@ public class ContratarProveedor extends javax.swing.JFrame {
                     this.jTextFieldProducto.setText(u.getNombreProducto());
                 }
             }
+            ContratoGuardar = ContratoGuardar +" Producto: "+ jTextFieldProducto.getText() + "\n";
             //Direccion:
             this.jTextFieldDireccion.setText(proveedorSeleccionado.getDireccion());
+            ContratoGuardar = ContratoGuardar +" Direccion: "+ jTextFieldDireccion.getText() + "\n";
             //Telefono:
             this.jTextFieldTelefono.setText(String.valueOf(proveedorSeleccionado.getTelefono()));
+            ContratoGuardar = ContratoGuardar +" Telefono: "+ jTextFieldTelefono.getText() + "\n";
             //Correo:
             this.jTextFieldCorreo.setText(proveedorSeleccionado.getCorreo());
+            ContratoGuardar = ContratoGuardar +" Correo: "+ jTextFieldCorreo.getText() + "\n";
             //PaginaWeb:
             this.jTextFieldPagWeb.setText(proveedorSeleccionado.getPaginaWeb());
+            ContratoGuardar = ContratoGuardar +" PagWeb: "+ jTextFieldPagWeb.getText() + "\n";
             //Precion del producto:
             this.jTextFieldValorInd.setText(Float.toString(productoSeleccionado.getPrecio()));
+            ContratoGuardar = ContratoGuardar +" ValorInd: "+ jTextFieldValorInd.getText() + "\n";
+            Splash.sistema.getListaContratos().add(ContratoGuardar);
         }
     }//GEN-LAST:event_SeleccionarActionPerformed
 
