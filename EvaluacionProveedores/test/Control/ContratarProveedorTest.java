@@ -5,6 +5,7 @@
 
 package Control;
 
+import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,8 +49,16 @@ public class ContratarProveedorTest {
     @Test
     public void verificarContratarProveedor(){
         Proveedores proveedor = new Proveedores();
-        proveedor.setNit(-5);
-        assertEquals(Succes, this);
+        ProductoProveedor producto = new ProductoProveedor();
+        int cantidad = 20;
+        ControlContratarProveedor contrato = new ControlContratarProveedor(proveedor,cantidad,producto);       
+        assertEquals(contrato.generarContrato(), ContratoNogenerado);
+        cantidad = -20;
+        ControlContratarProveedor contrato1 = new ControlContratarProveedor(proveedor,cantidad,producto);
+        assertEquals(contrato1.generarContrato(), ContratoNogenerado);
+        cantidad = 0;
+        ControlContratarProveedor contrato2 = new ControlContratarProveedor(proveedor,cantidad,producto);
+        assertEquals(contrato2.generarContrato(), ContratoNogenerado);
     }
 
 }

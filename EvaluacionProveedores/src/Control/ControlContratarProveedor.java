@@ -105,7 +105,7 @@ public class ControlContratarProveedor {
 
         } catch(Exception ee){
             System.out.println(ee.getMessage());
-            salida = ee.getMessage();
+            salida = "Error al generar el contrato";
         }
        return salida;
     }
