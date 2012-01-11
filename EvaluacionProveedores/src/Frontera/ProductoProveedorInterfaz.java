@@ -50,7 +50,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         for(ProductoProveedor u: listaProductos.getProductosProveedor()){
             Vector obj = new Vector();
             obj.add(u.getNombreProducto());
-            obj.add(u.getPrecio());
+            obj.add(u.getPrecioPorUnidad());
             modelo.addRow(obj);
         }
         jScrollPane1.setViewportView(tabla);

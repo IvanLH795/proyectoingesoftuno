@@ -441,7 +441,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
             this.jTextFieldPagWeb.setText(proveedorSeleccionado.getPaginaWeb());
             ContratoGuardar = ContratoGuardar +" PagWeb: "+ jTextFieldPagWeb.getText() + "\n";
             //Precion del producto:
-            this.jTextFieldValorInd.setText(Float.toString(productoSeleccionado.getPrecio()));
+            this.jTextFieldValorInd.setText(Float.toString(productoSeleccionado.getPrecioPorUnidad()));
             ContratoGuardar = ContratoGuardar +" ValorInd: "+ jTextFieldValorInd.getText() + "\n";
             Splash.sistema.getListaContratos().add(ContratoGuardar);
         }

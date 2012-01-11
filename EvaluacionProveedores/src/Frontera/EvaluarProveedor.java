@@ -281,7 +281,7 @@ ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
         evaluacion.setMes(fecha.get(Calendar.MONTH)+1);
         evaluacion.setDia(fecha.get(Calendar.DAY_OF_MONTH));
         evaluacion.setHora(fecha.get(Calendar.HOUR_OF_DAY));
-        evaluacion.setMin(fecha.get(Calendar.MINUTE));
+        evaluacion.setMini(fecha.get(Calendar.MINUTE));
         proveedor1.getEvaluaciones().add(evaluacion);
         proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores

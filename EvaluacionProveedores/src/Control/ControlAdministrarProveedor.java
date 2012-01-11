@@ -122,7 +122,7 @@ public class ControlAdministrarProveedor {
                     for(int i=0; i<listaproductos.size();i++){
                         ProductoProveedor producto = new ProductoProveedor();
                         producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-                        producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                        producto.setPrecioPorUnidad((Float)((Vector)listaproductos.get(i)).get(1));
                         if(!producto.getNombreProducto().equals(null))
                             lista.add(producto);
                     }
@@ -148,7 +148,7 @@ public class ControlAdministrarProveedor {
                     for(int i=0; i<listaproductos.size();i++){
                         ProductoProveedor producto = new ProductoProveedor();
                         producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-                        producto.setPrecio((Float)((Vector)listaproductos.get(i)).get(1));
+                        producto.setPrecioPorUnidad((Float)((Vector)listaproductos.get(i)).get(1));
                         if(!producto.getNombreProducto().equals(null))
                             lista.add(producto);
                     }

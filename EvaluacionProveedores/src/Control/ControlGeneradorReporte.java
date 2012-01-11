@@ -36,7 +36,7 @@ public class ControlGeneradorReporte {
         for (Proveedores u: provee.getProveedores()){
             try{
                 for(ProductoProveedor u1: u.getProductos()){
-                    productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecio() + "\n";
+                    productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecioPorUnidad() + "\n";
                 }
             }catch(NullPointerException ex){
                 productos = "";
@@ -44,7 +44,7 @@ public class ControlGeneradorReporte {
             try{
                 for(Evaluaciones u2: u.getEvaluaciones()){
                     evaluaciones = evaluaciones + u2.getCalidad() + "\t\t" + u2.getFiabilidad() + "\t\t"
-                            + u2.getAnio() + "/" + u2.getMes() + "/" + u2.getDia() + " " + u2.getHora() + ":" + u2.getMin() + "\n";
+                            + u2.getAnio() + "/" + u2.getMes() + "/" + u2.getDia() + " " + u2.getHora() + ":" + u2.getMini() + "\n";
                     if(u2.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u2.getComentarios() + "\n";
             }
@@ -90,7 +90,7 @@ public class ControlGeneradorReporte {
              Evaluaciones  = Evaluaciones +"Mes:  " +  nuevo.getEvaluaciones().get(i).getMes()+" ";
              Evaluaciones  = Evaluaciones +"Dia:  " +  nuevo.getEvaluaciones().get(i).getDia()+" ";
              Evaluaciones  = Evaluaciones +"Hora:  " +  nuevo.getEvaluaciones().get(i).getHora()+" ";
-             Evaluaciones  = Evaluaciones +"Min:  " +  nuevo.getEvaluaciones().get(i).getMin()+"\n";
+             Evaluaciones  = Evaluaciones +"Min:  " +  nuevo.getEvaluaciones().get(i).getMini()+"\n";
              }}catch(IndexOutOfBoundsException ex){}
             vistaReporte.setText(Evaluaciones);
          }

@@ -55,7 +55,7 @@ public class ControlContratarProveedor {
                         datosBasicos.add(u.getNit());//Nit
                         datosBasicos.add(u.getNombre());//Nombre
                         datosBasicos.add(u.getEvaluaciones().get(u.getEvaluaciones().size()-1).getFiabilidad());//Fiabilidad
-                        datosBasicos.add(p.getPrecio());//Precio
+                        datosBasicos.add(p.getPrecioPorUnidad());//Precio
                         modelo.addRow(datosBasicos);
                     }
                 }
@@ -91,17 +91,17 @@ public class ControlContratarProveedor {
             contrato.add(new Paragraph("\n \t Correo: " + proveedorContratado.getCorreo()));
             contrato.add(new Paragraph("\n \t Pagina Web: " + proveedorContratado.getPaginaWeb()));
             contrato.add(new Paragraph("\n \t Producto: " + productoSeleccionado.getNombreProducto()));
-            contrato.add(new Paragraph("\n \t Valor por unidad: " + productoSeleccionado.getPrecio()+ " pesos"));
+            contrato.add(new Paragraph("\n \t Valor por unidad: " + productoSeleccionado.getPrecioPorUnidad()+ " pesos"));
             contrato.add(new Paragraph("\n \t Pedido Total: " + Float.toString(cantidad) + " unidades"));
-            contrato.add(new Paragraph("\n \t Valor total: " + Float.toString(cantidad * productoSeleccionado.getPrecio())+ " pesos"));
+            contrato.add(new Paragraph("\n \t Valor total: " + Float.toString(cantidad * productoSeleccionado.getPrecioPorUnidad())+ " pesos"));
             contrato.add(new Paragraph("\n \t" + new Date().toString()));
             
             contrato.close();
             file.close();
 
             Productos p = buscarProducto(productoSeleccionado.getNombreProducto());
-            p.setDineroDisponible(p.getDineroDisponible() - productoSeleccionado.getPrecio()*cantidad);
-            Splash.sistema.setPresupuestoT(Splash.sistema.getPresupuestoT() - productoSeleccionado.getPrecio()*cantidad);
+            p.setDineroDisponible(p.getDineroDisponible() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
+            Splash.sistema.setPresupuestoT(Splash.sistema.getPresupuestoT() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
 
         } catch(Exception ee){
             System.out.println(ee.getMessage());

@@ -654,7 +654,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         try{
         try{
             for(ProductoProveedor u: proveedor2.getProductos()){
-                    productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+                    productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecioPorUnidad() + "\n";
             }
         }catch(NullPointerException ex){
             productos = "";
@@ -663,7 +663,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         try{
             for(Evaluaciones u: proveedor2.getEvaluaciones()){
                     evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
-                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMin() + "\n";
+                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMini() + "\n";
                     if(u.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
             }
@@ -707,7 +707,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             try{
                 try{
                     for(ProductoProveedor u: proveedor2.getProductos()){
-                        productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecio() + "\n";
+                        productos = productos + u.getNombreProducto() + "\t\t" + u.getPrecioPorUnidad() + "\n";
                     }
                 }catch(NullPointerException ex){
                     productos = "";
@@ -715,7 +715,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 try{
                     for(Evaluaciones u: proveedor2.getEvaluaciones()){
                         evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
-                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMin() + "\n";
+                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMini() + "\n";
                     if(u.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
                     }
