@@ -166,16 +166,16 @@ public class Splash extends javax.swing.JFrame {
         evaluacion.setMes(11);
         evaluacion.setDia(3);
         evaluacion.setHora(12);
-        evaluacion.setMin(22);
+        evaluacion.setMini(22);
         proveedor.getEvaluaciones().add(evaluacion);
         proveedor.setCorreo("laprimera@colombia.com");
         proveedor.setDireccion("Cra 6 # 65 - 18");
         proveedor.setRepresentante("Henry Murillo");
 
         productoa.setNombreProducto("Marcadores");
-        productoa.setPrecio(2500);
+        productoa.setPrecioPorUnidad(2500);
         productob.setNombreProducto("Borradores");
-        productob.setPrecio(3000);
+        productob.setPrecioPorUnidad(3000);
 
         listaProductos.add(productoa);
         listaProductos.add(productob);
@@ -196,7 +196,7 @@ public class Splash extends javax.swing.JFrame {
         evaluacion2.setMes(10);
         evaluacion2.setDia(28);
         evaluacion2.setHora(10);
-        evaluacion2.setMin(35);
+        evaluacion2.setMini(35);
         proveedor2.getEvaluaciones().add(evaluacion2);
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
@@ -207,9 +207,9 @@ public class Splash extends javax.swing.JFrame {
         List<ProductoProveedor> listaProductos2 = new ArrayList<ProductoProveedor>();
 
         productoc.setNombreProducto("Tableros");
-        productoc.setPrecio(120000);
+        productoc.setPrecioPorUnidad(120000);
         productod.setNombreProducto("Pupitres");
-        productod.setPrecio(110000);
+        productod.setPrecioPorUnidad(110000);
 
         listaProductos2.add(productoc);
         listaProductos2.add(productod);

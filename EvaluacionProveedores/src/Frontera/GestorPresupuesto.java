@@ -443,13 +443,13 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     ProductoProveedor d = new ProductoProveedor();
 
     a.setNombreProducto("Marcadores");
-    a.setPrecio(2500);
+    a.setPrecioPorUnidad(2500);
     b.setNombreProducto("Borradores");
-    b.setPrecio(2500);
+    b.setPrecioPorUnidad(2500);
     c.setNombreProducto("Tableros");
-    c.setPrecio(2500);
+    c.setPrecioPorUnidad(2500);
     d.setNombreProducto("marcadores");
-    d.setPrecio(2500);
+    d.setPrecioPorUnidad(2500);
 
     productos.add(a);
     productos.add(b);
