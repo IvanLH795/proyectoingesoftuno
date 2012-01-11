@@ -46,6 +46,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         PanelMP.setVisible(false);
         float a =sistema.getPresupuestoT();
         TTotal.setText(String.valueOf(a));
+        TDisponible.setText(String.valueOf(a));
         try{            
             for(Productos u: sistema.getProductos()){
                 Vector obje = new Vector();
@@ -397,7 +398,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 if(Float.parseFloat(texto)>0){
                     sistema.setPresupuestoT(Float.parseFloat(texto)+sistema.getPresupuestoT());
                     TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
-                    TDisponible.setText(String.valueOf(sistema.getPresupuestoT()));
+                    TDisponible.setText(Float.parseFloat(TDisponible.getText())+Float.parseFloat(texto)+"");
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
                 }
@@ -418,7 +419,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 if(Float.parseFloat(texto)<=sistema.getPresupuestoT()){
                     sistema.setPresupuestoT(sistema.getPresupuestoT()-Float.parseFloat(texto));
                     TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
-                    TDisponible.setText(String.valueOf(sistema.getPresupuestoT()));
+                    TDisponible.setText(Float.parseFloat(TDisponible.getText())-Float.parseFloat(texto)+"");
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
                 }
