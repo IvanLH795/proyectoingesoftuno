@@ -48,7 +48,7 @@ public class AdministrarProveedorTest {
         evaluacion.setMes(11);
         evaluacion.setDia(3);
         evaluacion.setHora(12);
-        evaluacion.setMin(22);
+        evaluacion.setMini(22);
         proveedor.getEvaluaciones().add(evaluacion);
         proveedor.setCorreo("laprimera@colombia.com");
         proveedor.setDireccion("Cra 6 # 65 - 18");
@@ -68,7 +68,7 @@ public class AdministrarProveedorTest {
         evaluacion2.setMes(10);
         evaluacion2.setDia(28);
         evaluacion2.setHora(10);
-        evaluacion2.setMin(35);
+        evaluacion2.setMini(35);
         proveedor2.getEvaluaciones().add(evaluacion2);
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
