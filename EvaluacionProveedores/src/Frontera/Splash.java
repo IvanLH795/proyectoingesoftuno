@@ -11,6 +11,7 @@
 
 package Frontera;
 
+//import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
@@ -172,6 +173,9 @@ public class Splash extends javax.swing.JFrame {
         proveedor.setDireccion("Cra 6 # 65 - 18");
         proveedor.setRepresentante("Henry Murillo");
 
+        //ProveedoresJpaController ProveedorJpa = new ProveedoresJpaController();
+        //ProveedorJpa.create(proveedor);
+        
         productoa.setNombreProducto("Marcadores");
         productoa.setPrecioPorUnidad(2500);
         productob.setNombreProducto("Borradores");

@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -31,7 +33,9 @@ public class Proveedores implements Serializable {
     String correo;
     String paginaWeb;
     boolean evaluacionRealizada;
+    @OneToMany
     List<Evaluaciones> evaluaciones = new ArrayList<Evaluaciones>();
+    @OneToMany
     List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
 
     public boolean setEvaluacionRealizada() {

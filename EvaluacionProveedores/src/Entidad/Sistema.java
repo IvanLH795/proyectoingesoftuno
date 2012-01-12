@@ -5,22 +5,14 @@
 
 package Entidad;
 
-import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 /**
  *
  * @author Darthian
  */
-@Entity
-public class Sistema implements Serializable {
+public class Sistema{
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private List<Usuario> usuarios;
     private List<Proveedores> proveedores;
