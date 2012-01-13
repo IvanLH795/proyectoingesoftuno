@@ -27,8 +27,8 @@ public class ControlGeneradorReporte {
 
  public ControlGeneradorReporte() {
     }
- public void imprimirPantallaReporte1(JTextArea vistaReporte) {
-
+ public String imprimirPantallaReporte1(JTextArea vistaReporte) {
+        String salida = "Fail";
         Sistema provee = Frontera.Splash.sistema;
         String productos = "";
         String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
@@ -64,10 +64,13 @@ public class ControlGeneradorReporte {
                          productos + "\n";
              vistaReporte.append(proveedor1);
              vistaReporte.append(System.getProperty("line.separator")); // Esto para el salto de línea
+             salida = "Succes";
         }
+        return salida;
  }
 
-    public void imprimirPantallaReporte2(JTextArea vistaReporte, String Nit) {
+    public String imprimirPantallaReporte2(JTextArea vistaReporte, String Nit) {
+         String salida = "Fail";
          int nit  = Integer.parseInt(Nit);
          Proveedores nuevo = null;
          Sistema provee = Frontera.Splash.sistema;
@@ -93,12 +96,14 @@ public class ControlGeneradorReporte {
              Evaluaciones  = Evaluaciones +"Min:  " +  nuevo.getEvaluaciones().get(i).getMini()+"\n";
              }}catch(IndexOutOfBoundsException ex){}
             vistaReporte.setText(Evaluaciones);
+            salida = "Succes";
          }
          else {JOptionPane.showMessageDialog(frame,"nit no encontrado", "",JOptionPane.WARNING_MESSAGE);}
-
+         return salida;
     }
 
-    public void imprimirReporte(File fichero, String text) throws IOException {
+    public String imprimirReporte(File fichero, String text) throws IOException {
+        String salida="Fail";
         boolean k = true;
          try{
              PrintWriter fileout = new PrintWriter(new FileWriter(fichero , k));
@@ -112,17 +117,20 @@ public class ControlGeneradorReporte {
             Desktop desktop = null;
             if (Desktop.isDesktopSupported()) {
                 desktop = Desktop.getDesktop();
+                salida ="Succes";
             }
             desktop.print(fichero);
         } catch (IOException ioe) {
         JOptionPane.showMessageDialog(frame,"Servicio de Impresión no disponible", "",JOptionPane.WARNING_MESSAGE);
 ioe.printStackTrace();
         }
+        return salida;
     }
 
 JFrame frame;
 
-    public void imprimirPantallaReporte3(JTextArea vistaReporte) {
+    public String imprimirPantallaReporte3(JTextArea vistaReporte) {
+       String salida ="Succes";
        Sistema provee = Frontera.Splash.sistema;
        String VerContratos = "";
        List<String> Contratos = null;
@@ -132,9 +140,10 @@ JFrame frame;
            VerContratos = VerContratos + Contratos.get(i);
        }
        vistaReporte.setText(VerContratos);
+       salida = "Succes";
     }catch(NullPointerException ex){}
        if(Contratos == null)
         JOptionPane.showMessageDialog(frame,"No hay contratos existentes", "",JOptionPane.WARNING_MESSAGE);
-    }
-
+       return salida;
+    }    
 }

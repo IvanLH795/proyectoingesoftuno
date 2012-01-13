@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class ContratarProveedorTest {
 
     private String ContratoNogenerado = "Error al generar el contrato";
-    private String PedidoInvalido = "Pedido Invalido";
+    private String ProveedorNoEncontrado = "El proveedor no se encuentra en la lista";
     public ContratarProveedorTest() {
     }
 
@@ -59,4 +59,12 @@ public class ContratarProveedorTest {
         assertEquals(contrato3.generarContrato(), ContratoNogenerado);
     }
 
+    @Test
+    public void BuscarProveedor(){
+        Proveedores proveedor = new Proveedores();
+        ProductoProveedor producto = new ProductoProveedor();
+        int cantidad = 20;
+        ControlContratarProveedor contrato1 = new ControlContratarProveedor(proveedor,cantidad,producto);
+        assertEquals(contrato1.buscaProveedor(1, proveedor), ProveedorNoEncontrado);
+    }
 }

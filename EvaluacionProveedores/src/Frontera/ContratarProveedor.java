@@ -408,7 +408,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
         else{
             String ContratoGuardar = "";
             int nit = Integer.parseInt(this.modelo.getValueAt(filaSeleccionada, 0).toString());
-            proveedorSeleccionado = proveedores.buscaProveedor(nit);
+            JOptionPane.showMessageDialog(null, proveedores.buscaProveedor(nit,proveedorSeleccionado), "Sistema de Evaluacion de Proveedores", JOptionPane.ERROR_MESSAGE);
 
             //Nombre:
             this.jTextFieldNombre.setText(proveedorSeleccionado.getNombre());

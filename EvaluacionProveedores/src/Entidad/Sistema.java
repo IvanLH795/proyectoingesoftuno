@@ -5,6 +5,8 @@
 
 package Entidad;
 
+import Frontera.Splash;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +27,7 @@ public class Sistema{
     public Sistema () {
         presupuestoT = new Float(0);
     }
-
+   
     public List<String> getListaContratos() {
         return ListaContratos;
     }
