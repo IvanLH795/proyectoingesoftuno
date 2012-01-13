@@ -64,14 +64,15 @@ public class ControlContratarProveedor {
        return listaProveedores;
     }
 
-    public Proveedores buscaProveedor(int Nit){
-        Proveedores proveedorSeleccionado = new Proveedores();
+    public String buscaProveedor(int Nit, Proveedores proveedorSeleccionado){
+        String salida = "El proveedor no se encuentra en la lista";
         for (Proveedores u : Splash.sistema.getProveedores()){
             if (u.getNit() == Nit){
                 proveedorSeleccionado = u;
+                salida = "Proveedor Encontrado";
             }
         }
-        return proveedorSeleccionado;
+        return salida;
     }
 
     public String generarContrato(){

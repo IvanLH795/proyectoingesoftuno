@@ -148,7 +148,7 @@ public class Splash extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
-    private void inicializacion() {
+     private void inicializacion() {
         Proveedores proveedor = new Proveedores();
         listaproductos = null;
         List<ProductoProveedor> listaProductos = new ArrayList<ProductoProveedor>();
@@ -175,7 +175,7 @@ public class Splash extends javax.swing.JFrame {
 
         //ProveedoresJpaController ProveedorJpa = new ProveedoresJpaController();
         //ProveedorJpa.create(proveedor);
-        
+
         productoa.setNombreProducto("Marcadores");
         productoa.setPrecioPorUnidad(2500);
         productob.setNombreProducto("Borradores");
@@ -229,7 +229,7 @@ public class Splash extends javax.swing.JFrame {
     }
 
 
-    /**
+     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {

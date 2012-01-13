@@ -33,6 +33,7 @@ public class Proveedores implements Serializable {
     String correo;
     String paginaWeb;
     boolean evaluacionRealizada;
+    
     @OneToMany
     List<Evaluaciones> evaluaciones = new ArrayList<Evaluaciones>();
     @OneToMany

@@ -262,12 +262,12 @@ ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
 
        proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
      if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
-        if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem())){
-        Proveedores proveedor1 = new Proveedores();
-        Evaluaciones evaluacion = new Evaluaciones();
-        proveedor1 = proveedor;  //capturar datos
+        if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem()).equals("Succes")){
+            Proveedores proveedor1 = new Proveedores();
+            Evaluaciones evaluacion = new Evaluaciones();
+            proveedor1 = proveedor;  //capturar datos
         if(!calidadProductosTextField.getText().isEmpty()){
-          evaluacion.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
+            evaluacion.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
         }
         else evaluacion.setCalidad(0);
         if(!fiabilidadEntregaTextField.getText().isEmpty()){
