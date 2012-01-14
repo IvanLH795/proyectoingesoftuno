@@ -767,7 +767,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(control.buscarProveedor(obj) == null){
+            
                 Proveedores proveedor2 = new Proveedores();
 
                 proveedor2.setNombre(TFNombreCrear.getText());
@@ -794,10 +794,6 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 if(result.equals("Nit invalido")){
                     JOptionPane.showMessageDialog(frame, "El Nit es invalido");
                 }
-            }
-            else{
-                JOptionPane.showMessageDialog(frame, "Un Proveedor Con ese Nit\n ya se Encuentra en la Base");
-            }
         }
         else{
             JOptionPane.showMessageDialog(frame, "Datos Incorrectos");

@@ -5,26 +5,36 @@
 
 package Control;
 
+import DAO.ProductosProveedorJpaController;
+import DAO.ProveedoresJpaController;
+import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import Frontera.Splash;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
  * @author Darthian
  */
 public class ControlAdministrarProveedor {
+
+    EntityManager em;
+    public ControlAdministrarProveedor(){
+        em = Splash.em;
+    }
     
     public String crearProveedor(Proveedores u){
         if(validarProveedorNit(u.getNit())){
             if(validarProveedorTel(u.getTelefono()) || u.getTelefono()== 0){
-                Sistema sistema = Frontera.Splash.sistema;
-                sistema.getProveedores().add(u);
+                    ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+                    jpaProveedor.create(u, em);
                 return "Succes";
             }else{
                 return "Telefono invalido";
@@ -38,16 +48,37 @@ public class ControlAdministrarProveedor {
     public String modificarProveedor(Proveedores viejo, Proveedores nuevo){
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
-                if(!viejo.equals(nuevo)){
-                    viejo.setNombre(nuevo.getNombre());
-                    viejo.setNit(nuevo.getNit());
-                    viejo.setDireccion(nuevo.getDireccion());
-                    viejo.setCorreo(nuevo.getCorreo());
-                    viejo.setRepresentante(nuevo.getRepresentante());
-                    viejo.setPaginaWeb(nuevo.getPaginaWeb());
-                    viejo.setTelefono(nuevo.getTelefono());
-                    viejo.setProductos(null);
+                List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
+                List<Evaluaciones> listaeva = new ArrayList<Evaluaciones>();
+                for(ProductoProveedor p: viejo.getProductos()){
+                    ProductoProveedor u = new ProductoProveedor();
+                    u.setNombreProducto(p.getNombreProducto());
+                    u.setPrecioPorUnidad(p.getPrecioPorUnidad());
+                    u.setProveedor(nuevo);
+                    lista.add(u);
                 }
+
+                for(Evaluaciones p: viejo.getEvaluaciones()){
+                    Evaluaciones u = new Evaluaciones();
+                    u.setAdaptabilidad(p.getAdaptabilidad());
+                    u.setCalidad(p.getCalidad());
+                    u.setCercania(p.getCercania());
+                    u.setComentarios(p.getComentarios());
+                    u.setFecha(p.getFecha());
+                    u.setFiabilidad(p.getFiabilidad());
+                    u.setProveedor(nuevo);
+                    listaeva.add(u);
+                }
+                nuevo.setProductos(lista);
+                nuevo.setEvaluaciones(listaeva);
+
+                
+                ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
+                productosb.delete(viejo.getNit(), em);
+                ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+                jpaProveedor.create(nuevo, em);
+                jpaProveedor.delete(viejo.getNit(), em);
+                
                 return "Succes";
             }
             else{
@@ -60,75 +91,60 @@ public class ControlAdministrarProveedor {
     }
 
     public String borrarProveedor(String nombre, int nit){
-
-            Sistema sistema = Frontera.Splash.sistema;
-
-            for (Proveedores u: sistema.getProveedores()){
-                if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals((Integer)nit)){
-                    sistema.getProveedores().remove(u);
-                    return "Succes";
-                }
-            }
-            return "Falla";
+            ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+            jpaProveedor.delete(nit, em);
+            return "Succes";
     }
 
     public Proveedores buscarProveedor(String nombre, Integer nit){
-            Sistema sistema = Frontera.Splash.sistema;
-            for (Proveedores u: sistema.getProveedores()){
-                if (u.getNombre().equals(nombre) || ((Integer)u.getNit()).equals(nit)){
-                    return u;
-                }
-            }
-            return null;
+        ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+        return jpaProveedor.getProveedorNit(nit, em);
     }
 
     public Proveedores buscarProveedor(String nombre){
-            Sistema sistema = Frontera.Splash.sistema;
-            for (Proveedores u: sistema.getProveedores()){
-                if (u.getNombre().equals(nombre)){
-                    return u;
-                }
-            }
-            return null;
+        ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+        return jpaProveedor.getProveedorNombre(nombre, em);
     }
 
     public Proveedores buscarProveedor(Integer obj) {
-            Sistema sistema = Frontera.Splash.sistema;
-            for (Proveedores u: sistema.getProveedores()){
-                if (((Integer)u.getNit()).equals(obj)){
-                    return u;
-                }
-            }
-            return null;
+        ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+        return jpaProveedor.getProveedorNit(obj, em);
+
     }
 
-    public Proveedores buscarProveedor(){
-        return null;
-    }
-
-    public String modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaproductos) {
+    public String modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaProductos) {
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
-                viejo.setNombre(nuevo.getNombre());
-                viejo.setNit(nuevo.getNit());
-                viejo.setDireccion(nuevo.getDireccion());
-                viejo.setCorreo(nuevo.getCorreo());
-                viejo.setRepresentante(nuevo.getRepresentante());
-                viejo.setPaginaWeb(nuevo.getPaginaWeb());
-                viejo.setTelefono(nuevo.getTelefono());
 
-                if(!(Splash.listaproductos == null)){
-                    List<ProductoProveedor> lista = new ArrayList();
-                    for(int i=0; i<listaproductos.size();i++){
-                        ProductoProveedor producto = new ProductoProveedor();
-                        producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
-                        producto.setPrecioPorUnidad((Float)((Vector)listaproductos.get(i)).get(1));
-                        if(!producto.getNombreProducto().equals(null))
-                            lista.add(producto);
-                    }
-                    viejo.setProductos(lista);
-                    Splash.listaproductos = null;
+                List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
+                List<Evaluaciones> listaeva = new ArrayList<Evaluaciones>();
+                for(ProductoProveedor p: viejo.getProductos()){
+                    ProductoProveedor u = new ProductoProveedor();
+                    u.setNombreProducto(p.getNombreProducto());
+                    u.setPrecioPorUnidad(p.getPrecioPorUnidad());
+                    u.setProveedor(nuevo);
+                    lista.add(u);
                 }
+                
+                for(Evaluaciones p: viejo.getEvaluaciones()){
+                    Evaluaciones u = new Evaluaciones();
+                    u.setAdaptabilidad(p.getAdaptabilidad());
+                    u.setCalidad(p.getCalidad());
+                    u.setCercania(p.getCercania());
+                    u.setComentarios(p.getComentarios());
+                    u.setFecha(p.getFecha());
+                    u.setFiabilidad(p.getFiabilidad());
+                    u.setProveedor(nuevo);
+                    listaeva.add(u);
+                }
+                nuevo.setProductos(lista);
+                nuevo.setEvaluaciones(listaeva);
+
+                ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
+                productosb.delete(viejo.getNit(), em);
+                ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+                jpaProveedor.create(nuevo, em);
+                jpaProveedor.delete(viejo, em);
                 return "Succes";
             }
             else{
@@ -140,23 +156,23 @@ public class ControlAdministrarProveedor {
         }
     }
 
-    public String crearProveedor(Proveedores proveedor2, Vector listaproductos) {
-        if(validarProveedorNit(proveedor2.getNit())){
-            if(validarProveedorTel(proveedor2.getTelefono()) || proveedor2.getTelefono()== 0){
+    public String crearProveedor(Proveedores proveedor, Vector listaproductos) {
+        if(validarProveedorNit(proveedor.getNit())){
+            if(validarProveedorTel(proveedor.getTelefono()) || proveedor.getTelefono()== 0){
                 List<ProductoProveedor> lista = new ArrayList();
                 if(listaproductos != null){
                     for(int i=0; i<listaproductos.size();i++){
                         ProductoProveedor producto = new ProductoProveedor();
                         producto.setNombreProducto((String)((Vector) listaproductos.get(i)).get(0));
                         producto.setPrecioPorUnidad((Float)((Vector)listaproductos.get(i)).get(1));
-                        if(!producto.getNombreProducto().equals(null))
+                        if(!(producto.getNombreProducto()==null))
                             lista.add(producto);
+                            producto.setProveedor(proveedor);
                     }
-                    proveedor2.setProductos(lista);
-                    Splash.listaproductos = null;
+                    proveedor.setProductos(lista);
                 }
-                Sistema sistema = Frontera.Splash.sistema;
-                sistema.getProveedores().add(proveedor2);
+                ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+                jpaProveedor.create(proveedor, em);
                 return "Succes";
             }else{
                 return "Telefono invalido";

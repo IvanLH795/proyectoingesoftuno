@@ -18,9 +18,7 @@ import javax.persistence.Query;
  */
 public class EvaluacionesJpaController {
 
-    public void create(Evaluaciones evaluacion) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public void create(Evaluaciones evaluacion, EntityManager em) {
         em.getTransaction().begin();
         try {
             evaluacion = em.merge(evaluacion);
@@ -29,17 +27,13 @@ public class EvaluacionesJpaController {
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
-        } finally {
-            em.close();
         }
     }
 
-    public String delete(String fecha){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(String fecha, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Evaluaciones as u WHERE u.fecha = '" + fecha + "'");
+            Query q = em.createQuery("DELETE FROM Evaluaciones u WHERE u.fecha = '" + fecha + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -47,18 +41,14 @@ public class EvaluacionesJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
             return "Fail";
-        }finally{
-            em.close();
         }
     }
 
-    public String delete(Evaluaciones evaluacion){
-        return this.delete(evaluacion.getFecha());
+    public String delete(Evaluaciones evaluacion, EntityManager em){
+        return this.delete(evaluacion.getFecha(), em);
     }
 
-    public List<Evaluaciones> getEvaluaciones(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public List<Evaluaciones> getEvaluaciones(EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Evaluaciones as u");
             return q.getResultList();
@@ -68,9 +58,7 @@ public class EvaluacionesJpaController {
         }
     }
 
-    public Evaluaciones getEvaluacionFecha(String fecha){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Evaluaciones getEvaluacionFecha(String fecha, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Evaluaciones as u WHERE u.fecha = '" + fecha + "'");
             return (Evaluaciones)q.getSingleResult();

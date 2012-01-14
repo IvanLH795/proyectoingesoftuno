@@ -8,11 +8,15 @@ package Control;
  *
  * @author Beltrán
  */
+import DAO.ProveedoresJpaController;
 import Entidad.Proveedores;
-import Entidad.Sistema;
+import Frontera.Splash;
+import javax.persistence.EntityManager;
 public class ControlEvaluadorProveedor {
-    Sistema sistem = new Sistema();
-    public ControlEvaluadorProveedor() {
+    
+    EntityManager em;
+    public ControlEvaluadorProveedor(){
+        em = Splash.em;
     }
     public String compararProveedor(int nit){
         Proveedores v = buscarProveedor(nit);
@@ -23,14 +27,8 @@ public class ControlEvaluadorProveedor {
     }
 
     public Proveedores buscarProveedor(int nit){
-
-            Sistema sistema = Frontera.Splash.sistema;
-            for (Proveedores u: sistema.getProveedores()){
-                if (u.getNit()==nit){
-                    return u;
-                }
-            }
-            return null;
+        ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+        return jpaProveedor.getProveedorNit(nit, em);
     }
     public String validarDatos(String calidad, String fiabilidad, String adaptabilidad, String comentarios){
         if(Float.parseFloat(calidad)>= 0 && Float.parseFloat(calidad) <= 100){
@@ -47,4 +45,3 @@ public class ControlEvaluadorProveedor {
                 anterior = actualizado;
     }
 }
-//valida los datos ingresados y despues los actualiza para el proveedor ingresado

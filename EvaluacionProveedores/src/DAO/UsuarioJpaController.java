@@ -17,9 +17,7 @@ import javax.persistence.Query;
  */
 public class UsuarioJpaController {
 
-    public void create(Usuario usuario) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager emc = emf.createEntityManager();
+    public void create(Usuario usuario, EntityManager emc) {
         emc.getTransaction().begin();
         try {
             usuario = emc.merge(usuario);
@@ -28,14 +26,10 @@ public class UsuarioJpaController {
         } catch (Exception e) {
             System.out.println(e);
             emc.getTransaction().rollback();
-        }finally{
-            emc.close();
         }
     }
 
-    public void update(Usuario viejo, Usuario nuevo){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public void update(Usuario viejo, Usuario nuevo, EntityManager em){
         em.getTransaction().begin();
         try{
             Query q = em.createQuery("UPDATE Usuario s SET s.nombre = '" +
@@ -47,17 +41,13 @@ public class UsuarioJpaController {
         }catch(Exception e){
             System.out.println(e);
             em.getTransaction().rollback();
-        }finally{
-            em.close();
         }
     }
     
-    public String delete(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(String nombre, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Usuario as u WHERE u.nombre = '" + nombre + "'");
+            Query q = em.createQuery("DELETE FROM Usuario u WHERE u.nombre = '" + nombre + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -65,18 +55,14 @@ public class UsuarioJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
             return "Fail";
-        }finally{
-            em.close();
         }
     }
     
-    public void delete(Usuario usuario){
-        this.delete(usuario.getNombre());
+    public void delete(Usuario usuario, EntityManager em){
+        this.delete(usuario.getNombre(), em);
     }
 
-    public Usuario buscarNombre(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Usuario buscarNombre(String nombre, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Usuario as u WHERE u.nombre = '" + nombre + "'");
             return (Usuario)q.getSingleResult();

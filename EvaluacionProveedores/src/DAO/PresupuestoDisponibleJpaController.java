@@ -17,9 +17,7 @@ import javax.persistence.Query;
  */
 public class PresupuestoDisponibleJpaController {
 
-    public void create(PresupuestoDisponible presupuesto) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager emc = emf.createEntityManager();
+    public void create(PresupuestoDisponible presupuesto, EntityManager emc) {
         emc.getTransaction().begin();
         try {
             presupuesto = emc.merge(presupuesto);
@@ -28,19 +26,15 @@ public class PresupuestoDisponibleJpaController {
         } catch (Exception e) {
             System.out.println(e);
             emc.getTransaction().rollback();
-        }finally{
-            emc.close();
         }
     }
 
-    public void update(PresupuestoDisponible presupuesto){
-        this.delete();
-        this.create(presupuesto);
+    public void update(PresupuestoDisponible presupuesto, EntityManager em){
+        this.delete(em);
+        this.create(presupuesto, em);
     }
 
-    private void delete(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    private void delete(EntityManager em){
         em.getTransaction().begin();
         try{
             Query q = em.createQuery("DELETE FROM PresupuestoDisponible");
@@ -49,8 +43,6 @@ public class PresupuestoDisponibleJpaController {
         }catch(Exception e){
             System.out.println(e);
             em.getTransaction().rollback();
-        }finally{
-            em.close();
         }
     }    
 }

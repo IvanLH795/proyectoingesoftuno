@@ -21,6 +21,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.UIManager;
 
 /**
@@ -29,11 +32,14 @@ import javax.swing.UIManager;
  */
 public class Splash extends javax.swing.JFrame {
     public static Sistema sistema = new Sistema();
-
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     /** Creates new form Splash */
     public Splash() {
         initComponents();
         inicializacion();
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
 
     /** This method is called from within the constructor to

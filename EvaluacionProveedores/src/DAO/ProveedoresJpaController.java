@@ -5,6 +5,7 @@
 
 package DAO;
 
+import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,9 +19,7 @@ import javax.persistence.Query;
  */
 public class ProveedoresJpaController {
 
-    public void create(Proveedores proveedor) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public void create(Proveedores proveedor, EntityManager em) {
         em.getTransaction().begin();
         try {
             proveedor = em.merge(proveedor);
@@ -29,17 +28,13 @@ public class ProveedoresJpaController {
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
-        } finally {
-            em.close();
         }
     }
     
-    public String delete(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(String nombre, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Proveedores as u WHERE u.nombre = '" + nombre + "'");
+            Query q = em.createQuery("DELETE FROM Proveedores u WHERE u.nombre = '" + nombre + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -47,17 +42,13 @@ public class ProveedoresJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
             return "Fail";
-        }finally{
-            em.close();
         }
     }
 
-    public String delete(int nit){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(int nit, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Proveedores as u WHERE u.nit = " + nit);
+            Query q = em.createQuery("DELETE FROM Proveedores p WHERE p.nit = " + nit);
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -65,24 +56,34 @@ public class ProveedoresJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
             return "Fail";
-        }finally{
-            em.close();
         }
     }
 
-    public String delete(Proveedores proveedor){
-        return this.delete(proveedor.getNit());
+    public String delete(Proveedores proveedor, EntityManager em){
+        return this.delete(proveedor.getNit(), em);
     }
 
-    public String update(Proveedores viejo, Proveedores nuevo){
-        this.delete(viejo);
-        this.create(nuevo);
-        return "Succes";
+    public void update(Proveedores viejo, Proveedores nuevo, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("UPDATE Proveedores s SET s.nombre = '" +
+                    nuevo.getNombre() + 
+                    "', s.nit = "+ nuevo.getNit() +
+                    ", s.representante = '"+ nuevo.getRepresentante() +
+                    "', s.correo = '"+ nuevo.getCorreo() +
+                    "', s.telefono = "+ nuevo.getTelefono() +
+                    ", s.paginaWeb = '"+ nuevo.getPaginaWeb() +
+                    "', s.direccion = '"+ nuevo.getDireccion() +
+                    "' WHERE s.nit = " + viejo.getNit());
+            q.executeUpdate();
+            em.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+        }
     }
 
-    public List<Proveedores> getProveedores(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public List<Proveedores> getProveedores(EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Proveedores as u");
             return q.getResultList();
@@ -92,9 +93,7 @@ public class ProveedoresJpaController {
         }
     }
 
-    public Proveedores getProveedorNit(int nit){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Proveedores getProveedorNit(int nit, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Proveedores as u WHERE u.nit = " + nit);
             return (Proveedores)q.getSingleResult();
@@ -104,9 +103,7 @@ public class ProveedoresJpaController {
         }
     }
     
-    public Proveedores getProveedorNombre(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Proveedores getProveedorNombre(String nombre, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Proveedores as u WHERE u.nombre = '" + nombre + "'");
             return (Proveedores)q.getSingleResult();
