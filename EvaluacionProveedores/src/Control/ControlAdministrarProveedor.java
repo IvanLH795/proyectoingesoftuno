@@ -5,6 +5,7 @@
 
 package Control;
 
+import DAO.EvaluacionesJpaController;
 import DAO.ProductosProveedorJpaController;
 import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
@@ -16,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -75,6 +74,10 @@ public class ControlAdministrarProveedor {
                 
                 ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
                 productosb.delete(viejo.getNit(), em);
+                EvaluacionesJpaController evaluacionesb = new EvaluacionesJpaController();
+                evaluacionesb.delete(viejo.getNit(), em);
+
+
                 ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
                 jpaProveedor.create(nuevo, em);
                 jpaProveedor.delete(viejo.getNit(), em);

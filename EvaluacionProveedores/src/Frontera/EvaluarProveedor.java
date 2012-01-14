@@ -240,20 +240,22 @@ public class EvaluarProveedor extends javax.swing.JFrame {
           ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
           proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText())); //revisa si el proveedor indicado existe
           try{
-              if(!proveedor.equals(null)) {  //habilita los componentes del panel de evaluacion
-              habilitarComponentes();
-           if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
-              calidadProductosTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCalidad()));
-              fiabilidadEntregaTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getFiabilidad()));
-              cercaniaGeograficaSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCercania());
-              adaptabilidadSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getAdaptabilidad());
-              comentariosTextField.setText(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getComentarios());
-            }
-        }}catch(NullPointerException ex){JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
-        iniciarEvaluacion();
+              if(!(proveedor==null)){
+                  habilitarComponentes();
+                  if(proveedor.isEvaluacionRealizada() == true){      //revisa si el proveedor ya tiene una calificacion anterior, en tal caso, presenta los datos
+                        calidadProductosTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCalidad()));
+                        fiabilidadEntregaTextField.setText(Float.toString(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getFiabilidad()));
+                        cercaniaGeograficaSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getCercania());
+                        adaptabilidadSeleccion.setSelectedItem(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getAdaptabilidad());
+                        comentariosTextField.setText(proveedor.getEvaluaciones().get(proveedor.getEvaluaciones().size()-1).getComentarios());
+                  }
+              }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this,"Usuario No Encontrado", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+            iniciarEvaluacion();
         }
       }else{  //si el usuario no se encuentra en la base de datos manda el msn "usuario no encontrado"
-          JOptionPane.showMessageDialog(this,"Datos Incorrectos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this,"Datos Incorrectos", "Advertencia!",JOptionPane.WARNING_MESSAGE);
         iniciarEvaluacion();
       }
     }//GEN-LAST:event_BuscarActionPerformed
@@ -264,9 +266,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
         proveedor = nuevo.buscarProveedor(Integer.parseInt(nitProveedorTextField.getText()));
         if(validarTextFieldCalidad()&& validarTextFieldFiabilidad()){
             if(nuevo.validarDatos(calidadProductosTextField.getText(), fiabilidadEntregaTextField.getText() ,(String)adaptabilidadSeleccion.getSelectedItem(),(String)cercaniaGeograficaSeleccion.getSelectedItem()).equals("Succes")){
-                Proveedores proveedor1 = new Proveedores();
                 Evaluaciones evaluacion = new Evaluaciones();
-                proveedor1 = proveedor;  //capturar datos
             if(!calidadProductosTextField.getText().isEmpty()){
                 evaluacion.setCalidad(Float.parseFloat(calidadProductosTextField.getText()));
             }
@@ -274,6 +274,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
             if(!fiabilidadEntregaTextField.getText().isEmpty()){
                 evaluacion.setFiabilidad(Float.parseFloat(fiabilidadEntregaTextField.getText()));
             }else evaluacion.setFiabilidad(0);
+
             evaluacion.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
             evaluacion.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
             evaluacion.setComentarios(comentariosTextField.getText());
@@ -281,9 +282,7 @@ public class EvaluarProveedor extends javax.swing.JFrame {
             java.util.Date date = new java.util.Date();
             String datetime = dateFormat.format(date);
             evaluacion.setFecha(datetime);
-            proveedor1.getEvaluaciones().add(evaluacion);
-            proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
-            nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores
+            nuevo.ingresarEvaluacionProveedor(proveedor, evaluacion);  //ingresar la evaluacion en el arreglo de proveedores
             JOptionPane.showMessageDialog(this,"Evaluacion Guardada", "",JOptionPane.WARNING_MESSAGE);
             Principal regresarMenu = new Principal(Login.roll); //nos devuelve al Menu Principal
             regresarMenu.setLocationRelativeTo(null);

@@ -8,7 +8,9 @@ package Control;
  *
  * @author Beltrán
  */
+import DAO.EvaluacionesJpaController;
 import DAO.ProveedoresJpaController;
+import Entidad.Evaluaciones;
 import Entidad.Proveedores;
 import Frontera.Splash;
 import javax.persistence.EntityManager;
@@ -41,7 +43,11 @@ public class ControlEvaluadorProveedor {
             return "Error Calidad";
         }
     }
-      public void ingresarEvaluacionProveedor(Proveedores anterior, Proveedores actualizado){
-                anterior = actualizado;
+      public void ingresarEvaluacionProveedor(Proveedores proveedor, Evaluaciones evaluacion){
+            evaluacion.setProveedor(proveedor);
+            proveedor.getEvaluaciones().add(evaluacion);
+            proveedor.setEvaluacionRealizada(true);
+            EvaluacionesJpaController evaluacionjpa = new EvaluacionesJpaController();
+            evaluacionjpa.create(evaluacion, em);
     }
 }
