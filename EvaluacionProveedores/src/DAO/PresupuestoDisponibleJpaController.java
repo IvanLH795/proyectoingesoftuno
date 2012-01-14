@@ -42,5 +42,15 @@ public class PresupuestoDisponibleJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
         }
-    }    
+    }
+
+    public PresupuestoDisponible getPresupuestoDisponible(EntityManager em){
+        try{
+            Query q = em.createQuery("SELECT u FROM ProductoProveedor as u");
+            return (PresupuestoDisponible) q.getSingleResult();
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }

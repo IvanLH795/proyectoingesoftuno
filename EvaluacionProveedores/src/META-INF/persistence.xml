@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
   <persistence-unit name="EvaluacionProveedoresPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entidad.Contratos</class>
     <class>Entidad.Evaluaciones</class>
+    <class>Entidad.PresupuestoDisponible</class>
     <class>Entidad.ProductoProveedor</class>
     <class>Entidad.Productos</class>
     <class>Entidad.Proveedores</class>
     <class>Entidad.Usuario</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/EvaluacionProveedoresPU"/>
-      <property name="javax.persistence.jdbc.password" value="123"/>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="eclipselink.ddl-generation" value="create-tables"/>
+      <property name="eclipselink.jdbc.password" value="123"/>
+      <property name="eclipselink.jdbc.user" value="root"/>
+      <property name="eclipselink.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="eclipselink.jdbc.url" value="jdbc:derby://localhost:1527/evaluacionproveedores1"/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
