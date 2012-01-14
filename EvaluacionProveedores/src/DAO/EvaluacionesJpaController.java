@@ -8,8 +8,6 @@ package DAO;
 import Entidad.Evaluaciones;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
@@ -34,6 +32,20 @@ public class EvaluacionesJpaController {
         em.getTransaction().begin();
         try{
             Query q = em.createQuery("DELETE FROM Evaluaciones u WHERE u.fecha = '" + fecha + "'");
+            q.executeUpdate();
+            em.getTransaction().commit();
+            return "Succes";
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+            return "Fail";
+        }
+    }
+
+    public String delete(int nit, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("DELETE FROM Evaluaciones u WHERE u.proveedor.nit = " + nit);
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
