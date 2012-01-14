@@ -44,7 +44,7 @@ public class ControlGeneradorReporte {
             try{
                 for(Evaluaciones u2: u.getEvaluaciones()){
                     evaluaciones = evaluaciones + u2.getCalidad() + "\t\t" + u2.getFiabilidad() + "\t\t"
-                            + u2.getAnio() + "/" + u2.getMes() + "/" + u2.getDia() + " " + u2.getHora() + ":" + u2.getMini() + "\n";
+                            + u2.getFecha() + "\n";
                     if(u2.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u2.getComentarios() + "\n";
             }
@@ -89,11 +89,7 @@ public class ControlGeneradorReporte {
              Evaluaciones  = Evaluaciones +"Comentarios:  " + nuevo.getEvaluaciones().get(i).getComentarios()+"\n";
              Evaluaciones  = Evaluaciones +"Calidad:  " +  nuevo.getEvaluaciones().get(i).getCalidad()+"\n";
              Evaluaciones  = Evaluaciones +"Fiabilidad:  " + nuevo.getEvaluaciones().get(i).getFiabilidad()+"\n";
-             Evaluaciones  = Evaluaciones +"Anio:  " + nuevo.getEvaluaciones().get(i).getAnio()+" ";
-             Evaluaciones  = Evaluaciones +"Mes:  " +  nuevo.getEvaluaciones().get(i).getMes()+" ";
-             Evaluaciones  = Evaluaciones +"Dia:  " +  nuevo.getEvaluaciones().get(i).getDia()+" ";
-             Evaluaciones  = Evaluaciones +"Hora:  " +  nuevo.getEvaluaciones().get(i).getHora()+" ";
-             Evaluaciones  = Evaluaciones +"Min:  " +  nuevo.getEvaluaciones().get(i).getMini()+"\n";
+             Evaluaciones  = Evaluaciones +"Fecha:  " + nuevo.getEvaluaciones().get(i).getFecha()+"\n";
              }}catch(IndexOutOfBoundsException ex){}
             vistaReporte.setText(Evaluaciones);
             salida = "Succes";

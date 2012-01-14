@@ -6,6 +6,8 @@
 package Control;
 
 
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
@@ -47,15 +49,17 @@ public class EvaluadorProveedorTest {
         evaluacion.setComentarios(null);
         proveedor.setNit(1);
         evaluacion.setFiabilidad((float)98);
-        evaluacion.setAnio(2011);
-        evaluacion.setMes(11);
-        evaluacion.setDia(3);
-        evaluacion.setHora(12);
-        evaluacion.setMini(22);
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+        String datetime = dateFormat.format(date);
+        evaluacion.setFecha(datetime);
         proveedor.getEvaluaciones().add(evaluacion);
         proveedor.setCorreo("laprimera@colombia.com");
         proveedor.setDireccion("Cra 6 # 65 - 18");
         proveedor.setRepresentante("Henry Murillo");
+
+        //ProveedoresJpaController ProveedorJpa = new ProveedoresJpaController();
+        //ProveedorJpa.create(proveedor);
 
         Proveedores proveedor2 = new Proveedores();
         Evaluaciones evaluacion2 = new Evaluaciones();
@@ -67,11 +71,9 @@ public class EvaluadorProveedorTest {
         evaluacion2.setComentarios(null);
         proveedor2.setNit(2);
         evaluacion2.setFiabilidad((float)96);
-        evaluacion2.setAnio(2011);
-        evaluacion2.setMes(10);
-        evaluacion2.setDia(28);
-        evaluacion2.setHora(10);
-        evaluacion2.setMini(35);
+        java.util.Date date2 = new java.util.Date();
+        String datetimes = dateFormat.format(date2);
+        evaluacion2.setFecha(datetimes);
         proveedor2.getEvaluaciones().add(evaluacion2);
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
