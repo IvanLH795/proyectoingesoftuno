@@ -18,9 +18,7 @@ import javax.persistence.Query;
  */
 public class ProductosJpaController {
 
-    public void create(Productos producto) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public void create(Productos producto, EntityManager em) {
         em.getTransaction().begin();
         try {
             producto = em.merge(producto);
@@ -34,12 +32,10 @@ public class ProductosJpaController {
         }
     }
 
-    public String delete(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(String nombre, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Productos as u WHERE u.nombreProducto = '" + nombre + "'");
+            Query q = em.createQuery("DELETE FROM Productos u WHERE u.nombreProducto = '" + nombre + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -52,13 +48,11 @@ public class ProductosJpaController {
         }
     }
 
-    public String delete(Productos producto){
-        return this.delete(producto.getNombreProducto());
+    public String delete(Productos producto, EntityManager em){
+        return this.delete(producto.getNombreProducto(), em);
     }
 
-    public List<Productos> getProductos(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public List<Productos> getProductos(EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Productos as u");
             return q.getResultList();
@@ -68,9 +62,7 @@ public class ProductosJpaController {
         }
     }
 
-    public Productos getProductoNombre(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Productos getProductoNombre(String nombre, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Productos as u WHERE u.nombreProducto = '" + nombre + "'");
             return (Productos)q.getSingleResult();

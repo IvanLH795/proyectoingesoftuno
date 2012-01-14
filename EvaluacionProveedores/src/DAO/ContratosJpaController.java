@@ -18,9 +18,7 @@ import javax.persistence.Query;
  */
 public class ContratosJpaController {
 
-    public void create(Contratos evaluacion) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public void create(Contratos evaluacion, EntityManager em) {
         em.getTransaction().begin();
         try {
             evaluacion = em.merge(evaluacion);
@@ -29,17 +27,13 @@ public class ContratosJpaController {
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
-        } finally {
-            em.close();
         }
     }
 
-    public String delete(String fecha){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public String delete(String fecha, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE u FROM Contratos as u WHERE u.fecha = '" + fecha + "'");
+            Query q = em.createQuery("DELETE FROM Contratos u WHERE u.fecha = '" + fecha + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -47,18 +41,14 @@ public class ContratosJpaController {
             System.out.println(e);
             em.getTransaction().rollback();
             return "Fail";
-        }finally{
-            em.close();
         }
     }
 
-    public String delete(Contratos contrato){
-        return this.delete(contrato.getFecha());
+    public String delete(Contratos contrato, EntityManager em){
+        return this.delete(contrato.getFecha(), em);
     }
 
-    public List<Contratos> getProductos(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public List<Contratos> getProductos(EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Evaluaciones as u");
             return q.getResultList();
@@ -68,9 +58,7 @@ public class ContratosJpaController {
         }
     }
 
-    public Contratos getProductoNombre(String nombre){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU");
-        EntityManager em = emf.createEntityManager();
+    public Contratos getProductoNombre(String nombre, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Contratos as u WHERE u.nombreProducto = '" + nombre + "'");
             return (Contratos)q.getSingleResult();
