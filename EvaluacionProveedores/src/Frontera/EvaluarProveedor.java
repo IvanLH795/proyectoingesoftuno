@@ -9,7 +9,8 @@ import Control.ControlEvaluadorProveedor;
 import Entidad.Evaluaciones;
 import javax.swing.JOptionPane;
 import Entidad.Proveedores;
-import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  * @author Beltrán
  */
@@ -276,12 +277,10 @@ ControlEvaluadorProveedor nuevo = new ControlEvaluadorProveedor();
         evaluacion.setAdaptabilidad((String)adaptabilidadSeleccion.getSelectedItem());
         evaluacion.setCercania((String)cercaniaGeograficaSeleccion.getSelectedItem());
         evaluacion.setComentarios(comentariosTextField.getText());
-        Calendar fecha = Calendar.getInstance();
-        evaluacion.setAnio(fecha.get(Calendar.YEAR));
-        evaluacion.setMes(fecha.get(Calendar.MONTH)+1);
-        evaluacion.setDia(fecha.get(Calendar.DAY_OF_MONTH));
-        evaluacion.setHora(fecha.get(Calendar.HOUR_OF_DAY));
-        evaluacion.setMini(fecha.get(Calendar.MINUTE));
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        java.util.Date date = new java.util.Date();
+        String datetime = dateFormat.format(date);
+        evaluacion.setFecha(datetime);
         proveedor1.getEvaluaciones().add(evaluacion);
         proveedor1.setEvaluacionRealizada(true); //aclara q el proveedor ya tuvo minimo una evaluacion
         nuevo.ingresarEvaluacionProveedor(proveedor, proveedor1);  //ingresar la evaluacion en el arreglo de proveedores

@@ -663,7 +663,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         try{
             for(Evaluaciones u: proveedor2.getEvaluaciones()){
                     evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
-                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMini() + "\n";
+                            + u.getFecha() + "\n";
                     if(u.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
             }
@@ -715,7 +715,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 try{
                     for(Evaluaciones u: proveedor2.getEvaluaciones()){
                         evaluaciones = evaluaciones + u.getCalidad() + "\t\t" + u.getFiabilidad() + "\t\t"
-                            + u.getAnio() + "/" + u.getMes() + "/" + u.getDia() + " " + u.getHora() + ":" + u.getMini() + "\n";
+                            + u.getFecha() + "\n";
                     if(u.getComentarios() != null)
                         evaluaciones = evaluaciones + "Comentario: " + u.getComentarios() + "\n";
                     }
