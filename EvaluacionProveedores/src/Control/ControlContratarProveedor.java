@@ -4,6 +4,12 @@
  */
 
 package Control;
+import DAO.ContratosJpaController;
+import DAO.PresupuestoDisponibleJpaController;
+import DAO.ProductosJpaController;
+import DAO.ProveedoresJpaController;
+import Entidad.Contratos;
+import Entidad.PresupuestoDisponible;
 import Entidad.Proveedores;
 import Entidad.ProductoProveedor;
 import Entidad.Productos;
@@ -17,7 +23,10 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
+import javax.persistence.EntityManager;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -31,8 +40,10 @@ public class ControlContratarProveedor {
     String producto;
     ProductoProveedor productoSeleccionado = new ProductoProveedor();
 
+    EntityManager em;
+    
     public ControlContratarProveedor(){
-
+        em = Splash.em;
     }
 
     public ControlContratarProveedor(Proveedores proveedor, float cantidad, ProductoProveedor producto){
@@ -66,12 +77,9 @@ public class ControlContratarProveedor {
 
     public String buscaProveedor(int Nit, Proveedores proveedorSeleccionado){
         String salida = "El proveedor no se encuentra en la lista";
-        for (Proveedores u : Splash.sistema.getProveedores()){
-            if (u.getNit() == Nit){
-                proveedorSeleccionado = u;
-                salida = "Proveedor Encontrado";
-            }
-        }
+        ProveedoresJpaController proveedor = new ProveedoresJpaController();
+        Proveedores p = proveedor.getProveedorNit(Nit, em);
+        if (p != null) salida = "Succes";
         return salida;
     }
 
@@ -80,6 +88,7 @@ public class ControlContratarProveedor {
        try {
             Document contrato = new Document(PageSize.LETTER);
             PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream(System.getProperty("user.dir")+"\\Contrato_"+proveedorContratado.getNombre()+"_"+ productoSeleccionado.getNombreProducto()+".pdf"));
+            Contratos c = new Contratos();
 
             contrato.setMargins(72f, 72f, 72f, 72f);
             
@@ -99,10 +108,29 @@ public class ControlContratarProveedor {
             
             contrato.close();
             file.close();
+            
+            c.setCantidad((int)cantidad);
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            java.util.Date date = new java.util.Date();
+            String datetime = dateFormat.format(date);
+            c.setFecha(datetime);
+            c.setProveedor(proveedorContratado);
 
             Productos p = buscarProducto(productoSeleccionado.getNombreProducto());
             p.setDineroDisponible(p.getDineroDisponible() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
-            Splash.sistema.setPresupuestoT(Splash.sistema.getPresupuestoT() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
+            ProductosJpaController productoControl = new ProductosJpaController();
+            productoControl.delete(p.getNombreProducto(), em);
+            productoControl.create(p, em);
+            c.setProducto(p);
+            
+            PresupuestoDisponibleJpaController presupuestoControl = new PresupuestoDisponibleJpaController();
+            PresupuestoDisponible presupuestoDisponible = new PresupuestoDisponible();
+            presupuestoDisponible = presupuestoControl.getPresupuestoDisponible(em);
+            presupuestoDisponible.setPresupuesto(presupuestoDisponible.getPresupuesto() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
+            presupuestoControl.update(presupuestoDisponible, em);
+
+            ContratosJpaController control =new ContratosJpaController();
+            control.create(c, em);
 
         } catch(Exception ee){
             System.out.println(ee.getMessage());
@@ -119,12 +147,8 @@ public class ControlContratarProveedor {
     }
 
     private Productos buscarProducto (String nombre) {
-        for (Productos u: Splash.sistema.getProductos()){
-            if(u.getNombreProducto().equals(nombre)){
-                return u;
-            }
-        }
-        return null;
+        ProductosJpaController p = new ProductosJpaController();
+        return p.getProductoNombre(nombre, em);
     }
 
      private boolean validarProducto(String prod) {
