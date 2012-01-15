@@ -5,16 +5,20 @@
 
 package Control;
 
+import DAO.ContratosJpaController;
+import DAO.ProveedoresJpaController;
+import Entidad.Contratos;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Entidad.Sistema;
+import Frontera.Splash;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
@@ -24,16 +28,18 @@ import javax.swing.JTextArea;
  * @author Darthian
  */
 public class ControlGeneradorReporte {
-
- public ControlGeneradorReporte() {
+    ProveedoresJpaController listaProve = new ProveedoresJpaController();
+    EntityManager em;
+    public ControlGeneradorReporte() {
+        em = Splash.em;
     }
- public String imprimirPantallaReporte1(JTextArea vistaReporte) {
+    public String imprimirPantallaReporte1(JTextArea vistaReporte) {
         String salida = "Fail";
-        Sistema provee = Frontera.Splash.sistema;
         String productos = "";
         String evaluaciones = "Calidad\t\tFiabilidad\t\tFecha\n";
         String proveedor1 = "";
-        for (Proveedores u: provee.getProveedores()){
+        listaProve.getProveedores(em);
+        for (Proveedores u: listaProve.getProveedores(em)){
             try{
                 for(ProductoProveedor u1: u.getProductos()){
                     productos = productos + u1.getNombreProducto() + "\t\t" + u1.getPrecioPorUnidad() + "\n";
@@ -73,12 +79,11 @@ public class ControlGeneradorReporte {
          String salida = "Fail";
          int nit  = Integer.parseInt(Nit);
          Proveedores nuevo = null;
-         Sistema provee = Frontera.Splash.sistema;
-          for (Proveedores u: provee.getProveedores()){
-          if(u.getNit()== nit){
-            nuevo = u;
-          }
-          }
+         for (Proveedores u: listaProve.getProveedores(em)){
+             if(u.getNit()== nit){
+                 nuevo = u;
+             }
+         }
          if (nuevo != null){
              String Evaluaciones ="";
              try{
@@ -127,19 +132,19 @@ JFrame frame;
 
     public String imprimirPantallaReporte3(JTextArea vistaReporte) {
        String salida ="Succes";
-       Sistema provee = Frontera.Splash.sistema;
        String VerContratos = "";
-       List<String> Contratos = null;
+       List<Contratos> Contratos = null;
+       ContratosJpaController provee = new  ContratosJpaController();
         try {
-       Contratos = provee.getListaContratos();
-       for(int i = 0; i< Contratos.size();i++){
-           VerContratos = VerContratos + Contratos.get(i);
-       }
-       vistaReporte.setText(VerContratos);
-       salida = "Succes";
-    }catch(NullPointerException ex){}
-       if(Contratos == null)
+            Contratos = provee.getListaContratos(em);
+            for(int i = 0; i< Contratos.size();i++){
+                VerContratos = VerContratos + Contratos.get(i).getProducto().getNombreProducto();
+            }
+            vistaReporte.setText(VerContratos);
+            salida = "Succes";
+        }catch(NullPointerException ex){}
+        if(Contratos == null)
         JOptionPane.showMessageDialog(frame,"No hay contratos existentes", "",JOptionPane.WARNING_MESSAGE);
-       return salida;
+        return salida;
     }    
 }

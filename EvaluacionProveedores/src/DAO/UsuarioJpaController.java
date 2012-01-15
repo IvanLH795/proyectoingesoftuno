@@ -6,6 +6,7 @@
 package DAO;
 
 import Entidad.Usuario;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -70,4 +71,13 @@ public class UsuarioJpaController {
         }
     }
 
+    public List<Usuario> getUsuarios(EntityManager em){
+        try{
+            Query q = em.createQuery("SELECT u FROM Usuario as u");
+            return q.getResultList();
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }

@@ -4,7 +4,6 @@
  */
 package Control;
 
-import Entidad.Sistema;
 import Entidad.Usuario;
 import java.util.ArrayList;
 import org.junit.After;
@@ -30,8 +29,7 @@ public class ValidarLoginTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-    Sistema sistema=new Sistema();
-
+ 
     ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
     Usuario a = new Usuario();
     Usuario b = new Usuario();
@@ -66,7 +64,7 @@ public class ValidarLoginTest {
     usuarios.add(e);
     usuarios.add(p);
 
-
+/*
     sistema.setUsuarios(usuarios);
     validar.setSistema(sistema);
 
@@ -74,7 +72,7 @@ public class ValidarLoginTest {
         System.out.println(u.getNombre());
         System.out.println(u.getPassword());
         System.out.println("--------------");
-    }
+    }*/
 
     }
 

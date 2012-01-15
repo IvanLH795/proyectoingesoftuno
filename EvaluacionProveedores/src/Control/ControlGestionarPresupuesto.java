@@ -1,39 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
 
 import Entidad.Productos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import Entidad.Sistema;
 
 /**
  *
  * @author Darthian
  */
 public class ControlGestionarPresupuesto {
-
-    private Sistema sistema = new Sistema();
-
-        /**
-     * @return the sistema
-     */
-    public Sistema getSistema() {
-        return sistema;
-    }
-
-    /**
-     * @param sistema the sistema to set
-     */
-    public void setSistema(Sistema sistema) {
-        this.sistema = sistema;
-    }
-
-
     public void modificarProductos(Vector listaVector){
         if(!(listaVector == null)){
             List<Productos> lista = new ArrayList();

@@ -46,7 +46,7 @@ public class PresupuestoDisponibleJpaController {
 
     public PresupuestoDisponible getPresupuestoDisponible(EntityManager em){
         try{
-            Query q = em.createQuery("SELECT u FROM ProductoProveedor as u");
+            Query q = em.createQuery("SELECT u FROM PresupuestoDisponible as u");
             return (PresupuestoDisponible) q.getSingleResult();
         }catch(Exception e){
             System.out.println(e);

@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
-
 
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import Entidad.Evaluaciones;
-import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -37,7 +29,6 @@ public class EvaluadorProveedorTest {
 
    @BeforeClass
    public static void setUpClass() {
-        Sistema sistema = new Sistema();
         Proveedores proveedor = new Proveedores();
 
         Evaluaciones evaluacion = new Evaluaciones();
@@ -82,10 +73,8 @@ public class EvaluadorProveedorTest {
         List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
         listaProveedor.add(proveedor);
         listaProveedor.add(proveedor2);
-
-        sistema.setProveedores(listaProveedor);
-        Frontera.Splash.sistema = sistema;
     }
+   
     @AfterClass
     public static void tearDownClass() throws Exception {
     }

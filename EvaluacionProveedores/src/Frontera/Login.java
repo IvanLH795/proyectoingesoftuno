@@ -1,20 +1,22 @@
 package Frontera;
 
 import Control.ValidarLogin;
-import Entidad.Sistema;
+import DAO.UsuarioJpaController;
 import Entidad.Usuario;
 import java.util.ArrayList;
+import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
+    EntityManager em;
     public static String roll;
+    UsuarioJpaController user = new UsuarioJpaController();
     JFrame frame;
     /** Creates new form Login */
     public Login() {
         initComponents();
-        sistema = Splash.sistema;
+        em = Splash.em;
         inicializacion();
     }
 
@@ -225,9 +227,14 @@ public class Login extends javax.swing.JFrame {
     usuarios.add(e);
     usuarios.add(p);
 
-    sistema.setUsuarios(usuarios);
+    user.create(a, em);
+    user.create(b, em);
+    user.create(c, em);
+    user.create(d, em);
+    user.create(e, em);
+    user.create(p, em);    
     }
-    private Sistema sistema;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Entrar;
     private javax.swing.JPasswordField contraseniaTF;

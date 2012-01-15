@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -34,7 +33,7 @@ public class AdministrarProveedorTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        Sistema sistema = new Sistema();
+     
         Proveedores proveedor = new Proveedores();
 
         Evaluaciones evaluacion = new Evaluaciones();
@@ -78,10 +77,8 @@ public class AdministrarProveedorTest {
 
         List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
         listaProveedor.add(proveedor);
-        listaProveedor.add(proveedor2);
-
-        sistema.setProveedores(listaProveedor);
-        Frontera.Splash.sistema = sistema;
+        listaProveedor.add(proveedor2);  
+        
     }
 
     @AfterClass

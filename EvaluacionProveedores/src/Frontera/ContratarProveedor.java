@@ -3,20 +3,25 @@ package Frontera;
 import java.util.List;
 import Entidad.Proveedores;
 import Control.ControlContratarProveedor;
+import DAO.ProductosJpaController;
+import DAO.ProveedoresJpaController;
 import Entidad.ProductoProveedor;
 import Entidad.Productos;
 import java.util.Vector;
+import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ContratarProveedor extends javax.swing.JFrame {
-
+    EntityManager em;
     /** Creates new form ContratarProveedor */
     public ContratarProveedor() {
+         em = Splash.em;
          initComponents();
          this.jTextFieldNombre.setText(null);
-         List<Productos> productos = Splash.sistema.getProductos();
+         ProductosJpaController jpaProductos = new ProductosJpaController();
+         List<Productos> productos = jpaProductos.getProductos(em);
          if(productos != null){
             for (Productos u: productos){
                 this.jComboBox1.addItem(u.getNombreProducto());
@@ -347,7 +352,8 @@ public class ContratarProveedor extends javax.swing.JFrame {
 
     private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
         while(modelo.getRowCount()>0)modelo.removeRow(0);
-        List<Proveedores> listaProveedores  = Splash.sistema.getProveedores();
+        ProveedoresJpaController jpaProveedores = new ProveedoresJpaController();
+        List<Proveedores> listaProveedores  = jpaProveedores.getProveedores(em);
         //Vector datosBasicos = new Vector();
         ControlContratarProveedor proveedores = new ControlContratarProveedor();
         //this.tabla.removeAll();
@@ -442,8 +448,7 @@ public class ContratarProveedor extends javax.swing.JFrame {
             ContratoGuardar = ContratoGuardar +" PagWeb: "+ jTextFieldPagWeb.getText() + "\n";
             //Precion del producto:
             this.jTextFieldValorInd.setText(Float.toString(productoSeleccionado.getPrecioPorUnidad()));
-            ContratoGuardar = ContratoGuardar +" ValorInd: "+ jTextFieldValorInd.getText() + "\n";
-            Splash.sistema.getListaContratos().add(ContratoGuardar);
+            ContratoGuardar = ContratoGuardar +" ValorInd: "+ jTextFieldValorInd.getText() + "\n";           
         }
     }//GEN-LAST:event_SeleccionarActionPerformed
 
