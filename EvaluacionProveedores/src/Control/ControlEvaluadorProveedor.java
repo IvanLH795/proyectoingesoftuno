@@ -4,14 +4,17 @@ import DAO.EvaluacionesJpaController;
 import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
-import Frontera.Splash;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class ControlEvaluadorProveedor {
     
-    EntityManager em;
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     public ControlEvaluadorProveedor(){
-        em = Splash.em;
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
     public String compararProveedor(int nit){
         Proveedores v = buscarProveedor(nit);

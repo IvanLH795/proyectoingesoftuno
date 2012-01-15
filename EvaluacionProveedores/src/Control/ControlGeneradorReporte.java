@@ -6,7 +6,6 @@ import Entidad.Contratos;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Frontera.Splash;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
@@ -14,15 +13,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 public class ControlGeneradorReporte {
     ProveedoresJpaController listaProve = new ProveedoresJpaController();
-    EntityManager em;
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     public ControlGeneradorReporte() {
-        em = Splash.em;
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
     public String imprimirPantallaReporte1(JTextArea vistaReporte) {
         String salida = "Fail";

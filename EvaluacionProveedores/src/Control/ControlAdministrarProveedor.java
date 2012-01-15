@@ -7,17 +7,20 @@ import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Frontera.Splash;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class ControlAdministrarProveedor {
 
-    EntityManager em;
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     public ControlAdministrarProveedor(){
-        em = Splash.em;
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
     
     public String crearProveedor(Proveedores u){

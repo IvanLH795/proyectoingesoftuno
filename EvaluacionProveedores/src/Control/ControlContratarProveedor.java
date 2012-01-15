@@ -9,7 +9,6 @@ import Entidad.PresupuestoDisponible;
 import Entidad.Proveedores;
 import Entidad.ProductoProveedor;
 import Entidad.Productos;
-import Frontera.Splash;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -22,6 +21,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.table.DefaultTableModel;
 
 public class ControlContratarProveedor {
@@ -33,10 +34,12 @@ public class ControlContratarProveedor {
     String producto;
     ProductoProveedor productoSeleccionado = new ProductoProveedor();
 
-    EntityManager em;
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     
     public ControlContratarProveedor(){
-        em = Splash.em;
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
 
     public ControlContratarProveedor(Proveedores proveedor, float cantidad, ProductoProveedor producto){
