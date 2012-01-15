@@ -5,14 +5,9 @@
 
 package Control;
 
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
-import Entidad.Evaluaciones;
 import Entidad.Proveedores;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JTextArea;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,23 +46,23 @@ public class GenerarReporteTest {
     public void VerificarImprimirReporte() throws IOException{
         ControlGeneradorReporte obj = new ControlGeneradorReporte();
         Proveedores proveedor = new Proveedores();
-        File fichero = File.createTempFile(Fail, Exito);
+        File fichero = new File ( System.getProperty("user.dir"),"Reporte.txt");
         proveedor.setNit(-5);
-        assertEquals(obj.imprimirReporte(fichero, Exito), Fail);
+        assertEquals(obj.imprimirReporte(fichero, Exito), Exito);
     }
     @Test
     public void VerificarImprimirPantallaReporte1(){
         ControlGeneradorReporte obj = new ControlGeneradorReporte();
         JTextArea area = new JTextArea();
         area.setText("mercados");
-        assertEquals(obj.imprimirPantallaReporte1(area), Fail);
+        assertEquals(obj.imprimirPantallaReporte1(area), Exito);
     }
     @Test
     public void VerificarImprimirPantallaReporte2(){
         ControlGeneradorReporte obj = new ControlGeneradorReporte();
         JTextArea area = new JTextArea();
         area.setText("mercados");
-        assertEquals(obj.imprimirPantallaReporte2(area, Exito), Fail);
+        assertEquals(obj.imprimirPantallaReporte2(area, "1"), Exito);
     }
     @Test
     public void VerificarImprimirPantallaReporte3(){
@@ -76,6 +71,6 @@ public class GenerarReporteTest {
         proveedor.setNit(-5);
         JTextArea area = new JTextArea();
         area.setText("mercados");
-        assertEquals(obj.imprimirPantallaReporte3(area), Fail);
+        assertEquals(obj.imprimirPantallaReporte3(area), Exito);
     }
 }
