@@ -13,9 +13,18 @@ import javax.persistence.Id;
 public class PresupuestoDisponible implements Serializable {
     @Id
     private Float presupuesto;
+    private Float presupuestoDisponible;
 
     public PresupuestoDisponible(){
         this.presupuesto = new Float(0);
+    }
+
+    public Float getPresupuestoDisponible() {
+        return presupuestoDisponible;
+    }
+
+    public void setPresupuestoDisponible(Float presupuestoDisponible) {
+        this.presupuestoDisponible = presupuestoDisponible;
     }
     public Float getPresupuesto() {
         return presupuesto;

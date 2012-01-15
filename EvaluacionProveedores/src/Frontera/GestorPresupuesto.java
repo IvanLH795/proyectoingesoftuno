@@ -1,42 +1,36 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * GestorPresupuesto.java
- *
- * Created on 22-sep-2011, 15:12:46
- */
-
 package Frontera;
 
 import Control.ControlGestionarPresupuesto;
-import Entidad.ProductoProveedor;
+import DAO.PresupuestoDisponibleJpaController;
+import DAO.ProductosJpaController;
+import Entidad.PresupuestoDisponible;
 import Entidad.Productos;
-import Entidad.Sistema;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import java.util.ArrayList;
+import javax.persistence.EntityManager;
 
 /**
  *
  * @author Fernando
  */
 public class GestorPresupuesto extends javax.swing.JFrame {
+    EntityManager em;
     MiModelo modelo;
     private JTable tabla;
-    private Sistema sistema;
     private JFrame frame;
     String texto;
-    
-   public GestorPresupuesto() {
+    PresupuestoDisponibleJpaController jpaPresupuesto = new PresupuestoDisponibleJpaController();
+    PresupuestoDisponible presupuesto = new PresupuestoDisponible();
+    ProductosJpaController jpaProductos = new ProductosJpaController();
+    Productos productos = new Productos();
 
+    public GestorPresupuesto() {
+        em = Splash.em;
         initComponents();
-        sistema = Splash.sistema;
         inicializacion();
         modelo = new MiModelo();
         tabla = new JTable(modelo);
@@ -44,18 +38,18 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         titulos.add("Producto");
         titulos.add("Precio");
         PanelMP.setVisible(false);
-        float a =sistema.getPresupuestoT();
-        TTotal.setText(String.valueOf(a));
-        TDisponible.setText(String.valueOf(a));
+        presupuesto = jpaPresupuesto.getPresupuestoDisponible(em);
+        TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
+        TDisponible.setText(String.valueOf(presupuesto.getPresupuestoDisponible()));
+        
         try{            
-            for(Productos u: sistema.getProductos()){
+            for(Productos u:  jpaProductos.getProductos(em)){
                 Vector obje = new Vector();
                 obje.add(u.getNombreProducto());
                 obje.add(u.getDineroDisponible());
                 modelo.setColumnIdentifiers(titulos);
                 modelo.addRow(obje);
-                a = a-u.getDineroDisponible();
-                TDisponible.setText(String.valueOf(a));
+                TDisponible.setText(String.valueOf(presupuesto.getPresupuesto()-u.getDineroDisponible()));
             }
         }catch(NullPointerException ex){
             modelo.setColumnIdentifiers(titulos);
@@ -333,12 +327,11 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                         obj.addElement(producto1.getNombreProducto());
                         obj.addElement(producto1.getDineroDisponible());
                         modelo.addRow(obj);
-                        if(sistema.getProductos() == null){
-                            List<Productos> productos = new ArrayList<Productos>();
-                            productos.add(producto1);
-                            sistema.setProductos(productos);
+                        if(jpaProductos.getProductos(em) == null){
+                            productos.setNombreProducto(producto);
+                            jpaProductos.create(productos, em);
                         }else{
-                            sistema.agregarProducto(producto1);
+                            jpaProductos.create(producto1, em);
                         }
                     }
                 }
@@ -368,7 +361,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         if(filaBorrar > -1){
             if(filaBorrar >= size){
                 modelo.removeRow(filaBorrar);
-                Splash.sistema.getProductos().remove(filaBorrar);
+                jpaProductos.delete(jpaProductos.getProductos(em).get(filaBorrar), em);
             }
             else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
                 obj= modelo.getDataVector();
@@ -377,7 +370,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 b=Float.parseFloat(a);
                 TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
                 modelo.removeRow(filaBorrar);
-                Splash.sistema.getProductos().remove(filaBorrar);
+                jpaProductos.delete(jpaProductos.getProductos(em).get(filaBorrar), em);
             }
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
@@ -396,8 +389,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             try {
                 texto = TNuevoPresupuesto.getText();
                 if(Float.parseFloat(texto)>0){
-                    sistema.setPresupuestoT(Float.parseFloat(texto)+sistema.getPresupuestoT());
-                    TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
+                    presupuesto.setPresupuesto(Float.parseFloat(texto)+presupuesto.getPresupuesto());
+                    TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
                     TDisponible.setText(Float.parseFloat(TDisponible.getText())+Float.parseFloat(texto)+"");
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
@@ -416,9 +409,9 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             try {
                 texto = TNuevoPresupuesto.getText();
                 if(Float.parseFloat(texto)>0){
-                if(Float.parseFloat(texto)<=sistema.getPresupuestoT()){
-                    sistema.setPresupuestoT(sistema.getPresupuestoT()-Float.parseFloat(texto));
-                    TTotal.setText(String.valueOf(sistema.getPresupuestoT()));
+                if(Float.parseFloat(texto)<=presupuesto.getPresupuesto()){
+                    presupuesto.setPresupuesto(presupuesto.getPresupuesto()-Float.parseFloat(texto));
+                    TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
                     TDisponible.setText(Float.parseFloat(TDisponible.getText())-Float.parseFloat(texto)+"");
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
@@ -436,7 +429,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_PresupuestoQuitarActionPerformed
 
     public void inicializacion(){
-
+    /*
     ArrayList<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
     ProductoProveedor a = new ProductoProveedor();
     ProductoProveedor b = new ProductoProveedor();
@@ -457,7 +450,8 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     productos.add(c);
     productos.add(d);
 
-    sistema.setProductosProveedor(productos);
+
+     sistema.setProductosProveedor(productos);*/
     }
 
     private boolean validarNombre(String nombre){

@@ -1,25 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Splash.java
- *
- * Created on 17-sep-2011, 10:19:04
- */
 
 package Frontera;
 
-//import DAO.ProveedoresJpaController;
+import DAO.EvaluacionesJpaController;
+import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,7 +19,6 @@ import javax.swing.UIManager;
  * @author Fernando
  */
 public class Splash extends javax.swing.JFrame {
-    public static Sistema sistema = new Sistema();
     public static EntityManagerFactory emf;
     public static EntityManager em;
     /** Creates new form Splash */
@@ -158,10 +145,6 @@ public class Splash extends javax.swing.JFrame {
 
      private void inicializacion() {
         Proveedores proveedor = new Proveedores();
-        listaproductos = null;
-        List<ProductoProveedor> listaProductos = new ArrayList<ProductoProveedor>();
-        ProductoProveedor productoa = new ProductoProveedor();
-        ProductoProveedor productob = new ProductoProveedor();
         Evaluaciones evaluacion = new Evaluaciones();
 
         proveedor.setNombre("Mercados La Primera");
@@ -179,19 +162,6 @@ public class Splash extends javax.swing.JFrame {
         proveedor.setCorreo("laprimera@colombia.com");
         proveedor.setDireccion("Cra 6 # 65 - 18");
         proveedor.setRepresentante("Henry Murillo");
-
-        //ProveedoresJpaController ProveedorJpa = new ProveedoresJpaController();
-        //ProveedorJpa.create(proveedor);
-
-        productoa.setNombreProducto("Marcadores");
-        productoa.setPrecioPorUnidad(2500);
-        productob.setNombreProducto("Borradores");
-        productob.setPrecioPorUnidad(3000);
-
-        listaProductos.add(productoa);
-        listaProductos.add(productob);
-
-        proveedor.setProductos(listaProductos);
 
         Proveedores proveedor2 = new Proveedores();
         Evaluaciones evaluacion2 = new Evaluaciones();
@@ -211,29 +181,13 @@ public class Splash extends javax.swing.JFrame {
         proveedor2.setDireccion("Cra 7 # 40 - 29");
         proveedor2.setRepresentante("Andres Malzahar");
 
-        ProductoProveedor productoc = new ProductoProveedor();
-        ProductoProveedor productod = new ProductoProveedor();
-        List<ProductoProveedor> listaProductos2 = new ArrayList<ProductoProveedor>();
-
-        productoc.setNombreProducto("Tableros");
-        productoc.setPrecioPorUnidad(120000);
-        productod.setNombreProducto("Pupitres");
-        productod.setPrecioPorUnidad(110000);
-
-        listaProductos2.add(productoc);
-        listaProductos2.add(productod);
-
-        proveedor2.setProductos(listaProductos2);
-
-        List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
-        listaProveedor.add(proveedor);
-        listaProveedor.add(proveedor2);
-
-        sistema.setProveedores(listaProveedor);
-        sistema.setProductosProveedor(listaProductos);
+        ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+        jpaProveedor.create(proveedor, em);
+        jpaProveedor.create(proveedor2, em);
+        EvaluacionesJpaController jpaEvaluacion = new EvaluacionesJpaController();
+        jpaEvaluacion.create(evaluacion, em);
+        jpaEvaluacion.create(evaluacion2, em);
     }
-
-
      /**
     * @param args the command line arguments
     */

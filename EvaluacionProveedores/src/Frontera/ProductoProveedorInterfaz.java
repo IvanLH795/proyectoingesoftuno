@@ -1,32 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * ProductoProveedor.java
- *
- * Created on 30-oct-2011, 21:43:53
- */
-
 package Frontera;
 
+import DAO.ProductosProveedorJpaController;
 import Entidad.ProductoProveedor;
-import Entidad.Sistema;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-/**
- *
- * @author Camilo
- */
 public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
-    /** Creates new form ProductoProveedor */
+    EntityManager em;
+    
     public ProductoProveedorInterfaz(Vector lista){
+        em = Splash.em;
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         modelo = new MiModelo();
@@ -38,16 +26,17 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabla);
     }
 
-    public ProductoProveedorInterfaz(Sistema listaProductos) {
+    public ProductoProveedorInterfaz(ProductosProveedorJpaController listaProductos) {
+        em = Splash.em;
         initComponents();
-        listaLocal = listaProductos.getProductosProveedor();
+        listaLocal = listaProductos.getProductosProveedor(em);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         modelo = new MiModelo();
         tabla = new JTable(modelo);
         modelo.addColumn("Producto");
         modelo.addColumn("Precio");
 
-        for(ProductoProveedor u: listaProductos.getProductosProveedor()){
+        for(ProductoProveedor u: listaProductos.getProductosProveedor(em)){
             Vector obj = new Vector();
             obj.add(u.getNombreProducto());
             obj.add(u.getPrecioPorUnidad());

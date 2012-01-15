@@ -34,6 +34,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControlContratarProveedor {
 
+    ProveedoresJpaController listaProve = new ProveedoresJpaController();
     Proveedores proveedorContratado = new Proveedores();
     List<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
     float cantidad;
@@ -54,12 +55,13 @@ public class ControlContratarProveedor {
 
     public List<Proveedores> buscarListaProveedores(String producto, DefaultTableModel modelo){
        List<Proveedores> listaProveedores = new ArrayList<Proveedores>();
+       
        Vector datosBasicos = new Vector();
        if (validarProducto(producto)){
            listaProveedores = null;
        }
        else{
-            for (Proveedores u : Splash.sistema.getProveedores()){
+            for (Proveedores u : listaProve.getProveedores(em)){
                 for (ProductoProveedor p : u.getProductos()){
                     if (p.getNombreProducto().equals(producto)){
                         listaProveedores.add(u);
@@ -88,7 +90,7 @@ public class ControlContratarProveedor {
        try {
             Document contrato = new Document(PageSize.LETTER);
             PdfWriter file = PdfWriter.getInstance(contrato, new FileOutputStream(System.getProperty("user.dir")+"\\Contrato_"+proveedorContratado.getNombre()+"_"+ productoSeleccionado.getNombreProducto()+".pdf"));
-            Contratos c = new Contratos();
+            Contratos cont = new Contratos();
 
             contrato.setMargins(72f, 72f, 72f, 72f);
             
@@ -109,19 +111,19 @@ public class ControlContratarProveedor {
             contrato.close();
             file.close();
             
-            c.setCantidad((int)cantidad);
+            cont.setCantidad((int)cantidad);
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
             java.util.Date date = new java.util.Date();
             String datetime = dateFormat.format(date);
-            c.setFecha(datetime);
-            c.setProveedor(proveedorContratado);
+            cont.setFecha(datetime);
+            cont.setProveedor(proveedorContratado);
 
-            Productos p = buscarProducto(productoSeleccionado.getNombreProducto());
-            p.setDineroDisponible(p.getDineroDisponible() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
+            Productos prod = buscarProducto(productoSeleccionado.getNombreProducto());
+            prod.setDineroDisponible(prod.getDineroDisponible() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
             ProductosJpaController productoControl = new ProductosJpaController();
-            productoControl.delete(p.getNombreProducto(), em);
-            productoControl.create(p, em);
-            c.setProducto(p);
+            productoControl.delete(prod.getNombreProducto(), em);
+            productoControl.create(prod, em);
+            cont.setProducto(prod);
             
             PresupuestoDisponibleJpaController presupuestoControl = new PresupuestoDisponibleJpaController();
             PresupuestoDisponible presupuestoDisponible = new PresupuestoDisponible();
@@ -130,7 +132,9 @@ public class ControlContratarProveedor {
             presupuestoControl.update(presupuestoDisponible, em);
 
             ContratosJpaController control =new ContratosJpaController();
-            control.create(c, em);
+            cont.setCantidad((int)cantidad);
+            cont.setProducto(null);
+            control.create(cont, em);            
 
         } catch(Exception ee){
             System.out.println(ee.getMessage());

@@ -6,7 +6,6 @@
 package Control;
 
 import Entidad.Productos;
-import Entidad.Sistema;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,7 +28,7 @@ public class GestionarPresupuestoTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        Sistema sistema=new Sistema();
+       
     }
 
     @AfterClass

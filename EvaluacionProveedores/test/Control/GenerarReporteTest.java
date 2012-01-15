@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,7 +34,6 @@ public class GenerarReporteTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        Sistema sistema = new Sistema();
         Proveedores proveedor = new Proveedores();
 
         Evaluaciones evaluacion = new Evaluaciones();
@@ -79,10 +77,7 @@ public class GenerarReporteTest {
 
         List<Proveedores> listaProveedor = new ArrayList<Proveedores>();
         listaProveedor.add(proveedor);
-        listaProveedor.add(proveedor2);
-
-        sistema.setProveedores(listaProveedor);
-        Frontera.Splash.sistema = sistema;
+        listaProveedor.add(proveedor2);        
     }
 
     @AfterClass

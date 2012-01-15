@@ -46,9 +46,10 @@ public class ContratosJpaController {
         return this.delete(contrato.getFecha(), em);
     }
 
-    public List<Contratos> getProductos(EntityManager em){
+    public List<Contratos> getListaContratos(EntityManager em){
         try{
-            Query q = em.createQuery("SELECT u FROM Evaluaciones as u");
+            //Query q = em.createQuery("SELECT u FROM Evaluaciones as u");
+            Query q = em.createQuery("SELECT u FROM Contratos as u");
             return q.getResultList();
         }catch(Exception e){
             System.out.println(e);
@@ -56,7 +57,7 @@ public class ContratosJpaController {
         }
     }
 
-    public Contratos getProductoNombre(String nombre, EntityManager em){
+    public Contratos getContratos(String nombre, EntityManager em){
         try{
             Query q = em.createQuery("SELECT u FROM Contratos as u WHERE u.nombreProducto = '" + nombre + "'");
             return (Contratos)q.getSingleResult();

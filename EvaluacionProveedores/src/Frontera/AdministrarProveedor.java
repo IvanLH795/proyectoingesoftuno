@@ -1,35 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * AdministrarProveedor.java
- *
- * Created on 22-sep-2011, 15:12:11
- */
-
 package Frontera;
 
 import Control.ControlAdministrarProveedor;
+import DAO.ProductosProveedorJpaController;
 import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
-import Entidad.Sistema;
 import java.util.Vector;
+import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/**
- *
- * @author Fernando
- */
+
 public class AdministrarProveedor extends javax.swing.JFrame {
     JFrame frame;
+    EntityManager em;
+    ProductosProveedorJpaController productosProv = new ProductosProveedorJpaController();
     /** Creates new form AdministrarProveedor */
     public AdministrarProveedor() {
+        em = Splash.em;
         initComponents();
         listaproductos = Splash.listaproductos;
         jTabbedPane1.addChangeListener(new ChangeListener() {
@@ -919,9 +909,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         ProductoProveedorInterfaz interfazProductos;
         
         if(Splash.listaproductos == (null)){
-            Sistema sistem = new Sistema();
-            sistem.setProductosProveedor(proveedor.getProductos());
-            interfazProductos = new ProductoProveedorInterfaz(sistem);
+            interfazProductos = new ProductoProveedorInterfaz(productosProv);
         }else{
             interfazProductos = new ProductoProveedorInterfaz(Splash.listaproductos);
         }
