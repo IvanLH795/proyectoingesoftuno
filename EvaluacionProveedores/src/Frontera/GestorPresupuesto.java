@@ -29,7 +29,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
     public GestorPresupuesto() {
         em = Splash.em;
         initComponents();
-        inicializacion();
         modelo = new MiModelo();
         tabla = new JTable(modelo);
         Vector titulos = new Vector();
@@ -430,32 +429,6 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_PresupuestoQuitarActionPerformed
-
-    public void inicializacion(){
-    /*
-    ArrayList<ProductoProveedor> productos = new ArrayList<ProductoProveedor>();
-    ProductoProveedor a = new ProductoProveedor();
-    ProductoProveedor b = new ProductoProveedor();
-    ProductoProveedor c = new ProductoProveedor();
-    ProductoProveedor d = new ProductoProveedor();
-
-    a.setNombreProducto("Marcadores");
-    a.setPrecioPorUnidad(2500);
-    b.setNombreProducto("Borradores");
-    b.setPrecioPorUnidad(2500);
-    c.setNombreProducto("Tableros");
-    c.setPrecioPorUnidad(2500);
-    d.setNombreProducto("marcadores");
-    d.setPrecioPorUnidad(2500);
-
-    productos.add(a);
-    productos.add(b);
-    productos.add(c);
-    productos.add(d);
-
-
-     sistema.setProductosProveedor(productos);*/
-    }
 
     private boolean validarNombre(String nombre){
         Vector nombres = modelo.getDataVector();
