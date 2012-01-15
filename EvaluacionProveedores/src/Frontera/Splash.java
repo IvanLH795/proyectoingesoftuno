@@ -4,7 +4,6 @@ package Frontera;
 import DAO.EvaluacionesJpaController;
 import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
-import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -180,13 +179,13 @@ public class Splash extends javax.swing.JFrame {
         proveedor2.setCorreo("lasegunda@colombia.com");
         proveedor2.setDireccion("Cra 7 # 40 - 29");
         proveedor2.setRepresentante("Andres Malzahar");
-
+        /*
         ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
         jpaProveedor.create(proveedor, em);
         jpaProveedor.create(proveedor2, em);
         EvaluacionesJpaController jpaEvaluacion = new EvaluacionesJpaController();
         jpaEvaluacion.create(evaluacion, em);
-        jpaEvaluacion.create(evaluacion2, em);
+        jpaEvaluacion.create(evaluacion2, em);*/
     }
      /**
     * @param args the command line arguments
