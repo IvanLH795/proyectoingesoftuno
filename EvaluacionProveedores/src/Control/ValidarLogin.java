@@ -3,14 +3,17 @@ package Control;
 import DAO.UsuarioJpaController;
 import Entidad.Usuario;
 import Frontera.Login;
-import Frontera.Splash;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class ValidarLogin {
     UsuarioJpaController jpaUsuario = new UsuarioJpaController();
-    EntityManager em;
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
     public ValidarLogin () {
-        em = Splash.em;
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
     }
 
     public String verificarLogin (Usuario usuario) {
