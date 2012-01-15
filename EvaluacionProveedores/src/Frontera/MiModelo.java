@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Frontera;
 
 import javax.swing.table.DefaultTableModel;

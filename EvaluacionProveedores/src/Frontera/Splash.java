@@ -1,8 +1,5 @@
-
 package Frontera;
 
-import DAO.EvaluacionesJpaController;
-import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
 import java.text.DateFormat;
@@ -13,10 +10,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.UIManager;
 
-/**
- *
- * @author Fernando
- */
 public class Splash extends javax.swing.JFrame {
     public static EntityManagerFactory emf;
     public static EntityManager em;

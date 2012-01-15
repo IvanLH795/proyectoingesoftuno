@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
 
 import DAO.ContratosJpaController;
@@ -13,16 +8,11 @@ import Entidad.Evaluaciones;
 import Entidad.ProductoProveedor;
 import Entidad.Proveedores;
 import Frontera.Splash;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author Darthian
- */
 public class ControlAdministrarProveedor {
 
     EntityManager em;
