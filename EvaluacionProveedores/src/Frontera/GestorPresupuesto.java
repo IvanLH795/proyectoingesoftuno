@@ -33,7 +33,9 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         PanelMP.setVisible(false);
         presupuesto = jpaPresupuesto.getPresupuestoDisponible(em);
         if(presupuesto != null){
-            TTotal.setText(String.valueOf(presupuesto));}
+            TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
+            TDisponible.setText(String.valueOf(presupuesto.getPresupuestoDisponible()));
+        }
         else{
             TTotal.setText(String.valueOf(new Float(0)));
             TDisponible.setText(String.valueOf(0));
@@ -386,12 +388,16 @@ public class GestorPresupuesto extends javax.swing.JFrame {
        if(!TNuevoPresupuesto.getText().equals("")){
             try {
                 texto = TNuevoPresupuesto.getText();
-                if(Float.parseFloat(texto)>0){
-                    presupuesto.setPresupuesto(Float.parseFloat(texto)+presupuesto.getPresupuesto());
+                if(Float.parseFloat(texto) > 0){
+                    presupuesto.setPresupuesto(presupuesto.getPresupuesto() + Float.parseFloat(texto));
                     TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
-                    TDisponible.setText(Float.parseFloat(TDisponible.getText())+Float.parseFloat(texto)+"");
+                    presupuesto.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() + Float.parseFloat(texto));
+                    TDisponible.setText(String.valueOf(TDisponible.getText()));
+                    
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
+
+                    jpaPresupuesto.update(presupuesto, em);
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Presupuesto invalido");
@@ -408,11 +414,15 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 texto = TNuevoPresupuesto.getText();
                 if(Float.parseFloat(texto)>0){
                 if(Float.parseFloat(texto)<=presupuesto.getPresupuesto()){
-                    presupuesto.setPresupuesto(presupuesto.getPresupuesto()-Float.parseFloat(texto));
+                    presupuesto.setPresupuesto(presupuesto.getPresupuesto() - Float.parseFloat(texto));
                     TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
-                    TDisponible.setText(Float.parseFloat(TDisponible.getText())-Float.parseFloat(texto)+"");
+                    presupuesto.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() - Float.parseFloat(texto));
+                    TDisponible.setText(String.valueOf(TDisponible.getText()));
+
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
+                    
+                    jpaPresupuesto.update(presupuesto, em);
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Presupuesto Incorrecto");
