@@ -45,6 +45,20 @@ public class ContratosJpaController {
     public String delete(Contratos contrato, EntityManager em){
         return this.delete(contrato.getFecha(), em);
     }
+    
+    public String delete(int nit, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("DELETE FROM Contratos u WHERE u.proveedor.nit = " + nit);
+            q.executeUpdate();
+            em.getTransaction().commit();
+            return "Succes";
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+            return "Fail";
+        }
+    }
 
     public List<Contratos> getListaContratos(EntityManager em){
         try{

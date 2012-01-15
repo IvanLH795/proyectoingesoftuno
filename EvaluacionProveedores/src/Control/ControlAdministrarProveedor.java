@@ -5,6 +5,7 @@
 
 package Control;
 
+import DAO.ContratosJpaController;
 import DAO.EvaluacionesJpaController;
 import DAO.ProductosProveedorJpaController;
 import DAO.ProveedoresJpaController;
@@ -118,17 +119,16 @@ public class ControlAdministrarProveedor {
     public String modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaProductos) {
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
-
                 List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
-                List<Evaluaciones> listaeva = new ArrayList<Evaluaciones>();
-                for(ProductoProveedor p: viejo.getProductos()){
-                    ProductoProveedor u = new ProductoProveedor();
-                    u.setNombreProducto(p.getNombreProducto());
-                    u.setPrecioPorUnidad(p.getPrecioPorUnidad());
-                    u.setProveedor(nuevo);
-                    lista.add(u);
+                for(int i=0; i<listaProductos.size();i++){
+                        ProductoProveedor producto = new ProductoProveedor();
+                        producto.setNombreProducto((String)((Vector) listaProductos.get(i)).get(0));
+                        producto.setPrecioPorUnidad((Float)((Vector)listaProductos.get(i)).get(1));
+                        if(!(producto.getNombreProducto()==null))
+                            lista.add(producto);
+                            producto.setProveedor(nuevo);
                 }
-                
+                List<Evaluaciones> listaeva = new ArrayList<Evaluaciones>();
                 for(Evaluaciones p: viejo.getEvaluaciones()){
                     Evaluaciones u = new Evaluaciones();
                     u.setAdaptabilidad(p.getAdaptabilidad());
@@ -147,6 +147,8 @@ public class ControlAdministrarProveedor {
                 productosb.delete(viejo.getNit(), em);
                 ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
                 jpaProveedor.create(nuevo, em);
+                ContratosJpaController contratos = new ContratosJpaController();
+                contratos.delete(viejo.getNit(), em);
                 jpaProveedor.delete(viejo, em);
                 return "Succes";
             }
