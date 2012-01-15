@@ -6,10 +6,6 @@ package Control;
 
 import DAO.UsuarioJpaController;
 import Entidad.Usuario;
-import Frontera.Splash;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -27,18 +23,12 @@ public class ValidarLoginTest {
     private String Long_Contraseña_Incorrecto="Longitud de password incorrecta";
     private String Datos_Incorrectos="Datos incorrectos";
     private String Usuario_Autorizado="Bienvenido";
-    UsuarioJpaController jpaUsuario = new UsuarioJpaController();
-    public static EntityManagerFactory emf;
-    public static EntityManager em;
 
     public ValidarLoginTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
-        em = emf.createEntityManager();
-        Splash.em=em;
     }
 
     @AfterClass
