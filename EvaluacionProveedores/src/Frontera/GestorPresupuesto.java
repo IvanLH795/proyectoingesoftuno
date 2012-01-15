@@ -5,12 +5,10 @@ import DAO.PresupuestoDisponibleJpaController;
 import DAO.ProductosJpaController;
 import Entidad.PresupuestoDisponible;
 import Entidad.Productos;
-import java.util.List;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import java.util.ArrayList;
 import javax.persistence.EntityManager;
 
 /**
@@ -39,18 +37,23 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         titulos.add("Precio");
         PanelMP.setVisible(false);
         presupuesto = jpaPresupuesto.getPresupuestoDisponible(em);
-        TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
-        TDisponible.setText(String.valueOf(presupuesto.getPresupuestoDisponible()));
+        if(presupuesto != null)
+            TTotal.setText(String.valueOf(presupuesto));
+        else
+            TTotal.setText(String.valueOf(new Float(0)));
+        TDisponible.setText(String.valueOf(0));
         
-        try{            
+        try{
+            Float a = new Float(0);
             for(Productos u:  jpaProductos.getProductos(em)){
                 Vector obje = new Vector();
                 obje.add(u.getNombreProducto());
                 obje.add(u.getDineroDisponible());
                 modelo.setColumnIdentifiers(titulos);
                 modelo.addRow(obje);
-                TDisponible.setText(String.valueOf(presupuesto.getPresupuesto()-u.getDineroDisponible()));
+                a = a- u.getDineroDisponible();
             }
+            TDisponible.setText(String.valueOf(a));
         }catch(NullPointerException ex){
             modelo.setColumnIdentifiers(titulos);
         }
