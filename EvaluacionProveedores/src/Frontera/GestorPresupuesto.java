@@ -37,6 +37,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             TDisponible.setText(String.valueOf(presupuesto.getPresupuestoDisponible()));
         }
         else{
+            presupuesto = new PresupuestoDisponible();
             TTotal.setText(String.valueOf(new Float(0)));
             TDisponible.setText(String.valueOf(0));
             try{
@@ -53,6 +54,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
             }catch(NullPointerException ex){
                 modelo.setColumnIdentifiers(titulos);
             }
+            jpaPresupuesto.create(presupuesto, em);
         }
         jScrollPane1.setViewportView(tabla);
     }
