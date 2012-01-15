@@ -4,8 +4,12 @@
  */
 package Control;
 
+import DAO.UsuarioJpaController;
 import Entidad.Usuario;
-import java.util.ArrayList;
+import Frontera.Splash;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,57 +27,18 @@ public class ValidarLoginTest {
     private String Long_Contraseña_Incorrecto="Longitud de password incorrecta";
     private String Datos_Incorrectos="Datos incorrectos";
     private String Usuario_Autorizado="Bienvenido";
+    UsuarioJpaController jpaUsuario = new UsuarioJpaController();
+    public static EntityManagerFactory emf;
+    public static EntityManager em;
 
     public ValidarLoginTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
- 
-    ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-    Usuario a = new Usuario();
-    Usuario b = new Usuario();
-    Usuario c = new Usuario();
-    Usuario d = new Usuario();
-    Usuario e = new Usuario();
-    Usuario p = new Usuario();
-
-    a.setNombre("vivibeltranb");
-    a.setPassword("123456");
-    a.setRoll("Rector");
-    b.setNombre("darthian007");
-    b.setPassword("123456");
-    b.setRoll("Auxiliar");
-    c.setNombre("freddyfofe");
-    c.setPassword("123456");
-    c.setRoll("Concejo");
-    d.setNombre("daovallec");
-    d.setPassword("123456");
-    d.setRoll("Rector");
-    e.setNombre("fmanrrique");
-    e.setPassword("123456");
-    e.setRoll("Auxiliar");
-    p.setNombre("profesor");
-    p.setPassword("123456");
-    p.setRoll("Master");
-
-    usuarios.add(a);
-    usuarios.add(b);
-    usuarios.add(c);
-    usuarios.add(d);
-    usuarios.add(e);
-    usuarios.add(p);
-
-/*
-    sistema.setUsuarios(usuarios);
-    validar.setSistema(sistema);
-
-    for (Usuario u : sistema.getUsuarios()){
-        System.out.println(u.getNombre());
-        System.out.println(u.getPassword());
-        System.out.println("--------------");
-    }*/
-
+        emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
+        em = emf.createEntityManager();
+        Splash.em=em;
     }
 
     @AfterClass
@@ -88,9 +53,6 @@ public class ValidarLoginTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of verificarLongitudNombre method, of class ValidarLogin.
-     */
     @Test
     public void testVerificarLongitudNombre() {
         Usuario u = new Usuario();
@@ -104,9 +66,6 @@ public class ValidarLoginTest {
         assertEquals(validar.verificarLogin(u),Long_Nombre_Incorrecto);
     }
 
-    /**
-     * Test of verificarLongitudPassword method, of class ValidarLogin.
-     */
     @Test
     public void testVerificarLongitudPassword() {
         Usuario u = new Usuario();
