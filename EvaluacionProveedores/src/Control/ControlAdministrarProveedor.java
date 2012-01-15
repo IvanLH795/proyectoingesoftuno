@@ -39,7 +39,6 @@ public class ControlAdministrarProveedor {
     }
 
     public String modificarProveedor(Proveedores viejo, Proveedores nuevo){
-        System.out.println("Entra acaaaaaaaaaa");
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
                 List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
