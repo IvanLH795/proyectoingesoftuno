@@ -11,10 +11,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.persistence.EntityManager;
 
-/**
- *
- * @author Fernando
- */
 public class GestorPresupuesto extends javax.swing.JFrame {
     EntityManager em;
     MiModelo modelo;

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Entidad;
 
 import java.io.Serializable;
@@ -13,10 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author Darthian
- */
 @Entity
 public class Proveedores implements Serializable {
     @Id

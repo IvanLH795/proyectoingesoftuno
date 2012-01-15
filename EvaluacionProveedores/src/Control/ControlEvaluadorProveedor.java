@@ -1,19 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
-/**
- *
- * @author Beltrán
- */
+
 import DAO.EvaluacionesJpaController;
 import DAO.ProveedoresJpaController;
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
 import Frontera.Splash;
 import javax.persistence.EntityManager;
+
 public class ControlEvaluadorProveedor {
     
     EntityManager em;

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
 
 import DAO.ContratosJpaController;
@@ -23,10 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
-/**
- *
- * @author Darthian
- */
 public class ControlGeneradorReporte {
     ProveedoresJpaController listaProve = new ProveedoresJpaController();
     EntityManager em;

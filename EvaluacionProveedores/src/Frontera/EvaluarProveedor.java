@@ -1,8 +1,3 @@
-/*
- * EvaluarProveedor.java
- *
- * Created on 24/10/2011, 03:07:53 PM
- */
 package Frontera;
 
 import Control.ControlEvaluadorProveedor;
@@ -11,9 +6,7 @@ import javax.swing.JOptionPane;
 import Entidad.Proveedores;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-/**
- * @author Beltrán
- */
+
 public class EvaluarProveedor extends javax.swing.JFrame {
 
     /** Creates new form EvaluarProveedor */

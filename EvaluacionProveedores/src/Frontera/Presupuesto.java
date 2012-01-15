@@ -1,20 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * Presupuesto.java
- *
- * Created on 4/11/2011, 09:57:39 AM
- */
-
 package Frontera;
 
-/**
- *
- * @author dufresny
- */
 public class Presupuesto extends javax.swing.JPanel {
 
     /** Creates new form Presupuesto */

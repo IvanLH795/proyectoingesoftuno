@@ -1,16 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * GenerarReporte.java
- *
- * Created on 22-sep-2011, 15:12:58
- */
-
 package Frontera;
-
 
 import Control.ControlGeneradorReporte;
 import java.io.File;
@@ -19,10 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Fernando
- */
 public class GenerarReporte extends javax.swing.JFrame {
 
     /** Creates new form GenerarReporte */

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package DAO;
 
 import Entidad.Evaluaciones;
@@ -10,10 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-/**
- *
- * @author Camilo
- */
 public class EvaluacionesJpaController {
 
     public void create(Evaluaciones evaluacion, EntityManager em) {

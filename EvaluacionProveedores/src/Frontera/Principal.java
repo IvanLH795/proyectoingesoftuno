@@ -1,8 +1,6 @@
 package Frontera;
 
 import java.awt.Dialog.ModalExclusionType;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -26,7 +24,6 @@ public class Principal extends javax.swing.JFrame {
             btnContratar.setEnabled(false);
         }
     }
-
 
     /** This method is called from within the constructor to
      * initialize the form.

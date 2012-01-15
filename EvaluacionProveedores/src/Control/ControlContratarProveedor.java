@@ -1,9 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Control;
+
 import DAO.ContratosJpaController;
 import DAO.PresupuestoDisponibleJpaController;
 import DAO.ProductosJpaController;
@@ -17,7 +13,6 @@ import Frontera.Splash;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -28,10 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Vector;
 import javax.persistence.EntityManager;
 import javax.swing.table.DefaultTableModel;
-/**
- *
- * @author Darthian
- */
+
 public class ControlContratarProveedor {
 
     ProveedoresJpaController listaProve = new ProveedoresJpaController();
