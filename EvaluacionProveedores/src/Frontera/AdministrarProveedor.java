@@ -827,7 +827,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
             }catch(NumberFormatException ex){
                 obj = null;
             }
-            if(control.buscarProveedor(obj) == (null)){
+            if(control.buscarProveedor(obj) == null || (Integer)obj== proveedor.getNit() ){
                 Proveedores proveedor2 = new Proveedores();
 
                 proveedor2.setNombre(TFSubNombreModificar.getText());
@@ -893,9 +893,14 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 TFTelefonoModificar.setText(String.valueOf(proveedor.getTelefono()));
                 TFCorreoModificar.setText(proveedor.getCorreo());
                 TFPagWebModificar.setText(proveedor.getPaginaWeb());
-
-                if(!(Splash.listaproductos == null))
-                    Splash.listaproductos = null;
+                Vector lista = new Vector();
+                for(ProductoProveedor u: proveedor.getProductos()){
+                    Vector aux = new Vector();
+                    aux.add(u.getNombreProducto());
+                    aux.add(u.getPrecioPorUnidad());
+                    lista.add(aux);
+                }
+                Splash.listaproductos = lista;
             }else{
                 JOptionPane.showMessageDialog(frame, "El proveedor no existe");
             }
