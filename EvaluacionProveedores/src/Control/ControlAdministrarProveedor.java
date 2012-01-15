@@ -46,6 +46,7 @@ public class ControlAdministrarProveedor {
     }
 
     public String modificarProveedor(Proveedores viejo, Proveedores nuevo){
+        System.out.println("Entra acaaaaaaaaaa");
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
                 List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
@@ -81,6 +82,8 @@ public class ControlAdministrarProveedor {
 
                 ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
                 jpaProveedor.create(nuevo, em);
+                ContratosJpaController contratos = new ContratosJpaController();
+                contratos.delete(viejo.getNit(), em);
                 jpaProveedor.delete(viejo.getNit(), em);
                 
                 return "Succes";
@@ -95,6 +98,12 @@ public class ControlAdministrarProveedor {
     }
 
     public String borrarProveedor(String nombre, int nit){
+            ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
+            productosb.delete(nit, em);
+            EvaluacionesJpaController evaluacionesb = new EvaluacionesJpaController();
+            evaluacionesb.delete(nit, em);
+            ContratosJpaController contratos = new ContratosJpaController();
+            contratos.delete(nit, em);
             ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
             jpaProveedor.delete(nit, em);
             return "Succes";
