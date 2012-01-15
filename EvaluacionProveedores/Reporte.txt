@@ -1,9 +1,27 @@
+Nombre: Mercaditos
+Nit: 5
+Calidad		Fiabilidad		Fecha
+
+Representante: null
+Correo: null
+Telefono: 5345644
+Pagina Web: null
+Productos:
+Nombre		Precio
 
 
-Evaluacion numero:  0
-Adaptabilidad:  Buena
-Cercania:  buena
-Comentarios:  null
-Calidad:  78.0
-Fiabilidad:  98.0
-Anio:  2011 Mes:  11 Dia:  3 Hora:  12 Min:  22
+Nombre: marcas
+Nit: 1
+Calidad		Fiabilidad		Fecha
+50.0		59.0		01/15/2012 17:50:42
+Comentario: bueno
+
+Representante: dario
+Correo: awds@.com
+Telefono: 1234567
+Pagina Web: www.com
+Productos:
+Nombre		Precio
+
+
+SuccesSuccesSuccesSucces
