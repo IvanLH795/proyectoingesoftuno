@@ -32,25 +32,25 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         titulos.add("Precio");
         PanelMP.setVisible(false);
         presupuesto = jpaPresupuesto.getPresupuestoDisponible(em);
-        if(presupuesto != null)
-            TTotal.setText(String.valueOf(presupuesto));
-        else
+        if(presupuesto != null){
+            TTotal.setText(String.valueOf(presupuesto));}
+        else{
             TTotal.setText(String.valueOf(new Float(0)));
-        TDisponible.setText(String.valueOf(0));
-        
-        try{
-            Float a = new Float(0);
-            for(Productos u:  jpaProductos.getProductos(em)){
-                Vector obje = new Vector();
-                obje.add(u.getNombreProducto());
-                obje.add(u.getDineroDisponible());
+            TDisponible.setText(String.valueOf(0));
+            try{
+                Float a = new Float(0);
+                for(Productos u:  jpaProductos.getProductos(em)){
+                    Vector obje = new Vector();
+                    obje.add(u.getNombreProducto());
+                    obje.add(u.getDineroDisponible());
+                    modelo.setColumnIdentifiers(titulos);
+                    modelo.addRow(obje);
+                    a = a- u.getDineroDisponible();
+                }
+                TDisponible.setText(String.valueOf(a));
+            }catch(NullPointerException ex){
                 modelo.setColumnIdentifiers(titulos);
-                modelo.addRow(obje);
-                a = a- u.getDineroDisponible();
             }
-            TDisponible.setText(String.valueOf(a));
-        }catch(NullPointerException ex){
-            modelo.setColumnIdentifiers(titulos);
         }
         jScrollPane1.setViewportView(tabla);
     }
