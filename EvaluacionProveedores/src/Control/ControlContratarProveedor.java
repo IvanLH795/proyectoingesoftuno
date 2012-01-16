@@ -121,10 +121,11 @@ public class ControlContratarProveedor {
             cont.setProducto(prod);
             
             PresupuestoDisponibleJpaController presupuestoControl = new PresupuestoDisponibleJpaController();
-            PresupuestoDisponible presupuestoDisponible = new PresupuestoDisponible();
-            presupuestoDisponible = presupuestoControl.getPresupuestoDisponible(em);
-            presupuestoDisponible.setPresupuesto(presupuestoDisponible.getPresupuesto() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
-            presupuestoControl.update(presupuestoDisponible, em);
+            PresupuestoDisponible presupuestoDisponible1 = new PresupuestoDisponible();
+            presupuestoDisponible1 = presupuestoControl.getPresupuestoDisponible(em);
+            PresupuestoDisponible presupuestoDisponible2 = new PresupuestoDisponible();
+            presupuestoDisponible2.setPresupuesto(presupuestoDisponible1.getPresupuesto() - productoSeleccionado.getPrecioPorUnidad()*cantidad);
+            presupuestoControl.update(presupuestoDisponible1, presupuestoDisponible2, em);
 
             ContratosJpaController control =new ContratosJpaController();
             cont.setCantidad((int)cantidad);

@@ -12,6 +12,7 @@ public class PresupuestoDisponible implements Serializable {
 
     public PresupuestoDisponible(){
         this.presupuesto = new Float(0);
+        this.presupuestoDisponible = new Float(0);
     }
 
     public Float getPresupuestoDisponible() {
