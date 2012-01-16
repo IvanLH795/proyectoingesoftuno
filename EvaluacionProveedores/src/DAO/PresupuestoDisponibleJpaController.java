@@ -18,15 +18,14 @@ public class PresupuestoDisponibleJpaController {
         }
     }
 
-    public void update(PresupuestoDisponible presupuesto, EntityManager em){
-        this.delete(em);
-        this.create(presupuesto, em);
-    }
-
-    private void delete(EntityManager em){
+    public void update(PresupuestoDisponible viejo, PresupuestoDisponible nuevo, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("DELETE FROM PresupuestoDisponible");
+            Query q = em.createQuery("UPDATE PresupuestoDisponible s SET s.presupuesto = "
+                    + nuevo.getPresupuestoDisponible() + ", "
+                    + "s.presupuestoDisponible = "
+                    + nuevo.getPresupuestoDisponible()
+                    +" WHERE s.presupuesto = " + viejo.getPresupuesto());
             q.executeUpdate();
             em.getTransaction().commit();
         }catch(Exception e){
