@@ -27,8 +27,7 @@ public class ControlAdministrarProveedor {
         if(validarProveedorNit(u.getNit())){
             if(validarProveedorTel(u.getTelefono()) || u.getTelefono()== 0){
                     ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
-                    jpaProveedor.create(u, em);
-                return "Succes";
+                    return jpaProveedor.create(u, em);
             }else{
                 return "Telefono invalido";
             }
@@ -64,21 +63,16 @@ public class ControlAdministrarProveedor {
                 }
                 nuevo.setProductos(lista);
                 nuevo.setEvaluaciones(listaeva);
-
-                
-                ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
-                productosb.delete(viejo.getNit(), em);
-                EvaluacionesJpaController evaluacionesb = new EvaluacionesJpaController();
-                evaluacionesb.delete(viejo.getNit(), em);
-
-
-                ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
-                jpaProveedor.create(nuevo, em);
-                ContratosJpaController contratos = new ContratosJpaController();
-                contratos.delete(viejo.getNit(), em);
-                jpaProveedor.delete(viejo.getNit(), em);
-                
-                return "Succes";
+                if(viejo.getNit() == nuevo.getNit()){
+                    ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
+                    jpaProveedor.updateNitIguales(nuevo, em);
+                    return "Succes";
+                }else{
+                    ProveedoresJpaController jpaProveedores = new ProveedoresJpaController();
+                    jpaProveedores.updateNitDistintos(viejo.getNit(), nuevo, em);
+                    jpaProveedores.updateNitIguales(nuevo, em);
+                    return "Succes";
+                }
             }
             else{
                 return "Telefono invalido";
@@ -120,38 +114,40 @@ public class ControlAdministrarProveedor {
     public String modificarProveedor(Proveedores viejo, Proveedores nuevo, Vector listaProductos) {
         if(validarProveedorNit(nuevo.getNit())){
             if(validarProveedorTel(nuevo.getTelefono()) || nuevo.getTelefono()== 0){
-                List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
-                for(int i=0; i<listaProductos.size();i++){
-                        ProductoProveedor producto = new ProductoProveedor();
-                        producto.setNombreProducto((String)((Vector) listaProductos.get(i)).get(0));
-                        producto.setPrecioPorUnidad((Float)((Vector)listaProductos.get(i)).get(1));
-                        if(!(producto.getNombreProducto()==null))
-                            lista.add(producto);
-                            producto.setProveedor(nuevo);
+                if(viejo.getNit() == nuevo.getNit()){
+                    if(listaProductos != null){
+                        List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
+                        for(int i=0; i<listaProductos.size();i++){
+                            ProductoProveedor producto = new ProductoProveedor();
+                            producto.setNombreProducto((String)((Vector) listaProductos.get(i)).get(0));
+                            producto.setPrecioPorUnidad((Float)((Vector)listaProductos.get(i)).get(1));
+                            if(!(producto.getNombreProducto()==null))
+                                lista.add(producto);
+                                producto.setProveedor(nuevo);
+                        }
+                        nuevo.setProductos(lista);
+                    }
+                    ProveedoresJpaController jpaProveedores = new ProveedoresJpaController();
+                    jpaProveedores.updateNitIguales(nuevo, em);
+                    return "Succes";
+                }else{
+                    if(listaProductos != null){
+                        List<ProductoProveedor> lista = new ArrayList<ProductoProveedor>();
+                        for(int i=0; i<listaProductos.size();i++){
+                            ProductoProveedor producto = new ProductoProveedor();
+                            producto.setNombreProducto((String)((Vector) listaProductos.get(i)).get(0));
+                            producto.setPrecioPorUnidad((Float)((Vector)listaProductos.get(i)).get(1));
+                            if(!(producto.getNombreProducto()==null))
+                                lista.add(producto);
+                                producto.setProveedor(nuevo);
+                        }
+                        nuevo.setProductos(lista);
+                    }
+                    ProveedoresJpaController jpaProveedores = new ProveedoresJpaController();
+                    jpaProveedores.updateNitDistintos(viejo.getNit(), nuevo, em);
+                    jpaProveedores.updateNitIguales(nuevo, em);
+                    return "Succes";
                 }
-                List<Evaluaciones> listaeva = new ArrayList<Evaluaciones>();
-                for(Evaluaciones p: viejo.getEvaluaciones()){
-                    Evaluaciones u = new Evaluaciones();
-                    u.setAdaptabilidad(p.getAdaptabilidad());
-                    u.setCalidad(p.getCalidad());
-                    u.setCercania(p.getCercania());
-                    u.setComentarios(p.getComentarios());
-                    u.setFecha(p.getFecha());
-                    u.setFiabilidad(p.getFiabilidad());
-                    u.setProveedor(nuevo);
-                    listaeva.add(u);
-                }
-                nuevo.setProductos(lista);
-                nuevo.setEvaluaciones(listaeva);
-
-                ProductosProveedorJpaController productosb = new ProductosProveedorJpaController();
-                productosb.delete(viejo.getNit(), em);
-                ProveedoresJpaController jpaProveedor = new ProveedoresJpaController();
-                jpaProveedor.create(nuevo, em);
-                ContratosJpaController contratos = new ContratosJpaController();
-                contratos.delete(viejo.getNit(), em);
-                jpaProveedor.delete(viejo, em);
-                return "Succes";
             }
             else{
                 return "Telefono invalido";

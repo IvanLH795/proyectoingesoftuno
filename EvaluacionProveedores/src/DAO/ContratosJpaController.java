@@ -7,15 +7,16 @@ import javax.persistence.Query;
 
 public class ContratosJpaController {
 
-    public void create(Contratos evaluacion, EntityManager em) {
+    public String create(Contratos evaluacion, EntityManager em) {
         em.getTransaction().begin();
         try {
-            evaluacion = em.merge(evaluacion);
             em.persist(evaluacion);
             em.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
+            return "Fail";
         }
     }
 
@@ -23,6 +24,20 @@ public class ContratosJpaController {
         em.getTransaction().begin();
         try{
             Query q = em.createQuery("DELETE FROM Contratos u WHERE u.fecha = '" + fecha + "'");
+            q.executeUpdate();
+            em.getTransaction().commit();
+            return "Succes";
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+            return "Fail";
+        }
+    }
+
+    public String update(int nit, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("UPDATE Contratos u SET u.proveedor.nit WHERE u.fecha = '" + nit + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";
@@ -53,7 +68,6 @@ public class ContratosJpaController {
 
     public List<Contratos> getListaContratos(EntityManager em){
         try{
-            //Query q = em.createQuery("SELECT u FROM Evaluaciones as u");
             Query q = em.createQuery("SELECT u FROM Contratos as u");
             return q.getResultList();
         }catch(Exception e){

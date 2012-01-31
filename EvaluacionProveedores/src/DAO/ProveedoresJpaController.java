@@ -7,15 +7,16 @@ import javax.persistence.Query;
 
 public class ProveedoresJpaController {
 
-    public void create(Proveedores proveedor, EntityManager em) {
+    public String create(Proveedores proveedor, EntityManager em) {
         em.getTransaction().begin();
         try {
-            proveedor = em.merge(proveedor);
             em.persist(proveedor);
             em.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
+            return "Fail";
         }
     }
     
@@ -51,23 +52,29 @@ public class ProveedoresJpaController {
         return this.delete(proveedor.getNit(), em);
     }
 
-    public void update(Proveedores viejo, Proveedores nuevo, EntityManager em){
+    public String updateNitIguales(Proveedores nuevo, EntityManager em){
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery("UPDATE Proveedores s SET s.nombre = '" +
-                    nuevo.getNombre() + 
-                    "', s.nit = "+ nuevo.getNit() +
-                    ", s.representante = '"+ nuevo.getRepresentante() +
-                    "', s.correo = '"+ nuevo.getCorreo() +
-                    "', s.telefono = "+ nuevo.getTelefono() +
-                    ", s.paginaWeb = '"+ nuevo.getPaginaWeb() +
-                    "', s.direccion = '"+ nuevo.getDireccion() +
-                    "' WHERE s.nit = " + viejo.getNit());
+            em.merge(nuevo);
+            em.getTransaction().commit();
+            return "Succes";
+        }catch(Exception e){
+            em.getTransaction().rollback();
+            return "Fail";
+        }
+    }
+
+    public String updateNitDistintos(int nit, Proveedores nuevo, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("UPDATE Proveedores p SET p.nit = " +
+                    nuevo.getNit() + "' WHERE p.nit = " + nit);
             q.executeUpdate();
             em.getTransaction().commit();
+            return "Succes";
         }catch(Exception e){
-            System.out.println(e);
             em.getTransaction().rollback();
+            return "Fail";
         }
     }
 

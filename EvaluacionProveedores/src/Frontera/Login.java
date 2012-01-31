@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
     EntityManager em;
     public static String roll;
-    UsuarioJpaController user = new UsuarioJpaController();
     JFrame frame;
     /** Creates new form Login */
     public Login() {
@@ -227,6 +226,7 @@ public class Login extends javax.swing.JFrame {
     usuarios.add(e);
     usuarios.add(p);
 
+    UsuarioJpaController user = new UsuarioJpaController();
     user.create(a, em);
     user.create(b, em);
     user.create(c, em);

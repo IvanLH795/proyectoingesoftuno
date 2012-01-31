@@ -7,17 +7,16 @@ import javax.persistence.Query;
 
 public class ProductosJpaController {
 
-    public void create(Productos producto, EntityManager em) {
+    public String create(Productos producto, EntityManager em) {
         em.getTransaction().begin();
         try {
-            producto = em.merge(producto);
             em.persist(producto);
             em.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
-        }finally{
-            em.close();
+            return "Fail";
         }
     }
 
@@ -27,13 +26,11 @@ public class ProductosJpaController {
             Query q = em.createQuery("DELETE FROM Productos u WHERE u.nombreProducto = '" + nombre + "'");
             q.executeUpdate();
             em.getTransaction().commit();
-            return "Succes";
+            return "Correcto";
         }catch(Exception e){
             System.out.println(e);
             em.getTransaction().rollback();
-            return "Fail";
-        }finally{
-            em.close();
+            return e.toString();
         }
     }
 

@@ -35,6 +35,17 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         if(presupuesto != null){
             TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
             TDisponible.setText(String.valueOf(presupuesto.getPresupuestoDisponible()));
+            try{
+                for(Productos u:  jpaProductos.getProductos(em)){
+                    Vector obje = new Vector();
+                    obje.add(u.getNombreProducto());
+                    obje.add(u.getDineroDisponible());
+                    modelo.setColumnIdentifiers(titulos);
+                    modelo.addRow(obje);
+                }
+            }catch(NullPointerException ex){
+                modelo.setColumnIdentifiers(titulos);
+            }
         }
         else{
             presupuesto = new PresupuestoDisponible();
@@ -51,6 +62,7 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                     a = a- u.getDineroDisponible();
                 }
                 TDisponible.setText(String.valueOf(a));
+                presupuesto.setPresupuestoDisponible(a);
             }catch(NullPointerException ex){
                 modelo.setColumnIdentifiers(titulos);
             }
@@ -311,37 +323,41 @@ public class GestorPresupuesto extends javax.swing.JFrame {
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
         float a, b = 0;
-        b=Float.parseFloat(precio);
-        if(b<=(Float.parseFloat(TDisponible.getText())))
-        {
-           try {
-                a=Float.parseFloat(precio);
-                TDisponible.setText(Float.parseFloat(TDisponible.getText())-a +"");
-                producto = verificar.estandarizarNombre(producto);
-                if(validarNombre(producto)){
-                    obj.addElement(producto);
-                    obj.addElement(a);
-                    producto1.setNombreProducto((String) obj.get(0));
-                    producto1.setDineroDisponible( (Float)obj.get(1));
+        if(precio != null){
+            b=Float.parseFloat(precio);
+            if(b<=(Float.parseFloat(TDisponible.getText())))
+            {
+                try {
+                    a=Float.parseFloat(precio);
+                    producto = verificar.estandarizarNombre(producto);
+                    if(validarNombre(producto)){
+                        obj.addElement(producto);
+                        obj.addElement(a);
+                        producto1.setNombreProducto((String) obj.get(0));
+                        producto1.setDineroDisponible( (Float)obj.get(1));
              
-                    String resultado = verificar.verificarProducto(producto1);
-                    if(resultado.equals("Correcto")){
-                        obj.addElement(producto1.getNombreProducto());
-                        obj.addElement(producto1.getDineroDisponible());
-                        modelo.addRow(obj);
-                        if(jpaProductos.getProductos(em) == null){
-                            productos.setNombreProducto(producto);
-                            jpaProductos.create(productos, em);
-                        }else{
-                            jpaProductos.create(producto1, em);
+                        String resultado = verificar.verificarProducto(producto1);
+                        if(resultado.equals("Correcto")){
+                            if(jpaProductos.create(producto1, em).equals("Correcto")){
+                                PresupuestoDisponible presupuesto2 = new PresupuestoDisponible();
+                                presupuesto2.setPresupuesto(presupuesto.getPresupuesto());
+                                presupuesto2.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() - a);
+                                obj.addElement(producto1.getNombreProducto());
+                                obj.addElement(producto1.getDineroDisponible());
+                                jpaProductos.create(producto1, em);
+                                jpaPresupuesto.update(presupuesto, presupuesto2, em);
+                                TDisponible.setText(String.valueOf(presupuesto2.getPresupuestoDisponible()));
+                                modelo.addRow(obj);
+                            }
                         }
                     }
+                
+                }catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "datos Incorrectos");
                 }
-           }catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "datos Incorrectos");
             }
+            else JOptionPane.showMessageDialog(null, "no hay presupuesto");
         }
-        else JOptionPane.showMessageDialog(null, "no hay presupuesto");
     }//GEN-LAST:event_btnProductoAgregarActionPerformed
 
     private void btnProductoEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoEliminarActionPerformed
@@ -366,13 +382,20 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 jpaProductos.delete(jpaProductos.getProductos(em).get(filaBorrar), em);
             }
             else if( JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(frame, "Esta seguro que desea\n eliminar este producto?", "Confirmacion" ,JOptionPane.YES_NO_OPTION)){
-                obj= modelo.getDataVector();
-                obj=(Vector) obj.elementAt(filaBorrar);
-                a=(obj.elementAt(1)+"");
-                b=Float.parseFloat(a);
-                TDisponible.setText(Float.parseFloat(TDisponible.getText())+b+"");
-                modelo.removeRow(filaBorrar);
-                jpaProductos.delete(jpaProductos.getProductos(em).get(filaBorrar), em);
+                if(jpaProductos.delete(jpaProductos.getProductos(em).get(filaBorrar), em).equals("Correcto")){
+
+                    obj= modelo.getDataVector();
+                    obj=(Vector)obj.elementAt(filaBorrar);
+                    a=(obj.elementAt(1)+"");
+                    b=Float.parseFloat(a);
+                    PresupuestoDisponible presupuesto2 = new PresupuestoDisponible();
+                    presupuesto2.setPresupuesto(presupuesto.getPresupuesto());
+                    presupuesto2.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() + b);
+
+                    modelo.removeRow(filaBorrar);
+                    jpaPresupuesto.update(presupuesto, presupuesto2, em);
+                    TDisponible.setText(String.valueOf(presupuesto2.getPresupuestoDisponible()));
+                }
             }
         }
     }//GEN-LAST:event_btnProductoEliminarActionPerformed
@@ -393,14 +416,15 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 if(Float.parseFloat(texto) > 0){
                     PresupuestoDisponible presupuesto2 = new PresupuestoDisponible();
                     presupuesto2.setPresupuesto(presupuesto.getPresupuesto() + Float.parseFloat(texto));
-                    TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
                     presupuesto2.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() + Float.parseFloat(texto));
-                    TDisponible.setText(String.valueOf(TDisponible.getText()));
                     
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
 
                     jpaPresupuesto.update(presupuesto, presupuesto2 , em);
+                    presupuesto = presupuesto2;
+                    TTotal.setText(String.valueOf(presupuesto2.getPresupuesto()));
+                    TDisponible.setText(String.valueOf(presupuesto2.getPresupuestoDisponible()));
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Presupuesto invalido");
@@ -419,15 +443,15 @@ public class GestorPresupuesto extends javax.swing.JFrame {
                 if(Float.parseFloat(texto)<=presupuesto.getPresupuesto()){
                     PresupuestoDisponible presupuesto2 = new PresupuestoDisponible();
                     presupuesto2.setPresupuesto(presupuesto.getPresupuesto() - Float.parseFloat(texto));
-                    TTotal.setText(String.valueOf(presupuesto.getPresupuesto()));
                     presupuesto2.setPresupuestoDisponible(presupuesto.getPresupuestoDisponible() - Float.parseFloat(texto));
-                    TDisponible.setText(String.valueOf(TDisponible.getText()));
-
+                    
                     PanelMP.setVisible(false);
                     TNuevoPresupuesto.setText("");
                     
                     jpaPresupuesto.update(presupuesto, presupuesto2 , em);
                     presupuesto = presupuesto2;
+                    TTotal.setText(String.valueOf(presupuesto2.getPresupuesto()));
+                    TDisponible.setText(String.valueOf(presupuesto2.getPresupuestoDisponible()));
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Presupuesto Incorrecto");

@@ -125,6 +125,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
 
     private void BtnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAñadirActionPerformed
         Vector obj= new Vector();
+        this.setVisible(false);
         String producto = JOptionPane.showInputDialog("Producto");
         String precio = JOptionPane.showInputDialog("Precio");
         if(producto != null){
@@ -153,6 +154,7 @@ public class ProductoProveedorInterfaz extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Nombre no valido");
         }
+        this.setVisible(true);
     }//GEN-LAST:event_BtnAñadirActionPerformed
 
     private void BtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarActionPerformed
