@@ -736,6 +736,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         ControlAdministrarProveedor control = new ControlAdministrarProveedor();
         String result = control.borrarProveedor(TFNombreEliminar.getText(), Integer.parseInt(TFNitEliminar.getText()));
         if(result.equals("Succes")){
+            this.setVisible(false);
             JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nBorrado con exito");
             Principal regresar = new Principal(Login.roll);
             regresar.setLocationRelativeTo(null);
@@ -771,6 +772,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                 String result = control.crearProveedor(proveedor2, Splash.listaproductos);
                 
                 if(result.equals("Succes")){
+                    this.setVisible(false);
                     JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nCreado con exito");
                     Principal regresar = new Principal(Login.roll);
                     regresar.setLocationRelativeTo(null);
@@ -841,6 +843,7 @@ public class AdministrarProveedor extends javax.swing.JFrame {
                     Splash.listaproductos = null;
 
                 if(result.equals("Succes")){
+                    this.setVisible(false);
                     JOptionPane.showMessageDialog(frame, "El Proveedor se ha\nCreado con exito");
                     Principal regresar = new Principal(Login.roll);
                     regresar.setLocationRelativeTo(null);
@@ -917,13 +920,15 @@ public class AdministrarProveedor extends javax.swing.JFrame {
         }else{
             interfazProductos = new ProductoProveedorInterfaz(Splash.listaproductos);
         }
-        interfazProductos.setLocationRelativeTo(null);
-        interfazProductos.setVisible(true);
+        interfazProductos.setLocationRelativeTo(this);
+        interfazProductos.setAlwaysOnTop(true);
+        interfazProductos.setVisible(true);        
     }//GEN-LAST:event_BtnProductosModificarActionPerformed
 
     private void BtnProductosCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnProductosCrearActionPerformed
         ProductoProveedorInterfaz interfazProductos = new ProductoProveedorInterfaz(Splash.listaproductos);
-        interfazProductos.setLocationRelativeTo(null);
+        interfazProductos.setLocationRelativeTo(this);
+        interfazProductos.setAlwaysOnTop(true);
         interfazProductos.setVisible(true);
     }//GEN-LAST:event_BtnProductosCrearActionPerformed
 

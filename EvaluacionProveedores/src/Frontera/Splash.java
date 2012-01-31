@@ -2,9 +2,16 @@ package Frontera;
 
 import Entidad.Evaluaciones;
 import Entidad.Proveedores;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +23,7 @@ public class Splash extends javax.swing.JFrame {
     /** Creates new form Splash */
     public Splash() {
         initComponents();
-        inicializacion();
+        //inicializacion();
         emf = Persistence.createEntityManagerFactory("EvaluacionProveedoresPU", System.getProperties());
         em = emf.createEntityManager();
     }
@@ -124,7 +131,13 @@ public class Splash extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        System.exit(0);        // TODO add your handling code here:
+        //try {
+            //Runtime.getRuntime().exec("taskkill /F /IM java.exe");
+            //Runtime.getRuntime().exec("taskkill /F /IM javaw.exe");
+            System.exit(0); // TODO add your handling code here:
+        //} catch (IOException ex) {
+            //Logger.getLogger(Splash.class.getName()).log(Level.SEVERE, null, ex);
+        //}
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -183,7 +196,11 @@ public class Splash extends javax.swing.JFrame {
      /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
+    static Connection conn;
+    public static void main(String args[]) throws IOException {
+
+        //Runtime.getRuntime().exec("java -jar ConexionJDBC.jar");
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try{

@@ -7,15 +7,16 @@ import javax.persistence.Query;
 
 public class EvaluacionesJpaController {
 
-    public void create(Evaluaciones evaluacion, EntityManager em) {
+    public String create(Evaluaciones evaluacion, EntityManager em) {
         em.getTransaction().begin();
         try {
-            evaluacion = em.merge(evaluacion);
             em.persist(evaluacion);
             em.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
             System.out.println(e);
             em.getTransaction().rollback();
+            return "Fail";
         }
     }
 

@@ -7,15 +7,15 @@ import javax.persistence.Query;
 
 public class ProductosProveedorJpaController {
     
-    public void create(ProductoProveedor producto, EntityManager emc) {
+    public String create(ProductoProveedor producto, EntityManager emc) {
         emc.getTransaction().begin();
         try {
-            producto = emc.merge(producto);
             emc.persist(producto);
             emc.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
-            System.out.println(e);
             emc.getTransaction().rollback();
+            return "Fail";
         }
     }
 
@@ -43,6 +43,21 @@ public class ProductosProveedorJpaController {
         em.getTransaction().begin();
         try{
             Query q = em.createQuery("DELETE FROM ProductoProveedor u WHERE u.proveedor.nit = " + nit);
+            q.executeUpdate();
+            em.getTransaction().commit();
+            return "Succes";
+        }catch(Exception e){
+            System.out.println(e);
+            em.getTransaction().rollback();
+            return "Fail";
+        }
+    }
+
+    public String delete(int nit,String nombre, EntityManager em){
+        em.getTransaction().begin();
+        try{
+            Query q = em.createQuery("DELETE FROM ProductoProveedor u WHERE u.proveedor.nit = "
+                    + nit + "AND u.nombreProducto = '" + nombre + "'");
             q.executeUpdate();
             em.getTransaction().commit();
             return "Succes";

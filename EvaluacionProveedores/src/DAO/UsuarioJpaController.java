@@ -7,15 +7,17 @@ import javax.persistence.Query;
 
 public class UsuarioJpaController {
 
-    public void create(Usuario usuario, EntityManager emc) {
+    public String create(Usuario usuario, EntityManager emc) {
         emc.getTransaction().begin();
         try {
             usuario = emc.merge(usuario);
             emc.persist(usuario);
             emc.getTransaction().commit();
+            return "Succes";
         } catch (Exception e) {
             System.out.println(e);
             emc.getTransaction().rollback();
+            return "Fail";
         }
     }
 

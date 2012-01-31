@@ -1,6 +1,9 @@
 package Frontera;
 
 import java.awt.Dialog.ModalExclusionType;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -169,11 +172,13 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        //System.exit(0);
-        Login salir = new Login();
-        salir.setLocationRelativeTo(null);
-        salir.setVisible(true);
-        this.dispose();
+        try {
+            Runtime.getRuntime().exec("taskkill /F /IM java.exe");
+            Runtime.getRuntime().exec("taskkill /F /IM javaw.exe");
+        }catch(Exception ex){
+           ex.getStackTrace();
+        }
+        System.exit(0); // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnEvaluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEvaluarMouseClicked
